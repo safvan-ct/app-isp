@@ -16,7 +16,8 @@
     <div class="container my-3 pb-5">
         <div class="base-card text-center bg-app mb-4 shadow-sm rounded-4">
             <h5 class="text-emerald-900">റ. അവ്വൽ മാസത്തിന്റെ ശ്രേഷ്ഠത, റ.അ. 12 ന്റെ അടിസ്ഥാനം</h5>
-            <p class="text-muted mb-2">ഖുർആൻ, ഹദീസ്, പ്രാമാണിക തെളിവുകൾ ഉൾക്കൊള്ളുന്ന ഘട്ടം ഘട്ടമായുള്ള മാർഗനിർദേശം.</p>
+            <p class="text-muted mb-2 d-none">ഖുർആൻ, ഹദീസ്, പ്രാമാണിക തെളിവുകൾ ഉൾക്കൊള്ളുന്ന ഘട്ടം ഘട്ടമായുള്ള മാർഗനിർദേശം.
+            </p>
             <div class="small">
                 ✍️ Author: Author Name • Reviewed • Verified <br>
                 ⏱️ Last review: Sep 04, 2025 by Reviewer Name
@@ -111,11 +112,11 @@
                 <div class="text-center gap-3" bis_skin_checked="1">
                     <i class="fas fa-exclamation-triangle fa-lg mt-1 text-center text-danger"></i>
                     <p class="mb-0 text-center">
-                        ആചാരമാക്കുന്നവര്‍ ഖുർആൻ, സുന്നത്ത്, അല്ലെങ്കിൽ ഇജ്മാഅ് വിരുദ്ധമല്ലാതെ മാര്‍ഗ്ഗങ്ങളില്‍
+                        ആചാരമാക്കുന്നവര്‍ ഖുർആൻ, സുന്നത്ത്, ഇജ്മാഅ് വിരുദ്ധമല്ലാതെ മാര്‍ഗ്ഗങ്ങളില്‍
                         നില്‍ക്കുക.
                     </p>
                     <p class="mb-0 text-center">
-                        പുതുതായ കൂട്ടിച്ചേർക്കലുകൾ <em>(പ്രതേക ചടങ്ങുകൾ, ഗാനങ്ങൾ, മൗലിദ് സദസ്സ്, ലൈറ്റുകൾ, കൂട്ടം
+                        പുതുതായ കൂട്ടിച്ചേർക്കലുകൾ <em class="text-danger">(പ്രതേക ചടങ്ങുകൾ, ഗാനങ്ങൾ, മൗലിദ് സദസ്സ്, ലൈറ്റുകൾ, കൂട്ടം
                             ചേർന്ന് ആഘോഷിക്കൽ, കലാപരിപാടികൾ)</em> ഒഴിവാക്കുക.
                     </p>
                 </div>
@@ -147,7 +148,7 @@
             </div>
             <div class="offcanvas-body py-0">
                 <div class="reference-box mt-0" id="ref1">
-                    <span class="fw-bold">[1].</span><br>
+                    <span class="fw-bold">[1]. ഇമാം അബൂ ഹനീഫ (80 - 150 ഹി)</span><br>
 
                     <p class="m-0 small mb-2">
                         ഇമാം അബൂ ഹനീഫയുടെ സ്വന്തം കാലത്തോ, പണ്ഡിതന്മാരായ ഇമാം അബൂ യൂസുഫ് (d. 182H), ഇമാം മുഹമ്മദ് (d. 189H)
@@ -162,16 +163,19 @@
                         <span class="fw-bold">ഇമാം സർഖസി (d - 483 ഹി)</span><br>
                         <em>- അൽ-മബ്സൂത്, vol. 2, Dar al-Maʿrifah ed.</em><br>
 
-                        <span class="fw-bold"></span><br>
-                        <em>- Al-Fatawa al-Hindiyya (Fatāwā ʿĀlamgīriyya) (vol. 1)</em><br>
-
                         <span class="fw-bold">Ibn ʿĀbidīn (d - 483 ഹി)</span><br>
                         <em>- Radd al-Muhtār, vol. 2</em><br>
+
+                        <br><em>- Al-Fatawa al-Hindiyya (Fatāwā ʿĀlamgīriyya) (vol. 1)</em><br>
                     </p>
                 </div>
 
                 <div class="reference-box mt-0" id="ref2">
-                    <span class="fw-bold">[2].</span><br>
+                    <span class="fw-bold">[2]. ഇമാം മാലിക് (93 - 179 ഹി)</span><br>
+
+                    <p class="m-0 small mb-2">
+                        സലഫുകൾ (ആദ്യകാല സഹാബികൾ, താബിഉൻ) ആരും ചെയ്തിട്ടില്ല, അത് ബിദ്അത് ആണ്.
+                    </p>
 
                     <p class="m-0 small">
                         <span class="fw-bold">ഇമാം അൽ-ഷാതിബി (d - 790 ഹി)</span><br>
@@ -186,13 +190,14 @@
                 </div>
 
                 <div class="reference-box mt-0" id="ref3">
-                    <span class="fw-bold">[3].</span><br>
+                    <span class="fw-bold">[3]. ഇമാം ശാഫിഈ (150 - 204 ഹി)</span><br>
 
                     <p class="m-0 small mb-2">
+                        <em>നേരിട്ട് മീലാദിനെക്കുറിച്ച് പറഞ്ഞിട്ടില്ല.</em><br>
                         ഖുർആൻ, സുന്നത്ത്, അല്ലെങ്കിൽ ഇജ്മാഅ് വിരുദ്ധമല്ലാതെ കാര്യങ്ങൾ - <span class="fw-bold">ബിദ്അത്
                             ഹസന</span><br>
                         ഖുർആൻ, സുന്നത്ത്, അല്ലെങ്കിൽ ഇജ്മാഅ് വിരുദ്ധമാകുന്ന കാര്യങ്ങൾ - <span class="fw-bold">ബിദ്അത്
-                            ദലാല</span><br>
+                            ദലാല</span>
                     </p>
 
                     <p class="m-0 small">
@@ -208,7 +213,11 @@
                 </div>
 
                 <div class="reference-box mt-0" id="ref4">
-                    <span class="fw-bold">[4].</span><br>
+                    <span class="fw-bold">[4]. ഇമാം അഹ്മദ് ബിൻ ഹൻബൽ (164 - 241 ഹി)</span><br>
+
+                    <p class="m-0 small mb-2">
+                        എനിക്ക് അത് ബിദ്അത് ആയി തോന്നുന്നു
+                    </p>
 
                     <p class="m-0 small">
                         <span class="fw-bold">ഇബ്ന് തൈമിയ്യ (d - 728 ഹി)</span><br>
