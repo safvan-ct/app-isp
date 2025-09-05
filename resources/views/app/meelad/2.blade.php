@@ -6,7 +6,7 @@
             <i class="fas fa-chevron-left fs-3 text-secondary"></i>
         </a>
 
-        <h6 class="fw-bold m-0 text-emerald text-center">ചരിത്രം</h6>
+        <h6 class="fw-bold m-0 text-emerald text-center">നബിദിന ചരിത്രം</h6>
 
         <a href="javascript:void(0);" data-bs-toggle="offcanvas" data-bs-target="#overviewPanel">
             <i class="fas fa-list fs-3 text-muted"></i>
@@ -14,7 +14,7 @@
     </div>
 
     <div class="app-header bg-app text-center">
-        <h5 class="mb-1 text-emerald fw-bold">📜 നബിദിന ചരിത്രം</h5>
+        <h5 class="mb-1 text-emerald fw-bold">📜 നബിദിന ആഘോഷങ്ങളുടെ ചരിത്രം</h5>
         <p class="text-muted m-0">കാലഘട്ടങ്ങളിലൂടെ നബിദിന (മൗലിദ്) ആഘോഷങ്ങളുടെ വികാസം</p>
     </div>
 

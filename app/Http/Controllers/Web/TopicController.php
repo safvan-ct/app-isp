@@ -13,15 +13,14 @@ class TopicController extends Controller
         $this->questions = [
             1 => [
                 "slug"     => "meelad",
-                "title"    => "നബിദിനം - അനുബന്ധ വിഷയങ്ങൾ",
+                "title"    => "നബിദിനം (റ. അവ്വൽ 12)",
                 "desc"     => "നബിദിനം ആഘോഷിക്കേണ്ടതിന്റെ അടിസ്ഥാനവും ശ്രേഷ്ഠതയും",
                 "chapters" => [
                     "റ. അവ്വൽ മാസത്തിന്റെ ശ്രേഷ്ഠത, റ.അ. 12 ന്റെ അടിസ്ഥാനം",
-                    "നബിദിന ആഘോഷങ്ങളുടെ അടിസ്ഥാനം & പ്രവാചക ചര്യ (സുന്നത്ത്)",
-                    "ചരിത്രം",
+                    "നബിദിന ആഘോഷങ്ങളുടെ ചരിത്രം",
                 ],
             ],
-            3 => [
+            2 => [
                 "ചരിത്രം",
             ],
         ];
@@ -56,7 +55,10 @@ class TopicController extends Controller
         if (! $question) {
             //abort(404);
         }
-        $questions = $this->questions[$questionSlug + 1];
-        return view("app.topic-{$moduleSlug}-{$questionSlug}", compact("question", "module", "menuSlug", "moduleSlug", "questionSlug", "questions"));
+
+        $key       = $questionSlug + 1;
+        $questions = $this->questions[$key];
+
+        return view("app.{$moduleSlug}.{$key}", compact("question", "module", "menuSlug", "moduleSlug", "questionSlug", "questions"));
     }
 }

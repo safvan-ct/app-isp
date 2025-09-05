@@ -23,7 +23,7 @@
     </div>
 
     <div class="container my-4 pb-5">
-        <h6 class="fw-bold mt-4 mb-3 text-emerald">Topic Contents</h6>
+        <h6 class="fw-bold mt-4 mb-3 text-emerald">അനുബന്ധ വിഷയങ്ങൾ</h6>
 
         @foreach ($questions['chapters'] as $item)
             <a href="{{ route('answers.show', ['menu_slug' => 'festival', 'module_slug' => $questions['slug'], 'question_slug' => $loop->index]) }}"

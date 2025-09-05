@@ -46,7 +46,7 @@
 
     @yield('content')
 
-    <div class="bottom-nav">
+    <div class="bottom-nav notranslate">
         <a href="{{ route('quran.index') }}" class="{{ Str::is('quran.*', $routeName) ? 'active' : '' }}">
             <i class="fas fa-book-open"></i>{{ __('app.quran') }}
         </a>

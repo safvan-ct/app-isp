@@ -55,8 +55,8 @@
             </div>
         </div>
 
-        <h5 class="mb-3 mt-4">{{ __('app.explore_by_topics') }}</h5>
-        <div class="d-flex gap-2 flex-wrap">
+        <h5 class="mb-3 mt-4 d-none">{{ __('app.explore_by_topics') }}</h5>
+        <div class="d-flex gap-2 flex-wrap d-none">
             <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">Development</span>
             <span class="badge bg-success-subtle text-success rounded-pill px-3 py-2">Design</span>
             <span class="badge bg-warning-subtle text-warning rounded-pill px-3 py-2">Business</span>
