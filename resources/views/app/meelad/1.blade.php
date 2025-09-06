@@ -13,17 +13,17 @@
         </a>
     </div>
 
-    <div class="container my-3 pb-5">
-        <div class="base-card text-center bg-app mb-4 shadow-sm rounded-4">
-            <h5 class="text-emerald-900">റ. അവ്വൽ മാസത്തിന്റെ ശ്രേഷ്ഠത, റ.അ. 12 ന്റെ അടിസ്ഥാനം</h5>
-            <p class="text-muted mb-2 d-none">ഖുർആൻ, ഹദീസ്, പ്രാമാണിക തെളിവുകൾ ഉൾക്കൊള്ളുന്ന ഘട്ടം ഘട്ടമായുള്ള മാർഗനിർദേശം.
-            </p>
-            <div class="small">
-                ✍️ Author: Author Name • Reviewed • Verified <br>
-                ⏱️ Last review: Sep 04, 2025 by Reviewer Name
-            </div>
+    <div class="app-header text-center bg-app mb-4">
+        <h5 class="text-emerald-900">റ. അവ്വൽ മാസത്തിന്റെ ശ്രേഷ്ഠത, റ.അ. 12 ന്റെ അടിസ്ഥാനം</h5>
+        <p class="text-muted mb-2 d-none">ഖുർആൻ, ഹദീസ്, പ്രാമാണിക തെളിവുകൾ ഉൾക്കൊള്ളുന്ന ഘട്ടം ഘട്ടമായുള്ള മാർഗനിർദേശം.
+        </p>
+        <div class="small">
+            ✍️ Author: Author Name • Reviewed • Verified <br>
+            ⏱️ Last review: Sep 04, 2025 by Reviewer Name
         </div>
+    </div>
 
+    <div class="container my-3 pb-5">
         <!-- Lesson Body -->
         <div class="lesson-body">
             <h5 class="text-emerald fw-bold">ഖുർആൻ പരാമർശം</h5>
