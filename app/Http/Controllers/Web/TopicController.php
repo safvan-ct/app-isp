@@ -23,6 +23,9 @@ class TopicController extends Controller
             2 => [
                 "ചരിത്രം",
             ],
+            3 => [
+                "Mawlid",
+            ],
         ];
     }
 

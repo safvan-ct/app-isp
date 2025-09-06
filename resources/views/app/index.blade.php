@@ -32,25 +32,28 @@
         <p class="text-center m-0">📖 അറിവ് തേടൂ, വിശ്വാസം വളർത്തൂ ✨</p>
         <div class="geo-divider my-1"></div>
 
-        <div class="row g-3">
-            <div class="col-6 col-md-4">
-                <div class="base-card">
-                    <div class="icon-box">🎉</div>
-                    <h6 class="fw-bold m-0">
-                        <a href="{{ route('questions.show', ['menu_slug' => 'festival', 'module_slug' => 1]) }}"
-                            class="text-dark">
-                            നബിദിനം (റ. അവ്വൽ 12)
-                        </a>
-                    </h6>
-                    <p class="text-muted small m-0">3 Lessons</p>
+        <div class="row g-2">
+            <div class="col-6 col-md-3">
+                <div class="base-card d-flex flex-column h-100 justify-content-between rounded-3 border shadow-sm">
+                    <a href="{{ route('questions.show', ['menu_slug' => 'festival', 'module_slug' => 1]) }}"
+                        class="d-flex align-items-center text-decoration-none">
+                        <div class="icon-thumb me-2 bg-success-subtle" style="width: 35px; height: 35px">
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <h6 class="text-emerald-900 fw-bold m-0 small">നബിദിനം (റ. അവ്വൽ 12)</h6>
+                    </a>
                 </div>
             </div>
 
-            <div class="col-6 col-md-4">
-                <div class="base-card">
-                    <div class="icon-box">🎉</div>
-                    <h6 class="fw-bold m-0">മൗലിദ് പാരായണം</h6>
-                    <p class="text-muted small m-0">5 Lessons</p>
+            <div class="col-6 col-md-3">
+                <div class="base-card d-flex flex-column h-100 justify-content-between rounded-3 border shadow-sm">
+                    <a href="{{ route('answers.show', ['menu_slug' => 'festival', 'module_slug' => 'meelad', 'question_slug' => 2]) }}"
+                        class="d-flex align-items-center text-decoration-none">
+                        <div class="icon-thumb me-2 bg-success-subtle" style="width: 35px; height: 35px">
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <h6 class="text-emerald-900 fw-bold m-0 small">മൗലിദ് കൃതികൾ</h6>
+                    </a>
                 </div>
             </div>
         </div>
