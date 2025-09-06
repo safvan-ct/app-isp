@@ -7,8 +7,10 @@
 
         <form class="d-flex ms-3">
             <div class="input-group input-group-sm">
-                <input type="search" class="form-control" placeholder="Search chapters..." aria-label="Search">
-                <button class="btn btn-secondary" type="button"><i class="fas fa-search"></i></button>
+                <input type="search" class="form-control" placeholder="Search chapters..." aria-label="Search" id="search" data-book="{{ $book->id }}">
+                <button class="btn bg-success-subtle" type="button" onclick="searchHadithByNumber()">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
         </form>
     </div>

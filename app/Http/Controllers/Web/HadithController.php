@@ -50,6 +50,7 @@ class HadithController extends Controller
             "hadith_number"  => $verseNumber,
             "hadith_book_id" => $bookId,
         ]);
+
         if (! $hadithVerse) {
             abort(404);
         }
@@ -58,7 +59,8 @@ class HadithController extends Controller
         if (! $chapter) {
             abort(404);
         }
+        $verses = $chapter->verses()->where('hadith_number', $verseNumber)->paginate(1);
 
-        return view("app.hadith-verses", compact("chapter", "verseNumber"));
+        return view("app.hadith-verses", compact("chapter", "verses"));
     }
 }

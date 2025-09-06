@@ -8,8 +8,11 @@
 
         <form class="d-flex ms-3">
             <div class="input-group input-group-sm">
-                <input type="search" class="form-control" placeholder="Search hadith..." aria-label="Search">
-                <button class="btn btn-secondary" type="button"><i class="fas fa-search"></i></button>
+                <input type="search" class="form-control" placeholder="Search chapters..." aria-label="Search" id="search"
+                    data-book="{{ $chapter->book->id }}">
+                <button class="btn bg-success-subtle" type="button" onclick="searchHadithByNumber()">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
         </form>
     </div>
@@ -36,7 +39,8 @@
                 @if ($item->heading)
                     <div class="row flex-column flex-md-row m-0 mb-2">
                         <div class="col-12 col-md-6 order-1 order-md-2">
-                            <h6 class="text-emerald-900 notranslate fw-bold fs-5 m-0" style="line-height: 1.4; direction: rtl">
+                            <h6 class="text-emerald-900 notranslate fw-bold fs-5 m-0"
+                                style="line-height: 1.4; direction: rtl">
                                 {{ $item->heading }}
                             </h6>
                         </div>
@@ -74,7 +78,7 @@
             @endforeach
         </article>
 
-        <div class="d-flex justify-content-center mb-4">
+        <div class="d-flex justify-content-center mb-4 notranslate">
             {{ $verses->onEachSide(1)->links() }}
         </div>
     </div>

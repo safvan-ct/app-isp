@@ -46,6 +46,10 @@
 
     @yield('content')
 
+    <button type="button" class="btn bg-warning-subtle btn-lg rounded-circle shadow border-0" id="btn-back-to-top">
+        <i class="fas fa-arrow-up text-emerald"></i>
+    </button>
+
     <div class="bottom-nav notranslate">
         <a href="{{ route('quran.index') }}" class="{{ Str::is('quran.*', $routeName) ? 'active' : '' }}">
             <i class="fas fa-book-open"></i>{{ __('app.quran') }}
@@ -74,6 +78,38 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
+    <script>
+        let backToTop = document.getElementById("btn-back-to-top");
+
+        window.addEventListener("scroll", function() {
+            if (document.documentElement.scrollTop > 200) {
+                backToTop.classList.add("show");
+            } else {
+                backToTop.classList.remove("show");
+            }
+        });
+
+        // Smooth scroll to top
+        backToTop.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        function searchHadithByNumber() {
+            const number = parseInt($('#search').val(), 10);
+            const bookId = $('#search').data('book');
+
+            if (isNaN(number) || number < 1) {
+                alert("Please enter a valid Hadith number.");
+                return;
+            }
+
+            window.location.href = "{{ route('hadith.book.verse', [':book', ':verse']) }}"
+                .replace(':book', bookId).replace(':verse', number);
+        }
+    </script>
     @stack('scripts')
 </body>
 

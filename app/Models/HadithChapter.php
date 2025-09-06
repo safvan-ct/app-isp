@@ -40,7 +40,7 @@ class HadithChapter extends Model
         return $this->hasMany(HadithChapterTranslation::class)
             ->select('id', 'hadith_chapter_id', 'name')
             ->active()
-            ->lang();
+            ->lang('en');
     }
 
     // --------------------

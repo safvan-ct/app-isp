@@ -249,10 +249,6 @@
                 </p>
             </div>
         </div>
-
-        <button type="button" class="btn btn-primary btn-lg rounded-circle shadow" id="btn-back-to-top">
-            <i class="fas fa-arrow-up"></i>
-        </button>
     </div>
 
     <!-- Overview Offcanvas -->
@@ -487,24 +483,6 @@
 
 @push('scripts')
     <script>
-        let backToTop = document.getElementById("btn-back-to-top");
-
-        window.addEventListener("scroll", function() {
-            if (document.documentElement.scrollTop > 200) {
-                backToTop.classList.add("show");
-            } else {
-                backToTop.classList.remove("show");
-            }
-        });
-
-        // Smooth scroll to top
-        backToTop.addEventListener("click", function() {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
-
         document.querySelectorAll('[data-bs-toggle="offcanvas"]').forEach(el => {
             el.addEventListener('click', function() {
                 const refId = this.getAttribute('data-ref-id');

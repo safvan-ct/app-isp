@@ -10,12 +10,12 @@
         <form class="d-flex ms-3">
             <div class="input-group input-group-sm">
                 <input type="search" class="form-control" placeholder="Search topics..." aria-label="Search">
-                <button class="btn btn-secondary" type="button"><i class="fas fa-search"></i></button>
+                <button class="btn bg-success-subtle" type="button"><i class="fas fa-search"></i></button>
             </div>
         </form>
     </div>
 
-    <div class="course-hero">
+    <div class="course-hero bg-app">
         <div class="course-details pb-2">
             <h3 class="m-0 text-center">{{ $questions['title'] }}</h3>
             <p class="small m-0 text-center"> {{ $questions['desc'] }} </p>

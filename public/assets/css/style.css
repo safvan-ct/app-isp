@@ -86,12 +86,12 @@ body {
     position: sticky;
     top: 0;
     z-index: 99;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+    /* border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem; */
 }
 
 .course-hero {
-    background: url('https://picsum.photos/1200/300?random=20') center/cover no-repeat;
+    /* background: url('https://picsum.photos/1200/300?random=20') center/cover no-repeat; */
     height: 180px;
     border-radius: 0 0 1.5rem 1.5rem;
     position: relative;
@@ -101,7 +101,7 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.55);
+    /* background: rgba(0, 0, 0, 0.55); */
     border-radius: 0 0 1.5rem 1.5rem;
 }
 
@@ -111,10 +111,10 @@ body {
     left: 1rem;
     right: 1rem;
     padding: 1rem;
-    color: #fff;
+    color: var(--clr-emerald-900);
     z-index: 2;
     border-radius: 1rem;
-    background: rgba(0, 0, 0, 0.55);
+    /* background: rgba(0, 0, 0, 0.55); */
 }
 
 /* Card */
@@ -420,4 +420,11 @@ body {
     .timeline-item:nth-child(even) .timeline-content {
         left: 0;
     }
+}
+
+.form-control:focus,
+.form-select:focus,
+textarea:focus {
+    box-shadow: none !important;
+    border-color: inherit;
 }

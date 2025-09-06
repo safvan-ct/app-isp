@@ -8,7 +8,7 @@
         <form class="d-flex ms-3">
             <div class="input-group input-group-sm">
                 <input type="search" class="form-control" placeholder="Search ayah..." aria-label="Search">
-                <button class="btn btn-secondary" type="button"><i class="fas fa-search"></i></button>
+                <button class="btn bg-success-subtle" type="button"><i class="fas fa-search"></i></button>
             </div>
         </form>
     </div>
