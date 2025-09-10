@@ -1,6 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
+    @php
+        $topics = [
+            // 'ശുദ്ധി',
+            'namaz' => 'നിസ്കാരം',
+            // 'നോമ്പ്',
+            // 'സകാത്',
+            // 'ഹജ്ജ്',
+            // 'വിശ്വാസം',
+            // 'വിവാഹം',
+            // 'അഖീഖത്',
+            // 'ഈദ് (പെരുന്നാൾ)',
+            // 'അറിവ് (വിദ്യാഭ്യാസം)',
+            // 'മരണം & ചടങ്ങുകൾ ',
+            // 'ജീവിത ശൈലി',
+            // 'സമ്പാദ്യം',
+        ];
+    @endphp
+
     <div class="app-header">
         <h5 class="mb-1 text-dark fw-bold">Welcome back 👋</h5>
         <h4 class="fw-bold">
@@ -35,7 +53,7 @@
         <div class="row g-2">
             <div class="col-6 col-md-3">
                 <div class="base-card d-flex flex-column h-100 justify-content-between rounded-3 border shadow-sm">
-                    <a href="{{ route('questions.show', ['menu_slug' => 'festival', 'module_slug' => 1]) }}"
+                    <a href="{{ route('questions.show', ['menu_slug' => 'festival', 'module_slug' => 'meelad']) }}"
                         class="d-flex align-items-center text-decoration-none">
                         <div class="icon-thumb me-2 bg-success-subtle" style="width: 35px; height: 35px">
                             <i class="fa-regular fa-star"></i>
@@ -45,17 +63,19 @@
                 </div>
             </div>
 
-            <div class="col-6 col-md-3">
-                <div class="base-card d-flex flex-column h-100 justify-content-between rounded-3 border shadow-sm">
-                    <a href="{{ route('answers.show', ['menu_slug' => 'festival', 'module_slug' => 'meelad', 'question_slug' => 2]) }}"
-                        class="d-flex align-items-center text-decoration-none">
-                        <div class="icon-thumb me-2 bg-success-subtle" style="width: 35px; height: 35px">
-                            <i class="fa-regular fa-star"></i>
-                        </div>
-                        <h6 class="text-emerald-900 fw-bold m-0 small">മൗലിദ് കൃതികൾ</h6>
-                    </a>
+            @foreach ($topics as $key => $item)
+                <div class="col-6 col-md-3">
+                    <div class="base-card d-flex flex-column h-100 justify-content-between rounded-3 border shadow-sm">
+                        <a href="{{ route('questions.show', ['menu_slug' => 'topic', 'module_slug' => $key]) }}"
+                            class="d-flex align-items-center text-decoration-none">
+                            <div class="icon-thumb me-2 bg-success-subtle" style="width: 35px; height: 35px">
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <h6 class="text-emerald-900 fw-bold m-0 small">{{ $item }}</h6>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
 
         <h5 class="mb-3 mt-4 d-none">{{ __('app.explore_by_topics') }}</h5>

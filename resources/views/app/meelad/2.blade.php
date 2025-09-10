@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="topbar d-flex align-items-center justify-content-between notranslate">
-        <a href="{{ route('questions.show', ['menu_slug' => 'festival', 'module_slug' => 1]) }}" class="me-2">
+        <a href="{{ route('questions.show', ['menu_slug' => 'festival', 'module_slug' => $questions['slug']]) }}" class="me-2">
             <i class="fas fa-chevron-left fs-3 text-secondary"></i>
         </a>
 

@@ -4,7 +4,7 @@
     @php
         $topics = [
             // 'ശുദ്ധി',
-            'നിസ്കാരം',
+            'namaz' => 'നിസ്കാരം',
             // 'നോമ്പ്',
             // 'സകാത്',
             // 'ഹജ്ജ്',
@@ -42,7 +42,7 @@
         <div class="row g-2">
             <div class="col-6 col-md-3">
                 <div class="base-card d-flex flex-column h-100 justify-content-between rounded-3 border shadow-sm">
-                    <a href="{{ route('questions.show', ['menu_slug' => 'festival', 'module_slug' => 1]) }}"
+                    <a href="{{ route('questions.show', ['menu_slug' => 'festival', 'module_slug' => 'meelad']) }}"
                         class="d-flex align-items-center text-decoration-none">
                         <div class="icon-thumb me-2 bg-success-subtle" style="width: 35px; height: 35px">
                             <i class="fa-regular fa-star"></i>
@@ -64,10 +64,11 @@
                 </div>
             </div> --}}
 
-            @foreach ($topics as $item)
+            @foreach ($topics as $key => $item)
                 <div class="col-6 col-md-3">
                     <div class="base-card d-flex flex-column h-100 justify-content-between rounded-3 border shadow-sm">
-                        <a href="{{ route('answers.show', ['menu_slug' => 'festival', 'module_slug' => 'namaz', 'question_slug' => 0]) }}" class="d-flex align-items-center text-decoration-none">
+                        <a href="{{ route('questions.show', ['menu_slug' => 'topic', 'module_slug' => $key]) }}"
+                            class="d-flex align-items-center text-decoration-none">
                             <div class="icon-thumb me-2 bg-success-subtle" style="width: 35px; height: 35px">
                                 <i class="fa-regular fa-star"></i>
                             </div>
