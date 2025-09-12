@@ -1,52 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <style>
-        .icon-img {
-            max-width: 120px;
-        }
-
-        .progress {
-            height: 10px;
-        }
-
-        .ref-box {
-            border-left: 4px solid;
-            padding: .75rem;
-            border-radius: .25rem;
-            margin-top: .5rem;
-        }
-
-        .ref-quran {
-            border-color: #198754;
-            background: #e9f7ef;
-        }
-
-        .ref-hadith {
-            border-color: #0d6efd;
-            background: #edf3fe;
-        }
-    </style>
-
-    <div class="topbar d-flex align-items-center justify-content-between notranslate">
-        <a href="{{ route('questions.show', ['menu_slug' => 'topics', 'module_slug' => $questions['slug']]) }}"
-            class="me-2">
-            <i class="fas fa-chevron-left fs-3 text-secondary"></i>
-        </a>
-
-        <h6 class="fw-bold m-0 text-emerald text-center">{{ $questions['title'] }}</h6>
-
-        <a href="javascript:void(0);" data-bs-toggle="offcanvas" data-bs-target="#overviewPanel">
-            <i class="fas fa-list fs-3 text-muted"></i>
-        </a>
-    </div>
-
-    <div class="app-header bg-app text-center">
-        <h5 class="text-emerald-900 fw-bold">{{ $questions['chapters'][$questionSlug] }}</h5>
-        <p class="text-muted m-0">നിസ്കാരത്തിന്റെ ഫർളുകൾ (നിർബന്ധിത കാര്യങ്ങൾ)</p>
-    </div>
+    <x-app.topbar :title="$questions['title']" :url="route('questions.show', ['menu_slug' => 'topics', 'module_slug' => $questions['slug']])" />
 
     <div class="container my-2 pb-5">
+        <x-app.banner :title="$questions['chapters'][$questionSlug]" :desc="'നിസ്കാരത്തിന്റെ ഫർളുകൾ (നിർബന്ധിത കാര്യങ്ങൾ)'" :search="false" :author="'Author Name'" :review="date('M d, Y') . ' by Reviewer Name'" />
+
         <!-- Step Card -->
         <div class="base-card shadow-sm mb-4 border rounded-2">
             <div class="row g-4 align-items-center">
@@ -88,20 +47,16 @@
             <div id="progress" class="progress-bar bg-success" style="width: 0%"></div>
         </div>
 
-        <div class="lesson-body mt-3">
-            <h5 class="text-emerald fw-bold">Related Topics</h5>
-            <div class="related-topics">
-                @foreach ($questions['chapters'] as $item)
-                    @continue($questionSlug == $loop->index)
-                    <a
-                        href="{{ route('answers.show', ['menu_slug' => 'festival', 'module_slug' => $questions['slug'], 'question_slug' => $loop->index]) }}">
-                        <span>
-                            <i class="fas fa-play-circle me-2"></i> {{ $loop->index + 1 }} : {{ $item }}
-                        </span>
-                    </a>
-                @endforeach
-            </div>
-        </div>
+        <h5 class="text-emerald fw-bold">Related Topics</h5>
+        @foreach ($questions['chapters'] as $item)
+            @continue($questionSlug == $loop->index)
+
+            <x-app.related-topics :title="$loop->index + 1 . ' : ' . $item" :url="route('answers.show', [
+                'menu_slug' => 'topics',
+                'module_slug' => $questions['slug'],
+                'question_slug' => $loop->index,
+            ])" />
+        @endforeach
     </div>
 @endsection
 

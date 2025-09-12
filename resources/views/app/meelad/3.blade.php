@@ -1,24 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="topbar d-flex align-items-center justify-content-between notranslate">
-        <a href="{{ route('questions.show', ['menu_slug' => 'festival', 'module_slug' => $questions['slug']]) }}" class="me-2">
-            <i class="fas fa-chevron-left fs-3 text-secondary"></i>
-        </a>
+    <x-app.topbar :title="$questions['title']" :url="route('questions.show', ['menu_slug' => 'topics', 'module_slug' => $questions['slug']])" />
 
-        <h6 class="fw-bold m-0 text-emerald text-center">മൗലിദ് കൃതികൾ</h6>
+    <div class="container my-3 pb-5">
+        <x-app.banner :title="'മൗലിദ് കൃതികൾ - ചരിത്രം'" :desc="'പ്രധാനപ്പെട്ട മൗലിദ് കൃതികളും ആരംഭവും'" :search="false" />
 
-        <a href="javascript:void(0);">
-            <i class="fas fa-list fs-3 text-muted"></i>
-        </a>
-    </div>
-
-    <div class="app-header bg-app text-center">
-        <h5 class="mb-1 text-emerald fw-bold">മൗലിദ് കൃതികൾ</h5>
-        <p class="text-muted m-0">പ്രധാനപ്പെട്ട മൗലിദ് കൃതികളും ആരംഭവും</p>
-    </div>
-
-    <div class="container my-2 pb-5">
         <div class="timeline">
             <!-- 633 -->
             <div class="timeline-item">
@@ -133,5 +120,16 @@
                 </div>
             </div>
         </div>
+
+        <h5 class="text-emerald fw-bold mt-4">Related Topics</h5>
+        @foreach ($questions['chapters'] as $item)
+            @continue($questionSlug == $loop->index)
+
+            <x-app.related-topics :title="$loop->index + 1 . ' : ' . $item" :url="route('answers.show', [
+                'menu_slug' => 'topics',
+                'module_slug' => $questions['slug'],
+                'question_slug' => $loop->index,
+            ])" />
+        @endforeach
     </div>
 @endsection

@@ -34,6 +34,10 @@ body {
     direction: rtl;
 }
 
+.text-justify {
+    text-align: justify;
+}
+
 /* Bottom navigation */
 .bottom-nav {
     position: fixed;
@@ -427,4 +431,55 @@ body {
 textarea:focus {
     box-shadow: none !important;
     border-color: inherit;
+}
+
+.bg-emerald {
+    background: var(--clr-emerald);
+    color: var(--clr-surface);
+}
+
+.bg-emerald-900 {
+    background: var(--clr-emerald-900);
+    color: var(--clr-surface);
+}
+
+.search-bar {
+    margin-top: 1.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.search-bar input {
+    border-radius: 50rem;
+    border: none;
+    padding: .7rem 1rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.icon-img {
+    max-width: 120px;
+}
+
+.progress {
+    height: 10px;
+}
+
+.ref-box {
+    border-left: 4px solid;
+    padding: .5rem;
+    border-radius: .25rem;
+    margin-top: .5rem;
+}
+
+.ref-quran {
+    border-color: #198754;
+    background: #e9f7ef;
+}
+
+.ref-hadith {
+    border-color: #0d6efd;
+    background: #edf3fe;
 }

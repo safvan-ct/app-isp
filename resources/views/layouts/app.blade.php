@@ -63,7 +63,7 @@
             <i class="fas fa-home"></i>{{ __('app.home') }}
         </a>
 
-        <a href="{{ route('modules.show', 'life-of-muslim') }}"
+        <a href="{{ route('modules.show', 'topics') }}"
             class="{{ Str::is('modules.*', $routeName) || Str::is('questions.*', $routeName) || Str::is('answers.*', $routeName) ? 'active' : '' }}">
             <i class="fas fa-search"></i>{{ __('app.topics') }}
         </a>

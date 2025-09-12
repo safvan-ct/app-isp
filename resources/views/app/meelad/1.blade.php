@@ -1,29 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="topbar d-flex align-items-center justify-content-between notranslate">
-        <a href="{{ route('questions.show', ['menu_slug' => 'festival', 'module_slug' => $questions['slug']]) }}" class="me-2">
-            <i class="fas fa-chevron-left fs-3 text-secondary"></i>
-        </a>
-
-        <h6 class="fw-bold m-0 text-emerald text-center">{{ __('app.topics') }}</h6>
-
-        <a href="javascript:void(0);" data-bs-toggle="offcanvas" data-bs-target="#overviewPanel">
-            <i class="fas fa-list fs-3 text-muted"></i>
-        </a>
-    </div>
-
-    <div class="app-header text-center bg-app mb-4">
-        <h5 class="text-emerald-900">റ. അവ്വൽ മാസത്തിന്റെ ശ്രേഷ്ഠത, റ.അ. 12 ന്റെ അടിസ്ഥാനം</h5>
-        <p class="text-muted mb-2 d-none">ഖുർആൻ, ഹദീസ്, പ്രാമാണിക തെളിവുകൾ ഉൾക്കൊള്ളുന്ന ഘട്ടം ഘട്ടമായുള്ള മാർഗനിർദേശം.
-        </p>
-        <div class="small">
-            ✍️ Author: Author Name • Reviewed • Verified <br>
-            ⏱️ Last review: Sep 04, 2025 by Reviewer Name
-        </div>
-    </div>
+    <x-app.topbar :title="$questions['title']" :url="route('questions.show', ['menu_slug' => 'topics', 'module_slug' => $questions['slug']])" />
 
     <div class="container my-3 pb-5">
+        <x-app.banner :title="'റ. അ. മാസത്തിന്റെ ശ്രേഷ്ഠത, റ. അ. 12 ന്റെ അടിസ്ഥാനം'" :desc="$questions['desc']" :search="false" :author="'Author Name'" :review="date('M d, Y') . ' by Reviewer Name'" />
+
         <!-- Lesson Body -->
         <div class="lesson-body">
             <h5 class="text-emerald fw-bold">ഖുർആൻ പരാമർശം</h5>
@@ -31,7 +13,7 @@
 
             <h5 class="text-emerald fw-bold">ഹദീസ് പരാമർശം</h5>
             <p class="m-0">സഹീഹ് ഹദീസുകളിൽ പ്രത്യേക പരാമർശമില്ല.</p>
-            <p class="reference-box mt-0" data-bs-toggle="offcanvas" data-bs-target="#overviewPanel" data-ref-id="ovr1">
+            <p class="ref-box ref-hadith" data-bs-toggle="offcanvas" data-bs-target="#overviewPanel" data-ref-id="ovr1">
                 നബി ﷺ ജനിച്ചത് തിങ്കളാഴ്ച എന്ന് പറയപ്പെട്ടിട്ടുണ്ട്. <em class="small">- മുസ്ലിം: 2747</em> [1]
             </p>
 
@@ -58,7 +40,7 @@
             </div>
 
             <h5 class="text-emerald fw-bold">പണ്ഡിത പരാമർശങ്ങൾ</h5>
-            <div class="reference-box">
+            <div class="ref-box ref-hadith mb-3">
                 <p>
                     <strong>ഇമാം അബൂ ഹനീഫ (80 - 150 ഹി):</strong> “നിശ്ചിത സമയങ്ങളെ, ശരീഅത്ത് നിർദ്ദേശിക്കാതെ,
                     ആരാധനയ്‌ക്കായി വേർതിരിക്കുന്നത് ബിദ്അത് ആണ്.” - <em>അൽ-ഹിദായ, അൽ-മബ്സൂത്<span data-bs-toggle="offcanvas"
@@ -93,22 +75,21 @@
             </p>
 
             <h5 class="text-emerald fw-bold">Trust & Reminder</h5>
-            <div class="reference-box">
-                <p data-bs-toggle="offcanvas" data-bs-target="#overviewPanel" data-ref-id="ovr3">
-                    🔹 <em>“നിനക്ക് അറിവില്ലാത്ത കാര്യത്തിന്‍റെയും പിന്നാലെ നീ പോകരുത്”</em> - 17:36 [3]
-                </p>
-                <p data-bs-toggle="offcanvas" data-bs-target="#overviewPanel" data-ref-id="ovr4">
-                    🔹 <em>“ഇന്ന് ഞാന്‍ നിങ്ങള്‍ക്ക് നിങ്ങളുടെ മതം പൂര്‍ത്തിയാക്കി തന്നിരിക്കുന്നു”</em> - 5:3 [4]
-                </p>
-                <p data-bs-toggle="offcanvas" data-bs-target="#overviewPanel" data-ref-id="ovr1">
-                    🔹 <em>“ഞാൻ ജനിച്ച ദിവസമായിരുന്നു അത്(തിങ്കളാഴ്ച)...”</em> - മുസ്ലിം: 2747 [1]
-                </p>
-                <p class="mb-0" data-bs-toggle="offcanvas" data-bs-target="#overviewPanel" data-ref-id="ovr2">
-                    🔹 <em>“പുതുതായി കണ്ടുപിടിച്ച കാര്യങ്ങളെ സൂക്ഷിക്കുക...”</em> - തിർമിധി: 2676 [2]
-                </p>
-            </div>
+            <p class="mb-1 ref-box ref-quran" data-bs-toggle="offcanvas" data-bs-target="#overviewPanel" data-ref-id="ovr3">
+                🔹 <em>നിനക്ക് അറിവില്ലാത്ത കാര്യത്തിന്‍റെയും പിന്നാലെ നീ പോകരുത്</em> - 17:36 [3]
+            </p>
+            <p class="mb-1 ref-box ref-quran" data-bs-toggle="offcanvas" data-bs-target="#overviewPanel" data-ref-id="ovr4">
+                🔹 <em>ഇന്ന് ഞാന്‍ നിങ്ങള്‍ക്ക് നിങ്ങളുടെ മതം പൂര്‍ത്തിയാക്കി തന്നിരിക്കുന്നു</em> - 5:3 [4]
+            </p>
+            <p class="mb-1 ref-box ref-hadith" data-bs-toggle="offcanvas" data-bs-target="#overviewPanel" data-ref-id="ovr1">
+                🔹 <em>ഞാൻ ജനിച്ച ദിവസമായിരുന്നു അത്(തിങ്കളാഴ്ച)...</em> - മുസ്ലിം: 2747 [1]
+            </p>
+            <p class="mb-1 ref-box ref-hadith" data-bs-toggle="offcanvas" data-bs-target="#overviewPanel"
+                data-ref-id="ovr2">
+                🔹 <em>പുതുതായി കണ്ടുപിടിച്ച കാര്യങ്ങളെ സൂക്ഷിക്കുക...</em> - തിർമിധി: 2676 [2]
+            </p>
 
-            <div class="base-card text-dark bg-warning-subtle shadow-sm border-0 rounded-3 mb-4">
+            <div class="base-card text-dark bg-warning-subtle shadow-sm border-0 rounded-3 mt-4">
                 <div class="text-center gap-3" bis_skin_checked="1">
                     <i class="fas fa-exclamation-triangle fa-lg mt-1 text-center text-danger"></i>
                     <p class="mb-0 text-center">
@@ -124,20 +105,18 @@
                     </p>
                 </div>
             </div>
-
-            <h5 class="text-emerald fw-bold">Related Topics</h5>
-            <div class="related-topics">
-                @foreach ($questions['chapters'] as $item)
-                    @continue($questionSlug == $loop->index)
-                    <a
-                        href="{{ route('answers.show', ['menu_slug' => 'festival', 'module_slug' => $questions['slug'], 'question_slug' => $loop->index]) }}">
-                        <span>
-                            <i class="fas fa-play-circle me-2"></i> {{ $loop->index + 1 }} : {{ $item }}
-                        </span>
-                    </a>
-                @endforeach
-            </div>
         </div>
+
+        <h5 class="text-emerald fw-bold mt-4">Related Topics</h5>
+        @foreach ($questions['chapters'] as $item)
+            @continue($questionSlug == $loop->index)
+
+            <x-app.related-topics :title="$loop->index + 1 . ' : ' . $item" :url="route('answers.show', [
+                'menu_slug' => 'topics',
+                'module_slug' => $questions['slug'],
+                'question_slug' => $loop->index,
+            ])" />
+        @endforeach
 
         <!-- References Offcanvas -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="referencesPanel">
