@@ -1,39 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="topbar d-flex align-items-center justify-content-between notranslate">
-        <a href="{{ route('hadith.chapters', [$chapter->book->id]) }}" class="me-2"><i
-                class="fas fa-chevron-left fs-3 text-secondary"></i></a>
-        <h6 class="fw-bold mb-0 text-emerald">{{ $chapter->book->translation?->name ?? $chapter->book->name }}</h6>
+    <x-app.topbar :title="$chapter->book->translation?->name ?? $chapter->book->name" :url="route('hadith.chapters', [$chapter->book->id])" />
 
-        <form class="d-flex ms-3">
-            <div class="input-group input-group-sm">
-                <input type="search" class="form-control" placeholder="Search chapters..." aria-label="Search" id="search"
+    <div class="container my-3 pb-5">
+        <x-app.banner :title="$chapter->translation?->name ?? $chapter->name" :search="false">
+            <x-slot:desc>
+                <p class='small m-0'>
+                    {{ $chapter->book->translation?->writer ?? $chapter->book->writer }}
+                    ({{ $chapter->book->writer_death_year }}H)
+                </p>
+            </x-slot:desc>
+
+            <p class="small m-0 mb-2">
+                {{ __('app.chapter') }}: <strong>{{ $chapter->chapter_number }}</strong> •
+                {{ __('app.hadiths') }}: <strong>{{ $chapter->verses->count() }}</strong>
+            </p>
+
+            <div class="search-bar input-group">
+                <input type="search" class="form-control" placeholder="Search..." aria-label="Search" id="search"
                     data-book="{{ $chapter->book->id }}">
-                <button class="btn bg-success-subtle" type="button" onclick="searchHadithByNumber()">
+                <button class="btn bg-warning" type="button" onclick="searchHadithByNumber()">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
-        </form>
-    </div>
+        </x-app.banner>
 
-    <div class="app-header text-center bg-app notranslate">
-        <h5 class="fw-bold mt-3 mb-1">
-            {{ $chapter->translation?->name ?? $chapter->name }}
-        </h5>
-        <p class='small text-dark m-0'>
-            {{ $chapter->book->translation?->writer ?? $chapter->book->writer }}
-            ({{ $chapter->book->writer_death_year }}H)
-        </p>
-        <p class="small text-muted m-0">
-            {{ __('app.chapter') }}: <strong>{{ $chapter->chapter_number }}</strong> •
-            {{ __('app.hadiths') }}: <strong>{{ $chapter->verses->count() }}</strong>
-        </p>
-
-        <div id="google_translate_element" class="mt-2 mb-0"></div>
-    </div>
-
-    <div class="container my-4 pb-5">
         <article class="base-card mb-2">
             @foreach ($verses as $item)
                 @if ($item->heading)

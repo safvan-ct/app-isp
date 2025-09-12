@@ -20,10 +20,10 @@
         ];
     @endphp
 
-    <x-app.topbar :title="__('app.topics')" :url="route('home')" />
+    <x-app.topbar :title="__('app.topics')"/>
 
     <div class="container my-3 pb-5">
-        <x-app.banner />
+        <x-app.banner :title="'വിഷയങ്ങൾ'" :desc="'📖 അറിവ് തേടൂ, വിശ്വാസം വളർത്തൂ ✨'" />
 
         <div class="row g-2">
             @foreach ($topics as $key => $item)

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-app.topbar :title="__('app.hadith')" :url="route('home')" />
+    <x-app.topbar :title="__('app.hadith')" />
 
     <div class="container my-3 pb-5">
         <x-app.banner :title="__('app.hadith_title')" :desc="'Canonical hadith books — authors, scope, and sample narrations. Search, filter, and open any book for details.'" />

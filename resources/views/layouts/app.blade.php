@@ -93,32 +93,32 @@
                 <ul class="list-unstyled mb-0">
                     <li>
                         <a href="{{ route('home') }}" class="menu-item">
-                            <i class="fa-solid fa-house me-3"></i>{{ __('app.home') }}
+                            <i class="fa-solid fa-house me-2"></i>{{ __('app.home') }}
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('modules.show', 'topics') }}" class="menu-item">
-                            <i class="fa-solid fa-user me-3"></i>{{ __('app.topics') }}
+                            <i class="fa-solid fa-search me-2"></i>{{ __('app.topics') }}
                         </a>
                     </li>
                     <li>
                         <a href="#" class="menu-item">
-                            <i class="fa-solid fa-bell me-3"></i>{{ __('app.notifications') }}
+                            <i class="fa-solid fa-bell me-2"></i>{{ __('app.notifications') }}
                         </a>
                     </li>
                     <li>
                         <a href="#" class="menu-item">
-                            <i class="fa-solid fa-gear me-3"></i>{{ __('app.settings') }}
+                            <i class="fa-solid fa-gear me-2"></i>{{ __('app.settings') }}
                         </a>
                     </li>
                     <li>
                         <a href="#" class="menu-item">
-                            <i class="fa-solid fa-circle-info me-3"></i>{{ __('app.about') }}
+                            <i class="fa-solid fa-circle-info me-2"></i>{{ __('app.about') }}
                         </a>
                     </li>
                     <li>
                         <a href="#" class="menu-item">
-                            <i class="fa-solid fa-lock me-3"></i>{{ __('app.privacy') }}
+                            <i class="fa-solid fa-lock me-2"></i>{{ __('app.privacy') }}
                         </a>
                     </li>
                 </ul>
@@ -128,7 +128,7 @@
             <hr class="my-2">
 
             <!-- Account / Logout -->
-            <div class="ps-3">
+            <div class="text-center">
                 All Rights Reserved &copy; {{ date('Y') }}
                 {{-- <a href="#" class="menu-item text-danger fw-semibold border-0">
                     <i class="fa-solid fa-right-from-bracket me-3"></i>{{ __('app.logout') }}
@@ -136,28 +136,6 @@
             </div>
         </div>
     </div>
-
-    <style>
-        .menu-item {
-            display: flex;
-            align-items: center;
-            padding: 0.85rem 1rem;
-            color: #212529;
-            text-decoration: none;
-            font-weight: 500;
-            border-bottom: 1px solid #e9ecef;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-
-        .menu-item:hover {
-            background-color: #f8f9fa;
-            color: var(--clr-emerald);
-        }
-
-        .menu-item i {
-            font-size: 1.2rem;
-        }
-    </style>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

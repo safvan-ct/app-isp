@@ -1,10 +1,13 @@
-@props(['title', 'url', 'panel' => true])
+@props(['title', 'url' => '', 'panel' => true])
 
 <div class="topbar d-flex align-items-center justify-content-between notranslate">
     <div class="d-flex align-items-center">
-        <a href="{{ $url }}" class="me-2 text-decoration-none">
-            <i class="fas fa-chevron-left fs-3 text-secondary"></i>
-        </a>
+        @if ($url)
+            <a href="{{ $url }}" class="me-2 text-decoration-none">
+                <i class="fas fa-chevron-left fs-3 text-secondary"></i>
+            </a>
+        @endif
+
         <h6 class="fw-bold mb-0 text-emerald">{{ $title }}</h6>
     </div>
 

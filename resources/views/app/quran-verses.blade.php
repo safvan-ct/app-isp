@@ -1,30 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="topbar d-flex align-items-center justify-content-between">
-        <a href="{{ route('quran.index') }}" class="me-2"><i class="fas fa-chevron-left fs-3 text-secondary"></i></a>
-        <h6 class="fw-bold mb-0 text-emerald text-ar">{{ $chapter->name }}</h6>
+    <x-app.topbar :url="route('quran.index')">
+        <x-slot:title>
+            <span class="text-ar">{{ $chapter->name }}</span>
+        </x-slot:title>
+    </x-app.topbar>
 
-        <form class="d-flex ms-3">
-            <div class="input-group input-group-sm">
-                <input type="search" class="form-control" placeholder="Search ayah..." aria-label="Search">
-                <button class="btn bg-success-subtle" type="button"><i class="fas fa-search"></i></button>
-            </div>
-        </form>
-    </div>
+    <div class="container my-3 pb-5">
+        <x-app.banner>
+            <x-slot:title>
+                <span class="text-ar">سُورَةُ {{ $chapter->name }}</span> .1
+            </x-slot:title>
 
-    <!-- App Header -->
-    <div class="app-header text-center bg-app">
-        <h4 class="fw-bold text-emerald text-ar mt-3">سُورَةُ {{ $chapter->name }} .1</h4>
-        <p class="text-dark m-0 mb-0 text-tr">{{ $chapter->translation?->name }} |
-            <span class="text-muted small">
-                {{ $chapter->no_of_verses }} {{ __('app.ayahs') }} •
-                {{ $chapter->revelation_place }}
-            </span>
-        </p>
-    </div>
+            <p class="m-0 my-2">
+                {{ $chapter->translation?->name }} |
 
-    <div class="container my-4 pb-5">
+                <span class="small">
+                    {{ $chapter->no_of_verses }} {{ __('app.ayahs') }} • {{ $chapter->revelation_place }}
+                </span>
+            </p>
+        </x-app.banner>
+
         <div class="mt-2">
             @foreach ($chapter->verses as $item)
                 <article class="base-card pt-4 mb-2" tabindex="0" id="ayah-{{ $item->number_in_chapter }}">

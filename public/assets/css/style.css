@@ -444,7 +444,6 @@ textarea:focus {
 }
 
 .search-bar {
-    margin-top: 1.5rem;
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
@@ -482,4 +481,24 @@ textarea:focus {
 .ref-hadith {
     border-color: #0d6efd;
     background: #edf3fe;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 1rem;
+    color: #212529;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu-item:hover {
+    background-color: #f8f9fa;
+    color: var(--clr-emerald);
+}
+
+.menu-item i {
+    font-size: 1.2rem;
 }

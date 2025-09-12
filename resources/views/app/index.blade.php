@@ -8,6 +8,8 @@
         ];
     @endphp
 
+    <x-app.topbar :title="__('app.islamic_study_portal')" />
+
     <div class="app-header">
         <h5 class="mb-1 text-dark fw-bold">Welcome back 👋</h5>
         <h4 class="fw-bold">

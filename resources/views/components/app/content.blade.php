@@ -1,7 +1,7 @@
 @props(['title', 'desc' => ''])
 
-<div class="m-0 p-0 mb-3">
-    <h5 class="text-emerald fw-bold" style="border-bottom: 2px solid #0f3d27">
+<div class="m-0 p-0 mb-4">
+    <h5 class="text-emerald-900 fw-bold" style="border-bottom: 2px solid #166534">
         <i class="fas fa-lightbulb text-accent me-1"></i>
         {{ $title }}
     </h5>

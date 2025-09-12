@@ -1,19 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="topbar d-flex align-items-center justify-content-between">
-        <a href="{{ route('home') }}" class="me-2"><i class="fas fa-chevron-left fs-3 text-secondary"></i></a>
-        <h6 class="fw-bold mb-0 text-emerald">{{ __('app.quran') }}</h6>
-
-        <form class="d-flex ms-3">
-            <div class="input-group input-group-sm">
-                <input type="search" class="form-control" placeholder="Search surah..." aria-label="Search">
-                <button class="btn bg-success-subtle" type="button"><i class="fas fa-search"></i></button>
-            </div>
-        </form>
-    </div>
+    <x-app.topbar :title="__('app.quran')" />
 
     <div class="container my-3 pb-5">
+        <x-app.banner />
+
         <div class="row g-2">
             @foreach ($chapters as $chapter)
                 <div class="col-md-6 col-lg-4" style="cursor: pointer"
