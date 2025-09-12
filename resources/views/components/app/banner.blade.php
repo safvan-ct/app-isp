@@ -8,7 +8,7 @@
 
 <div class="card text-center bg-emerald mb-3">
     <h2 class="m-0 mb-1 fw-bold text-accent">{{ $title }}</h2>
-    <p class="m-0">{{ $desc }}</p>
+    <div class="m-0">{!! $desc !!}</div>
 
     @if ($author || $review)
         <div class="small mt-2 text-accent">
@@ -16,6 +16,8 @@
             {{ $review ? '⏱️ Last review: ' . $review : '' }}
         </div>
     @endif
+
+    {{ $slot }}
 
     @if ($search)
         <div class="search-bar input-group mt-3">

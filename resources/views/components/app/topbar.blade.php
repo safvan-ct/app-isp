@@ -1,4 +1,4 @@
-@props(['title', 'url', 'panel' => false])
+@props(['title', 'url', 'panel' => true])
 
 <div class="topbar d-flex align-items-center justify-content-between notranslate">
     <div class="d-flex align-items-center">
@@ -9,7 +9,7 @@
     </div>
 
     @if ($panel)
-        <a href="javascript:void(0);" data-bs-toggle="offcanvas" data-bs-target="#overviewPanel">
+        <a href="javascript:void(0);" data-bs-toggle="offcanvas" data-bs-target="#menuPanel">
             <i class="fas fa-list fs-3 text-muted"></i>
         </a>
     @endif

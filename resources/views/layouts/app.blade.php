@@ -73,6 +73,92 @@
         </a>
     </div>
 
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="menuPanel">
+        <!-- Header with logo -->
+        <div class="offcanvas-header border-bottom">
+            <div class="d-flex align-items-center">
+                <img src="{{ asset('img/apple-touch-icon.png') }}" alt="{{ __('app.islamic_study_portal') }}"
+                    class="me-2 rounded-circle shadow-sm" style="height:40px;width:40px;">
+                <div class="m-0 align-self-center">
+                    <h6 class="mb-0 fw-bold">{{ __('app.islamic_study_portal') }}</h6>
+                    <small class="text-muted">അറിവ് തേടൂ, വിശ്വാസം വളർത്തൂ.</small>
+                </div>
+            </div>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+        </div>
+
+        <div class="offcanvas-body px-0 d-flex flex-column">
+            <!-- Main navigation -->
+            <nav class="flex-grow-1">
+                <ul class="list-unstyled mb-0">
+                    <li>
+                        <a href="{{ route('home') }}" class="menu-item">
+                            <i class="fa-solid fa-house me-3"></i>{{ __('app.home') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('modules.show', 'topics') }}" class="menu-item">
+                            <i class="fa-solid fa-user me-3"></i>{{ __('app.topics') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-item">
+                            <i class="fa-solid fa-bell me-3"></i>{{ __('app.notifications') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-item">
+                            <i class="fa-solid fa-gear me-3"></i>{{ __('app.settings') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-item">
+                            <i class="fa-solid fa-circle-info me-3"></i>{{ __('app.about') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="menu-item">
+                            <i class="fa-solid fa-lock me-3"></i>{{ __('app.privacy') }}
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Divider -->
+            <hr class="my-2">
+
+            <!-- Account / Logout -->
+            <div class="ps-3">
+                All Rights Reserved &copy; {{ date('Y') }}
+                {{-- <a href="#" class="menu-item text-danger fw-semibold border-0">
+                    <i class="fa-solid fa-right-from-bracket me-3"></i>{{ __('app.logout') }}
+                </a> --}}
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 0.85rem 1rem;
+            color: #212529;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #e9ecef;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .menu-item:hover {
+            background-color: #f8f9fa;
+            color: var(--clr-emerald);
+        }
+
+        .menu-item i {
+            font-size: 1.2rem;
+        }
+    </style>
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"

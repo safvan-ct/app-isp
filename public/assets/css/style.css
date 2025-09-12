@@ -9,7 +9,7 @@
 }
 
 body {
-    background: var(--clr-bg);
+    background: var(--clr-surface);
     font-family: "Noto Sans Malayalam", sans-serif;
 }
 

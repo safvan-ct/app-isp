@@ -19,7 +19,7 @@
                         <li>
                             നബി ﷺ തിങ്കളാഴ്ച നോമ്പ് എടുത്തു → “ഞാൻ ഈ ദിവസമാണ് ജനിച്ചത്”
                             <em class="small">- മുസ്ലിം: 2747</em>
-                            <span data-bs-toggle="offcanvas" data-bs-target="#overviewPanel" data-ref-id="ref1">[1]</span>.
+                            <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref1">[1]</span>.
                         </li>
                     </ul>
                 </div>
@@ -58,7 +58,7 @@
                     <ul>
                         <li>
                             നബിദിനാഘോഷങ്ങൾ ഔദ്യോഗികമായി സ്ഥാപിക്കപ്പെട്ടിരുന്നില്ല.
-                            <span data-bs-toggle="offcanvas" data-bs-target="#overviewPanel" data-ref-id="ref2">[2]</span>
+                            <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref2">[2]</span>
                         </li>
                     </ul>
                 </div>
@@ -72,7 +72,7 @@
                     <ul>
                         <li>
                             ഫാതിമി (ശിയ) ഖിലാഫത്ത് ആണ് ആദ്യമായി സർക്കാർ തലത്തിൽ “മൗലിദ്” ആഘോഷം തുടങ്ങിയത്.
-                            <span data-bs-toggle="offcanvas" data-bs-target="#overviewPanel" data-ref-id="ref3">[3]</span>
+                            <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref3">[3]</span>
                         </li>
                         <li>ഇതിനുശേഷം, മൗലിദ് ആഘോഷങ്ങൾ സുന്നി സമൂഹത്തിലേക്ക് വ്യാപിച്ചു.</li>
                     </ul>
@@ -87,7 +87,7 @@
                     <ul class="m-0">
                         <li>
                             ഹിജ്റ 604-ൽ പൊതുസമൂഹത്തിൽ ആദ്യമായി വലിയ രീതിയിൽ മൗലിദ് ആഘോഷങ്ങൾ സംഘടിപ്പിച്ചു.
-                            <span data-bs-toggle="offcanvas" data-bs-target="#overviewPanel" data-ref-id="ref4">[4]</span>
+                            <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref4">[4]</span>
                         </li>
                         <li>മൗലിദ് ആഘോഷങ്ങളെ സുന്നി ലോകത്ത് ഒരു സാധാരണ ആചാരമാക്കി മാറ്റുന്നതിൽ നിർണായക പങ്ക് വഹിച്ചു.</li>
                     </ul>
@@ -102,7 +102,7 @@
                     <ul>
                         <li>
                             നബി ﷺ ജന്മദിനം ആഘോഷിക്കുന്ന മൗലിദ് ഒരു പൊതു ജന, സാംസ്കാരിക ഉത്സവമായി മാറി.
-                            <span data-bs-toggle="offcanvas" data-bs-target="#overviewPanel" data-ref-id="ref5">[5]</span>
+                            <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref5">[5]</span>
                         </li>
                         <li>
                             മമ്ലുക് കാലഘട്ടത്തിൽ മൗലിദ് ആഘോഷത്തെ കുറിച്ച് പണ്ഡിതന്മാരുടെ അഭിപ്രായങ്ങൾ വ്യത്യസ്തമായിരുന്നു.
@@ -136,7 +136,7 @@
                         <li>
                             മസ്ജിദുകളിൽ പ്രാർത്ഥനകൾ, ഖുര്‍ആൻ പാരായണം, പ്രൊഫറ്റ് മുഹമ്മദ് (സ.അ.വ)യുടെ ജീവിതത്തെക്കുറിച്ചുള്ള
                             പ്രഭാഷണങ്ങൾ എന്നിവ സംഘടിപ്പിക്കപ്പെട്ടു.
-                            <span data-bs-toggle="offcanvas" data-bs-target="#overviewPanel" data-ref-id="ref6">[6]</span>
+                            <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref6">[6]</span>
                         </li>
                     </ul>
                 </div>
@@ -190,32 +190,30 @@
             </div>
         </div>
 
-        <div class="ref-box text-dark bg-warning-subtle shadow-sm mb-4 mt-3">
-            <div class="gap-3" bis_skin_checked="1">
-                <p class="mb-2 text-justify ps-1" style="text-indent: 5rem;">
-                    നബിദിനാഘോഷങ്ങൾ പ്രവാചക ﷺ യുടെ കാലത്ത് ഉണ്ടായിരുന്നില്ല. ആദ്യമായി സർക്കാർ തലത്തിൽ ഫാതിമി ഖിലാഫത്ത്
-                    ആരംഭിച്ചു, പിന്നീട് പൊതുസമൂഹത്തിൽ എർബിൽ കാലത്ത് പ്രചരിച്ചു. മമ്ലുക് കാലത്ത് ഇത് പൊതുസമ്മേളനവും
-                    സാംസ്കാരിക ഉത്സവവും ആയി മാറി.
-                </p>
+        <div class="summary-box text-dark shadow-sm mb-4 mt-3">
+            <p class="mb-3 text-justify" style="text-indent: 2em;">
+                നബിദിനാഘോഷങ്ങൾ പ്രവാചക ﷺ യുടെ കാലത്ത് ഉണ്ടായിരുന്നില്ല. ആദ്യമായി സർക്കാർ തലത്തിൽ ഫാതിമി ഖിലാഫത്ത്
+                ആരംഭിച്ചു, പിന്നീട് പൊതുസമൂഹത്തിൽ എർബിൽ കാലത്ത് പ്രചരിച്ചു. മമ്ലുക് കാലത്ത് ഇത് പൊതുസമ്മേളനവും
+                സാംസ്കാരിക ഉത്സവവും ആയി മാറി.
+            </p>
 
-                <p class="mb-2 text-justify ps-1" style="text-indent: 5rem;">
-                    ആധുനികകാലത്ത് മിക്ക മുസ്ലിം രാജ്യങ്ങളിലും മൗലിദ് ഔദ്യോഗിക അവധിയായി മാറി, ചിലയിടങ്ങളിൽ വിരോധം
-                    നിലനിൽക്കുന്നു. കേരളത്തിൽ സൂഫി സ്വാധീനത്തോടെ മാലപ്പാട്ടുകൾ, മൗലിദ് സദസ്സുകൾ ജനകീയമായി വളർന്നു.
-                </p>
+            <p class="mb-2 text-justify" style="text-indent: 2em;">
+                ആധുനികകാലത്ത് മിക്ക മുസ്ലിം രാജ്യങ്ങളിലും മൗലിദ് ഔദ്യോഗിക അവധിയായി മാറി, ചിലയിടങ്ങളിൽ വിരോധം
+                നിലനിൽക്കുന്നു. കേരളത്തിൽ സൂഫി സ്വാധീനത്തോടെ മാലപ്പാട്ടുകൾ, മൗലിദ് സദസ്സുകൾ ജനകീയമായി വളർന്നു.
+            </p>
 
-                <p class="fst-italic text-muted m-0 mt-2 ref-box ref-quran">
-                    ഇന്ന് ഞാന്‍ നിങ്ങള്‍ക്ക് നിങ്ങളുടെ മതം പൂര്‍ത്തിയാക്കി തന്നിരിക്കുന്നു.<em> - 5:3 </em>
-                </p>
+            <p class="fst-italic text-muted m-0 mt-2 ref-box ref-quran">
+                ഇന്ന് ഞാന്‍ നിങ്ങള്‍ക്ക് നിങ്ങളുടെ മതം പൂര്‍ത്തിയാക്കി തന്നിരിക്കുന്നു.<em> - 5:3 </em>
+            </p>
 
-                <p class="fst-italic text-muted m-0 mt-2 ref-box ref-hadith">
-                    ക്രിസ്ത്യാനികൾ മർയമിന്റെ മകനെ പുകഴ്ത്തിയതുപോലെ എന്നെ നിങ്ങൾ പുകഴ്ത്തരുത്.
-                    <em> - ബുഖാരി: 3445</em>
-                </p>
+            <p class="fst-italic text-muted m-0 mt-2 ref-box ref-hadith">
+                ക്രിസ്ത്യാനികൾ മർയമിന്റെ മകനെ പുകഴ്ത്തിയതുപോലെ എന്നെ നിങ്ങൾ പുകഴ്ത്തരുത്.
+                <em> - ബുഖാരി: 3445</em>
+            </p>
 
-                <p class="fst-italic text-muted m-0 mt-2 ref-box ref-hadith">
-                    പുതുതായി കണ്ടുപിടിച്ച കാര്യങ്ങളെ സൂക്ഷിക്കുക, അവ വഴിതെറ്റിയതാണ്. <em> - തിർമിധി: 2676</em>
-                </p>
-            </div>
+            <p class="fst-italic text-muted m-0 mt-2 ref-box ref-hadith">
+                പുതുതായി കണ്ടുപിടിച്ച കാര്യങ്ങളെ സൂക്ഷിക്കുക, അവ വഴിതെറ്റിയതാണ്. <em> - തിർമിധി: 2676</em>
+            </p>
         </div>
 
         <h5 class="text-emerald fw-bold">Related Topics</h5>
@@ -231,21 +229,21 @@
     </div>
 
     <!-- Overview Offcanvas -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="overviewPanel">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="referencePanel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title">References</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
         </div>
 
         <div class="offcanvas-body py-0">
-            <div class="reference-box mt-0 pb-2" id="ref1">
+            <div class="ref-box ref-hadith mt-2" id="ref1">
                 <span class="fw-bold">[1]. തിങ്കളാഴ്ച നോമ്പ്</span><br>
                 (തിങ്കളാഴ്ച നോമ്പിനെ കുറിച് ചോദിക്കപ്പെട്ടപ്പോൾ): ഞാൻ ജനിച്ച ദിവസമായിരുന്നു അത്. അന്ന് എനിക്ക്
                 പ്രവാചകത്വം നൽകുകയോ എനിക്ക് ദിവ്യബോധനം നൽകുകയോ ചെയ്തു.<br>
                 <em class="small">- മുസ്ലിം: 2747 <span class="text-ar">(كتاب الصِّيَامِ)</span></em>
             </div>
 
-            <div class="reference-box mt-0 pb-2" id="ref2">
+            <div class="ref-box ref-hadith mt-2" id="ref2">
                 <span class="fw-bold">[2]. ഹി. 132 - 656 (അബ്ബാസിദ് ഖിലാഫത്)</span><br>
 
                 <ul class="m-0">
@@ -268,7 +266,7 @@
                 </ul>
             </div>
 
-            <div class="reference-box mt-0 pb-2" id="ref3">
+            <div class="ref-box ref-hadith mt-2" id="ref3">
                 <span class="fw-bold">[3]. ഹി. 297 - 567 (ഫാതിമി ഖിലാഫത്)</span><br>
                 <p class="small">
                     അബ്ബാസിദുകൾക്ക് ഇത്തരം ചടങ്ങുകൾ ഇല്ലാതിരുന്നതിനാൽ, ഫാതിമിദുകൾ “ഞങ്ങളാണ് അഹ്ലുൽ ബൈത്-ന്റെ യഥാർത്ഥ
@@ -330,7 +328,7 @@
                 </ul>
             </div>
 
-            <div class="reference-box mt-0 pb-2" id="ref4">
+            <div class="ref-box ref-hadith mt-2" id="ref4">
                 <span class="fw-bold">[4]. ഹി. 586 - 630 (എർബിൽ കാലഘട്ടം)</span><br>
 
                 <p class="small fst-italic">
@@ -383,7 +381,7 @@
                 </ul>
             </div>
 
-            <div class="reference-box mt-0 pb-2" id="ref5">
+            <div class="ref-box ref-hadith mt-2" id="ref5">
                 <span class="fw-bold">[5]. ഹി. 648 - 923 (മമ്ലുക് സാമ്രാജ്യം)</span><br>
                 <p class="small">
                     മമ്ലുക്കുകാർ ഫാത്വിമി കാലഘട്ടത്തിലെ ആഘോഷങ്ങൾ ഏറ്റെടുത്ത് കൂടുതൽ സങ്കീര്‍ണമായ ആഘോഷമായി വികസിപ്പിച്ചു.
@@ -436,7 +434,7 @@
                 </ul>
             </div>
 
-            <div class="reference-box mt-0 pb-2" id="ref6">
+            <div class="ref-box ref-hadith mt-2 mb-3" id="ref6">
                 <span class="fw-bold">[6]. ഹി. 648 - 923 ഹി. 699 - 1342 (ഒട്ടോമാൻ സാമ്രാജ്യം)</span><br>
                 <ul class="m-0">
                     <li>
@@ -475,9 +473,9 @@
 
                 offcanvasEl.addEventListener('shown.bs.offcanvas', function() {
                     // ✅ Remove highlight ONLY from this offcanvas-body
-                    offcanvasBody.querySelectorAll('.summary-box').forEach(child => {
-                        child.classList.remove('summary-box');
-                        child.classList.add('reference-box');
+                    offcanvasBody.querySelectorAll('.ref-quran').forEach(child => {
+                        child.classList.remove('ref-quran');
+                        child.classList.add('ref-hadith');
                     });
 
                     // ✅ If refId is provided, scroll + highlight
@@ -488,7 +486,9 @@
                                 behavior: 'smooth',
                                 block: 'start'
                             });
-                            target.classList.add('summary-box');
+
+                            target.classList.remove('ref-hadith');
+                            target.classList.add('ref-quran');
                         }
                     }
                 }, {
