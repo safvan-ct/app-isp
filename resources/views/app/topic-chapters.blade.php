@@ -6,7 +6,7 @@
     <div class="container my-3 pb-5">
         <x-app.banner :title="$questions['title']" :desc="$questions['desc']" />
 
-        <h6 class="fw-bold mt-4 mb-3 text-emerald">അനുബന്ധ വിഷയങ്ങൾ</h6>
+        <h6 class="fw-bold mt-4 mb-2 text-emerald">അനുബന്ധ വിഷയങ്ങൾ</h6>
 
         @foreach ($questions['chapters'] as $item)
             <x-app.topic-chapter :title="$loop->index + 1 . ' : ' . $item" :url="route('answers.show', [

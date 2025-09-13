@@ -2,6 +2,7 @@
     --clr-emerald: #166534;
     --clr-emerald-900: #0f3d27;
     --clr-accent: #EAB308;
+    --clr-accent-900: #B58908;
     --clr-bg: #f8f9fa;
     --clr-surface: #ffffff;
     --radius-lg: 1rem;
@@ -27,6 +28,10 @@ body {
 
 .text-emerald-900 {
     color: var(--clr-emerald-900);
+}
+
+.text-accent-900 {
+    color: var(--clr-accent-900);
 }
 
 .text-ar {
@@ -75,7 +80,7 @@ body {
 
 /* App header */
 .app-header {
-    background: var(--clr-surface);
+    background: linear-gradient(180deg, rgba(22, 101, 52, .05), rgba(234, 179, 8, .08));
     color: var(--clr-emerald);
     padding: 1rem;
     border-bottom-left-radius: 1.5rem;
@@ -94,33 +99,6 @@ body {
     border-bottom-right-radius: 1rem; */
 }
 
-.course-hero {
-    /* background: url('https://picsum.photos/1200/300?random=20') center/cover no-repeat; */
-    height: 180px;
-    border-radius: 0 0 1.5rem 1.5rem;
-    position: relative;
-}
-
-.course-hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    /* background: rgba(0, 0, 0, 0.55); */
-    border-radius: 0 0 1.5rem 1.5rem;
-}
-
-.course-hero .course-details {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    right: 1rem;
-    padding: 1rem;
-    color: var(--clr-emerald-900);
-    z-index: 2;
-    border-radius: 1rem;
-    /* background: rgba(0, 0, 0, 0.55); */
-}
-
 /* Card */
 .base-card,
 .card {
@@ -131,38 +109,7 @@ body {
     transition: 0.3s;
 }
 
-.lesson-body {
-    background: var(--clr-surface);
-    padding: 1rem;
-    border-radius: .75rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-.lesson-body p {
-    color: #495057;
-    line-height: 1.6;
-}
-
-.lesson-item {
-    background: var(--clr-surface);
-    border-radius: .75rem;
-    padding: .75rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    margin-bottom: .75rem;
-}
-
-.lesson-item i {
-    color: #166534;
-}
-
 /* BG */
-.bg-app {
-    background: linear-gradient(180deg, rgba(22, 101, 52, .05), rgba(234, 179, 8, .08));
-}
-
 .bg-geometry {
     background-image:
         radial-gradient(ellipse at 20% 0%, rgba(26, 106, 73, .08), transparent 60%),
@@ -181,18 +128,6 @@ body {
     padding: .75rem 1rem .1rem 1rem;
     border-radius: var(--radius-lg);
     display: inline-block;
-}
-
-.icon-box {
-    width: 100%;
-    height: 100px;
-    object-fit: cover;
-    margin-bottom: .75rem;
-    border-radius: var(--radius-lg);
-    display: grid;
-    place-items: center;
-    font-size: 3rem;
-    background: linear-gradient(135deg, rgba(22, 101, 52, .20), rgba(234, 178, 8, 0.19));
 }
 
 .icon-thumb {
@@ -223,44 +158,6 @@ body {
 .number-box span {
     transform: rotate(-45deg);
     display: inline-block;
-}
-
-.reference-box {
-    background: #f1f5ff;
-    border-left: 4px solid #0d6efd;
-    padding: 1rem;
-    border-radius: .5rem;
-    margin: 1rem 0;
-    font-size: .9rem;
-}
-
-.summary-box {
-    background: #fff3cd;
-    border-left: 4px solid #ffc107;
-    padding: 1rem;
-    border-radius: .5rem;
-    margin: 1.5rem 0;
-}
-
-.related-topics a {
-    display: block;
-    padding: .5rem .75rem;
-    border-radius: .5rem;
-    background: #f8f9fa;
-    margin-bottom: .5rem;
-    text-decoration: none;
-    color: #0d6efd;
-    font-size: .9rem;
-}
-
-.related-topics a:hover {
-    background: #e9ecef;
-}
-
-.geo-divider {
-    background: url("data:image/svg+xml;utf8,\ <svg xmlns='http://www.w3.org/2000/svg' width='1200' height='16' viewBox='0 0 1200 16'>\ <path d='M0 8h1200' stroke='%23E5E7EB' stroke-width='1'/>\ <path d='M600 0l8 8-8 8-8-8z' fill='%23EAB308'/>\ </svg>") center/contain no-repeat;
-    height: 16px;
-    opacity: .9;
 }
 
 /* --- Pagination --- */
@@ -474,13 +371,18 @@ textarea:focus {
 }
 
 .ref-quran {
-    border-color: #198754;
+    border-color: var(--clr-emerald);
     background: #e9f7ef;
 }
 
 .ref-hadith {
     border-color: #0d6efd;
     background: #edf3fe;
+}
+
+.ref-summary {
+    border-color: var(--clr-accent);
+    background: #fff3cd;
 }
 
 .menu-item {

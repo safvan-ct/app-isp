@@ -8,12 +8,12 @@
     </x-app.topbar>
 
     <div class="container my-3 pb-5">
-        <x-app.banner>
+        <x-app.banner :search="false">
             <x-slot:title>
                 <span class="text-ar">سُورَةُ {{ $chapter->name }}</span> .1
             </x-slot:title>
 
-            <p class="m-0 my-2">
+            <p class="m-0 mt-2">
                 {{ $chapter->translation?->name }} |
 
                 <span class="small">
@@ -24,7 +24,7 @@
 
         <div class="mt-2">
             @foreach ($chapter->verses as $item)
-                <article class="base-card pt-4 mb-2" tabindex="0" id="ayah-{{ $item->number_in_chapter }}">
+                <article class="base-card pt-4 mb-2 border rounded-2" tabindex="0" id="ayah-{{ $item->number_in_chapter }}">
                     <h4 class="text-ar mb-2 text-emerald-900 lh-xl">
                         {{ $item->text }}
                         <span dir="rtl" class="ar-number fs-6">﴿{{ $item->number_in_chapter }}﴾</span>

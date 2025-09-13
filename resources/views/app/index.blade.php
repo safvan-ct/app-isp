@@ -8,7 +8,13 @@
         ];
     @endphp
 
-    <x-app.topbar :title="__('app.islamic_study_portal')" />
+    <x-app.topbar>
+        <x-slot:title>
+            <img src="{{ asset('img/apple-touch-icon.png') }}"class="me-2 rounded-circle shadow-sm"
+                style="height:30px; width:30px;">
+            <span class="text-ar fw-bold">{{ __('app.islamic_study_portal') }}</span>
+        </x-slot:title>
+    </x-app.topbar>
 
     <div class="app-header">
         <h5 class="mb-1 text-dark fw-bold">Welcome back 👋</h5>
@@ -39,7 +45,7 @@
         <!-- Featured Courses -->
         <h5 class="m-0 text-emerald text-center">{{ __('app.foundational_subjects') }}</h5>
         <p class="text-center m-0">📖 അറിവ് തേടൂ, വിശ്വാസം വളർത്തൂ ✨</p>
-        <div class="geo-divider my-1"></div>
+        <hr class="my-2">
 
         <div class="row g-2">
             <div class="row g-2">

@@ -190,7 +190,7 @@
             </div>
         </div>
 
-        <div class="summary-box text-dark shadow-sm mb-4 mt-3">
+        <div class="ref-box ref-summary text-dark shadow-sm mb-4 mt-3 rounded-0">
             <p class="mb-3 text-justify" style="text-indent: 2em;">
                 നബിദിനാഘോഷങ്ങൾ പ്രവാചക ﷺ യുടെ കാലത്ത് ഉണ്ടായിരുന്നില്ല. ആദ്യമായി സർക്കാർ തലത്തിൽ ഫാതിമി ഖിലാഫത്ത്
                 ആരംഭിച്ചു, പിന്നീട് പൊതുസമൂഹത്തിൽ എർബിൽ കാലത്ത് പ്രചരിച്ചു. മമ്ലുക് കാലത്ത് ഇത് പൊതുസമ്മേളനവും
@@ -220,11 +220,11 @@
         @foreach ($questions['chapters'] as $item)
             @continue($questionSlug == $loop->index)
 
-            <x-app.related-topics :title="$loop->index + 1 . ' : ' . $item" :url="route('answers.show', [
+            <x-app.topic-chapter :title="$loop->index + 1 . ' : ' . $item" :url="route('answers.show', [
                 'menu_slug' => 'topics',
                 'module_slug' => $questions['slug'],
                 'question_slug' => $loop->index,
-            ])" />
+            ])" :related="true" />
         @endforeach
     </div>
 

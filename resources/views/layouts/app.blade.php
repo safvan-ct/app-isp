@@ -73,7 +73,7 @@
         </a>
     </div>
 
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="menuPanel">
+    <div class="offcanvas offcanvas-start notranslate" tabindex="-1" id="menuPanel">
         <!-- Header with logo -->
         <div class="offcanvas-header border-bottom">
             <div class="d-flex align-items-center">

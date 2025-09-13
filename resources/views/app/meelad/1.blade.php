@@ -21,7 +21,7 @@
                 <x-app.hadith-box
                     text="<strong>ഇമാം അബൂ ഹനീഫ (ഹി 80 - 150):</strong> നിശ്ചിത സമയങ്ങളെ, ശരീഅത്ത് നിർദ്ദേശിക്കാതെ,
                     ആരാധനയ്‌ക്കായി വേർതിരിക്കുന്നത് ബിദ്അത് ആണ്."
-                    class="mb-2" reference="അൽ-ഹിദായ, അൽ-മബ്സൂത് [1]" data-bs-toggle="offcanvas"
+                    class="mb-2 mt-2" reference="അൽ-ഹിദായ, അൽ-മബ്സൂത് [1]" data-bs-toggle="offcanvas"
                     data-bs-target="#referencesPanel" data-ref-id="ref1" />
 
                 <x-app.hadith-box
@@ -64,22 +64,7 @@
                     data-ref-id="ref4" />
             </x-app.content>
 
-            <div class="summary-box d-none">
-                <h6>📌 Quick Summary</h6>
-                <ul class="m-0">
-                    <li>നബി ﷺ ജന്മദിനം ആഘോഷിച്ചിട്ടില്ല.</li>
-                    <li>ഖലീഫാക്കളും സഹാബികളും അത് ചെയ്തിട്ടില്ല.</li>
-                    <li>ഖുർആൻ-ൽ നിർദ്ദേശമില്ല.</li>
-                    <li>
-                        ഹദീസ്: തിങ്കളാഴ്ച നോമ്പ് <em class="small">- മുസ്ലിം: 2747</em>
-                        <span data-bs-toggle="offcanvas" data-bs-target="#authenticPanel" data-ref-id="auth1">[1]</span>.
-                    </li>
-                    <li>ഇമാമുമാരുടെ കാലത്ത് ആഘോഷം ഇല്ല.</li>
-                    <li>12-ാം തീയതി ചരിത്രത്തിൽ പ്രശസ്തമായെങ്കിലും വ്യത്യസ്ത അഭിപ്രായങ്ങൾ ഉണ്ട്.</li>
-                </ul>
-            </div>
-
-            <div class="summary-box text-dark shadow-sm rounded-1 pb-2">
+            <div class="ref-box ref-summary text-dark shadow-sm rounded-1 pb-2 mb-3">
                 <div class="text-center m-0 mb-2"><i class="fas fa-exclamation-triangle fs-1 mt-1 text-danger"></i></div>
 
                 <p class="text-justify m-0 mb-3" style="text-indent: 2em">
@@ -103,11 +88,11 @@
         @foreach ($questions['chapters'] as $item)
             @continue($questionSlug == $loop->index)
 
-            <x-app.related-topics :title="$loop->index + 1 . ' : ' . $item" :url="route('answers.show', [
+            <x-app.topic-chapter :title="$loop->index + 1 . ' : ' . $item" :url="route('answers.show', [
                 'menu_slug' => 'topics',
                 'module_slug' => $questions['slug'],
                 'question_slug' => $loop->index,
-            ])" />
+            ])" :related="true" />
         @endforeach
 
         <!-- References Offcanvas -->

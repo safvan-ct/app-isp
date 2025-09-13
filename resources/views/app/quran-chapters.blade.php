@@ -10,7 +10,7 @@
             @foreach ($chapters as $chapter)
                 <div class="col-md-6 col-lg-4" style="cursor: pointer"
                     onclick="window.location.href = '{{ route('quran.chapter', $chapter->id) }}'">
-                    <div class="base-card d-flex justify-content-between align-items-center flex-row rounded-0"
+                    <div class="base-card d-flex justify-content-between align-items-center flex-row rounded-0 border"
                         data-surah="{{ $chapter->id }}">
                         <div class="d-flex gap-3 align-items-center">
                             <div class="number-box"><span>{{ $chapter->id }}</span></div>
@@ -22,7 +22,7 @@
                         </div>
 
                         <div class="justify-content-end">
-                            <p class="text-ar m-0">{{ $chapter->name }}</p>
+                            <p class="text-ar m-0 text-accent-900">{{ $chapter->name }}</p>
                             <p class="small m-0 text-muted">{{ $chapter->no_of_verses }} Ayahs</p>
                         </div>
                     </div>

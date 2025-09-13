@@ -7,30 +7,28 @@
         <x-app.banner :title="$questions['chapters'][$questionSlug]" :desc="'നിസ്കാരത്തിന്റെ ഫർളുകൾ (നിർബന്ധിത കാര്യങ്ങൾ)'" :search="false" :author="'Author Name'" :review="date('M d, Y') . ' by Reviewer Name'" />
 
         <!-- Step Card -->
-        <div class="base-card shadow-sm mb-4 border rounded-2">
-            <div class="row g-4 align-items-center">
-                <!-- Left -->
-                <div class="col-md-4 text-center">
-                    <h4 id="actionTitle" class="h5 fw-bold"></h4>
-                    <span id="actionIcon"></span>
+        <div class="row g-4 align-items-center mb-4" id="startPanel">
+            <!-- Left -->
+            <div class="col-md-4 text-center">
+                <h4 id="actionTitle" class="h5 fw-bold"></h4>
+                <span id="actionIcon"></span>
+            </div>
+
+            <!-- Right -->
+            <div class="col-md-8">
+
+                <span id="stepsPanel"></span>
+
+                <!-- Controls -->
+                <div class="mt-3 d-flex flex-wrap gap-2">
+                    <button id="playBtn" class="btn btn-sm btn-primary">🔊 Play</button>
+                    <button id="repeatBtn" class="btn btn-sm btn-warning">↺ Repeat</button>
+                    <button id="showMoreBtn" class="btn btn-sm btn-outline-secondary">ℹ️ More</button>
                 </div>
 
-                <!-- Right -->
-                <div class="col-md-8">
-
-                    <span id="stepsPanel"></span>
-
-                    <!-- Controls -->
-                    <div class="mt-3 d-flex flex-wrap gap-2">
-                        <button id="playBtn" class="btn btn-sm btn-primary">🔊 Play</button>
-                        <button id="repeatBtn" class="btn btn-sm btn-warning">↺ Repeat</button>
-                        <button id="showMoreBtn" class="btn btn-sm btn-outline-secondary">ℹ️ More</button>
-                    </div>
-
-                    <!-- Extra Info -->
-                    <div id="morePanel" class="mt-2 d-none small">
-                        <p> <span id="moreText"></span></p>
-                    </div>
+                <!-- Extra Info -->
+                <div id="morePanel" class="mt-2 d-none small">
+                    <p> <span id="moreText"></span></p>
                 </div>
             </div>
         </div>
@@ -51,11 +49,11 @@
         @foreach ($questions['chapters'] as $item)
             @continue($questionSlug == $loop->index)
 
-            <x-app.related-topics :title="$loop->index + 1 . ' : ' . $item" :url="route('answers.show', [
+            <x-app.topic-chapter :title="$loop->index + 1 . ' : ' . $item" :url="route('answers.show', [
                 'menu_slug' => 'topics',
                 'module_slug' => $questions['slug'],
                 'question_slug' => $loop->index,
-            ])" />
+            ])" :related="true" />
         @endforeach
     </div>
 @endsection
@@ -524,6 +522,17 @@
             progressEl.style.width = ((currentIndex + 1) / sequence.length * 100) + '%';
         }
 
+        function toDiv() {
+            const element = document.getElementById("startPanel");
+            const yOffset = -35;
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+            window.scrollTo({
+                top: y,
+                behavior: "smooth"
+            });
+        }
+
         function nextStep() {
             if (currentIndex < sequence.length - 1) {
                 currentIndex++;
@@ -532,10 +541,7 @@
                 alert(`Alhamdulillah! You completed all.`);
             }
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+            toDiv();
         }
 
         function prevStep() {
@@ -544,10 +550,7 @@
                 renderStep();
             }
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+            toDiv();
         }
 
         function resetSequence() {

@@ -9,7 +9,7 @@
         <div class="row g-2">
             @foreach ($books as $item)
                 <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="base-card d-flex flex-column h-100 justify-content-between rounded-2 border-5 shadow-sm">
+                    <div class="base-card d-flex flex-column h-100 justify-content-between rounded-2 border">
                         <div class="d-flex align-items-center mb-1">
                             <div class="icon-thumb me-3">HB</div>
 

@@ -7,7 +7,7 @@
         <x-app.banner :title="$questions['chapters'][$questionSlug]" :desc="$questions['desc']" :search="false" :author="'Author Name'" :review="date('M d, Y') . ' by Reviewer Name'" />
 
         <!-- Lesson Body -->
-        <div class="lesson-body text-center mb-3">
+        <div class="p-1 text-center mb-3">
             Result Not Available!
         </div>
 
@@ -15,11 +15,11 @@
         @foreach ($questions['chapters'] as $item)
             @continue($questionSlug == $loop->index)
 
-            <x-app.related-topics :title="$loop->index + 1 . ' : ' . $item" :url="route('answers.show', [
+            <x-app.topic-chapter :title="$loop->index + 1 . ' : ' . $item" :url="route('answers.show', [
                 'menu_slug' => 'topics',
                 'module_slug' => $questions['slug'],
                 'question_slug' => $loop->index,
-            ])" />
+            ])" :related="true" />
         @endforeach
     </div>
 @endsection

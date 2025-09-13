@@ -24,7 +24,7 @@
                 <div class="col-md-6 col-lg-4 all-chapters"
                     onclick="window.location.href = '{{ route('hadith.chapter.verses', ['book' => $book->slug, 'chapter' => $chapter->id]) }}'"
                     style="cursor: pointer">
-                    <div class="base-card d-flex justify-content-between align-items-center flex-row rounded-2"
+                    <div class="base-card d-flex justify-content-between align-items-center flex-row rounded-2 border"
                         data-surah="{{ $chapter->id }}">
                         <div class="d-flex gap-3 align-items-center">
                             <div class="rounded-circle bg-warning-subtle d-flex justify-content-center align-items-center fw-bold fs-6 flex-shrink-0"

@@ -1,4 +1,4 @@
-@props(['title', 'url'])
+@props(['title', 'url', 'related' => false])
 
 <div class="base-card d-flex flex-column h-100 justify-content-between rounded-3 border shadow-sm">
     <a href="{{ $url }}" class="d-flex align-items-center text-decoration-none">
