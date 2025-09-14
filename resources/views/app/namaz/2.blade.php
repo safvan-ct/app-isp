@@ -41,35 +41,29 @@
 
             <x-app.content :title="'അദാനിന്റെ ഘടന'">
                 <x-slot:desc>
-                    <div class="ref-box m-0 rounded-0 ref-quran mb-3 border">
-                        <div class="d-flex align-items-start justify-content-between mt-3">
-                            <div class="text-ar fs-5">اللّٰهُ أَكْبَرُ اللّٰهُ أَكْبَرُ</div>
-                            <div class="text-ar fs-5">اللّٰهُ أَكْبَرُ اللّٰهُ أَكْبَرُ</div>
+                    <div class="ref-box m-0 rounded-0 ref-quran mb-3 border align-items-center text-center">
+                        <div class="text-ar fs-5 lh-lg mt-4">اللّٰهُ أَكْبَرُ اللّٰهُ أَكْبَرُ</div>
+                        <div class="text-ar fs-5 lh-lg">اللّٰهُ أَكْبَرُ اللّٰهُ أَكْبَرُ</div>
+
+                        <div class="text-ar fs-5 lh-lg mt-2">أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ</div>
+                        <div class="text-ar fs-5 lh-lg">أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ</div>
+
+                        <div class="text-ar fs-5 lh-lg mt-2">أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ</div>
+                        <div class="text-ar fs-5 lh-lg">أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ</div>
+
+                        <div class="text-ar fs-5 lh-lg mt-2">حَيَّ عَلَى الصَّلَاةِ</div>
+                        <div class="text-ar fs-5 lh-lg">حَيَّ عَلَى الصَّلَاةِ</div>
+
+                        <div class="text-ar fs-5 lh-lg mt-2">حَيَّ عَلَى الفَلَاحِ</div>
+                        <div class="text-ar fs-5 lh-lg">حَيَّ عَلَى الفَلَاحِ</div>
+
+                        <div class="bg-primary-subtle mt-2 py-1">
+                            <div class="text-ar fs-5 lh-lg">الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ</div>
+                            <div class="text-ar fs-5 lh-lg">الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ</div>
                         </div>
-                        <div class="d-flex align-items-start justify-content-between mt-3">
-                            <div class="text-ar fs-5">أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ</div>
-                            <div class="text-ar fs-5">أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ</div>
-                        </div>
-                        <div class="d-flex align-items-start justify-content-between mt-3">
-                            <div class="text-ar fs-5">أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ</div>
-                            <div class="text-ar fs-5">أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ</div>
-                        </div>
-                        <div class="d-flex align-items-start justify-content-between mt-3">
-                            <div class="text-ar fs-5">حَيَّ عَلَى الصَّلَاةِ</div>
-                            <div class="text-ar fs-5">حَيَّ عَلَى الصَّلَاةِ</div>
-                        </div>
-                        <div class="d-flex align-items-start justify-content-between mt-3">
-                            <div class="text-ar fs-5">حَيَّ عَلَى الفَلَاحِ</div>
-                            <div class="text-ar fs-5">حَيَّ عَلَى الفَلَاحِ</div>
-                        </div>
-                        <div class="d-flex align-items-start justify-content-between bg-primary-subtle mt-3 px-2">
-                            <div class="text-ar fs-5 my-3">الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ</div>
-                            <div class="text-ar fs-5 my-3">الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ</div>
-                        </div>
-                        <div class="d-flex align-items-start justify-content-between mt-3">
-                            <div class="text-ar fs-5">لَا إِلٰهَ إِلَّا اللّٰهُ</div>
-                            <div class="text-ar fs-5">اللّٰهُ أَكْبَرُ اللّٰهُ أَكْبَرُ</div>
-                        </div>
+
+                        <div class="text-ar fs-5 lh-lg mt-2">اللّٰهُ أَكْبَرُ اللّٰهُ أَكْبَرُ</div>
+                        <div class="text-ar fs-5 lh-lg">لَا إِلٰهَ إِلَّا اللّٰهُ</div>
                     </div>
 
                     <div class="ref-box ref-summary m-0 rounded-0">
@@ -90,26 +84,8 @@
                     text="ബിലാൽ (റ) നമസ്കാരത്തിന് അദാൻ ഉച്ചരിക്കുമ്പോൾ മുഖം അങ്ങോട്ടുമിങ്ങോട്ടും തിരിക്കുന്നത് ഞാൻ കണ്ടു."
                     reference="മുസ്ലിം: 634" />
 
-                <x-app.hadith-box class="mb-2"
-                    text="ബിലാൽ (റ) നമസ്കാരത്തിന് അദാൻ ഉച്ചരിക്കുമ്പോൾ മുഖം അങ്ങോട്ടുമിങ്ങോട്ടും തിരിക്കുന്നത് ഞാൻ കണ്ടു."
-                    reference="മുസ്ലിം: 634" />
-
                 <x-app.hadith-box text="പ്രഭാത പ്രാർത്ഥനയാണെങ്കിൽ, നിങ്ങൾ ഉച്ചരിക്കണം: الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ"
                     reference="അബു ദാവൂദ്: 500" />
-            </x-app.content>
-
-            <x-app.content :title="'അദാൻ കേൾക്കുമ്പോൾ'">
-                <x-app.hadith-box class="mb-2" text="നിങ്ങൾ അദാൻ കേൾക്കുമ്പോഴെല്ലാം മുആദിൻ പറയുന്നത് പോലെ പറയുക."
-                    reference="ബുഖാരി:611, മുസ്ലിം:848,849" />
-
-                <x-app.hadith-box class="mb-2" reference="മുസ്ലിം:850, ബുഖാരി:613">
-                    <x-slot:text>
-                        മുഅദ്ദീൻ <span class="fs-4">حَيَّ عَلَى الصَّلَاةِ</span> എന്ന് പറയുമ്പോൾ, ഒരാൾ പ്രതികരിക്കണം:
-                        <span class="fs-4">لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللهِ</span>
-                        മുഅദ്ദീൻ <span class="fs-4">حَيَّ عَلَى الْفَلَاحِ</span> എന്ന് പറയുമ്പോൾ, <span
-                            class="fs-4">لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللهِ</span>
-                    </x-slot:text>
-                </x-app.hadith-box>
             </x-app.content>
 
             <x-app.content :title="'അദാൻ സമയത്തെ പ്രാർത്ഥന'">
@@ -124,39 +100,24 @@
             </x-app.content>
 
             <x-app.content :title="'ഇഖാമത്'">
-                <div class="ref-box m-0 rounded-0 ref-quran mb-3 p-3 border">
-                    <!-- First line -->
-                    <div class="d-flex justify-content-center mt-2">
-                        <div class="text-ar fs-5">اللّٰهُ أَكْبَرُ &nbsp; اللّٰهُ أَكْبَرُ</div>
+                <div class="ref-box m-0 rounded-0 ref-quran mb-3 border align-items-center text-center">
+                    <div class="text-ar fs-5 lh-lg mt-4">اللّٰهُ أَكْبَرُ اللّٰهُ أَكْبَرُ</div>
+
+                    <div class="text-ar fs-5 lh-lg mt-2">أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ</div>
+
+                    <div class="text-ar fs-5 lh-lg mt-2">أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ</div>
+
+                    <div class="text-ar fs-5 lh-lg mt-2">حَيَّ عَلَى الصَّلَاةِ</div>
+
+                    <div class="text-ar fs-5 lh-lg mt-2">حَيَّ عَلَى الفَلَاحِ</div>
+
+                    <div class="bg-primary-subtle mt-2 py-1">
+                        <div class="text-ar fs-5 lh-lg">قَدْ قَامَتِ الصَّلَاةُ</div>
+                        <div class="text-ar fs-5 lh-lg">قَدْ قَامَتِ الصَّلَاةُ</div>
                     </div>
 
-                    <!-- Shahada -->
-                    <div class="d-flex justify-content-center mt-2">
-                        <div class="text-ar fs-5">أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ</div>
-                    </div>
-                    <div class="d-flex justify-content-center mt-2">
-                        <div class="text-ar fs-5">أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ</div>
-                    </div>
-
-                    <!-- Call to prayer -->
-                    <div class="d-flex justify-content-center mt-2">
-                        <div class="text-ar fs-5">حَيَّ عَلَى الصَّلَاةِ</div>
-                    </div>
-                    <div class="d-flex justify-content-center mt-2">
-                        <div class="text-ar fs-5">حَيَّ عَلَى الفَلَاحِ</div>
-                    </div>
-
-                    <!-- Qad qāmat al-salāh -->
-                    <div class="d-flex justify-content-between bg-primary-subtle rounded py-2 px-3 mt-3">
-                        <div class="text-ar fs-5">قَدْ قَامَتِ الصَّلَاةُ</div>
-                        <div class="text-ar fs-5">قَدْ قَامَتِ الصَّلَاةُ</div>
-                    </div>
-
-                    <!-- Ending -->
-                    <div class="d-flex justify-content-between mt-3">
-                        <div class="text-ar fs-5">لَا إِلٰهَ إِلَّا اللّٰهُ</div>
-                        <div class="text-ar fs-5">اللّٰهُ أَكْبَرُ &nbsp; اللّٰهُ أَكْبَرُ</div>
-                    </div>
+                    <div class="text-ar fs-5 lh-lg mt-2">اللّٰهُ أَكْبَرُ اللّٰهُ أَكْبَرُ</div>
+                    <div class="text-ar fs-5 lh-lg">لَا إِلٰهَ إِلَّا اللّٰهُ</div>
                 </div>
 
                 <x-app.hadith-box class="mb-2" reference="ബുഖാരി:607, മുസ്ലിം: 838">
@@ -166,7 +127,7 @@
                 </x-app.hadith-box>
             </x-app.content>
 
-            <x-app.content :title="'ഇഖാമത് കേൾക്കുമ്പോൾ'">
+            <x-app.content :title="'അദാൻ & ഇഖാമത് കേൾക്കുമ്പോൾ'">
                 <x-app.hadith-box class="mb-2" reference="ബുഖാരി:611, മുസ്ലിം:848,849">
                     <x-slot:text>
                         മുഅദ്ദീന്റെ വാക്കുകൾ കേൾക്കുമ്പോൾ, അവൻ പറയുന്നത് ആവർത്തിക്കുക.
