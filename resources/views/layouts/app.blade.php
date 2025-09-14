@@ -46,8 +46,8 @@
 
     @yield('content')
 
-    <button type="button" class="btn bg-warning-subtle btn-lg rounded-circle shadow border-0" id="btn-back-to-top">
-        <i class="fas fa-arrow-up text-emerald"></i>
+    <button type="button" class="btn emerald btn-lg rounded-circle shadow border-0" id="btn-back-to-top">
+        <i class="fas fa-arrow-up"></i>
     </button>
 
     <div class="bottom-nav notranslate">

@@ -1,58 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <style>
-        .dua-card {
-            border-radius: var(--radius-lg);
-            padding: 1rem;
-            width: 100%;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-            overflow: hidden;
-            transition: all 0.35s ease;
-        }
-
-        .dua-card.emerald {
-            background: linear-gradient(135deg, var(--clr-emerald), var(--clr-emerald-900));
-            color: #fff;
-        }
-
-        .dua-card.accent {
-            background: linear-gradient(135deg, var(--clr-accent), var(--clr-accent-900));
-            color: #1f2937;
-        }
-
-        /* Typography */
-        .dua-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .arabic {
-            color: var(--clr-accent);
-            font-size: 1.6rem;
-            font-weight: 600;
-            direction: rtl;
-            text-align: center;
-            margin-bottom: 1rem;
-            font-family: "Amiri", serif;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
-        }
-
-        .translit {
-            color: var(--clr-accent-900);
-            font-style: italic;
-            margin-bottom: 0.75rem;
-            text-align: center;
-        }
-
-        .translation {
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-    </style>
-
     @php
         $topics = [
             'namaz' => 'നിസ്കാരം',
@@ -126,11 +74,11 @@
         </div>
 
         <hr class="my-2 mt-4" style="border: none; border-top: 2px solid #166534; opacity: 1;">
-        <div class="dua-card accent">
-            <div class="dua-title text-emerald mb-1">✨ ദുആയുടെ ശക്തി</div>
-            <div class="translation mb-0">
+        <div class="base-card accent p-3">
+            <h3 class="text-center fw-bold mb-2 text-emerald">✨ ദുആയുടെ ശക്തി</h3>
+            <p class="text-center mb-0">
                 “തീർച്ചയായും അല്ലാഹുവിനെക്കുറിച്ചുള്ള സ്മരണ കൊണ്ടാകുന്നു ഹൃദയങ്ങൾ ശാന്തമാകുന്നത്.” (Qur'an 13:28)
-            </div>
+            </p>
         </div>
 
         <h5 class="mb-3 mt-4 d-none">{{ __('app.explore_by_topics') }}</h5>
@@ -173,11 +121,11 @@
 
                 duaSlides.innerHTML += `
                     <div class="carousel-item ${activeClass}">
-                        <div class="dua-card emerald">
-                            <div class="dua-title">${dua.title}</div>
-                            <div class="arabic">${dua.arabic}</div>
+                        <div class="base-card emerald p-3">
+                            <h3 class="text-center fw-bold mb-3">${dua.title}</h3>
+                            <h2 class="text-ar text-accent text-center text-shadow lh-base">${dua.arabic}</h2>
                             <div class="translit d-none">${dua.translit}</div>
-                            <div class="translation">${dua.translation}</div>
+                            <p class="text-center m-0">${dua.translation}</p>
                         </div>
                     </div>
                 `;

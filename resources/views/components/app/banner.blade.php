@@ -1,8 +1,8 @@
 @props(['title' => '', 'desc' => '', 'search' => true, 'author' => '', 'review' => ''])
 
-<div class="card text-center bg-emerald mb-3 notranslate">
+<div class="base-card text-center emerald mb-3 notranslate">
     @if ($title)
-        <h3 class="m-0 fw-bold text-accent">{{ $title }}</h3>
+        <h3 class="m-0 fw-bold text-accent text-shadow">{{ $title }}</h3>
     @endif
 
     @if ($desc)
@@ -10,7 +10,7 @@
     @endif
 
     @if ($author || $review)
-        <div class="small text-accent {{ $title || $desc ? 'mt-1' : '' }}">
+        <div class="small text-accent {{ $title || $desc ? 'mt-1' : '' }} d-none">
             ✍️ Author: {{ $author ? $author : 'Author Name' }} • {{ $review ? 'Reviewed • ' : '' }} Verified <br>
             {{ $review ? '⏱️ Last review: ' . $review : '' }}
         </div>

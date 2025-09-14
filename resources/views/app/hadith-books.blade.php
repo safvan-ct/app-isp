@@ -11,7 +11,17 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="base-card d-flex flex-column h-100 justify-content-between rounded-2 border">
                         <div class="d-flex align-items-center mb-1">
-                            <div class="icon-thumb me-3">HB</div>
+                            @php
+                                $slug = $item->slug;
+                                $parts = explode('-', $slug);
+
+                                $letters = array_map(function ($part) {
+                                    return strtoupper(substr($part, 0, 1));
+                                }, $parts);
+
+                                $acronym = implode('', $letters);
+                            @endphp
+                            <div class="icon-thumb accent me-3">{{ $acronym }}</div>
 
                             <div class="flex-1">
                                 <h6 class="text-emerald-900 fw-bold m-0">{{ $item->translation?->name ?: $item->name }}</h6>

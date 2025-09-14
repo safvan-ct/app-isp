@@ -24,11 +24,10 @@
                 <div class="col-md-6 col-lg-4 all-chapters"
                     onclick="window.location.href = '{{ route('hadith.chapter.verses', ['book' => $book->slug, 'chapter' => $chapter->id]) }}'"
                     style="cursor: pointer">
-                    <div class="base-card d-flex justify-content-between align-items-center flex-row rounded-2 border"
+                    <div class="base-card d-flex justify-content-between align-items-center flex-row rounded-2 border border-success shadow-none"
                         data-surah="{{ $chapter->id }}">
                         <div class="d-flex gap-3 align-items-center">
-                            <div class="rounded-circle bg-warning-subtle d-flex justify-content-center align-items-center fw-bold fs-6 flex-shrink-0"
-                                style="width: 36px; height: 36px;">
+                            <div class="icon-thumb accent text-emerald-900 text-shadow" style="width: 36px; height: 36px">
                                 {{ $chapter->chapter_number }}
                             </div>
 
