@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        .carousel-control-next,
+        .carousel-control-prev {
+            width: 5% !important;
+        }
+    </style>
+
     @php
         $topics = [
             'namaz' => 'നിസ്കാരം',
@@ -45,8 +52,8 @@
 
         <h2 class="text-center text-emerald">🌿 ദൈനംദിന ദുആ</h2>
         <hr class="my-2" style="border: none; border-top: 2px solid #166534; opacity: 1;">
-        <div id="duaCarousel" class="carousel slide d-flex justify-content-center align-items-center"
-            data-bs-ride="carousel" data-bs-interval="5000">
+        <div id="duaCarousel" class="carousel slide d-flex justify-content-center align-items-center" data-bs-ride="false"
+            data-bs-interval="false">
             <div class="carousel-inner" id="duaSlides"></div>
 
             <!-- Controls -->
@@ -92,6 +99,12 @@
 
     <script>
         const duas = [{
+                title: "യാത്രയ്ക്കുള്ള ദുആ",
+                arabic: "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ",
+                translit: "Subhana allathee sakhkhara lana hadha wama kunna lahu muqrineen",
+                translation: "നമുക്ക് നിയന്ത്രിക്കാൻ കഴിഞ്ഞില്ലെങ്കിലും ഇതിനെ നമ്മുടെ നിയന്ത്രണത്തിലാക്കിയവന് സ്തുതി."
+            },
+            {
                 title: "ഉണരുമ്പോഴുള്ള ദുആ",
                 arabic: "الحمدُ للهِ الذي أحيانا بعدما أماتنا وإليه النشور",
                 translit: "Alhamdu lillahil-lathee ahyana ba’da ma amatana wa ilayhin-nushoor",
@@ -102,12 +115,6 @@
                 arabic: "بِسْمِ اللهِ وَعَلَى بَرَكَةِ اللهِ",
                 translit: "Bismillahi wa ‘ala barakatillah",
                 translation: "അല്ലാഹുവിന്റെ നാമത്തിൽ, അല്ലാഹുവിന്റെ അനുഗ്രഹത്താൽ ഞാൻ ആരംഭിക്കുന്നു."
-            },
-            {
-                title: "യാത്രയ്ക്കുള്ള ദുആ",
-                arabic: "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ",
-                translit: "Subhana allathee sakhkhara lana hadha wama kunna lahu muqrineen",
-                translation: "നമുക്ക് നിയന്ത്രിക്കാൻ കഴിഞ്ഞില്ലെങ്കിലും ഇതിനെ നമ്മുടെ നിയന്ത്രണത്തിലാക്കിയവന് സ്തുതി."
             }
         ];
 
