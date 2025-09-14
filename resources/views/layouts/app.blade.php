@@ -143,6 +143,20 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <script>
+        function toArabicNumber(number) {
+            const arabicDigits = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
+            return String(number)
+                .split("")
+                .map((d) => arabicDigits[d] || d)
+                .join("");
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".ar-number").forEach((span) => {
+                const number = span.textContent.trim();
+                span.textContent = toArabicNumber(number);
+            });
+        });
         let backToTop = document.getElementById("btn-back-to-top");
 
         window.addEventListener("scroll", function() {
