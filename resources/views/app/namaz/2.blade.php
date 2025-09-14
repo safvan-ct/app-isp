@@ -22,13 +22,17 @@
                 <x-slot:desc>
                     <div class="ref-box ref-summary m-0 rounded-0">
                         <ol class="m-0 ps-4">
-                            <li>സമയത്ത് വിളിക്കുക. <em>- നമസ്കാരം സമയക്രമത്തോടെ നിർബന്ധിതമാക്കിയിരിക്കുന്നു. 4:103</em></li>
+                            <li>
+                                സമയത്ത് വിളിക്കുക.
+                                <br><em class="text-muted"> നമസ്കാരം സമയക്രമത്തോടെ നിർബന്ധിതമാക്കിയിരിക്കുന്നു. 4:103</em>
+                            </li>
                             <li>അറബിയിൽ, ശരിയായ വാക്കുകൾ.</li>
                             <li>ക്രമം പാലിക്കുക.</li>
                             <li>തുടർച്ചയായി വിളിക്കുക.</li>
                             <li>
-                                മുഅദ്ദിൻ → മുസ്ലിം, ബുദ്ധിശക്തിയുള്ള പുരുഷൻ.
-                                <em>ഇമാം ഉത്തരവാദിത്തമുള്ളവനും മുഅദ്ദീൻ വിശ്വസ്തനുമാണ് - അബു ദാവൂദ്:517</em>
+                                മുഅദ്ദിൻ മുസ്ലിം, ബുദ്ധിശക്തിയുള്ള പുരുഷൻ.
+                                <br><em class="text-muted">ഇമാം ഉത്തരവാദിത്തമുള്ളവനും മുഅദ്ദീൻ വിശ്വസ്തനുമാണ് - അബു
+                                    ദാവൂദ്:517</em>
                             </li>
                         </ol>
                     </div>
@@ -37,17 +41,48 @@
 
             <x-app.content :title="'അദാനിന്റെ ഘടന'">
                 <x-slot:desc>
-                    <ol class="m-0 ps-3">
-                        <li>(ഹയ്യാ അലസ്-സലാഃ) → മുഖം വലത്തേക്ക് തിരിക്കുക.</li>
-                        <li>(ഹയ്യാ അലൽ-ഫലാഹ്) → മുഖം ഇടത്തേക്ക് തിരിക്കുക.</li>
-                        <li>
-                            പ്രഭാത പ്രാർത്ഥനയാണെങ്കിൽ, നിങ്ങൾ ഉച്ചരിക്കണം:
-                            <span class="fs-3 text-ar">الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ</span>
-                        </li>
-                    </ol>
-                </x-slot:desc>
+                    <div class="ref-box m-0 rounded-0 ref-quran mb-3 border">
+                        <div class="d-flex align-items-start justify-content-between mt-3">
+                            <div class="text-ar fs-5">اللّٰهُ أَكْبَرُ اللّٰهُ أَكْبَرُ</div>
+                            <div class="text-ar fs-5">اللّٰهُ أَكْبَرُ اللّٰهُ أَكْبَرُ</div>
+                        </div>
+                        <div class="d-flex align-items-start justify-content-between mt-3">
+                            <div class="text-ar fs-5">أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ</div>
+                            <div class="text-ar fs-5">أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ</div>
+                        </div>
+                        <div class="d-flex align-items-start justify-content-between mt-3">
+                            <div class="text-ar fs-5">أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ</div>
+                            <div class="text-ar fs-5">أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ</div>
+                        </div>
+                        <div class="d-flex align-items-start justify-content-between mt-3">
+                            <div class="text-ar fs-5">حَيَّ عَلَى الصَّلَاةِ</div>
+                            <div class="text-ar fs-5">حَيَّ عَلَى الصَّلَاةِ</div>
+                        </div>
+                        <div class="d-flex align-items-start justify-content-between mt-3">
+                            <div class="text-ar fs-5">حَيَّ عَلَى الفَلَاحِ</div>
+                            <div class="text-ar fs-5">حَيَّ عَلَى الفَلَاحِ</div>
+                        </div>
+                        <div class="d-flex align-items-start justify-content-between bg-primary-subtle mt-3 px-2">
+                            <div class="text-ar fs-5 my-3">الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ</div>
+                            <div class="text-ar fs-5 my-3">الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ</div>
+                        </div>
+                        <div class="d-flex align-items-start justify-content-between mt-3">
+                            <div class="text-ar fs-5">لَا إِلٰهَ إِلَّا اللّٰهُ</div>
+                            <div class="text-ar fs-5">اللّٰهُ أَكْبَرُ اللّٰهُ أَكْبَرُ</div>
+                        </div>
+                    </div>
 
-                <img src="{{ asset('img/namaz/Azaan.gif') }}" class="icon-img w-100 mb-1 mt-2" style="max-width: 400px" />
+                    <div class="ref-box ref-summary m-0 rounded-0">
+                        <ol class="m-0 ps-4">
+                            <li>(ഹയ്യാ അലസ്-സലാഃ) → മുഖം വലത്തേക്ക് തിരിക്കുക.</li>
+                            <li>(ഹയ്യാ അലൽ-ഫലാഹ്) → മുഖം ഇടത്തേക്ക് തിരിക്കുക.</li>
+                            <li>
+                                പ്രഭാത പ്രാർത്ഥനയാണെങ്കിൽ, നിങ്ങൾ ഉച്ചരിക്കണം:
+                                <span class="fs-3 text-ar">الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ</span>
+                            </li>
+                        </ol>
+                    </div>
+                </x-slot:desc>
 
                 <x-app.hadith-box class="mb-2" text="നബി ﷺ അദാൻ പഠിപ്പിച്ചു." reference="മുസ്ലിം: 842, അബു ദാവൂദ്: 500" />
 
@@ -89,19 +124,61 @@
             </x-app.content>
 
             <x-app.content :title="'ഇഖാമത്'">
-                <img src="{{ asset('img/namaz/iqama.png') }}" class="icon-img w-100 mb-1" style="max-width: 300px" />
+                <div class="ref-box m-0 rounded-0 ref-quran mb-3 p-3 border">
+                    <!-- First line -->
+                    <div class="d-flex justify-content-center mt-2">
+                        <div class="text-ar fs-5">اللّٰهُ أَكْبَرُ &nbsp; اللّٰهُ أَكْبَرُ</div>
+                    </div>
+
+                    <!-- Shahada -->
+                    <div class="d-flex justify-content-center mt-2">
+                        <div class="text-ar fs-5">أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ</div>
+                    </div>
+                    <div class="d-flex justify-content-center mt-2">
+                        <div class="text-ar fs-5">أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ</div>
+                    </div>
+
+                    <!-- Call to prayer -->
+                    <div class="d-flex justify-content-center mt-2">
+                        <div class="text-ar fs-5">حَيَّ عَلَى الصَّلَاةِ</div>
+                    </div>
+                    <div class="d-flex justify-content-center mt-2">
+                        <div class="text-ar fs-5">حَيَّ عَلَى الفَلَاحِ</div>
+                    </div>
+
+                    <!-- Qad qāmat al-salāh -->
+                    <div class="d-flex justify-content-between bg-primary-subtle rounded py-2 px-3 mt-3">
+                        <div class="text-ar fs-5">قَدْ قَامَتِ الصَّلَاةُ</div>
+                        <div class="text-ar fs-5">قَدْ قَامَتِ الصَّلَاةُ</div>
+                    </div>
+
+                    <!-- Ending -->
+                    <div class="d-flex justify-content-between mt-3">
+                        <div class="text-ar fs-5">لَا إِلٰهَ إِلَّا اللّٰهُ</div>
+                        <div class="text-ar fs-5">اللّٰهُ أَكْبَرُ &nbsp; اللّٰهُ أَكْبَرُ</div>
+                    </div>
+                </div>
+
                 <x-app.hadith-box class="mb-2" reference="ബുഖാരി:607, മുസ്ലിം: 838">
                     <x-slot:text>
-                        ഖാദ്-ഖമത്ത്-ഇസ്-സലാത്ത് ഒഴികെയുള്ള ഇഖാമയുടെ പദങ്ങൾ ഒരിക്കൽ ഉച്ചരിക്കാൻ
+                        ഖാദ്-ഖമത്ത്-ഇസ്-സലാത്ത് ഒഴികെയുള്ള ഇഖാമയുടെ പദങ്ങൾ ഒരിക്കൽ ഉച്ചരിക്കാൻ<br>
                     </x-slot:text>
                 </x-app.hadith-box>
             </x-app.content>
 
             <x-app.content :title="'ഇഖാമത് കേൾക്കുമ്പോൾ'">
-                <img src="{{ asset('img/namaz/iqama.png') }}" class="icon-img w-100 mb-1" style="max-width: 300px" />
                 <x-app.hadith-box class="mb-2" reference="ബുഖാരി:611, മുസ്ലിം:848,849">
                     <x-slot:text>
                         മുഅദ്ദീന്റെ വാക്കുകൾ കേൾക്കുമ്പോൾ, അവൻ പറയുന്നത് ആവർത്തിക്കുക.
+                    </x-slot:text>
+                </x-app.hadith-box>
+
+                <x-app.hadith-box class="mb-2" reference="മുസ്ലിം:850, ബുഖാരി:613">
+                    <x-slot:text>
+                        മുഅദ്ദീൻ <span class="fs-4">حَيَّ عَلَى الصَّلَاةِ</span> എന്ന് പറയുമ്പോൾ, ഒരാൾ പ്രതികരിക്കണം:
+                        <span class="fs-4">لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللهِ</span>
+                        മുഅദ്ദീൻ <span class="fs-4">حَيَّ عَلَى الْفَلَاحِ</span> എന്ന് പറയുമ്പോൾ, <span
+                            class="fs-4">لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللهِ</span>
                     </x-slot:text>
                 </x-app.hadith-box>
             </x-app.content>
