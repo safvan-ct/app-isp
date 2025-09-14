@@ -1,6 +1,58 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        .dua-card {
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            width: 100%;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            transition: all 0.35s ease;
+        }
+
+        .dua-card.emerald {
+            background: linear-gradient(135deg, var(--clr-emerald), var(--clr-emerald-900));
+            color: #fff;
+        }
+
+        .dua-card.accent {
+            background: linear-gradient(135deg, var(--clr-accent), var(--clr-accent-900));
+            color: #1f2937;
+        }
+
+        /* Typography */
+        .dua-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .arabic {
+            color: var(--clr-accent);
+            font-size: 1.6rem;
+            font-weight: 600;
+            direction: rtl;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-family: "Amiri", serif;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+        }
+
+        .translit {
+            color: var(--clr-accent-900);
+            font-style: italic;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+
+        .translation {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+    </style>
+
     @php
         $topics = [
             'namaz' => 'നിസ്കാരം',
@@ -17,17 +69,18 @@
     </x-app.topbar>
 
     <div class="app-header">
-        <h5 class="mb-1 text-dark fw-bold">Welcome back 👋</h5>
+        <h5 class="mb-1 text-dark fw-bold">സ്വാഗതം 👋</h5>
         <h4 class="fw-bold">
-            <span class="text-emerald">Islamic</span>
-            <span class="text-accent">Study Portal</span>
+            <span class="text-emerald">ഇസ്ലാമിക്</span>
+            <span class="text-accent">സ്റ്റഡി പോർട്ടൽ</span>
         </h4>
     </div>
 
     <div class="container my-4 pb-5">
         <div class="base-card mb-4 bg-geometry">
             <div class="text-center mx-auto">
-                <h3 class="mb-3">{{ __('app.seek_knowledge') }}</h3>
+                <h4 class="mb-3 text-emerald-900" style="text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);">
+                    {{ __('app.seek_knowledge') }}</h4>
 
                 <div class="ayah-box mb-2 text-emerald">
                     <h5 class="text-ar">
@@ -36,16 +89,31 @@
                     </h5>
                 </div>
 
-                <p class="text-muted mb-0">
+                <p class="text-muted mb-0 small">
                     Quran, Hadith and subjects — organized for focused, distraction-free learning.
                 </p>
             </div>
         </div>
 
+        <h2 class="text-center text-emerald">🌿 ദൈനംദിന ദുആ</h2>
+        <hr class="my-2" style="border: none; border-top: 2px solid #166534; opacity: 1;">
+        <div id="duaCarousel" class="carousel slide d-flex justify-content-center align-items-center"
+            data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-inner" id="duaSlides"></div>
+
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#duaCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#duaCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
         <!-- Featured Courses -->
-        <h5 class="m-0 text-emerald text-center">{{ __('app.foundational_subjects') }}</h5>
+        <h2 class="m-0 text-emerald text-center mt-4">{{ __('app.foundational_subjects') }}</h2>
         <p class="text-center m-0">📖 അറിവ് തേടൂ, വിശ്വാസം വളർത്തൂ ✨</p>
-        <hr class="my-2">
+        <hr class="my-2" style="border: none; border-top: 2px solid #166534; opacity: 1;">
 
         <div class="row g-2">
             <div class="row g-2">
@@ -57,6 +125,14 @@
             </div>
         </div>
 
+        <hr class="my-2 mt-4" style="border: none; border-top: 2px solid #166534; opacity: 1;">
+        <div class="dua-card accent">
+            <div class="dua-title text-emerald mb-1">✨ ദുആയുടെ ശക്തി</div>
+            <div class="translation mb-0">
+                “തീർച്ചയായും അല്ലാഹുവിനെക്കുറിച്ചുള്ള സ്മരണ കൊണ്ടാകുന്നു ഹൃദയങ്ങൾ ശാന്തമാകുന്നത്.” (Qur'an 13:28)
+            </div>
+        </div>
+
         <h5 class="mb-3 mt-4 d-none">{{ __('app.explore_by_topics') }}</h5>
         <div class="d-flex gap-2 flex-wrap d-none">
             <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">Development</span>
@@ -65,4 +141,49 @@
             <span class="badge bg-danger-subtle text-danger rounded-pill px-3 py-2">Languages</span>
         </div>
     </div>
+
+    <script>
+        const duas = [{
+                title: "ഉണരുമ്പോഴുള്ള ദുആ",
+                arabic: "الحمدُ للهِ الذي أحيانا بعدما أماتنا وإليه النشور",
+                translit: "Alhamdu lillahil-lathee ahyana ba’da ma amatana wa ilayhin-nushoor",
+                translation: "നമ്മെ ജീവനിൽ നിന്ന് എടുത്തതിനു ശേഷം നമ്മെ ജീവിപ്പിച്ച അല്ലാഹുവിനാണ് സർവ്വ സ്തുതിയും. അവനിലേക്കാണ് ഉയിർത്തെഴുന്നേൽപ്പ്."
+            },
+            {
+                title: "ഭക്ഷണം കഴിക്കുന്നതിന് മുമ്പുള്ള ദുആ",
+                arabic: "بِسْمِ اللهِ وَعَلَى بَرَكَةِ اللهِ",
+                translit: "Bismillahi wa ‘ala barakatillah",
+                translation: "അല്ലാഹുവിന്റെ നാമത്തിൽ, അല്ലാഹുവിന്റെ അനുഗ്രഹത്താൽ ഞാൻ ആരംഭിക്കുന്നു."
+            },
+            {
+                title: "യാത്രയ്ക്കുള്ള ദുആ",
+                arabic: "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ",
+                translit: "Subhana allathee sakhkhara lana hadha wama kunna lahu muqrineen",
+                translation: "നമുക്ക് നിയന്ത്രിക്കാൻ കഴിഞ്ഞില്ലെങ്കിലും ഇതിനെ നമ്മുടെ നിയന്ത്രണത്തിലാക്കിയവന് സ്തുതി."
+            }
+        ];
+
+        const duaSlides = document.getElementById("duaSlides");
+
+        function renderSlides() {
+            duaSlides.innerHTML = "";
+            duas.forEach((dua, idx) => {
+                const activeClass = idx === 0 ? "active" : "";
+                const cardClass = idx % 2 === 0 ? "emerald" : "accent";
+
+                duaSlides.innerHTML += `
+                    <div class="carousel-item ${activeClass}">
+                        <div class="dua-card emerald">
+                            <div class="dua-title">${dua.title}</div>
+                            <div class="arabic">${dua.arabic}</div>
+                            <div class="translit d-none">${dua.translit}</div>
+                            <div class="translation">${dua.translation}</div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        renderSlides();
+    </script>
 @endsection
