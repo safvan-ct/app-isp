@@ -137,10 +137,37 @@
         </div>
     </div>
 
+    <div class="modal fade" id="addOnModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header notranslate"
+                    style="position: sticky; top: 0; z-index: 5; background-color: #f8f9fa;">
+                    <h5 class="modal-title me-3" id="addOnModalLabel">Reference — Adhan Start</h5>
+                    <div id="google_translate_element" class="mt-2 mb-2 text-center d-none"></div>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body" id="addOnModalBody"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,ml,hi',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
 
     <script>
         function toArabicNumber(number) {
@@ -188,6 +215,63 @@
                 .replace(':book', bookId).replace(':verse', number);
         }
     </script>
+
+    <script>
+        function openTab(id) {
+            const tabEl = document.querySelector('#' + id + '-tab') || document.querySelector('#' + id + '');
+            if (tabEl) {
+                const tab = new bootstrap.Tab(tabEl);
+                tab.show();
+            }
+        }
+
+        $(document).on('click', '.authentic', function() {
+            var $modal = $('#addOnModal');
+            var $modalLabel = $('#addOnModalLabel');
+            var $modalBody = $('#addOnModalBody');
+            var $googleTrans = $('#google_translate_element');
+
+            const slug = $(this).data('slug');
+            const number = $(this).data('number');
+            const type = $(this).data('type');
+
+            if (type === 'quran') {
+                addOnModalLabel = "{{ __('app.quran') }}";
+                url = "{{ route('fetch.quran.reference', [':slug', ':number']) }}".replace(':slug', slug).replace(
+                    ':number', number);
+                $googleTrans.addClass('d-none');
+            } else if (type === 'hadith') {
+                addOnModalLabel = "{{ __('app.hadith') }}";
+                url = "{{ route('fetch.hadith.reference', [':slug', ':number']) }}".replace(':slug', slug).replace(
+                    ':number', number);
+                $googleTrans.removeClass('d-none');
+            } else {
+                return;
+            }
+
+            $modalLabel.html(addOnModalLabel);
+            $modalBody.html(`<div class="text-center text-muted py-3">{{ __('app.loading') }}...</div>`);
+            $modal.modal('show');
+
+            $.get(url, function(result) {
+                if (!result.html) {
+                    $modalBody.html(
+                        `<div class="text-danger text-center py-3">{{ __('app.not_found') }}</div>`);
+                    return;
+                }
+                $modalBody.html(result.html);
+
+                $('.ar-number').each(function() {
+                    var number = $(this).text().trim();
+                    $(this).text(toArabicNumber(number));
+                });
+            }).fail(function() {
+                $modalBody.html(
+                    `<div class="text-danger text-center py-3">{{ __('app.not_found') }}</div>`);
+            });
+        });
+    </script>
+
     @stack('scripts')
 </body>
 

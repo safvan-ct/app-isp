@@ -1,5 +1,13 @@
-@props(['text', 'reference', 'class' => ''])
+@props(['text' => '', 'reference' => '', 'class' => ''])
 
-<p class="ref-box ref-quran m-0 {{ $class }}" {{ $attributes }}>
-    {!! $text !!} <em class="small"> - {{ $reference }}</em>
-</p>
+<div class="ref-box ref-quran m-0 {{ $class }}" {{ $attributes }}>
+    @if ($text)
+        {!! $text !!}
+
+        @if ($reference)
+            <em class="small"> - {{ $reference }}</em>
+        @endif
+    @endif
+
+    {{ $slot }}
+</div>

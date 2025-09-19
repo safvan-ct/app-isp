@@ -32,6 +32,7 @@ Route::prefix('fetch')->name('fetch.')->group(function () {
         Route::get('quran-chapters', 'fetchChapters')->name('quran.chapters');
         Route::get('quran-ayahs', 'fetchVerses')->name('quran.ayahs');
         Route::get('quran-verse/{id}', 'fetchVerseById')->name('quran.verse');
+        Route::get('quran-reference/{slug}/{number}', 'fetchReference')->name('quran.reference');
         Route::post('quran-like', 'fetchLikedVerses')->name('quran.like');
         Route::post('quran-bookmark', 'fetchBookmarkedVerses')->name('quran.bookmark');
     });
@@ -42,6 +43,7 @@ Route::prefix('fetch')->name('fetch.')->group(function () {
         Route::get('hadith-chapters', 'fetchChapters')->name('hadith.chapters');
         Route::get('hadith-verses', 'fetchVerses')->name('hadith.verses');
         Route::get('hadith-verse/{id}', 'fetchVerse')->name('hadith.verse');
+        Route::get('hadith-reference/{slug}/{number}', 'fetchReference')->name('hadith.reference');
         Route::post('hadith-like', 'fetchLikedVerses')->name('hadith.like');
         Route::post('hadith-bookmark', 'fetchBookmarkedVerses')->name('hadith.bookmark');
     });

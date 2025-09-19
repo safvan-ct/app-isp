@@ -409,3 +409,20 @@ textarea:focus {
 .menu-item i {
     font-size: 1.2rem;
 }
+
+.border-accent-900 {
+    border-color: var(--clr-accent-900) !important;
+}
+
+.goog-te-spinner-pos,
+.goog-te-spinner,
+.goog-te-banner-frame.skiptranslate,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+.VIpgJd-ZVi9od-aZ2wEe-OiiCO,
+.VIpgJd-ZVi9od-aZ2wEe {
+    display: none !important;
+}
+
+body {
+    top: 0px !important;
+}

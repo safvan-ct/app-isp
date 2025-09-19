@@ -6,107 +6,94 @@
     <div class="container my-3 pb-5">
         <x-app.banner :title="$questions['chapters'][$questionSlug]" :desc="$questions['desc']" :search="false" :author="'Author Name'" :review="date('M d, Y') . ' by Reviewer Name'" />
 
-        <div class="row mt-4">
+        <div class="row mt-4 notranslate">
             <div class="col-12 col-md-8">
-                <x-app.content :title="'5 നമസ്കാരങ്ങളുടെ റക്അത്തുകൾ'">
-                    <h6 class="text-accent-900 fw-bold m-0 my-2 mt-3">1. സുബഹ് (ഫജ്ർ)</h6>
-                    <div class="ref-box ref-summary text-dark shadow-sm rounded-1 mb-3">
-                        <strong>സുന്നത്:</strong> മുമ്പ് 2 റക്അത് <em>- മുസ്ലിം:1687, അൽ-തിർമിധി:415, അബു
-                            ദാവൂദ്:1251</em><br>
-                        <strong>നിർബന്ധം:</strong> 2 റക്അത്<br>
+                <x-app.study-card :title="'ജമാഅത്തിന്റെ ശ്രേഷ്ഠത'">
+                    <p class="m-0 mb-2">
+                        ഒരാൾ ഒറ്റയ്ക്ക് നമസ്കരിക്കുന്നതിനേക്കാൾ ഇരുപത്തിയേഴ് ഇരട്ടി കൂടുതലാണ്
+                    </p>
+                    <x-app.quran-box text="ഖുർആൻ വിശകലനങ്ങൾ." class="mb-1">
+                        <x-app.ref-button class="mb-1" slug="4" number="102" type="quran" :ref="__('app.quran') . ' 4:102'" />
+                    </x-app.quran-box>
 
-                        <x-app.hadith-box class="mt-2" reference="മുസ്ലിം:1688-90">
-                            <x-slot:text>
-                                ഫജ്‌റിന്റെ രണ്ട് റക്അത്ത് നമസ്കാരം ഇഹലോകത്തേക്കാളും അതിലുള്ളതിനേക്കാളും ഉത്തമമാണ്.
-                            </x-slot:text>
-                        </x-app.hadith-box>
-                    </div>
-
-                    <h6 class="text-accent-900 fw-bold m-0 my-2">2. ളുഹർ</h6>
-                    <div class="ref-box ref-summary text-dark shadow-sm rounded-1 mb-3">
-                        <strong>സുന്നത്:</strong> മുമ്പ് 4 റക്അത് <em>- അൽ-തിർമിധി:415, അബു ദാവൂദ്:1251</em><br>
-                        <strong>നിർബന്ധം:</strong> 4 റക്അത്<br>
-                        <strong>സുന്നത്:</strong> ശേഷം 2 റക്അത് <em>- അൽ-തിർമിധി:415, അബു ദാവൂദ്:1251</em><br>
-
-                        <x-app.hadith-box class="mt-2" reference="മുസ്ലിം:1581-82, ബുഖാരി:1089">
-                            <x-slot:text>
-                                മദീനയിൽ വെച്ച് നബി (ﷺ) യുടെ കൂടെ നാല് റക്അത്ത് ളുഹർ നമസ്കാരം നിർവഹിച്ചു.
-                            </x-slot:text>
-                        </x-app.hadith-box>
-                    </div>
-
-                    <h6 class="text-accent-900 fw-bold m-0 my-2">3. അസർ</h6>
-                    <div class="ref-box ref-summary text-dark shadow-sm rounded-1 mb-3">
-                        <strong>നിർബന്ധം:</strong> 4 റക്അത്<br>
-                        <x-app.hadith-box class="mt-2" reference="മുസ്ലിം:1581-82, ബുഖാരി:1089">
-                            <x-slot:text>
-                                മദീനയിൽ വെച്ച് നബി (ﷺ) യുടെ കൂടെ നാല് റക്അത്ത് ളുഹർ നമസ്കാരവും ദുൽഹുലൈഫയിൽ രണ്ട് റക്അത്തും
-                                ഞാൻ
-                                നിർവഹിച്ചു. (അതായത് 'അസർ' നമസ്കാരം ചുരുക്കി).
-                            </x-slot:text>
-                        </x-app.hadith-box>
-                    </div>
-
-                    <h6 class="text-accent-900 fw-bold m-0 my-2">4. മഗ്രിബ്</h6>
-                    <div class="ref-box ref-summary text-dark shadow-sm rounded-1 mb-3">
-                        <strong>നിർബന്ധം:</strong> 3 റക്അത്<br>
-                        <strong>സുന്നത്:</strong> ശേഷം 2 റക്അത് <em>- അൽ-തിർമിധി:415, അബു ദാവൂദ്:1251</em><br>
-
-                        <x-app.hadith-box class="mt-2" reference="ബുഖാരി:1091,1109">
-                            <x-slot:text>
-                                യാത്രയിൽ തിരക്കിലാണെങ്കിൽ, മഗ്‌രിബ് നമസ്കാരം മാറ്റിവയ്ക്കുകയും, മൂന്ന് റക്അത്ത്
-                                നമസ്കരിക്കുകയും,
-                                പിന്നീട് സലാം പറയുകയും ചെയ്യും.
-                            </x-slot:text>
-                        </x-app.hadith-box>
-                    </div>
-
-                    <h6 class="text-accent-900 fw-bold m-0 my-2">5. ഇശാ</h6>
-                    <div class="ref-box ref-summary text-dark shadow-sm rounded-1 mb-2">
-                        <strong>നിർബന്ധം:</strong> 4 റക്അത്<br>
-                        <strong>സുന്നത്:</strong> ശേഷം 2 റക്അത് <em>- അൽ-തിർമിധി:415, അബു ദാവൂദ്:1251</em><br>
-
-                        <x-app.hadith-box class="mt-2" reference="ബുഖാരി:1091,1109">
-                            <x-slot:text>
-                                യാത്രയിൽ തിരക്കിലാണെങ്കിൽ, മഗ്‌രിബ് നമസ്കാരം മാറ്റിവയ്ക്കുകയും, മൂന്ന് റക്അത്ത്
-                                നമസ്കരിക്കുകയും,
-                                പിന്നീട് സലാം പറയുകയും ചെയ്യും. പിന്നീട്, ഇശാ നമസ്കാരത്തിന് ഇഖാമ ചൊല്ലുകയും. രണ്ട് റക്അത്ത്
-                                നമസ്കരിക്കുകയും തസ്ലീം ചെയ്യുകയും ചെയ്യുമായിരുന്നു.
-                            </x-slot:text>
-                        </x-app.hadith-box>
-                    </div>
-
-                    <hr class="mt-2 mb-3" style="border: none; border-top: 2px solid #166534; opacity: 1;">
-
-                    <x-app.hadith-box class="mb-2" reference="മുസ്ലിം:1575-76">
-                        <x-slot:text>
-                            പ്രവാചകൻ (സ) യുടെ വചനത്തിലൂടെ അല്ലാഹു നമസ്കാരത്തെ താമസത്തിനിടയിൽ നാല് റക്അത്തും,
-                            യാത്രയിലായിരിക്കുമ്പോൾ രണ്ട് റക്അത്തും, അപകടാവസ്ഥയിൽ ഒരു റക്അത്തും ആയി നിശ്ചയിച്ചിരിക്കുന്നു.
-                        </x-slot:text>
+                    <x-app.hadith-box text="ഹദീസ് വിശകലനങ്ങൾ.">
+                        <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="649" type="hadith"
+                            :ref="'ബുഖാരി:649'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="655" type="hadith"
+                            :ref="'ബുഖാരി:655'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="2119" type="hadith"
+                            :ref="'ബുഖാരി:2119'" />
                     </x-app.hadith-box>
+                </x-app.study-card>
 
-                    <x-app.hadith-box class="mb-2" reference="അൽ-തിർമിധി:415, അബു ദാവൂദ്:1251">
-                        <x-slot:text>
-                            ആരെങ്കിലും ഒരു പകലും രാത്രിയും പന്ത്രണ്ട് റക്അത്ത് നമസ്കരിച്ചാൽ സ്വർഗത്തിൽ അവനിൽ നിന്ന് ഒരു വീട്
-                            നിർമ്മിക്കപ്പെടും: ളുഹറിന് മുമ്പ് നാല് റക്അത്ത്, അതിന് ശേഷം രണ്ട് റക്അത്ത്, മഗ്‌രിബിന് ശേഷം
-                            രണ്ട്
-                            റക്അത്ത്, ഇശാഇന് ശേഷം രണ്ട് റക്അത്ത്, പ്രഭാത നമസ്കാരത്തിൽ ഫജ്‌റിന് മുമ്പ് രണ്ട് റക്അത്ത്.
-                        </x-slot:text>
+                <x-app.study-card :title="'ജമാഅത്തിൽ ഇമാമിന്റെ ബാധ്യത'">
+                    <p class="m-0 mb-2">
+                        നിങ്ങളിൽ അല്ലാഹുവിന്റെ ഗ്രന്ഥങ്ങളിൽ ഏറ്റവും അറിവുള്ളവൻ ജനങ്ങൾക്ക് ഇമാമായി പ്രവർത്തിക്കട്ടെ. നിങ്ങളിൽ
+                        ആരെങ്കിലും ആളുകളെ നമസ്കാരത്തിന് നയിക്കുന്നുവെങ്കിൽ അവൻ അൽപ്പം മാത്രം സംസാരിക്കണം
+                    </p>
+
+                    <x-app.hadith-box text="ഹദീസ് വിശകലനങ്ങൾ.">
+                        <x-app.ref-button class="mb-1" slug="abu-dawood" number="582" type="hadith"
+                            :ref="'അബു ദാവൂദ്:582'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-muslim" number="1044" type="hadith"
+                            :ref="'മുസ്ലിം:1044'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-muslim" number="1046" type="hadith"
+                            :ref="'മുസ്ലിം:1046'" />
                     </x-app.hadith-box>
-                </x-app.content>
+                </x-app.study-card>
+
+                <x-app.study-card :title="'ജമാഅത്തിൽ പങ്കെടുക്കുന്നവർ ശ്രദ്ധിക്കേണ്ടത്'">
+                    <p class="m-0 mb-2">
+                        നമസ്കാരം ആരംഭിച്ചാൽ അതിനായി ഓടരുത്, മറിച്ച് ശാന്തമായി അതിനായി നടക്കുക, നിങ്ങൾക്ക് ലഭിക്കുന്നത്
+                        നമസ്കരിക്കുക, നഷ്ടപ്പെട്ടത് പൂർത്തിയാക്കുക.
+                    </p>
+
+                    <x-app.hadith-box text="ഹദീസ് വിശകലനങ്ങൾ.">
+                        <x-app.ref-button class="mb-1" slug="abu-dawood" number="572" type="hadith"
+                            :ref="'അബു ദാവൂദ്:572'" />
+                    </x-app.hadith-box>
+                </x-app.study-card>
+
+                <x-app.study-card :title="'സ്ത്രീകൾ പള്ളികളിൽ പോകുന്നത് (ജമാഅത്തിൽ പങ്കെടുക്കൽ)'">
+                    <p class="m-0 mb-2">
+                        നിങ്ങളുടെ സ്ത്രീകളെ പള്ളിയിൽ പോകുന്നത് നിങ്ങൾ തടയരുത്; എന്നാൽ അവരുടെ വീടുകളാണ് അവർക്ക് ഉത്തമം.
+                    </p>
+
+                    <x-app.hadith-box text="ഹദീസ് വിശകലനങ്ങൾ.">
+                        <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="900" type="hadith"
+                            :ref="'ബുഖാരി:900'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-muslim" number="989" type="hadith"
+                            :ref="'മുസ്ലിം:989'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-muslim" number="990" type="hadith"
+                            :ref="'മുസ്ലിം:990'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-muslim" number="991" type="hadith"
+                            :ref="'മുസ്ലിം:991'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-muslim" number="992" type="hadith"
+                            :ref="'മുസ്ലിം:992'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-muslim" number="993" type="hadith"
+                            :ref="'മുസ്ലിം:993'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-muslim" number="994" type="hadith"
+                            :ref="'മുസ്ലിം:994'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-muslim" number="995" type="hadith"
+                            :ref="'മുസ്ലിം:995'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-muslim" number="996" type="hadith"
+                            :ref="'മുസ്ലിം:996'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-muslim" number="997" type="hadith"
+                            :ref="'മുസ്ലിം:997'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-muslim" number="998" type="hadith"
+                            :ref="'മുസ്ലിം:998'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-muslim" number="999" type="hadith"
+                            :ref="'മുസ്ലിം:999'" />
+                        <x-app.ref-button class="mb-1" slug="ibn-e-majah" number="15" type="hadith"
+                            :ref="'ഇബ്‍ൻ മാജഹ്:15'" />
+                        <x-app.ref-button class="mb-1" slug="abu-dawood" number="567" type="hadith"
+                            :ref="'അബു ദാവൂദ്:567'" />
+                    </x-app.hadith-box>
+                </x-app.study-card>
             </div>
 
-            <div class="col-12 col-md-4">
-                <h5 class="text-emerald fw-bold">Related Topics</h5>
-                @foreach ($questions['chapters'] as $item)
-                    @continue($questionSlug == $loop->index)
-
-                    <x-app.topic-chapter :title="$loop->index + 1 . ' : ' . $item" :url="route('answers.show', [
-                        'menu_slug' => 'topics',
-                        'module_slug' => $questions['slug'],
-                        'question_slug' => $loop->index,
-                    ])" :related="true" />
-                @endforeach
+            <div class="col-12 col-lg-4">
+                <x-app.related-topics :data="$questions['chapters']" :current="$questionSlug" :menu_slug="'topics'" :module_slug="$questions['slug']" />
             </div>
         </div>
     </div>

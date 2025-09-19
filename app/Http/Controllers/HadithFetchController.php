@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\HadithBook;
+use App\Models\HadithVerse;
 use App\Repository\Hadith\HadithBookTranslationInterface;
 use App\Repository\Hadith\HadithChapterInterface;
 use App\Repository\Hadith\HadithVerseInterface;
@@ -37,6 +39,23 @@ class HadithFetchController extends Controller
     {
         $result = $this->hadithVerseRepository->getVerseById([$id]);
         return response()->json(['html' => view('web.partials.hadith-list', ['result' => $result, 'action' => false])->render()]);
+    }
+
+    public function fetchReference($slug, $number)
+    {
+        $hadith = HadithBook::where('slug', $slug)->first();
+        $result = HadithVerse::select('id', 'hadith_book_id', 'hadith_chapter_id', 'chapter_number', 'hadith_number', 'heading', 'text', 'volume', 'status')
+            ->with([
+                'translations',
+                'chapter' => fn($q) => $q->select('id', 'hadith_book_id', 'chapter_number', 'name')->with('translations'),
+                'book'    => fn($q)    => $q->select('id', 'name', 'slug', 'writer', 'writer_death_year', 'hadith_count', 'chapter_count')->with('translations'),
+            ])
+            ->where('hadith_book_id', $hadith->id)
+            ->where('hadith_number', $number)
+            ->active()
+            ->get();
+
+        return response()->json(['html' => view('app.partials.hadith', ['verses' => $result])->render()]);
     }
 
     public function fetchLikedVerses(Request $request)

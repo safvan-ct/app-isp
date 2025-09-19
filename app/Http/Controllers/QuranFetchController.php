@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\QuranChapter;
+use App\Models\QuranVerse;
 use App\Repository\Quran\QuranChapterTranslationInterface;
 use App\Repository\Quran\QuranVerseInterface;
 use Illuminate\Http\Request;
@@ -27,6 +29,22 @@ class QuranFetchController extends Controller
     {
         $result = $this->quranVerseRepository->getVerseById([$id]);
         return response()->json(['html' => view('web.partials.ayah-list', ['result' => $result, 'playOnly' => true])->render()]);
+    }
+
+    public function fetchReference($slug, $number)
+    {
+        $chapter = QuranChapter::where('id', $slug)->first();
+        $result  = QuranVerse::select('id', 'quran_chapter_id', 'number_in_chapter', 'text')
+            ->with([
+                'translations',
+                'chapter' => fn($q) => $q->select('id', 'name')->with('translations'),
+            ])
+            ->where('quran_chapter_id', $chapter->id)
+            ->where('number_in_chapter', $number)
+            ->active()
+            ->get();
+
+        return response()->json(['html' => view('app.partials.quran', ['verses' => $result])->render()]);
     }
 
     public function fetchLikedVerses(Request $request)
