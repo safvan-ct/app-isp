@@ -3,7 +3,7 @@
 @section('content')
     <x-app.topbar :title="__('app.topics')" :url="route('modules.show', 'topics')" />
 
-    <div class="container my-3 pb-5">
+    <div class="container my-3 pb-5 notranslate">
         <x-app.banner :title="$questions['title']" :desc="$questions['desc']" />
 
         <h6 class="fw-bold mt-4 mb-2 text-emerald">അനുബന്ധ വിഷയങ്ങൾ</h6>

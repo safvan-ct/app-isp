@@ -22,7 +22,7 @@
 
     <x-app.topbar :title="__('app.topics')"/>
 
-    <div class="container my-3 pb-5">
+    <div class="container my-3 pb-5 notranslate">
         <x-app.banner :title="'വിഷയങ്ങൾ'" :desc="'📖 അറിവ് തേടൂ, വിശ്വാസം വളർത്തൂ ✨'" />
 
         <div class="row g-2">
