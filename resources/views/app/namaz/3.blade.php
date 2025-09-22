@@ -240,7 +240,7 @@
                 </x-app.ref-box>
             </div>
 
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-4 mb-4">
                 <x-app.related-topics :data="$questions['chapters']" :current="$questionSlug" :menu_slug="'topics'" :module_slug="$questions['slug']" />
             </div>
         </div>

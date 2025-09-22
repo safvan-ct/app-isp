@@ -1,24 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <style>
-        .accordion-item {
-            margin-bottom: 8px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .accordion-button:focus {
-            box-shadow: none !important;
-        }
-
-        .accordion-button:not(.collapsed) {
-            background: #e9f7ef;
-            color: #198754;
-        }
-    </style>
-
     <x-app.topbar :title="$questions['title']" :url="route('questions.show', ['menu_slug' => 'topics', 'module_slug' => $questions['slug']])" />
 
     <div class="container my-3 pb-5">
@@ -26,6 +8,59 @@
 
         <div class="row mt-4 notranslate">
             <div class="col-12 col-lg-8">
+                <x-app.study-card :title="'ജുമുഅ & ശ്രേഷ്ഠത'">
+                    <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
+                        ജുമുഅ നമസ്കാരം നാട്ടിൽ കഴിയുന്ന, പ്രായപൂർത്തിയായ, ബുദ്ധിയുള്ള, പള്ളിയിൽ എത്താൻ കഴിയുന്ന
+                        പുരുഷന്മാർക്ക് മാത്രമാണ് നിർബന്ധം. സ്ത്രീകൾ, കുട്ടികൾ, രോഗികൾ, യാത്രക്കാർ തുടങ്ങിയവർക്ക്
+                        നിർബന്ധമല്ല.
+                    </p>
+                    <x-app.quran-box class="mb-1"
+                        text="വെള്ളിയാഴ്ച നമസ്കാരത്തിന് വിളിക്കപ്പെട്ടാല്‍ അല്ലാഹുവെ പറ്റിയുള്ള സ്മരണയിലേക്ക് നിങ്ങള്‍ വേഗത്തില്‍ വരികയും, വ്യാപാരം ഒഴിവാക്കുകയും ചെയ്യുക.">
+                        <x-app.ref-button slug="62" number="9" type="quran" :ref="__('app.quran') . ' 62:9'" />
+                    </x-app.quran-box>
+
+                    <x-app.hadith-box text="ഹദീസ് വിശകലനങ്ങൾ.">
+                        @php
+                            $sb = [
+                                '877',
+                                '878',
+                                '879',
+                                '880',
+                                '882',
+                                '883',
+                                '884',
+                                '885',
+                                '887',
+                                '888',
+                                '889',
+                                '890',
+                                '894',
+                                '895',
+                                '896',
+                                '897',
+                                '898',
+                                '903',
+                            ];
+                        @endphp
+
+                        @foreach ($sb as $item)
+                            <x-app.ref-button class="mb-1" slug="sahih-bukhari" :number="$item" type="hadith"
+                                :ref="'ബുഖാരി:' . $item" />
+                        @endforeach
+
+                        <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="876" type="hadith"
+                            :ref="'ബുഖാരി:876'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="877" type="hadith"
+                            :ref="'ബുഖാരി:877'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-muslim" number="1976" type="hadith"
+                            :ref="'മുസ്ലിം:1976'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-muslim" number="1977" type="hadith"
+                            :ref="'മുസ്ലിം:1977'" />
+                        <x-app.ref-button class="mb-1" slug="sahih-muslim" number="1978" type="hadith"
+                            :ref="'മുസ്ലിം:1978'" />
+                    </x-app.hadith-box>
+                </x-app.study-card>
+
                 <div class="accordion" id="jumuahTopics">
 
                     <!-- Topic 1 -->
@@ -149,8 +184,8 @@
                     <!-- Topic 3 -->
                     <div class="accordion-item ">
                         <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed text-emerald" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#topic3">
+                            <button class="accordion-button collapsed text-emerald" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#topic3">
                                 <i class="fas fa-lightbulb text-accent me-2"></i>
                                 <span class="fw-bold">ആഘോഷങ്ങളും മൗലിദ് പാരായണങ്ങളും</span>
                             </button>
@@ -342,7 +377,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-4 mb-4">
                 <x-app.related-topics :data="$questions['chapters']" :current="$questionSlug" :menu_slug="'topics'" :module_slug="$questions['slug']" />
             </div>
         </div>

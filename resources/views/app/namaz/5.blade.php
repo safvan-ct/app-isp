@@ -9,14 +9,15 @@
         <div class="row mt-4 notranslate">
             <div class="col-12 col-md-8">
                 <x-app.study-card :title="'ജമാഅത്തിന്റെ ശ്രേഷ്ഠത'">
-                    <p class="m-0 mb-2">
-                        ഒരാൾ ഒറ്റയ്ക്ക് നമസ്കരിക്കുന്നതിനേക്കാൾ ഇരുപത്തിയേഴ് ഇരട്ടി കൂടുതലാണ്
+                    <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
+                        ഒറ്റയ്ക്ക് നമസ്കരിക്കുന്നതിനേക്കാൾ ശ്രേഷ്ഠത കൂടുതലാണ് ജമാഅത് നമസ്കാരത്തിന്.
                     </p>
-                    <x-app.quran-box text="ഖുർആൻ വിശകലനങ്ങൾ." class="mb-1">
+                    <x-app.quran-box class="mb-1"
+                        text="അവര്‍ക്ക് നേതൃത്വം നല്‍കിക്കൊണ്ട് നമസ്കാരം നിര്‍വഹിക്കുകയുമാണെങ്കില്‍ അവരില്‍ ഒരു വിഭാഗം നിന്‍റെ കൂടെ നില്‍ക്കട്ടെ.">
                         <x-app.ref-button class="mb-1" slug="4" number="102" type="quran" :ref="__('app.quran') . ' 4:102'" />
                     </x-app.quran-box>
 
-                    <x-app.hadith-box text="ഹദീസ് വിശകലനങ്ങൾ.">
+                    <x-app.hadith-box text="ഒറ്റയ്ക്ക് നമസ്കരിക്കുന്നതിനേക്കാൾ ശ്രേഷ്ഠത കൂടുതലാണ്">
                         <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="649" type="hadith"
                             :ref="'ബുഖാരി:649'" />
                         <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="655" type="hadith"
@@ -27,7 +28,7 @@
                 </x-app.study-card>
 
                 <x-app.study-card :title="'ജമാഅത്തിൽ ഇമാമിന്റെ ബാധ്യത'">
-                    <p class="m-0 mb-2">
+                    <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                         നിങ്ങളിൽ അല്ലാഹുവിന്റെ ഗ്രന്ഥങ്ങളിൽ ഏറ്റവും അറിവുള്ളവൻ ജനങ്ങൾക്ക് ഇമാമായി പ്രവർത്തിക്കട്ടെ. നിങ്ങളിൽ
                         ആരെങ്കിലും ആളുകളെ നമസ്കാരത്തിന് നയിക്കുന്നുവെങ്കിൽ അവൻ അൽപ്പം മാത്രം സംസാരിക്കണം
                     </p>
@@ -43,7 +44,7 @@
                 </x-app.study-card>
 
                 <x-app.study-card :title="'ജമാഅത്തിൽ പങ്കെടുക്കുന്നവർ ശ്രദ്ധിക്കേണ്ടത്'">
-                    <p class="m-0 mb-2">
+                    <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                         നമസ്കാരം ആരംഭിച്ചാൽ അതിനായി ഓടരുത്, മറിച്ച് ശാന്തമായി അതിനായി നടക്കുക, നിങ്ങൾക്ക് ലഭിക്കുന്നത്
                         നമസ്കരിക്കുക, നഷ്ടപ്പെട്ടത് പൂർത്തിയാക്കുക.
                     </p>
@@ -55,7 +56,7 @@
                 </x-app.study-card>
 
                 <x-app.study-card :title="'സ്ത്രീകൾ പള്ളികളിൽ പോകുന്നത് (ജമാഅത്തിൽ പങ്കെടുക്കൽ)'">
-                    <p class="m-0 mb-2">
+                    <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                         നിങ്ങളുടെ സ്ത്രീകളെ പള്ളിയിൽ പോകുന്നത് നിങ്ങൾ തടയരുത്; എന്നാൽ അവരുടെ വീടുകളാണ് അവർക്ക് ഉത്തമം.
                     </p>
 
@@ -92,7 +93,7 @@
                 </x-app.study-card>
             </div>
 
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-4 mb-4">
                 <x-app.related-topics :data="$questions['chapters']" :current="$questionSlug" :menu_slug="'topics'" :module_slug="$questions['slug']" />
             </div>
         </div>
