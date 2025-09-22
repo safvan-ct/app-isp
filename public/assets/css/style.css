@@ -426,3 +426,20 @@ textarea:focus {
 body {
     top: 0px !important;
 }
+
+.accordion-item {
+    margin-bottom: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #ad8c28 !important;
+}
+
+.accordion-button:focus {
+    box-shadow: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background: #e9f7ef;
+    color: #198754;
+}

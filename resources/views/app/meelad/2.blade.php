@@ -6,22 +6,15 @@
     <div class="container my-3 pb-5">
         <x-app.banner :title="'നബിദിന ആഘോഷങ്ങളുടെ ചരിത്രം'" :desc="'കാലഘട്ടങ്ങളിലൂടെ നബിദിന (മൗലിദ്) ആഘോഷങ്ങളുടെ വികാസം'" :search="false" />
 
-        <div class="timeline">
+        <div class="timeline notranslate">
             <!-- 1 - 11 -->
             <div class="timeline-item">
                 <div class="circle"></div>
                 <div class="timeline-content pb-1">
                     <h5>ഹി. 1 - 11 (പ്രവാചക കാലഘട്ടം)</h5>
-                    <p class="mb-1">
+                    <p class="m-0 text-justify" style="text-indent: 2em">
                         പ്രവാചകൻ ﷺ യുടെ ജന്മദിനം ആഘോഷിക്കാൻ, പ്രത്യേക ദിനങ്ങൾ നിശ്ചയിക്കാൻ യാതൊരു സാക്ഷ്യവും ഇല്ല.
                     </p>
-                    <ul>
-                        <li>
-                            നബി ﷺ തിങ്കളാഴ്ച നോമ്പ് എടുത്തു → “ഞാൻ ഈ ദിവസമാണ് ജനിച്ചത്”
-                            <em class="small">- മുസ്ലിം: 2747</em>
-                            <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref1">[1]</span>.
-                        </li>
-                    </ul>
                 </div>
             </div>
 
@@ -30,12 +23,9 @@
                 <div class="circle"></div>
                 <div class="timeline-content pb-1">
                     <h5>ഹി. 11 - 40 (റാഷിദൂൻ ഖലീഫകളുടെ കാലഘട്ടം)</h5>
-                    <ul>
-                        <li>
-                            ഇസ്ലാമിക ചരിത്രഗ്രന്ഥങ്ങളിൽ നബിദിനാഘോഷങ്ങൾ ആഘോഷങ്ങൾ ഉണ്ടായിരുന്നുവെന്ന് സൂചിപ്പിക്കുന്ന തെളിവുകൾ
-                            ഇല്ല.
-                        </li>
-                    </ul>
+                    <p class="m-0 text-justify" style="text-indent: 2em">
+                        റാഷിദൂൻ കാലഘട്ടത്തിൽ നബിദിനാഘോഷങ്ങൾ ഉണ്ടായിരുന്നില്ല.
+                    </p>
                 </div>
             </div>
 
@@ -43,10 +33,10 @@
             <div class="timeline-item">
                 <div class="circle"></div>
                 <div class="timeline-content pb-1">
-                    <h5>ഹി. 41 - 132 (ഉമയ്യദ ഖിലാഫത് - ദമാസ്കസ്)</h5>
-                    <ul>
-                        <li>ഈ കാലഘട്ടത്തിൽ നബിദിനാഘോഷങ്ങൾ ഉണ്ടായിരുന്നു എന്നതിനെക്കുറിച്ച് വ്യക്തമായ വിവരങ്ങൾ ലഭ്യമല്ല.</li>
-                    </ul>
+                    <h5>ഹി. 41 - 132 (ഉമയ്യദ് ഖിലാഫത് - ദമാസ്കസ്)</h5>
+                    <p class="m-0 text-justify" style="text-indent: 2em">
+                        ഉമയ്യദ് കാലഘട്ടത്തിൽ നബിദിനാഘോഷങ്ങൾ ഉണ്ടായിരുന്നു എന്നതിനെക്കുറിച്ച് വ്യക്തമായ വിവരങ്ങൾ ലഭ്യമല്ല.
+                    </p>
                 </div>
             </div>
 
@@ -55,12 +45,13 @@
                 <div class="circle"></div>
                 <div class="timeline-content pb-1">
                     <h5>ഹി. 132 - 656 (അബ്ബാസിദ് ഖിലാഫത് - ബഗ്ദാദ് & ഇറാഖ്)</h5>
-                    <ul>
-                        <li>
-                            നബിദിനാഘോഷങ്ങൾ ഔദ്യോഗികമായി സ്ഥാപിക്കപ്പെട്ടിരുന്നില്ല.
-                            <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref2">[2]</span>
-                        </li>
-                    </ul>
+                    <p class="m-0 text-justify" style="text-indent: 2em">
+                        ആദ്യ കാലഘട്ടങ്ങളിൽ നബിദിനാഘോഷങ്ങൾ ഔദ്യോഗികമായി സ്ഥാപിക്കപ്പെട്ടിരുന്നില്ല <span
+                            data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref1"
+                            class="text-primary">[1]</span>. പിന്നീട് ഫാത്തിമി ഖിലാഫത്തിന്റെ സ്വാധീനം മൂലം ആഘോഷങ്ങൾ തുടങ്ങി
+                        <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref3"
+                            class="text-primary">[3]</span>.
+                    </p>
                 </div>
             </div>
 
@@ -72,7 +63,8 @@
                     <ul>
                         <li>
                             ഫാതിമി (ശിയ) ഖിലാഫത്ത് ആണ് ആദ്യമായി സർക്കാർ തലത്തിൽ “മൗലിദ്” ആഘോഷം തുടങ്ങിയത്.
-                            <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref3">[3]</span>
+                            <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref2"
+                                class="text-primary">[2]</span>
                         </li>
                         <li>ഇതിനുശേഷം, മൗലിദ് ആഘോഷങ്ങൾ സുന്നി സമൂഹത്തിലേക്ക് വ്യാപിച്ചു.</li>
                     </ul>
@@ -87,7 +79,8 @@
                     <ul class="m-0">
                         <li>
                             ഹിജ്റ 604-ൽ പൊതുസമൂഹത്തിൽ ആദ്യമായി വലിയ രീതിയിൽ മൗലിദ് ആഘോഷങ്ങൾ സംഘടിപ്പിച്ചു.
-                            <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref4">[4]</span>
+                            <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref3"
+                                class="text-primary">[3]</span>
                         </li>
                         <li>മൗലിദ് ആഘോഷങ്ങളെ സുന്നി ലോകത്ത് ഒരു സാധാരണ ആചാരമാക്കി മാറ്റുന്നതിൽ നിർണായക പങ്ക് വഹിച്ചു.</li>
                     </ul>
@@ -102,7 +95,8 @@
                     <ul>
                         <li>
                             നബി ﷺ ജന്മദിനം ആഘോഷിക്കുന്ന മൗലിദ് ഒരു പൊതു ജന, സാംസ്കാരിക ഉത്സവമായി മാറി.
-                            <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref5">[5]</span>
+                            <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref4"
+                                class="text-primary">[4]</span>
                         </li>
                         <li>
                             മമ്ലുക് കാലഘട്ടത്തിൽ മൗലിദ് ആഘോഷത്തെ കുറിച്ച് പണ്ഡിതന്മാരുടെ അഭിപ്രായങ്ങൾ വ്യത്യസ്തമായിരുന്നു.
@@ -136,7 +130,8 @@
                         <li>
                             മസ്ജിദുകളിൽ പ്രാർത്ഥനകൾ, ഖുര്‍ആൻ പാരായണം, പ്രൊഫറ്റ് മുഹമ്മദ് (സ.അ.വ)യുടെ ജീവിതത്തെക്കുറിച്ചുള്ള
                             പ്രഭാഷണങ്ങൾ എന്നിവ സംഘടിപ്പിക്കപ്പെട്ടു.
-                            <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref6">[6]</span>
+                            <span data-bs-toggle="offcanvas" data-bs-target="#referencePanel" data-ref-id="ref5"
+                                class="text-primary">[5]</span>
                         </li>
                     </ul>
                 </div>
@@ -149,7 +144,7 @@
                     <h5>ഹി. 1342 - (ആധുനികകാലഘട്ടം)</h5>
                     <ul>
                         <li>പല രാജ്യങ്ങളിലും മൗലിദ് ഔദ്യോഗിക അവധി.</li>
-                        <li>ചില രാജ്യങ്ങൾ (സൗദി, ഖത്തർ) – വിരുദ്ധ നിലപാട്.</li>
+                        <li>ചില രാജ്യങ്ങൾ (സൗദി, ഖത്തർ) - വിരുദ്ധ നിലപാട്.</li>
                         <li>മിക്ക മുസ്ലിം ലോകത്തും: ഖുർആൻ, പ്രസംഗം, കവിത, പ്രദക്ഷിണം, ഭക്ഷണവിതരണം.</li>
                     </ul>
                 </div>
@@ -190,7 +185,7 @@
             </div>
         </div>
 
-        <div class="ref-box ref-summary text-dark shadow-sm mb-4 mt-3 rounded-0">
+        <div class="ref-box ref-summary text-dark shadow-sm mb-4 mt-3 rounded-0 notranslate p-3">
             <p class="mb-3 text-justify" style="text-indent: 2em;">
                 നബിദിനാഘോഷങ്ങൾ പ്രവാചക ﷺ യുടെ കാലത്ത് ഉണ്ടായിരുന്നില്ല. ആദ്യമായി സർക്കാർ തലത്തിൽ ഫാതിമി ഖിലാഫത്ത്
                 ആരംഭിച്ചു, പിന്നീട് പൊതുസമൂഹത്തിൽ എർബിൽ കാലത്ത് പ്രചരിച്ചു. മമ്ലുക് കാലത്ത് ഇത് പൊതുസമ്മേളനവും
@@ -202,34 +197,35 @@
                 നിലനിൽക്കുന്നു. കേരളത്തിൽ സൂഫി സ്വാധീനത്തോടെ മാലപ്പാട്ടുകൾ, മൗലിദ് സദസ്സുകൾ ജനകീയമായി വളർന്നു.
             </p>
 
-            <p class="fst-italic text-muted m-0 mt-2 ref-box ref-quran">
-                ഇന്ന് ഞാന്‍ നിങ്ങള്‍ക്ക് നിങ്ങളുടെ മതം പൂര്‍ത്തിയാക്കി തന്നിരിക്കുന്നു.<em> - 5:3 </em>
-            </p>
+            <x-app.quran-box text="നിങ്ങളുടെ മതത്തിനെപ്പറ്റി നിങ്ങള്‍ അല്ലാഹുവെ പഠിപ്പിക്കുകയാണോ?" class="mb-1">
+                <x-app.ref-button slug="49" number="16" type="quran" :ref="__('app.quran') . ' 49:16'" />
+            </x-app.quran-box>
 
-            <p class="fst-italic text-muted m-0 mt-2 ref-box ref-hadith">
-                ക്രിസ്ത്യാനികൾ മർയമിന്റെ മകനെ പുകഴ്ത്തിയതുപോലെ എന്നെ നിങ്ങൾ പുകഴ്ത്തരുത്.
-                <em> - ബുഖാരി: 3445</em>
-            </p>
+            <x-app.quran-box class="mb-1" text="ഇന്ന് ഞാന്‍ നിങ്ങള്‍ക്ക് നിങ്ങളുടെ മതം പൂര്‍ത്തിയാക്കി തന്നിരിക്കുന്നു.">
+                <x-app.ref-button slug="5" number="3" type="quran" :ref="__('app.quran') . ' 5:3'" />
+            </x-app.quran-box>
 
-            <p class="fst-italic text-muted m-0 mt-2 ref-box ref-hadith">
-                പുതുതായി കണ്ടുപിടിച്ച കാര്യങ്ങളെ സൂക്ഷിക്കുക, അവ വഴിതെറ്റിയതാണ്. <em> - തിർമിധി: 2676</em>
-            </p>
+            <x-app.hadith-box class="mb-1" text="പുതുതായി കെട്ടിച്ചമച്ച കാര്യങ്ങളെ സൂക്ഷിക്കുക, കാരണം അവ വഴികേടാണ്.">
+                <x-app.ref-button slug="sahih-bukhari" number="2697" type="hadith" :ref="'ബുഖാരി:2697'" class="mb-1" />
+                <x-app.ref-button slug="sahih-muslim" number="4493" type="hadith" :ref="'മുസ്ലിം:4493'" class="mb-1" />
+                <x-app.ref-button slug="sahih-muslim" number="4784" type="hadith" :ref="'മുസ്ലിം:4784'" />
+                <x-app.ref-button slug="al-tirmidhi" number="2676" type="hadith" :ref="'തിർമിധി:2676'" class="mb-1" />
+                <x-app.ref-button slug="al-tirmidhi" number="2677" type="hadith" class="mb-1" :ref="'തിർമിധി:2677'" />
+                <x-app.ref-button slug="abu-dawood" number="4607" type="hadith" :ref="'അബു ദാവൂദ്:4607'" />
+            </x-app.hadith-box>
+
+            <x-app.hadith-box text="ക്രൈസ്തവ൪ മറിയമിന്റെ മകനെ പുകഴ്ത്തിയതുപോലെ നിങ്ങള്‍ എന്നെ പുകഴ്ത്തരുത്.">
+                <x-app.ref-button slug="sahih-bukhari" number="3445" type="hadith" :ref="'ബുഖാരി:3445'" />
+            </x-app.hadith-box>
         </div>
 
-        <h5 class="text-emerald fw-bold">Related Topics</h5>
-        @foreach ($questions['chapters'] as $item)
-            @continue($questionSlug == $loop->index)
-
-            <x-app.topic-chapter :title="$loop->index + 1 . ' : ' . $item" :url="route('answers.show', [
-                'menu_slug' => 'topics',
-                'module_slug' => $questions['slug'],
-                'question_slug' => $loop->index,
-            ])" :related="true" />
-        @endforeach
+        <div class="m-0 mb-4 notranslate">
+            <x-app.related-topics :data="$questions['chapters']" :current="$questionSlug" :menu_slug="'topics'" :module_slug="$questions['slug']" />
+        </div>
     </div>
 
     <!-- Overview Offcanvas -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="referencePanel">
+    <div class="offcanvas offcanvas-end notranslate" tabindex="-1" id="referencePanel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title">References</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
@@ -237,20 +233,17 @@
 
         <div class="offcanvas-body py-0">
             <div class="ref-box ref-hadith mt-2" id="ref1">
-                <span class="fw-bold">[1]. തിങ്കളാഴ്ച നോമ്പ്</span><br>
-                (തിങ്കളാഴ്ച നോമ്പിനെ കുറിച് ചോദിക്കപ്പെട്ടപ്പോൾ): ഞാൻ ജനിച്ച ദിവസമായിരുന്നു അത്. അന്ന് എനിക്ക്
-                പ്രവാചകത്വം നൽകുകയോ എനിക്ക് ദിവ്യബോധനം നൽകുകയോ ചെയ്തു.<br>
-                <em class="small">- മുസ്ലിം: 2747 <span class="text-ar">(كتاب الصِّيَامِ)</span></em>
-            </div>
-
-            <div class="ref-box ref-hadith mt-2" id="ref2">
-                <span class="fw-bold">[2]. ഹി. 132 - 656 (അബ്ബാസിദ് ഖിലാഫത്)</span><br>
+                <span class="fw-bold">[1]. ഹി. 132 - 656 (അബ്ബാസിദ് ഖിലാഫത്)</span><br>
+                <p class="m-0 mb-1">
+                    അബ്ബാസിദ് ആദ്യ കാലഘട്ടങ്ങളിൽ (ഹി. 132 - 350) ആണ് ഹദീസുകൾ കൃത്യമായി രേഖപ്പെടുത്തിയതും ഇസ്‌ലാമിക നിയമങ്ങൾ
+                    രൂപപ്പെടുത്തിയതും.
+                </p>
 
                 <ul class="m-0">
                     <li class="mb-2">
                         ഹദീസ് ശേഖരണത്തിന്റെ വികാസം:<br>
                         <span class="small">
-                            ഈ കാലഘട്ടത്തിലാണ് (ഹി. 200 - 303) ഇമാം ബുഖാരി, മുസ്‌ലിം, തിർമിദി, അബൂ ദാവൂദ്, നസാഇ,
+                            ഹി. 200 - 303: ഇമാം ബുഖാരി, മുസ്‌ലിം, തിർമിദി, അബൂ ദാവൂദ്, നസാഇ,
                             ഇബ്നു മാജ എന്നിവർ ഹദീസുകൾ കൃത്യമായി രേഖപ്പെടുത്തിയത്.
                         </span>
                     </li>
@@ -258,20 +251,18 @@
                     <li class="mb-2">
                         ഇസ്‌ലാമിക നിയമങ്ങളുടെ വളർച്ച:<br>
                         <span class="small">
-                            ഹദീസുകളുടെയും ഖുർആനിന്റെയും അടിസ്ഥാനത്തിൽ ഇസ്‌ലാമിക നിയമങ്ങൾ രൂപപ്പെടുത്തിയതും ഈ കാലത്താണ് (ഹി.
-                            100 - 241). ഇമാം
+                            ഹി. 100 - 241: ഹദീസുകളുടെയും ഖുർആനിന്റെയും അടിസ്ഥാനത്തിൽ ഇസ്‌ലാമിക നിയമങ്ങൾ രൂപപ്പെടുത്തി. ഇമാം
                             അബൂ ഹനീഫ, മാലിക്, ഷാഫി, അഹ്മദ് ബിൻ ഹൻബൽ.
                         </span>
                     </li>
                 </ul>
             </div>
 
-            <div class="ref-box ref-hadith mt-2" id="ref3">
-                <span class="fw-bold">[3]. ഹി. 297 - 567 (ഫാതിമി ഖിലാഫത്)</span><br>
+            <div class="ref-box ref-hadith mt-2" id="ref2">
+                <span class="fw-bold">[2]. ഹി. 297 - 567 (ഫാതിമി ഖിലാഫത്)</span><br>
                 <p class="small">
-                    അബ്ബാസിദുകൾക്ക് ഇത്തരം ചടങ്ങുകൾ ഇല്ലാതിരുന്നതിനാൽ, ഫാതിമിദുകൾ “ഞങ്ങളാണ് അഹ്ലുൽ ബൈത്-ന്റെ യഥാർത്ഥ
-                    അവകാശികൾ.” തെളിയിക്കാൻ മൗലിദിനെ (ഖുര്‍ആൻ, പ്രസംഗം, കവിതകൾ, ജനങ്ങൾക്ക് ദാനം,
-                    വിരുന്നുകൾ, അലങ്കാരങ്ങൾ) ഉപയോഗിച്ചു.
+                    ആദ്യ കാല അബ്ബാസിദുകൾക്ക് ഇത്തരം ചടങ്ങുകൾ ഇല്ലാതിരുന്നതിനാൽ, ഫാതിമിദുകൾ “ഞങ്ങളാണ് അഹ്ലുൽ ബൈത്-ന്റെ
+                    യഥാർത്ഥ അവകാശികൾ.” എന്ന് തെളിയിക്കാൻ മീലാദിനെ ഉപയോഗിച്ചു.
                 </p>
 
                 <ul class="m-0">
@@ -328,8 +319,8 @@
                 </ul>
             </div>
 
-            <div class="ref-box ref-hadith mt-2" id="ref4">
-                <span class="fw-bold">[4]. ഹി. 586 - 630 (എർബിൽ കാലഘട്ടം)</span><br>
+            <div class="ref-box ref-hadith mt-2" id="ref3">
+                <span class="fw-bold">[3]. ഹി. 586 - 630 (എർബിൽ കാലഘട്ടം - മുളഫ്ഫറുദ്ദീൻ ഗോക്ബുരി)</span><br>
 
                 <p class="small fst-italic">
                     ഫാത്വിമി കാലഘട്ടത്തിലെ ആഘോഷങ്ങൾ ശിയാ സ്വാധീനത്തിലായിരുന്നത് കൊണ്ട് സുന്നി പണ്ഡിതന്മാർക്ക്
@@ -337,7 +328,8 @@
                 </p>
 
                 <p class="small">
-                    മൗലിദ് വലിയ ജനപങ്കാളിത്തത്തോടെ, ദാനധർമ്മം, കവിതകളും പ്രസംഗങ്ങളും ഉൾപ്പെടുത്തി ആഴ്ചകളോളം ആഘോഷിച്ചു.
+                    സലാഹുദ്ദീൻ അയ്യൂബി യുടെ സഹോദരിയുടെ ഭർത്താവായിരുന്ന മുളഫ്ഫറുദ്ദീൻ ഗോക്ബുരി മൗലിദ് വലിയ
+                    ജനപങ്കാളിത്തത്തോടെ, ദാനധർമ്മം, കവിതകളും പ്രസംഗങ്ങളും ഉൾപ്പെടുത്തി ആഴ്ചകളോളം ആഘോഷിച്ചു.
                 </p>
 
                 <ul class="m-0">
@@ -381,8 +373,8 @@
                 </ul>
             </div>
 
-            <div class="ref-box ref-hadith mt-2" id="ref5">
-                <span class="fw-bold">[5]. ഹി. 648 - 923 (മമ്ലുക് സാമ്രാജ്യം)</span><br>
+            <div class="ref-box ref-hadith mt-2" id="ref4">
+                <span class="fw-bold">[4]. ഹി. 648 - 923 (മമ്ലുക് സാമ്രാജ്യം)</span><br>
                 <p class="small">
                     മമ്ലുക്കുകാർ ഫാത്വിമി കാലഘട്ടത്തിലെ ആഘോഷങ്ങൾ ഏറ്റെടുത്ത് കൂടുതൽ സങ്കീര്‍ണമായ ആഘോഷമായി വികസിപ്പിച്ചു.
                 </p>
@@ -434,8 +426,8 @@
                 </ul>
             </div>
 
-            <div class="ref-box ref-hadith mt-2 mb-3" id="ref6">
-                <span class="fw-bold">[6]. ഹി. 648 - 923 ഹി. 699 - 1342 (ഒട്ടോമാൻ സാമ്രാജ്യം)</span><br>
+            <div class="ref-box ref-hadith mt-2 mb-3" id="ref5">
+                <span class="fw-bold">[5]. ഹി. 648 - 923 ഹി. 699 - 1342 (ഒട്ടോമാൻ സാമ്രാജ്യം)</span><br>
                 <ul class="m-0">
                     <li>
                         <span class="fw-bold">Halil İnalcık</span><br>

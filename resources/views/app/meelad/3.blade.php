@@ -6,7 +6,7 @@
     <div class="container my-3 pb-5">
         <x-app.banner :title="'മൗലിദ് കൃതികൾ - ചരിത്രം'" :desc="'പ്രധാനപ്പെട്ട മൗലിദ് കൃതികളും ആരംഭവും'" :search="false" />
 
-        <div class="timeline">
+        <div class="timeline notranslate">
             <!-- 633 -->
             <div class="timeline-item">
                 <div class="circle"></div>
@@ -121,15 +121,8 @@
             </div>
         </div>
 
-        <h5 class="text-emerald fw-bold mt-4">Related Topics</h5>
-        @foreach ($questions['chapters'] as $item)
-            @continue($questionSlug == $loop->index)
-
-            <x-app.topic-chapter :title="$loop->index + 1 . ' : ' . $item" :url="route('answers.show', [
-                'menu_slug' => 'topics',
-                'module_slug' => $questions['slug'],
-                'question_slug' => $loop->index,
-            ])" :related="true" />
-        @endforeach
+        <div class="m-0 mb-4 notranslate">
+            <x-app.related-topics :data="$questions['chapters']" :current="$questionSlug" :menu_slug="'topics'" :module_slug="$questions['slug']" />
+        </div>
     </div>
 @endsection
