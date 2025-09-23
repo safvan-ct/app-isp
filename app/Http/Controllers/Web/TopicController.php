@@ -11,22 +11,6 @@ class TopicController extends Controller
     public function __construct(protected TopicInterface $topicRepository)
     {
         $this->questions = [
-            "meelad" => [
-                "slug"     => "meelad",
-                "title"    => "നബിദിനം",
-                "desc"     => "നബിദിനം ആഘോഷിക്കേണ്ടതിന്റെ അടിസ്ഥാനവും ശ്രേഷ്ഠതയും",
-                "chapters" => [
-                    "റബീഉൽ അവ്വൽ മാസവും നബിദിനവും",
-                    "നബിദിന ആഘോഷങ്ങളുടെ ചരിത്രം",
-                    "മൗലിദ് കൃതികൾ - ചരിത്രം",
-                ],
-            ],
-            2        => [
-                "ചരിത്രം",
-            ],
-            3        => [
-                "Mawlid",
-            ],
             "namaz"  => [
                 "slug"     => "namaz",
                 "title"    => "സ്വലാത് (നമസ്കാരം)",
@@ -42,6 +26,27 @@ class TopicController extends Controller
                     // "വിത്ർ നമസ്കാരം",
                     // "തഹജ്ജുദ് നമസ്കാരം",
                     // "ളുഹാ നമസ്കാരം",
+                ],
+            ],
+            "purify" => [
+                "slug"     => "purify",
+                "title"    => "ശുദ്ധി",
+                "desc"     => "ശുദ്ധി",
+                "chapters" => [
+                    "വുദു",
+                    // "കുളി",
+                    // "നജസുകൾ",
+                    // "തയ്യമ്മും"
+                ],
+            ],
+            "meelad" => [
+                "slug"     => "meelad",
+                "title"    => "നബിദിനം",
+                "desc"     => "നബിദിനം ആഘോഷിക്കേണ്ടതിന്റെ അടിസ്ഥാനവും ശ്രേഷ്ഠതയും",
+                "chapters" => [
+                    "റബീഉൽ അവ്വൽ മാസവും നബിദിനവും",
+                    "നബിദിന ആഘോഷങ്ങളുടെ ചരിത്രം",
+                    "മൗലിദ് കൃതികൾ - ചരിത്രം",
                 ],
             ],
         ];

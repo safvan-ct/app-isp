@@ -3,7 +3,7 @@
 @section('content')
     @php
         $topics = [
-            // 'ശുദ്ധി',
+            'purify' => 'ശുദ്ധി',
             'namaz' => 'നിസ്കാരം',
             'meelad' => 'നബിദിനം',
             // 'നോമ്പ്',
@@ -20,7 +20,7 @@
         ];
     @endphp
 
-    <x-app.topbar :title="__('app.topics')"/>
+    <x-app.topbar :title="__('app.topics')" />
 
     <div class="container my-3 pb-5 notranslate">
         <x-app.banner :title="'വിഷയങ്ങൾ'" :desc="'📖 അറിവ് തേടൂ, വിശ്വാസം വളർത്തൂ ✨'" />
