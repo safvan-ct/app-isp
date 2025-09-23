@@ -34,7 +34,7 @@ class TopicController extends Controller
                 "desc"     => "ശുദ്ധി",
                 "chapters" => [
                     "വുദു",
-                    // "കുളി",
+                    "കുളി",
                     // "നജസുകൾ",
                     // "തയ്യമ്മും"
                 ],
