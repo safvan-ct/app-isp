@@ -4,7 +4,7 @@
     <x-app.topbar :title="$questions['title']" :url="route('questions.show', ['menu_slug' => 'topics', 'module_slug' => $questions['slug']])" />
 
     <div class="container my-3 pb-5">
-        <x-app.banner :title="$questions['chapters'][$questionSlug]" :desc="'സ്ത്രീ പുരുഷ സംയോഗം, ശുക്ലസ്ഖലനം , ആർത്തവം, പ്രസവരക്തം എന്നിങ്ങനെ കുളി നിർബന്ധമാക്കുന്നതാണ് വലിയ അശുദ്ധി. വലിയ അശുദ്ധിയുള്ള ഒരാള്‍ക്ക് കുളി നിര്‍ബന്ധമാണ്‌.'" :search="false" :author="'Author Name'" :review="date('M d, Y') . ' by Reviewer Name'" />
+        <x-app.banner :title="$questions['chapters'][$questionSlug]" :desc="'വലിയ അശുദ്ധിയുള്ള ഒരാള്‍ക്ക് കുളി നിര്‍ബന്ധമാണ്‌.'" :search="false" :author="'Author Name'" :review="date('M d, Y') . ' by Reviewer Name'" />
 
         <div class="row mt-4 notranslate">
             <div class="col-12 col-lg-8">

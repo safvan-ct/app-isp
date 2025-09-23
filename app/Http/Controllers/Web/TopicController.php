@@ -35,8 +35,8 @@ class TopicController extends Controller
                 "chapters" => [
                     "വുദു",
                     "കുളി",
+                    "തയ്യമ്മും",
                     // "നജസുകൾ",
-                    // "തയ്യമ്മും"
                 ],
             ],
             "meelad" => [

@@ -4,7 +4,7 @@
     <x-app.topbar :title="$questions['title']" :url="route('questions.show', ['menu_slug' => 'topics', 'module_slug' => $questions['slug']])" />
 
     <div class="container my-3 pb-5">
-        <x-app.banner :title="$questions['chapters'][$questionSlug]" :desc="'വുദൂ നമസ്‌കാരത്തിന് തയ്യാറെടുക്കുന്നതിനും ചെറിയ അശുദ്ധിയിൽ നിന്ന് ശുദ്ധിയാകുന്നതിനും വേണ്ടിയുള്ളതാണ്.'" :search="false" :author="'Author Name'" :review="date('M d, Y') . ' by Reviewer Name'" />
+        <x-app.banner :title="$questions['chapters'][$questionSlug]" :desc="'നമസ്‌കാരത്തിനും ചെറിയ അശുദ്ധിയിൽ നിന്ന് ശുദ്ധിയാകുന്നതിനും വേണ്ടിയുള്ളതാണ് വുദൂ.'" :search="false" :author="'Author Name'" :review="date('M d, Y') . ' by Reviewer Name'" />
 
         <div class="row mt-4 notranslate">
             <div class="col-12 col-lg-8">
@@ -176,7 +176,7 @@
 
                     <x-app.accordion :id="'topic4'" :title="'സുന്നത്ത് പ്രവർത്തികൾ'">
                         <h6 class="text-emerald-900 fw-bold">1. ബിസ്മില്ലാഹ് പറഞ്ഞു തുടങ്ങുക</h6>
-                        <x-app.hadith-box text="അല്ലാഹുവിന്റെ നാമം ഉച്ചരിക്കാത്തവന്റെ വുദും സാധുവല്ല." class="mb-3">
+                        <x-app.hadith-box text="അല്ലാഹുവിന്റെ നാമം ഉച്ചരിക്കാത്തവന്റെ വുദു സാധുവല്ല." class="mb-3">
                             <x-app.ref-button slug="abu-dawood" number="101" type="hadith" :ref="'അബു ദാവൂദ്:101'" />
                         </x-app.hadith-box>
                         <x-app.hr />
