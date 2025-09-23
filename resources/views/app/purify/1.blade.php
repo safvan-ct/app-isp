@@ -321,7 +321,7 @@
                         </x-app.ref-box>
                     </x-app.accordion>
 
-                    <x-app.accordion :id="'topic6'" :title="'വുദു മുറിയുന്ന കാര്യങ്ങള്‍'" :active="true">
+                    <x-app.accordion :id="'topic6'" :title="'വുദു മുറിയുന്ന കാര്യങ്ങള്‍'">
                         <h6 class="text-emerald-900 fw-bold">
                             1. മുന്‍പിന്‍ ദ്വാരങ്ങളിലൂടെ കാഷ്ഠം, മൂത്രം പോലെയുള്ള വല്ലതും പുറപ്പെടല്‍.
                         </h6>
