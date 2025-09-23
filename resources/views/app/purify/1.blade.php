@@ -4,19 +4,19 @@
     <x-app.topbar :title="$questions['title']" :url="route('questions.show', ['menu_slug' => 'topics', 'module_slug' => $questions['slug']])" />
 
     <div class="container my-3 pb-5">
-        <x-app.banner :title="$questions['chapters'][$questionSlug]" :desc="'വുദൂ നമസ്‌കാരം പോലുള്ള ആരാധനകൾക്ക് തയ്യാറെടുക്കുന്നതിനും ചെറിയ അശുദ്ധിയിൽ നിന്ന് ശുദ്ധിയാകുന്നതിനും വേണ്ടിയുള്ളതാണ്.'" :search="false" :author="'Author Name'" :review="date('M d, Y') . ' by Reviewer Name'" />
+        <x-app.banner :title="$questions['chapters'][$questionSlug]" :desc="'വുദൂ നമസ്‌കാരത്തിന് തയ്യാറെടുക്കുന്നതിനും ചെറിയ അശുദ്ധിയിൽ നിന്ന് ശുദ്ധിയാകുന്നതിനും വേണ്ടിയുള്ളതാണ്.'" :search="false" :author="'Author Name'" :review="date('M d, Y') . ' by Reviewer Name'" />
 
         <div class="row mt-4 notranslate">
             <div class="col-12 col-lg-8">
                 <div class="accordion" id="accordions">
                     <x-app.accordion :id="'topic1'" :title="'വുദു നിർബന്ധമാക്കുന്ന കാര്യങ്ങൾ'">
-                        <h5 class="text-emerald-900 fw-bold h6">നമസ്കാരം</h5>
+                        <h6 class="text-emerald-900 fw-bold">1. നമസ്കാരം</h6>
                         <x-app.quran-box class="mb-1"
                             text="നിങ്ങള്‍ നമസ്കാരത്തിന് ഒരുങ്ങിയാല്‍, നിങ്ങളുടെ മുഖങ്ങളും, മുട്ടുവരെ രണ്ടുകൈകളും കഴുകുകയും, നിങ്ങളുടെ തല തടവുകയും നെരിയാണിവരെ രണ്ട് കാലുകള്‍ കഴുകുകയും ചെയ്യുക">
                             <x-app.ref-button slug="5" number="6" type="quran" :ref="__('app.quran') . ' 5:6'" />
                         </x-app.quran-box>
 
-                        <x-app.hadith-box class="mb-2"
+                        <x-app.hadith-box class="mb-3"
                             text="ചെറിയ അശുദ്ധിയായവരില്‍ നിന്നും വുളു ചെയ്യുന്നതുവരെ നമസ്കാരം സ്വീകരിക്കപ്പെടുകയില്ല.">
                             <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="135" type="hadith"
                                 :ref="'ബുഖാരി:135'" />
@@ -26,17 +26,15 @@
                                 :ref="'മുസ്ലിം:535'" />
                             <x-app.ref-button slug="sahih-muslim" number="537" type="hadith" :ref="'മുസ്ലിം:537'" />
                         </x-app.hadith-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">കഅ്ബക്ക് ചുറ്റും ത്വവാഫ്</h5>
-                        <x-app.hadith-box class="mb-2" text="ശുദ്ധിയാകുന്നതുവരെ കഅ്ബയിലെ ത്വവാഫ് ചെയ്യരുത്.">
+                        <h6 class="text-emerald-900 fw-bold mt-3">2. കഅ്ബക്ക് ചുറ്റും ത്വവാഫ്</h6>
+                        <x-app.hadith-box class="mb-3" text="ശുദ്ധിയാകുന്നതുവരെ കഅ്ബയിലെ ത്വവാഫ് ചെയ്യരുത്.">
                             <x-app.ref-button slug="sahih-bukhari" number="1650" type="hadith" :ref="'ബുഖാരി:1650'" />
                         </x-app.hadith-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">ഖുർആൻ സ്പർശിക്കൽ</h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">3. ഖുർആൻ സ്പർശിക്കൽ</h6>
                         <x-app.quran-box class="mb-1" text="പരിശുദ്ധി നല്‍കപ്പെട്ടവരല്ലാതെ അത് സ്പര്‍ശിക്കുകയില്ല.">
                             <x-app.ref-button class="mb-1" slug="56" number="77" type="quran"
                                 :ref="__('app.quran') . ' 56:77'" />
@@ -47,30 +45,29 @@
                     </x-app.accordion>
 
                     <x-app.accordion :id="'topic2'" :title="'വുദുവിന്റെ നിബന്ധനകൾ (ശർത്ത്)'">
-                        <h5 class="text-emerald-900 fw-bold h6">മുസ്ലിം ആയിരിക്കണം</h5>
-                        <x-app.quran-box class="mb-2" text="ഖുർആൻ വിശകലനങ്ങൾ">
+                        <h6 class="text-emerald-900 fw-bold">1. മുസ്ലിം ആയിരിക്കണം</h6>
+                        <x-app.quran-box class="mb-3" text="ഖുർആൻ വിശകലനങ്ങൾ">
                             <x-app.ref-button slug="18" number="30" type="quran" :ref="__('app.quran') . ' 18:30'" />
                         </x-app.quran-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">ബുദ്ധിയുള്ളവൻ ആയിരിക്കണം</h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">2. ബുദ്ധിയുള്ളവൻ ആയിരിക്കണം</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             മൂന്ന് ആളുകളില്‍ നിന്ന് അവരുടെ പ്രവൃത്തികൾ രേഖപ്പെടുത്തിയിട്ടില്ല: 1) ബുദ്ധിഭ്രമം ബാധിച്ചവന്‍,
                             അവന് സ്വബോധം ഉണ്ടാകുന്നതുവരെ 2) ഉറങ്ങുന്നവ൪, ഉണരുന്നതുവരെ 3) ചെറിയ കുട്ടി
                             പ്രായപൂ൪ത്തിയാകുന്നതുവരെ.
                         </p>
-                        <x-app.hadith-box text="ഹദീസ് വിശകലനങ്ങൾ." class="mb-2">
+
+                        <x-app.hadith-box text="ഹദീസ് വിശകലനങ്ങൾ." class="mb-3">
                             <x-app.ref-button class="mb-1" slug="al-tirmidhi" number="1423" type="hadith"
                                 :ref="'തിർമിധി:1423'" />
                             <x-app.ref-button class="mb-1" slug="abu-dawood" number="4401" type="hadith"
                                 :ref="'അബു ദാവൂദ്:4401'" />
                             <x-app.ref-button slug="abu-dawood" number="4403" type="hadith" :ref="'അബു ദാവൂദ്:4403'" />
                         </x-app.hadith-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">നീയ്യത്ത് (ഉദ്ദേശ്യം) വേണം</h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">3. നീയ്യത്ത് (ഉദ്ദേശ്യം) വേണം</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             വുളൂഇന് മുന്‍പ് നിയ്യത് ഉണ്ടായിരിക്കണം. നിയ്യത്തിന്റെ സ്ഥാനം ഹൃദയമാണ്. ഉദ്ദേശക്കുക എന്നതാണ്
                             നിയ്യത്തിന്റെ ഭാഷാ൪ത്ഥം. മനസ്സില്‍ ഒരു കാര്യം തീരുമാനിക്കലാണ് നിയ്യത്ത്. അശ്രദ്ധമായോ
@@ -78,17 +75,16 @@
                             വുളൂഇന്റെ ആദ്യാവസാനം വുളൂഅ് ചെയ്യുകയാണെന്ന ബോധ്യം ഉണ്ടാകണം.
                         </p>
 
-                        <x-app.hadith-box class="mb-2"
+                        <x-app.hadith-box class="mb-3"
                             text="തീര്‍ച്ചയായും പ്രവര്‍ത്തനങ്ങള്‍ സ്വീകരിക്കപെടുക ഉദ്ദേശത്തിന്റെ അടിസ്ഥാനത്തിലാകുന്നു.">
                             <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="1" type="hadith"
                                 :ref="'ബുഖാരി:1'" />
                             <x-app.ref-button slug="sahih-muslim" number="4927" type="hadith" :ref="'മുസ്ലിം:4927'" />
                         </x-app.hadith-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">ശുദ്ധജലം ഉപയോഗിക്കണം</h5>
-                        <x-app.hadith-box class="mb-2"
+                        <h6 class="text-emerald-900 fw-bold mt-3">4. ശുദ്ധജലം ഉപയോഗിക്കണം</h6>
+                        <x-app.hadith-box
                             text="കിണറ്റിലെ വെള്ളം, മഴവെള്ളം, സംസം വെള്ളം, നദികളില വെള്ളം, കടല്‍ വെള്ളം എന്നിവയൊക്കെ വുളൂഇന്  ഉപയോഗിക്കാം.">
                             <x-app.ref-button class="mb-1" slug="sunan-nasai" number="326" type="hadith"
                                 :ref="'അന-നസാഈ:326'" />
@@ -97,7 +93,7 @@
                     </x-app.accordion>
 
                     <x-app.accordion :id="'topic3'" :title="'വുദുവിന്റെ ഫർദ് (അത്യാവശ്യ ഘടകങ്ങൾ)'">
-                        <h5 class="text-emerald-900 fw-bold h6">മുഖം കഴുകല്‍</h5>
+                        <h6 class="text-emerald-900 fw-bold">1. മുഖം കഴുകല്‍</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             സാധാരണ തലയിൽ മുടി മുളക്കുന്ന ഭാഗം മുതൽ താടിയെല്ലിന്റെ താഴ്ഭാഗം വരെ നീളത്തിലും രണ്ട്
                             ചെവിക്കുറ്റികള്‍ക്കിടയിൽ വീതിയിലും ഒരു പ്രാവശ്യം കഴുകൽ.
@@ -107,15 +103,14 @@
                             <x-app.ref-button slug="5" number="6" type="quran" :ref="__('app.quran') . ' 5:6'" />
                         </x-app.quran-box>
 
-                        <x-app.hadith-box text="വായിൽ വെള്ളം കൊള്ളലും മൂക്കിൽ വെള്ളം കയറ്റി ചീറ്റലും." class="mb-2">
+                        <x-app.hadith-box text="വായിൽ വെള്ളം കൊള്ളലും മൂക്കിൽ വെള്ളം കയറ്റി ചീറ്റലും." class="mb-3">
                             <x-app.ref-button class="mb-1" slug="sahih-muslim" number="560" type="hadith"
                                 :ref="'മുസ്ലിം:560'" />
                             <x-app.ref-button slug="abu-dawood" number="144" type="hadith" :ref="'അബു ദാവൂദ്:144'" />
                         </x-app.hadith-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">ഇരു കൈയ്യുകളും മുട്ടുകൾ ഉൾപ്പെടുത്തി കഴുകുക</h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">2. ഇരു കൈയ്യുകളും മുട്ടുകൾ ഉൾപ്പെടുത്തി കഴുകുക</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             വിരലുകളുടെ അറ്റം മുതല്‍ രണ്ട്‌ കൈകളും മുട്ടുകള്‍ ഉള്‍പ്പെടുത്തി കഴുകുക.
                         </p>
@@ -124,13 +119,12 @@
                         </x-app.quran-box>
 
                         <x-app.hadith-box text="പിന്നീട് വലതു കൈ മുകൾഭാഗം വരെ കഴുകി, പിന്നീട് ഇടതു കൈ മുകൾഭാഗം വരെ കഴുകി."
-                            class="mb-2">
+                            class="mb-3">
                             <x-app.ref-button slug="sahih-muslim" number="579" type="hadith" :ref="'മുസ്ലിം:579'" />
                         </x-app.hadith-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">തല തടവൽ</h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">3. തല തടവൽ</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             കൈകള്‍ വെള്ളത്തില്‍ മുക്കി തലതടവുക. തല കഴുകരുത്‌.
                         </p>
@@ -138,14 +132,13 @@
                             <x-app.ref-button slug="5" number="6" type="quran" :ref="__('app.quran') . ' 5:6'" />
                         </x-app.quran-box>
 
-                        <x-app.hadith-box class="mb-2"
+                        <x-app.hadith-box class="mb-3"
                             text="പിന്നെ കൈകൾ കൊണ്ട് തല തുടച്ചു, മുന്നോട്ടും പിന്നോട്ടും ചലിപ്പിച്ചു. തലയുടെ മുൻഭാഗത്തു നിന്ന് തുടങ്ങി തലയുടെ പിൻഭാഗം വരെ ചലിപ്പിച്ചു.">
                             <x-app.ref-button slug="sahih-bukhari" number="185" type="hadith" :ref="'ബുഖാരി:185'" />
                         </x-app.hadith-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">രണ്ടുകാലുകളും നെരിയാണികള്‍ ഉള്‍പ്പെടുത്തി കഴുകല്‍</h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">4. രണ്ടുകാലുകളും നെരിയാണികള്‍ ഉള്‍പ്പെടുത്തി കഴുകല്‍</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             വിരലിന്റെ അറ്റം മുതൽ നെരിയാണി വരെയാണ് കഴുകേണ്ടത്. കഴുകുമ്പോള്‍ മേല്‍ ഭാഗവും അടിഭാഗവും കഴുകണം.
                             നെരിയാണിയും കഴുകേണ്ടതുണ്ട്.
@@ -159,7 +152,7 @@
                             <x-app.ref-button slug="sahih-muslim" number="538" type="hadith" :ref="'മുസ്ലിം:538'" />
                         </x-app.hadith-box>
 
-                        <x-app.hadith-box class="mb-2"
+                        <x-app.hadith-box class="mb-3"
                             text="വുളൂഅ്‌ ചെയ്യുമ്പോള്‍ നനയാത്ത മടമ്പുകാലുകള്‍ക്ക്‌ നരക ശിക്ഷയുണ്ട്‌">
                             <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="60" type="hadith"
                                 :ref="'ബുഖാരി:60'" />
@@ -169,42 +162,39 @@
                                 :ref="'ബുഖാരി:163'" />
                             <x-app.ref-button slug="sahih-bukhari" number="165" type="hadith" :ref="'ബുഖാരി:165'" />
                         </x-app.hadith-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">ക്രമപ്രകാരം ചെയ്യുക</h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">5. ക്രമപ്രകാരം ചെയ്യുക</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             ഓരോന്നും അല്ലാഹു വിവരിച്ച അതേ വഴിക്കു വഴി ക്രമത്തില്‍തന്നെ നിര്‍വ്വഹിക്കേണ്ടത്.
                         </p>
-                        <x-app.quran-box class="mb-1"
+                        <x-app.quran-box
                             text="നിങ്ങള്‍ നമസ്കാരത്തിന് ഒരുങ്ങിയാല്‍, നിങ്ങളുടെ മുഖങ്ങളും, മുട്ടുവരെ രണ്ടുകൈകളും കഴുകുകയും, നിങ്ങളുടെ തല തടവുകയും നെരിയാണിവരെ രണ്ട് കാലുകള്‍ കഴുകുകയും ചെയ്യുക.">
                             <x-app.ref-button slug="5" number="6" type="quran" :ref="__('app.quran') . ' 5:6'" />
                         </x-app.quran-box>
                     </x-app.accordion>
 
                     <x-app.accordion :id="'topic4'" :title="'സുന്നത്ത് പ്രവർത്തികൾ'">
-                        <h5 class="text-emerald-900 fw-bold h6">1. ബിസ്മില്ലാഹ് പറഞ്ഞു തുടങ്ങുക</h5>
-                        <x-app.hadith-box text="അല്ലാഹുവിന്റെ നാമം ഉച്ചരിക്കാത്തവന്റെ വുദും സാധുവല്ല." class="mb-2">
+                        <h6 class="text-emerald-900 fw-bold">1. ബിസ്മില്ലാഹ് പറഞ്ഞു തുടങ്ങുക</h6>
+                        <x-app.hadith-box text="അല്ലാഹുവിന്റെ നാമം ഉച്ചരിക്കാത്തവന്റെ വുദും സാധുവല്ല." class="mb-3">
                             <x-app.ref-button slug="abu-dawood" number="101" type="hadith" :ref="'അബു ദാവൂദ്:101'" />
                         </x-app.hadith-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">2. മിസ്‌വാക്ക്‌ (ദന്ത ശുദ്ധീകരണം) ചെയ്യല്‍</h5>
-                        <x-app.hadith-box class="mb-2"
+                        <h6 class="text-emerald-900 fw-bold mt-3">2. മിസ്‌വാക്ക്‌ (ദന്ത ശുദ്ധീകരണം) ചെയ്യല്‍</h6>
+                        <x-app.hadith-box class="mb-3"
                             text="ജനങ്ങൾക്ക് ​​ബുദ്ധിമുട്ടായി തോന്നിയില്ലായിരുന്നുവെങ്കിൽ, എല്ലാ നമസ്കാരത്തിനും സിവാക് ഉപയോഗിച്ച് പല്ല് തേക്കാൻ ഞാൻ അവരോട് കൽപ്പിക്കുമായിരുന്നു.">
                             <x-app.ref-button slug="sahih-bukhari" number="887" type="hadith" :ref="'ബുഖാരി:887'" />
                         </x-app.hadith-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">3. രണ്ട്‌ മുന്‍കൈകളും കഴുകുക.</h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">3. രണ്ട്‌ മുന്‍കൈകളും കഴുകുക.</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             വിരലുകളുടെ അറ്റം മുതല്‍ രണ്ട്‌ കൈകളും മുട്ടുകള്‍ ഉള്‍പ്പെടുത്തി കഴുകുക. കൈകാലുകള്‍ കഴുകുന്ന
                             അവസരത്തില്‍ വിരലുകള്‍ അകറ്റിക്കഴുകല്‍ സുന്നത്താകുന്നു.
                         </p>
 
-                        <x-app.hadith-box class="mb-2" text="കൈകളിൽ വെള്ളം ഒഴിച്ച് കഴുകുക">
+                        <x-app.hadith-box class="mb-3" text="കൈകളിൽ വെള്ളം ഒഴിച്ച് കഴുകുക">
                             <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="164" type="hadith"
                                 :ref="'ബുഖാരി:164'" />
                             <x-app.ref-button class="mb-1" slug="sahih-muslim" number="538" type="hadith"
@@ -213,86 +203,79 @@
                                 :ref="'തിർമിധി:39'" />
                             <x-app.ref-button slug="ibn-e-majah" number="447" type="hadith" :ref="'മുസ്ലിം:447'" />
                         </x-app.hadith-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">4. വായ്, മൂക്ക് ശുദ്ധമാക്കുക</h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">4. വായ്, മൂക്ക് ശുദ്ധമാക്കുക</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             വായില്‍ വെള്ളം കൊള്ളുകയും മൂക്കില്‍ വെള്ളം കയറ്റി ചീറ്റുകയും ചെയ്യുക
                         </p>
-                        <x-app.hadith-box class="mb-2" text="ഹദീസ് വിശകലനങ്ങൾ.">
+                        <x-app.hadith-box class="mb-3" text="ഹദീസ് വിശകലനങ്ങൾ.">
                             <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="164" type="hadith"
                                 :ref="'ബുഖാരി:164'" />
                             <x-app.ref-button slug="sahih-muslim" number="538" type="hadith" :ref="'മുസ്ലിം:538'" />
                         </x-app.hadith-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">5. താടിരോമങ്ങള്‍ ചികറ്റിക്കഴുകുക</h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">5. താടിരോമങ്ങള്‍ ചികറ്റിക്കഴുകുക</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             മുഖം കഴുകുമ്പോഴാണ് താടിയുടെ തിക്കകറ്റേണ്ടത്. കാരണം, താടിരോമങ്ങൾ മുഖത്തിന്റെ ഭാഗമാണ്.
                         </p>
 
-                        <x-app.hadith-box text="ഹദീസ്" class="mb-2 border-danger">
+                        <x-app.hadith-box text="ഹദീസ്" class="mb-3 border-danger">
                             <x-app.ref-button class="mb-1" slug="abu-dawood" number="145" type="hadith"
                                 :ref="'അബു ദാവൂദ്:145'" />
                             <x-app.ref-button slug="mishkat" number="408" type="hadith" :ref="'മിഷ്‌കാത്:408'" />
                         </x-app.hadith-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">6. തല മുഴുവൻ തടവുന്നതോടൊന്നിച്ച് ചെവി രണ്ടും തടവുക.
-                        </h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">6. തല മുഴുവൻ തടവുന്നതോടൊന്നിച്ച് ചെവി രണ്ടും തടവുക.</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             തള്ളവിരൽകൊണ്ട് ചെവിയുടെ പുറവും ചൂണ്ടുവിരൽകൊണ്ട് ചെവിയുടെ ഉള്ളും തടവണം.
                         </p>
 
-                        <x-app.hadith-box class="mb-2"
+                        <x-app.hadith-box class="mb-3"
                             text="പ്രവാചകന്‍ തന്റെ തല തുടച്ച് രണ്ട് ചൂണ്ടുവിരലുകളും ചെവിയിൽ തിരുകി; തള്ള വിരലുകള്‍ കൊണ്ട്‌ ചെവികള്‍ക്ക്‌ പുറത്തും ചൂണ്ടുവിരലുകൾ കൊണ്ട്‌ ചെവിയുടെ ഉള്‍ഭാഗവും തടവി. ">
                             <x-app.ref-button slug="abu-dawood" number="135" type="hadith" :ref="'അബു ദാവൂദ്:135'" />
                         </x-app.hadith-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">7. അവയവങ്ങള്‍ തേച്ചുകഴുകുക.</h5>
-                        <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
+                        <h6 class="text-emerald-900 fw-bold mt-3">7. അവയവങ്ങള്‍ തേച്ചുകഴുകുക.</h6>
+                        <p class="m-0 mb-3 text-justify" style="text-indent: 2em">
                             അവയവങ്ങളില്‍ വെള്ളം ഒഴുക്കുന്നതോടൊപ്പം കൈകൊണ്ട്‌ തേച്ച്‌ കഴുകുകയും ചെയ്യുക.
                         </p>
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">8. മൂന്നു പ്രാവശ്യം കഴുകുക.</h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">8. മൂന്നു പ്രാവശ്യം കഴുകുക.</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             ഒരു പ്രാവശ്യം കഴുകല്‍ നിര്‍ബന്ധമാണ്‌. രണ്ടും മൂന്നും പ്രാവശ്യം കഴുകല്‍ സുന്നത്താകുന്നു. എന്നാൽ,
                             ഒരു അവയവം നാല് തവണ കഴുകാൻ പാടില്ല.
                         </p>
 
-                        <x-app.hadith-box text="ഹദീസ്" class="mb-2">
+                        <x-app.hadith-box text="ഹദീസ്" class="mb-3">
                             <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="158" type="hadith"
                                 :ref="'ബുഖാരി:158'" />
                             <x-app.ref-button slug="sahih-muslim" number="545" type="hadith" :ref="'മുസ്ലിം:545'" />
                         </x-app.hadith-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">9. വലതുഭാഗം കൊണ്ട്‌ ആരംഭിക്കുക.</h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">9. വലതുഭാഗം കൊണ്ട്‌ ആരംഭിക്കുക.</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             വുളൂഇന്റെ അവയങ്ങളില്‍ വലതു കൊണ്ട്‌ ആരംഭിക്കല്‍ സുന്നത്താകുന്നു.
                         </p>
 
-                        <x-app.hadith-box text="ഹദീസ്" class="mb-2">
+                        <x-app.hadith-box text="ഹദീസ്" class="mb-3">
                             <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="5854" type="hadith"
                                 :ref="'ബുഖാരി:5854'" />
                             <x-app.ref-button slug="abu-dawood" number="4141" type="hadith" :ref="'അബു ദാവൂദ്:4141'" />
                         </x-app.hadith-box>
-
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">10. വുളൂഇന്‌ ശേഷമുള്ള ‘ദികര്‍’ ചൊല്ലല്‍.</h5>
-                        <p class="m-0 mb-2 text-ar h5 lh-lg">
+                        <h6 class="text-emerald-900 fw-bold mt-3">10. വുളൂഇന്‌ ശേഷമുള്ള ‘ദികര്‍’ ചൊല്ലല്‍.</h6>
+                        <h5 class="m-0 mb-2 text-ar lh-lg">
                             أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا
                             عَبْدُهُ وَرَسُولُهُ، ‏‏‏‏‏‏اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ
                             الْمُتَطَهِّرِينَ
-                        </p>
+                        </h5>
 
                         <x-app.hadith-box text="ഹദീസ്">
                             <x-app.ref-button class="mb-1" slug="al-tirmidhi" number="55" type="hadith"
@@ -339,9 +322,9 @@
                     </x-app.accordion>
 
                     <x-app.accordion :id="'topic6'" :title="'വുദു മുറിയുന്ന കാര്യങ്ങള്‍'">
-                        <h5 class="text-emerald-900 fw-bold h6">
+                        <h6 class="text-emerald-900 fw-bold">
                             1. മുന്‍പിന്‍ ദ്വാരങ്ങളിലൂടെ കാഷ്ഠം, മൂത്രം പോലെയുള്ള വല്ലതും പുറപ്പെടല്‍.
-                        </h5>
+                        </h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             മുന്‍-പിന്‍ ദ്വാരങ്ങളിലൂടെ പുറപ്പെടുന്നത്‌ നജസായാലും അല്ലെങ്കിലും വുളൂഅ്‌ മുറിയും.
                             പുറപ്പെടുന്നത്‌ മനിയ്യ്‌ (ബീജം) ആണെങ്കില്‍ അപ്പോള്‍ കുളി നിര്‍ബന്ധമാകും.
@@ -352,66 +335,65 @@
                             <x-app.ref-button slug="5" number="6" type="quran" :ref="__('app.quran') . ' 5:6'" />
                         </x-app.quran-box>
 
-                        <x-app.hadith-box text="ഹദീസ്" class="mb-2">
+                        <x-app.hadith-box text="ഹദീസ്" class="mb-3">
                             <x-app.ref-button slug="sahih-bukhari" number="269" type="hadith" :ref="'ബുഖാരി:269'" />
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">2. കീഴ്വായു പുറപ്പെടൽ</h5>
-                        <x-app.hadith-box text="ഹദീസ്" class="mb-2">
+                        <h6 class="text-emerald-900 fw-bold mt-3">2. കീഴ്വായു പുറപ്പെടൽ</h6>
+                        <x-app.hadith-box text="ഹദീസ്" class="mb-3">
                             <x-app.ref-button slug="sahih-bukhari" number="135" type="hadith" :ref="'ബുഖാരി:135'" />
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">
+                        <h6 class="text-emerald-900 fw-bold mt-3">
                             3. ഗാഡമായ ഉറങ്ങിപ്പോകുക (ശരീരം പൂർണ്ണമായും അശ്രദ്ധയിൽ ആയാൽ).
-                        </h5>
+                        </h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             നേരിയ ഉറക്കം വുളൂഇനെ നഷ്ടപ്പെടുത്തുകയില്ല.
                         </p>
 
-                        <x-app.hadith-box class="mb-2" text="ഹദീസ്">
+                        <x-app.hadith-box class="mb-3" text="ഹദീസ്">
                             <x-app.ref-button slug="abu-dawood" number="203" type="hadith" :ref="'അബു ദാവൂദ്:203'" />
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">4. ബോധം നശിക്കല്‍.</h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">4. ബോധം നശിക്കല്‍.</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             ഭ്രാന്ത്, ബോധക്ഷയം, ലഹരി, രോഗം തുടങ്ങിയ കാരണങ്ങളാല്‍ ബോധം നഷ്ടപ്പെട്ടാല്‍ അത്‌ ഉറക്കിനേക്കാള്‍
                             വുളൂഇനെ നഷ്ടപ്പെടുത്തുവാന്‍ കാരണമാകും. മാത്രവുമല്ല, വുളൂഇനെ നഷ്ടപ്പെടുത്തുന്ന വല്ലതും തന്നില്‍
                             നിന്ന്‌ സംഭവിച്ചിട്ടുണ്ടോയെന്ന്‌ അവന്‌ അറിയുകയുമില്ല.
                         </p>
 
-                        <x-app.hadith-box class="mb-2" text="ഹദീസ്">
+                        <x-app.hadith-box class="mb-3" text="ഹദീസ്">
                             <x-app.ref-button slug="al-tirmidhi" number="1423" type="hadith" :ref="'തിർമിധി:1423'" />
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">5. ലൈംഗീകാവയവങ്ങള്‍ സ്പര്‍ശിക്കല്‍</h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">5. ലൈംഗീകാവയവങ്ങള്‍ സ്പര്‍ശിക്കല്‍</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             കൈപള്ള കൊണ്ട്‌ മറകൂടാതെ മനുഷ്യരുടെ മുന്‍ദ്വാരമോ പിന്‍ദ്വാരമോ സ്പര്‍ശിച്ചാല്‍ അത്‌ വുളൂഇനെ
                             നഷ്ടപ്പെടുത്തും.
                         </p>
 
-                        <x-app.hadith-box text="ഹദീസ്" class="mb-2">
+                        <x-app.hadith-box text="ഹദീസ്" class="mb-3">
                             <x-app.ref-button slug="ibn-e-majah" number="479" type="hadith" :ref="'ഇബ്നുമാജ:479'" />
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">6. ഒട്ടകത്തിന്റെ മാംസം ഭക്ഷിക്കല്‍.
-                        </h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">6. ഒട്ടകത്തിന്റെ മാംസം ഭക്ഷിക്കല്‍.</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             ഒട്ടകത്തിന്റെ മാംസം വേവിച്ചതാണെങ്കിലും അല്ലെങ്കിലും അത്‌ ഭക്ഷിച്ചാല്‍ വുളൂഅ്‌ നഷ്ടപ്പെടും.
                         </p>
 
-                        <x-app.hadith-box text="ഹദീസ്" class="mb-2">
+                        <x-app.hadith-box text="ഹദീസ്" class="mb-3">
                             <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="5457" type="hadith"
                                 :ref="'ബുഖാരി:5457'" />
                             <x-app.ref-button slug="al-tirmidhi" number="81" type="hadith" :ref="'തിർമിധി:81'" />
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6 mt-3">7. ഇസ്‌ലാം മതം ഉപേക്ഷിക്കല്‍.</h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">7. ഇസ്‌ലാം മതം ഉപേക്ഷിക്കല്‍.</h6>
                         <p class="m-0 text-justify mb-1" style="text-indent: 2em">
                             അഥവാ ഇസ്ലാമില്‍ നിന്ന്‌ പുറത്താക്കുന്ന കാര്യങ്ങള്‍ (നവാഖിദുല്‍ ഇസ്ലാം) പ്രവൃത്തിക്കലാകുന്നു.
                         </p>
@@ -420,17 +402,17 @@
                         </x-app.quran-box>
                     </x-app.accordion>
 
-                    <x-app.accordion :id="'topic7'" :title="'വുദു ഉത്തമമായ കാര്യങ്ങൾ'" class="mb-4" :active="'true'">
-                        <h5 class="text-emerald-900 fw-bold h6">1. ഉറങ്ങാൻ പോകുമ്പോൾ</h5>
-                        <x-app.hadith-box text="ഹദീസ്" class="mb-2">
+                    <x-app.accordion :id="'topic7'" :title="'വുദു ഉത്തമമായ കാര്യങ്ങൾ'" class="mb-4">
+                        <h6 class="text-emerald-900 fw-bold">1. ഉറങ്ങാൻ പോകുമ്പോൾ</h6>
+                        <x-app.hadith-box text="ഹദീസ്" class="mb-3">
                             <x-app.ref-button slug="sahih-bukhari" number="247" type="hadith" :ref="'ബുഖാരി:247'" />
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6">
+                        <h6 class="text-emerald-900 fw-bold mt-3">
                             2. ജനാബത്തുകാരന്‍ വീണ്ടും സംയോഗത്തിനോ ഭക്ഷണം കഴിക്കാനോ ഉറങ്ങാനോ ഉദ്ദേശിക്കുന്നുവെങ്കിൽ
-                        </h5>
-                        <x-app.hadith-box text="ഹദീസ്" class="mb-2">
+                        </h6>
+                        <x-app.hadith-box text="ഹദീസ്" class="mb-3">
                             <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="287" type="hadith"
                                 :ref="'ബുഖാരി:287'" />
                             <x-app.ref-button class="mb-1" slug="al-tirmidhi" number="141" type="hadith"
@@ -450,9 +432,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h5 class="text-emerald-900 fw-bold h6">
-                            3. ദിക്ർ ചൊല്ലുമ്പോൾ, ഖുർആൻ പാരായണം ചെയ്യുമ്പോൾ.
-                        </h5>
+                        <h6 class="text-emerald-900 fw-bold mt-3">3. ദിക്ർ ചൊല്ലുമ്പോൾ, ഖുർആൻ പാരായണം ചെയ്യുമ്പോൾ.</h6>
                         <p class="m-0 text-justify" style="text-indent: 2em">
                             ഖുർആൻ സ്പര്‍ശിക്കുന്നതിന് വുളൂഅ് നിര്‍ബന്ധമാണെന്ന കാര്യം മേൽ സൂചിപ്പിച്ചിട്ടുണ്ട്. ഇവിടെ
                             സുന്നത്തായി പരാമര്‍ശിച്ചത് ഖുർആൻ പാരായണം ചെയ്യുന്നതിനെ കുറിച്ചാണ്.
