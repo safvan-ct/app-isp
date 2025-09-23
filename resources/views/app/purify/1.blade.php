@@ -321,7 +321,7 @@
                         </x-app.ref-box>
                     </x-app.accordion>
 
-                    <x-app.accordion :id="'topic6'" :title="'വുദു മുറിയുന്ന കാര്യങ്ങള്‍'">
+                    <x-app.accordion :id="'topic6'" :title="'വുദു മുറിയുന്ന കാര്യങ്ങള്‍'" :active="true">
                         <h6 class="text-emerald-900 fw-bold">
                             1. മുന്‍പിന്‍ ദ്വാരങ്ങളിലൂടെ കാഷ്ഠം, മൂത്രം പോലെയുള്ള വല്ലതും പുറപ്പെടല്‍.
                         </h6>
@@ -397,9 +397,45 @@
                         <p class="m-0 text-justify mb-1" style="text-indent: 2em">
                             അഥവാ ഇസ്ലാമില്‍ നിന്ന്‌ പുറത്താക്കുന്ന കാര്യങ്ങള്‍ (നവാഖിദുല്‍ ഇസ്ലാം) പ്രവൃത്തിക്കലാകുന്നു.
                         </p>
-                        <x-app.quran-box text="ശിര്‍ക്ക്‌ കര്‍മ്മങ്ങളെ തകര്‍ക്കും; വുളൂഅ്‌ ഒരു കര്‍മ്മമാണ്‌.">
+                        <x-app.quran-box class="mb-3"
+                            text="ശിര്‍ക്ക്‌ കര്‍മ്മങ്ങളെ തകര്‍ക്കും; വുളൂഅ്‌ ഒരു കര്‍മ്മമാണ്‌.">
                             <x-app.ref-button slug="39" number="65" type="quran" :ref="__('app.quran') . ' 39:65'" />
                         </x-app.quran-box>
+                        <x-app.hr />
+
+                        <h6 class="text-emerald-900 fw-bold mt-3">8. ഭാര്യയെ തൊട്ടാൽ വുളൂഅ് മുറിയുമോ?</h6>
+                        <p class="m-0 text-justify mb-1" style="text-indent: 2em">
+                            ഭാര്യയെ തൊട്ടാൽ വുളൂഅ് മുറിയുമോ?’ എന്നത് പല ആളുകളുടെയും സംശയമാണ്. ഈ വിഷയത്തിൽ ഇസ്ലാമിക
+                            പ്രമാണങ്ങൾ പരിശോധിച്ചാൽ, ഭാര്യയെ തൊട്ടാൽ വുളൂഅ് മുറിയുകയില്ല എന്നാണ് മനസ്സിലാകുന്നത്.
+                        </p>
+                        <x-app.hadith-box text="ഹദീസ്" class="mb-2">
+                            <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="513" type="hadith"
+                                :ref="'ബുഖാരി:513'" />
+                            <x-app.ref-button class="mb-1" slug="ibn-e-majah" number="502" type="hadith"
+                                :ref="'ഇബ്നുമാജ:502'" />
+                            <x-app.ref-button slug="sunan-nasai" number="166" type="hadith" :ref="'അന-നസാഈ:166'" />
+                        </x-app.hadith-box>
+
+                        <x-app.ref-box class="mb-2">
+                            <x-app.ref-button slug="4" number="43" type="quran" :ref="__('app.quran') . ' 4:43'" /> أَوْ
+                            لَٰمَسْتُمُ ٱلنِّسَآءَ فَلَمْ تَجِدُوا۟ مَآءً فَتَيَمَّمُوا۟ صَعِيدًا طَيِّبًا
+                            ഇതിലെ لَٰمَسْتُمُ (ലമസ്ത്തും) എന്ന പദത്തിന് “സ്പർശനം” എന്നാണ് ഇമാം ശാഫിഈ (റ) അർത്ഥം
+                            നൽകിയിട്ടുള്ളത്. അതുകൊണ്ട് ഭാര്യയെ തൊട്ടാൽ വുളൂഅ് മുറിയുമെന്ന് അദ്ദേഹം
+                            വിധിച്ചിട്ടുള്ളത്.
+                        </x-app.ref-box>
+
+                        <x-app.ref-box>
+                            <p class="m-0 mb-1">ചുരുക്കത്തിൽ ഈ വിഷയത്തില്‍ പ്രധാനമായും മൂന്ന് അഭിപ്രായങ്ങള്‍ ആണ് ഉള്ളത്.
+                            </p>
+                            <ul class="m-0">
+                                <li>ഭാര്യയെ തൊട്ടാൽ വുളൂഅ് മുറിയും.</li>
+                                <li>വുളൂഅ് മുറിയുകയില്ല, വികാരമായി സ്പര്‍ശിച്ചാലും .</li>
+                                <li>
+                                    വികാരത്തില്‍ സ്പര്‍ശിച്ചാല്‍ വുളൂഅ് മുറിയും, അതല്ലാതെ സ്പര്‍ശിച്ചാല്‍ വുളൂഅ്
+                                    മുറിയുകയില്ല.
+                                </li>
+                            </ul>
+                        </x-app.ref-box>
                     </x-app.accordion>
 
                     <x-app.accordion :id="'topic7'" :title="'വുദു ഉത്തമമായ കാര്യങ്ങൾ'" class="mb-4">
