@@ -32,7 +32,7 @@
                         <x-app.hr />
                     </x-app.accordion>
 
-                    <x-app.accordion :id="'topic2'" :title="'വിസർജ്ജന മര്യാദകൾ'" :active="'true'">
+                    <x-app.accordion :id="'topic2'" :title="'വിസർജ്ജന മര്യാദകൾ'">
                         <h6 class="text-emerald-900 fw-bold">1. ഇസ്തിൻജാഉം ഇസ്തിജ്മാറും</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             മലമൂത്രദ്വാരങ്ങളിലൂടെ പുറത്തുവന്നത് വെള്ളംകൊണ്ട് ശുചീകരിക്കലാണ് ഇസ്തിൻജാഅ്. കല്ലു പോലുള്ള
@@ -200,186 +200,25 @@
                     </x-app.accordion>
 
                     <x-app.accordion :id="'topic3'" :title="'നഖം വെട്ടൽ'" class="mb-4">
-                        <h6 class="text-emerald-900 fw-bold">1. ഇസ്തിൻജാഉം ഇസ്തിജ്മാറും</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            മലമൂത്രദ്വാരങ്ങളിലൂടെ പുറത്തുവന്നത് വെള്ളംകൊണ്ട് ശുചീകരിക്കലാണ് ഇസ്തിൻജാഅ്. കല്ലു പോലുള്ള
-                            ശുദ്ധവും അനുവദനീയവും വൃത്തിയാക്കാവുന്നതുമായ വസ്തുകൊണ്ട് തടവുന്നതിനാണ് ഇസ്തിജ്മാറ് എന്നു
-                            പറയുന്നത്. ഇവയിലൊന്ന് മറ്റേതിനു പകരം മതിയാകുന്നതാണ്. തിരുനബിﷺയിൽ നിന്ന് അപ്രകാരം
-                            സ്ഥിരപ്പെട്ടിട്ടുണ്ട്.
+                            നഖം നീട്ടി വളർത്താൻ സത്യവിശ്വാസികൾക്ക് പാടുള്ളതല്ലെന്നും നഖം വെട്ടൽ ശുദ്ധപ്രകൃതിയുടെ
+                            ഭാഗമാണെന്നും മനസ്സിലാക്കുക. പ്രവാചകന്‍മാരുടെ ചര്യകളായി അറിയപ്പെടുന്ന ചില കാര്യങ്ങൾക്കാണ്
+                            ശുദ്ധപ്രകൃതി ചര്യകള്‍ എന്ന് പറയുന്നത്.
                         </p>
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button slug="sahih-bukhari" number="1951" type="hadith" :ref="'ബുഖാരി:1951'" />
+                        <x-app.hadith-box text="ഹദീസ്." class="mb-1">
+                            <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="5889" type="hadith"
+                                :ref="'ബുഖാരി:5889'" />
+                            <x-app.ref-button slug="sahih-muslim" number="604" type="hadith" :ref="'മുസ്ലിം:604'" />
                         </x-app.hadith-box>
-                        <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">
-                            2. വിസർജ്ജന സ്ഥലത്ത് പ്രവേശിക്കുമ്പോൾ ഇസ്തിആദത്ത് ചൊല്ലുക
-                        </h6>
-                        <p class="m-0 mb-1 text-ar lh-lg">
-                            اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ
-                        </p>
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="142" type="hadith"
-                                :ref="'ബുഖാരി:142'" />
-                            <x-app.ref-button slug="ibn-e-majah" number="297" type="hadith" :ref="'ഇബ്‍ൻ മാജഹ്:297'" />
+                        <x-app.hadith-box class="mb-1"
+                            text="മീശവെട്ടുക, നഖം മുറിക്കുക, കക്ഷരോമം നീക്കല്‍, ഗുഹ്യരോമം നീക്കല്‍ തുടങ്ങി കാര്യങ്ങള്‍ 40 രാത്രികളിലധികം വിട്ടേക്കരുത്.">
+                            <x-app.ref-button slug="sahih-muslim" number="599" type="hadith" :ref="'മുസ്ലിം:599'" />
                         </x-app.hadith-box>
-                        <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">3. ക്വിബ്‌ലക്ക് അഭിമുഖമാകലും പിന്തിരിയലും</h6>
-                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            മലമൂത്ര വിസർജനവേളയിൽ മരുഭൂമിയിൽ മറയില്ലാതെ ക്വിബ്‌ലയെ അഭിമുഖീകരിക്കലും പിന്തിരിയലും
-                            അനുവദനീയമല്ല. വിസർജനം നിർവഹിക്കുന്നവന്റെയും കഅ്ബയുടെയും ഇടയിൽ മറയായി വല്ലതുമുണ്ടെങ്കിൽ അതിൽ
-                            കുഴപ്പമൊന്നുമില്ല.
-                        </p>
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button slug="sahih-bukhari" number="294" type="hadith" :ref="'ബുഖാരി:294'" />
+                        <x-app.hadith-box class="mb-1" text="വലതിനെ മുന്തിക്കുക">
+                            <x-app.ref-button slug="sahih-muslim" number="616" type="hadith" :ref="'മുസ്ലിം:616'" />
                         </x-app.hadith-box>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">4. വിസർജ്ജനം പാടില്ലാത്ത സ്ഥലങ്ങൾ</h6>
-                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            ഉറവകളിലും വഴിയിലും തണലിലും, മാളത്തിൽ, കെട്ടിനിൽക്കുന്ന വെള്ളത്തിൽ, ഖബ്റിൽ
-                        </p>
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button class="mb-1" slug="abu-dawood" number="232" type="hadith"
-                                :ref="'അബൂ ദാവൂദ്:232'" />
-                            <x-app.ref-button slug="ibn-e-majah" number="645" type="hadith" :ref="'ഇബ്‍ൻ മാജഹ്:645'" />
-                        </x-app.hadith-box>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">5. വിസര്‍ജ്ജനം ചെയ്ത വെള്ളത്തിൽ കുളിക്കരുത്</h6>
-                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            ആർത്തവകാരിയുമായി ഭർത്താവ് ലൈംഗിക ബന്ധത്തിൽ ഏര്‍പ്പെടുന്നത് നിഷിദ്ധമാണ്. ഭർത്താവിൻറെ ആവശ്യത്തിന്
-                            അവൾ വഴങ്ങാനും പാടില്ല.
-                        </p>
-                        <x-app.quran-box class="mb-1"
-                            text="അതൊരു മാലിന്യമാകുന്നു. അതിനാല്‍ ആര്‍ത്തവഘട്ടത്തില്‍ നിങ്ങള്‍ സ്ത്രീകളില്‍ നിന്ന് അകന്നു നില്‍ക്കേണ്ടതാണ്‌. അവര്‍ ശുദ്ധിയാകുന്നത് വരെ അവരെ സമീപിക്കുവാന്‍ പാടില്ല.">
-                            <x-app.ref-button slug="2" number="222" type="quran" :ref="__('app.quran') . ' 2:222'" />
-                        </x-app.quran-box>
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="295" type="hadith"
-                                :ref="'ബുഖാരി:295'" />
-                            <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="297" type="hadith"
-                                :ref="'ബുഖാരി:297'" />
-                            <x-app.ref-button slug="sahih-bukhari" number="302" type="hadith" :ref="'ബുഖാരി:302'" />
-                        </x-app.hadith-box>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">6. കുളിപ്പുരയിൽ മൂത്രമൊഴിക്കരുത്</h6>
-                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            ആർത്തവകാരിയുമായി ഭർത്താവ് ലൈംഗിക ബന്ധത്തിൽ ഏര്‍പ്പെടുന്നത് നിഷിദ്ധമാണ്. ഭർത്താവിൻറെ ആവശ്യത്തിന്
-                            അവൾ വഴങ്ങാനും പാടില്ല.
-                        </p>
-                        <x-app.quran-box class="mb-1" text="">
-                            <x-app.ref-button slug="65" number="1" type="quran" :ref="__('app.quran') . ' 65:1'" />
-                        </x-app.quran-box>
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button slug="sahih-bukhari" number="5251" type="hadith" :ref="'ബുഖാരി:5251'" />
-                        </x-app.hadith-box>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">7. വസ്ത്രം ഉയർത്തേണ്ടത്, ഇരുന്നാണ് നിർവഹിക്കേണ്ടത്</h6>
-                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            ആർത്തവകാരിയുമായി ഭർത്താവ് ലൈംഗിക ബന്ധത്തിൽ ഏര്‍പ്പെടുന്നത് നിഷിദ്ധമാണ്. ഭർത്താവിൻറെ ആവശ്യത്തിന്
-                            അവൾ വഴങ്ങാനും പാടില്ല.
-                        </p>
-                        <x-app.quran-box class="mb-1" text="">
-                            <x-app.ref-button slug="65" number="1" type="quran" :ref="__('app.quran') . ' 65:1'" />
-                        </x-app.quran-box>
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button slug="sahih-bukhari" number="5251" type="hadith" :ref="'ബുഖാരി:5251'" />
-                        </x-app.hadith-box>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">8. നിന്നുകൊണ്ടു മൂത്ര വിസർജനം ആകാവുന്നത് എപ്പോൾ</h6>
-                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            മാലിന്യം ഏൽക്കുകയില്ലെന്നതിലും നഗ്നത വെളിപ്പെടുകയില്ലെന്നതിലും നിർഭയത്വം ഉണ്ടായാൽ നിന്നുകൊണ്ട്
-                            മൂത്രമൊഴിക്കാം.
-                        </p>
-                        <x-app.quran-box class="mb-1" text="">
-                            <x-app.ref-button slug="65" number="1" type="quran" :ref="__('app.quran') . ' 65:1'" />
-                        </x-app.quran-box>
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button slug="sahih-bukhari" number="5251" type="hadith" :ref="'ബുഖാരി:5251'" />
-                        </x-app.hadith-box>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">9. വിസർജ്ജന വേളയിൽ സലാം പറയുകയോ മടക്കുകയോ വേണ്ടതില്ല
-                        </h6>
-                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            ആർത്തവകാരിയുമായി ഭർത്താവ് ലൈംഗിക ബന്ധത്തിൽ ഏര്‍പ്പെടുന്നത് നിഷിദ്ധമാണ്. ഭർത്താവിൻറെ ആവശ്യത്തിന്
-                            അവൾ വഴങ്ങാനും പാടില്ല.
-                        </p>
-                        <x-app.quran-box class="mb-1" text="">
-                            <x-app.ref-button slug="65" number="1" type="quran" :ref="__('app.quran') . ' 65:1'" />
-                        </x-app.quran-box>
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button slug="sahih-bukhari" number="5251" type="hadith" :ref="'ബുഖാരി:5251'" />
-                        </x-app.hadith-box>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">10. വലതു കൈ കൊണ്ട് ലിംഗം പിടിക്കരുത്, വലതു കൈ കൊണ്ട്
-                            ശുദ്ധിയാക്കരുത്, ഇടതു കൈ കൊണ്ട് ശുദ്ധിയാക്കുക</h6>
-                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            ആർത്തവകാരിയുമായി ഭർത്താവ് ലൈംഗിക ബന്ധത്തിൽ ഏര്‍പ്പെടുന്നത് നിഷിദ്ധമാണ്. ഭർത്താവിൻറെ ആവശ്യത്തിന്
-                            അവൾ വഴങ്ങാനും പാടില്ല.
-                        </p>
-                        <x-app.quran-box class="mb-1" text="">
-                            <x-app.ref-button slug="65" number="1" type="quran" :ref="__('app.quran') . ' 65:1'" />
-                        </x-app.quran-box>
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button slug="sahih-bukhari" number="5251" type="hadith" :ref="'ബുഖാരി:5251'" />
-                        </x-app.hadith-box>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">11. വെള്ളം ലഭിക്കാതെ കല്ലോ മറ്റോ ഉപയോഗിക്കുമ്പോൾ</h6>
-                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            എല്ലും ചാണകവും ഉപയോഗിക്കരുത്
-                        </p>
-                        <x-app.quran-box class="mb-1" text="">
-                            <x-app.ref-button slug="65" number="1" type="quran" :ref="__('app.quran') . ' 65:1'" />
-                        </x-app.quran-box>
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button slug="sahih-bukhari" number="5251" type="hadith" :ref="'ബുഖാരി:5251'" />
-                        </x-app.hadith-box>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">12. ഇസ്തിൻജാഇന് ശേഷം കൈ വൃത്തിയാക്കണം</h6>
-                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            എല്ലും ചാണകവും ഉപയോഗിക്കരുത്
-                        </p>
-                        <x-app.quran-box class="mb-1" text="">
-                            <x-app.ref-button slug="65" number="1" type="quran" :ref="__('app.quran') . ' 65:1'" />
-                        </x-app.quran-box>
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button slug="sahih-bukhari" number="5251" type="hadith" :ref="'ബുഖാരി:5251'" />
-                        </x-app.hadith-box>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">13. ടോയ്ലറ്റിൽ നിന്നും പുറത്ത് കടക്കുമ്പോൾ</h6>
-                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            എല്ലും ചാണകവും ഉപയോഗിക്കരുത്
-                        </p>
-                        <x-app.quran-box class="mb-1" text="">
-                            <x-app.ref-button slug="65" number="1" type="quran" :ref="__('app.quran') . ' 65:1'" />
-                        </x-app.quran-box>
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button slug="sahih-bukhari" number="5251" type="hadith" :ref="'ബുഖാരി:5251'" />
-                        </x-app.hadith-box>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">14. വിസർജ്ജനം പിടിച്ചുവെച്ച് നമസ്കരിക്കരുത്,
-                            മൂത്രവിസജ്ജർനം: അലസത കാണിക്കരുത്, മലമൂത്ര വിസർജനത്തിനിടയിൽ പരസ്പരം സംസാരിക്കുന്നതിന്റെ വിധി</h6>
-                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            എല്ലും ചാണകവും ഉപയോഗിക്കരുത്
-                        </p>
-                        <x-app.quran-box class="mb-1" text="">
-                            <x-app.ref-button slug="65" number="1" type="quran" :ref="__('app.quran') . ' 65:1'" />
-                        </x-app.quran-box>
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button slug="sahih-bukhari" number="5251" type="hadith" :ref="'ബുഖാരി:5251'" />
-                        </x-app.hadith-box>
-                        <x-app.hr />
                     </x-app.accordion>
                 </div>
             </div>
