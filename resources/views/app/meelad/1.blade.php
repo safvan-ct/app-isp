@@ -9,7 +9,7 @@
         <div class="row mt-4 notranslate">
             <div class="col-12 col-lg-8">
                 <div class="accordion" id="accordions">
-                    <x-app.accordion :id="'topic1'" :title="'പുണ്യ റബീഅ്'" :active="'true'">
+                    <x-app.accordion :id="'topic1'" :title="'പുണ്യ റബീഅ്'">
                         <x-app.quran-box class="mb-1"
                             text="ആകാശങ്ങളും ഭൂമിയും സൃഷ്ടിച്ച ദിവസം അല്ലാഹു രേഖപ്പെടുത്തിയതനുസരിച്ച് അല്ലാഹുവിന്‍റെ അടുക്കല്‍ മാസങ്ങളുടെ എണ്ണം പന്ത്രണ്ടാകുന്നു. അവയില്‍ നാലെണ്ണം (യുദ്ധം) വിലക്കപ്പെട്ടമാസങ്ങളാകുന്നു. അതാണ് വക്രതയില്ലാത്ത മതം....">
                             <x-app.ref-button class="mb-1" slug="9" number="36" type="quran" :ref="__('app.quran') . ' 9:36'" />
@@ -175,13 +175,32 @@
 
                         <x-app.hr />
 
-                        <x-app.hadith-box class="mt-3 mb-1" text="ഞാൻ ജനിച്ച ദിവസമായിരുന്നു അത് (തിങ്കളാഴ്ച).">
+                        <x-app.hadith-box class="mt-3 mb-1"
+                            text="നബി ﷺ യുടെ ജനനത്തോട് അനുബന്ധിച്ച് എല്ലാ തിങ്കളാഴ്ചയും നോമ്പ് അനുഷ്ഠിക്കൽ സുന്നത്ത് ആണ്.">
                             <x-app.ref-button slug="sahih-muslim" number="2747" type="hadith" :ref="'മുസ്ലിം:2747'" />
                         </x-app.hadith-box>
 
-                        <x-app.ref-box class="text-center">
-                            നബി ﷺ യുടെ ജനനത്തോട് അനുബന്ധിച്ച് എല്ലാ തിങ്കളാഴ്ചയും നോമ്പ് അനുഷ്ഠിക്കൽ സുന്നത്ത് ആണ്.
-                        </x-app.ref-box>
+                        <x-app.hadith-box class="mb-1"
+                            text="വഴിയിൽ നിന്ന് ദോഷകരമായ ഒരു കാര്യം നീക്കം ചെയ്യുന്നതും സ്വദഖയാണ്.">
+                            <x-app.ref-button slug="sahih-bukhari" number="2989" type="hadith" :ref="'ബുഖാരി:2989'" />
+                        </x-app.hadith-box>
+
+                        <x-app.hadith-box class="mb-1"
+                            text="എന്റെ ഉമ്മത്തിൽ ചിലർ വ്യഭിചാരം, പട്ടു, മദ്യം, സംഗീതോപകരണങ്ങൾ എന്നിവ ഹലാൽ ആക്കും.">
+                            <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="5590" type="hadith"
+                                :ref="'ബുഖാരി:5590'" />
+                            <x-app.ref-button class="mb-1" slug="ibn-e-majah" number="4020" type="hadith"
+                                :ref="'ഇബ്‍ൻ മാജഹ്:4020'" />
+                            <x-app.ref-button slug="abu-dawood" number="4927" type="hadith" :ref="'അബു ദാവൂദ്:4927'" />
+                        </x-app.hadith-box>
+
+                        <x-app.hadith-box text="ഈദ് & വിവാഹങ്ങളിലും ഡഫ് ഉപയോഗിക്കാൻ അനുമതിയുണ്ട്.">
+                            <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="952" type="hadith"
+                                :ref="'ബുഖാരി:952'" />
+                            <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="5162" type="hadith"
+                                :ref="'ബുഖാരി:5162'" />
+                            <x-app.ref-button slug="ibn-e-majah" number="1896" type="hadith" :ref="'ഇബ്‍ൻ മാജഹ്:1896'" />
+                        </x-app.hadith-box>
                     </x-app.accordion>
 
                     <x-app.accordion :id="'topic4'" :title="'ബിദ്അത്ത് മുന്നറിയിപ്പ്'" class="mb-4">

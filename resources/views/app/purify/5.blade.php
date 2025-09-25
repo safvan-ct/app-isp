@@ -4,126 +4,108 @@
     <x-app.topbar :title="$questions['title']" :url="route('questions.show', ['menu_slug' => 'topics', 'module_slug' => $questions['slug']])" />
 
     <div class="container my-3 pb-5">
-        <x-app.banner :title="$questions['chapters'][$questionSlug]" :desc="'ശരീരത്തിലും വസ്ത്രത്തിലും സ്ഥലത്തും വന്നാൽ ശുദ്ധീകരണം നിർബന്ധമായ വസ്തുക്കൾ ആണ്.'" :search="false" :author="'Author Name'" :review="date('M d, Y') . ' by Reviewer Name'" />
+        <x-app.banner :title="$questions['chapters'][$questionSlug]" :desc="'ആദമിന്റെ പെണ്‍മക്കള്‍ക്ക് അല്ലാഹു നിശ്ചയിച്ച കാര്യമാണ് ആര്‍ത്തവം. <em>- ബുഖാരി:294</em>'" :search="false" :author="'Author Name'"
+            :review="date('M d, Y').
+            ' by Reviewer Name'" />
 
         <div class="row mt-4 notranslate">
             <div class="col-12 col-lg-8">
                 <div class="accordion" id="accordions">
-                    <x-app.accordion :id="'topic1'" :title="'നജസ്'">
-                        <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
-                            നജസ് മൂന്നുവിധമാണ്. <strong>1) നജാസ മുഗല്ലദ്വ (കടുത്ത നജസ്):</strong> നായയും നായയിൽനിന്ന് ജന്മം
-                            കൊള്ളുന്നവയുമാകുന്നു അവ. <strong>2) നജാസ മുഖഫ്ഫഫ (ലഘുവായ നജസ്):</strong> രക്തം, മദ്‌യ്, ചലം,
-                            ചോരയും ചലവും കലർന്ന നീര്, ഭക്ഷണം കഴിച്ചിട്ടില്ലാത്ത ആൺകുട്ടിയുടെ മൂത്രം പോലുള്ളവ. <strong>3)
-                                നജാസഃ മുതവസ്സിത്വ (ഇടത്തരം നജസ്): മൂത്രം, മലം, ശവം പോലുള്ളവ.</strong>
-                        </p>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">1. തെളിവുകൾ വ്യക്തമാക്കിയ നജസുകൾ</h6>
+                    <x-app.accordion :id="'topic1'" :title="'ഹയ്ദ് & നിഫാസ്'">
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            മനുഷ്യന്റെ മൂത്രം, മലം, ഛർദിൽ: ഭക്ഷണം കഴിച്ചിട്ടില്ലാത്ത ആൺകുട്ടിയുടെ മൂത്രം ഇതിൽനിന്ന് ഒഴിവാണ്;
-                            അതിൽ വെള്ളം തെളിച്ചാൽ മതിയാകും.
+                            ഹയ്ദ് (ആർത്തവരക്തം), നിഫാസ് (പ്രസവരക്തം) എന്നിവ സ്ത്രീകളിലുണ്ടാകുന്ന ജൈവിക പ്രതിഭാസമാണ്.
+                            പ്രസവകാരണത്താലല്ലാതെ അരോഗാവസ്ഥയിൽ നിർണിത സമയങ്ങളിലായി സ്ത്രീയുടെ ഗർഭപാത്രത്തിനുള്ളിൽനിന്നു
+                            പുറപ്പെടുന്ന നൈസർഗികരക്തമാണ് മതത്തിന്റെ സാങ്കേതിക ഭാഷ്യത്തിൽ ഹയ്ദ്. പ്രസവവേളയിൽ സ്ത്രീയിൽനിന്നു
+                            പുറപ്പെടുന്ന രക്തമാണ് നിഫാസ്.
                         </p>
-
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="223" type="hadith"
-                                :ref="'ബുഖാരി:223'" />
-                            <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="220" type="hadith"
-                                :ref="'ബുഖാരി:220'" />
-                            <x-app.ref-button class="mb-1" slug="al-tirmidhi" number="610" type="hadith"
-                                :ref="'അൽ-തിർമിധി:610'" />
-                            <x-app.ref-button slug="ibn-e-majah" number="522" type="hadith" :ref="'ഇബ്നുമാജ :522'" />
-                        </x-app.hadith-box>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">
-                            2. മാംസം ഭക്ഷ്യയോഗ്യമായ മൃഗത്തിൽനിന്ന് ഒഴുക്കപ്പെട്ട രക്തം.
-                        </h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            മാംസത്തിലും നാഡിഞരമ്പുകളിലും ശേഷിക്കുന്ന രക്തം ശുദ്ധമാകുന്നു.
+                            സ്ത്രീകളില്‍, അവരുടെ പ്രത്യുല്പാദനത്തിന്‍റെ ഭാഗമായി നടക്കുന്ന ഒരു സ്വാഭാവിക പ്രക്രിയയാണ്‌
+                            ആര്‍ത്തവം. പ്രായപൂര്‍ത്തിയാകുന്ന കാലം തൊട്ട്, ആര്‍ത്തവ വിരാമം വരെ ഏകദേശം എല്ലാ മാസവും ഇത്
+                            സംഭവിക്കുന്നു.
                         </p>
-
-                        <x-app.quran-box class="mb-3" text="അത് ഒഴുക്കപ്പെട്ട രക്തം ആണെങ്കിലൊഴികെ.">
-                            <x-app.ref-button slug="6" number="145" type="quran" :ref="__('app.quran') . ' 6:145'" />
-                        </x-app.quran-box>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">3. ശവം</h6>
-                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            മതപരമായ നിലക്കുള്ള അറവു നടത്താതെ സ്വാഭാവിക മരണത്തിലൂടെ ജീവൻ പോയതാണത്.
+                        <p class="m-0 text-justify" style="text-indent: 2em">
+                            പൊതുവിൽ ഒമ്പത് വയസ്സാകുന്നതിനു മുമ്പ് ആർത്തവമില്ല. അതിനു മുമ്പ് ഉണ്ടാകുന്നത് വളരെ അത്യപൂർവമാണ്.
+                            ശരിയായ അഭിപ്രായപ്രകാരം അമ്പതു വയസ്സിനുശേഷം മിക്കവാറും ആർത്തവമുണ്ടാവുകയില്ല.
                         </p>
-
-                        <x-app.quran-box class="mb-1" text="അത് ശവമാണെങ്കിലൊഴികെ">
-                            <x-app.ref-button slug="6" number="145" type="quran" :ref="__('app.quran') . ' 6:145'" />
-                        </x-app.quran-box>
-                        <x-app.ref-box class="mb-3">
-                            മത്സ്യവും വെട്ടുകിളിയും ഒലിക്കുന്ന രക്തമില്ലാത്ത പ്രാണിയും ഇതിൽനിന്ന് ഒഴിവാണ്. കാരണം അത്
-                            ശുദ്ധമാണ്.
-                        </x-app.ref-box>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">4. ആർത്തവ രക്തം</h6>
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button slug="sahih-bukhari" number="227" type="hadith" :ref="'ബുഖാരി:227'" />
-                        </x-app.hadith-box>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">5. മദ്‌യ്</h6>
-                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            വെളുത്തതും നേർത്തതും കൊഴുത്തതുമായ ദ്രാവകമാണത്. രതിചേഷ്ടകളുടെ അവസരത്തിലോ സംഭോഗത്തെക്കുറിച്ച്
-                            സ്മരിക്കുമ്പോഴോ സ്രവിക്കുന്നതാണത്. വികാരം ശക്തിപ്രാപിച്ചോ തെറിച്ചുകൊണ്ടോ ആയിരിക്കില്ല അത്
-                            സ്രവിക്കുന്നത്. അതിനെ തുടർന്ന് തളർച്ചയുണ്ടാവുകയുമില്ല. ചിലപ്പോൾ അത് പുറപ്പെടുന്നത്
-                            അനുഭവപ്പെട്ടുകൊള്ളണമെന്നില്ല.
-                        </p>
-
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button slug="sahih-bukhari" number="269" type="hadith" :ref="'ബുഖാരി:269'" />
-                        </x-app.hadith-box>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">6. വദ്‌യ്</h6>
-                        <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
-                            ചിലരിൽ മൂത്ര വിസർജനത്തിനു ശേഷം പുറപ്പെടുന്ന കടുത്ത ഒരുതരം വെളുത്ത ദ്രാവകമാണത്. അതുണ്ടായവൻ തന്റെ
-                            ജനനേന്ദ്രിയം കഴുകുകയും വുദൂഅ് ചെയ്യുകയും വേണം. കുളിക്കേണ്ടതില്ല.
-                        </p>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">7. പൂച്ച, എലി, പോലുള്ള</h6>
-                        <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
-                            മാംസം ഭക്ഷ്യയോഗ്യമല്ലാത്ത എല്ലാ മൃഗങ്ങളുടെയും കാഷ്ടവും മൂത്രവും.
-                        </p>
-                        <x-app.hr />
-
-                        <h6 class="text-emerald-900 fw-bold mt-3">
-                            8. മൂക്കിലൂടെയും മറ്റും മനുഷ്യനിൽനിന്നു പുറപ്പെടുന്ന മോശമായ രക്തം.
-                        </h6>
                     </x-app.accordion>
 
-                    <x-app.accordion :id="'topic2'" :title="'നജസ് ശുദ്ധീകരിക്കുന്ന രീതി'" class="mb-4">
-                        <h6 class="text-emerald-900 fw-bold">1. നജസ് മണ്ണിലോ ഒരു സ്ഥലത്തോ ആയാൽ:</h6>
+                    <x-app.accordion :id="'topic2'" :title="'ആർത്തവ സംബന്ധമായ വിധി വിലക്കുകൾ'" class="mb-4">
+                        <h6 class="text-emerald-900 fw-bold">1. നമസ്കാരം</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            അത് ശുദ്ധീകരിക്കുവാൻ നജസിനെ നീക്കുന്ന രീതിയിൽ ഒരു തവണ കഴുകിയാൽ മതിയാകും. വെള്ളം ഒരു തവണ അതിൽ
-                            ഒഴിക്കുക.
+                            ആർത്തവകാരി നമസ്കരിക്കാൻ പാടില്ല, നിർബന്ധമായതും ഐച്ഛികമായതും. നമസ്കരിച്ചാൽ അത് സ്വീകാര്യവും അല്ല.
+                            അവള്‍ ഈ അവസ്ഥയില്‍ നിന്നും ശുദ്ധി കൈവരിച്ചാല്‍ ഒഴിവാക്കിയ നമസ്‌കാരം നമസ്‌കരിച്ചു വീട്ടേണ്ടതില്ല.
                         </p>
                         <x-app.hadith-box text="ഹദീസ്." class="mb-3">
-                            <x-app.ref-button slug="sahih-bukhari" number="220" type="hadith" :ref="'ബുഖാരി:220'" />
+                            <x-app.ref-button slug="sahih-bukhari" number="1951" type="hadith" :ref="'ബുഖാരി:1951'" />
+                        </x-app.hadith-box>
+                        <x-app.hr />
+
+                        <h6 class="text-emerald-900 fw-bold mt-3">2. നോമ്പ്</h6>
+                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
+                            ആർത്തവകാരി നോമ്പ് അനുഷ്ഠിക്കാൻ പാടില്ല, നിർബന്ധമായതും ഐച്ഛികമായതും. നോമ്പ് അനുഷ്ഠിച്ചാൽ അത്
+                            സ്വീകാര്യവും അല്ല. എന്നാൽ നിര്‍ബന്ധ നോമ്പ് മറ്റൊരവസരത്തിൽ നോറ്റ് വീട്ടണം.
+                        </p>
+                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
+                            <x-app.ref-button slug="ibn-e-majah" number="1670" type="hadith" :ref="'ഇബ്‍ൻ മാജഹ്:1670'" />
+                        </x-app.hadith-box>
+                        <x-app.hr />
+
+                        <h6 class="text-emerald-900 fw-bold mt-3">3. ത്വവാഫ്</h6>
+                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
+                            ആർത്തവകാരി ത്വവാഫ് ചെയ്യാൻ പാടില്ല, നിർബന്ധമായതും ഐച്ഛികമായതും. ത്വവാഫ് ചെയ്താൽ അത് സ്വീകാര്യവും
+                            അല്ല.
+                        </p>
+                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
+                            <x-app.ref-button slug="sahih-bukhari" number="294" type="hadith" :ref="'ബുഖാരി:294'" />
+                        </x-app.hadith-box>
+                        <x-app.hr />
+
+                        <h6 class="text-emerald-900 fw-bold mt-3">4. പള്ളിയിൽ പ്രവേശിക്കലും താമസിക്കലും</h6>
+                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
+                            ആർത്തവകാരി ത്വവാഫ് ചെയ്യാൻ പാടില്ല, നിർബന്ധമായതും ഐച്ഛികമായതും. ത്വവാഫ് ചെയ്താൽ അത് സ്വീകാര്യവും
+                            അല്ല.
+                        </p>
+                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
+                            <x-app.ref-button class="mb-1" slug="abu-dawood" number="232" type="hadith"
+                                :ref="'അബൂ ദാവൂദ്:232'" />
+                            <x-app.ref-button slug="ibn-e-majah" number="645" type="hadith" :ref="'ഇബ്‍ൻ മാജഹ്:645'" />
+                        </x-app.hadith-box>
+                        <x-app.hr />
+
+                        <h6 class="text-emerald-900 fw-bold mt-3">5. ലൈംഗിക വേഴ്ച</h6>
+                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
+                            ആർത്തവകാരിയുമായി ഭർത്താവ് ലൈംഗിക ബന്ധത്തിൽ ഏര്‍പ്പെടുന്നത് നിഷിദ്ധമാണ്. ഭർത്താവിൻറെ ആവശ്യത്തിന്
+                            അവൾ വഴങ്ങാനും പാടില്ല.
+                        </p>
+                        <x-app.quran-box class="mb-1"
+                            text="അതൊരു മാലിന്യമാകുന്നു. അതിനാല്‍ ആര്‍ത്തവഘട്ടത്തില്‍ നിങ്ങള്‍ സ്ത്രീകളില്‍ നിന്ന് അകന്നു നില്‍ക്കേണ്ടതാണ്‌. അവര്‍ ശുദ്ധിയാകുന്നത് വരെ അവരെ സമീപിക്കുവാന്‍ പാടില്ല.">
+                            <x-app.ref-button slug="2" number="222" type="quran" :ref="__('app.quran') . ' 2:222'" />
+                        </x-app.quran-box>
+                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
+                            <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="295" type="hadith"
+                                :ref="'ബുഖാരി:295'" />
+                            <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="297" type="hadith"
+                                :ref="'ബുഖാരി:297'" />
+                            <x-app.ref-button slug="sahih-bukhari" number="302" type="hadith" :ref="'ബുഖാരി:302'" />
+                        </x-app.hadith-box>
+                        <x-app.hr />
+
+                        <h6 class="text-emerald-900 fw-bold mt-3">6. ത്വലാഖ്</h6>
+                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
+                            ആർത്തവകാരിയുമായി ഭർത്താവ് ലൈംഗിക ബന്ധത്തിൽ ഏര്‍പ്പെടുന്നത് നിഷിദ്ധമാണ്. ഭർത്താവിൻറെ ആവശ്യത്തിന്
+                            അവൾ വഴങ്ങാനും പാടില്ല.
+                        </p>
+                        <x-app.quran-box class="mb-1" text="">
+                            <x-app.ref-button slug="65" number="1" type="quran" :ref="__('app.quran') . ' 65:1'" />
+                        </x-app.quran-box>
+                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
+                            <x-app.ref-button slug="sahih-bukhari" number="5251" type="hadith" :ref="'ബുഖാരി:5251'" />
                         </x-app.hadith-box>
                         <x-app.hr />
 
                         <h6 class="text-emerald-900 fw-bold mt-3">
-                            2. നജസ് മണ്ണിലല്ലെങ്കിൽ, അഥവാ വസ്ത്രത്തിലോ പാത്രത്തിലോ ആയാൽ:
+                            7. ആര്‍ത്തവ സമയത്ത് നഖവും മുടിയും നീക്കം ചെയ്യുന്നത് തെറ്റാണോ?
                         </h6>
-                        <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
-                            മൂത്രം, കാഷ്ടം, രക്തം പോലുള്ളതാണ് നജസെങ്കിൽ അത് പോകുവോളവും അടയാളം ശേഷിക്കാത്ത വിധേനയും
-                            വെള്ളമുപയോഗിച്ച് ഉരച്ചു പിഴിഞ്ഞ് കഴുകണം. അത് ഒരു തവണ കഴുകിയാൽ മതിയാകും. നായ നാവിട്ടാണ്
-                            നജസായതെങ്കിൽ പാത്രം ഏഴുതവണ കഴുകണം; അതിൽ ഒരു തവണ മണ്ണു ചേർത്താണ് കഴുകേണ്ടത്. ശരീരത്തിലും
-                            നമസ്‌കരിക്കുന്ന സ്ഥലത്തും വസ്ത്രത്തിലുമുള്ള നജസുകളിൽനിന്ന് ശുദ്ധി വരുത്തുവാൻ ശ്രദ്ധിക്കൽ
-                            മുസ്‌ലിമിനു നിർബന്ധമാണ്. കാരണം അത് നമസ്‌കാരം സാധുവാകുവാനുള്ള ശർത്വാണ്.
-                        </p>
-                        <x-app.hadith-box text="ഹദീസ്.">
-                            <x-app.ref-button class="mb-1" slug="sahih-muslim" number="651" type="hadith"
-                                :ref="'മുസ്ലിം:651'" />
-                            <x-app.ref-button slug="al-tirmidhi" number="610" type="hadith" :ref="'അൽ-തിർമിധി:610'" />
-                        </x-app.hadith-box>
                     </x-app.accordion>
                 </div>
             </div>
