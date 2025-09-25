@@ -181,12 +181,15 @@
                     <x-app.hadith-box text="ഹദീസ് വിശകലനങ്ങൾ.">
                         <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="359" type="hadith"
                             :ref="'ബുഖാരി:359'" />
+                        <x-app.ref-button class="mb-1 text-danger" slug="abu-dawood" number="640" type="hadith"
+                            :ref="'അബു ദാവൂദ്:640'" />
                         <x-app.ref-button class="mb-1" slug="abu-dawood" number="641" type="hadith"
                             :ref="'അബു ദാവൂദ്:641'" />
                         <x-app.ref-button class="mb-1" slug="abu-dawood" number="4014" type="hadith"
                             :ref="'അബു ദാവൂദ്:4014'" />
                         <x-app.ref-button class="mb-1" slug="al-tirmidhi" number="2796" type="hadith"
                             :ref="'അൽ-തിർമിധി:2796'" />
+                        <x-app.ref-button slug="ibn-e-majah" number="655" type="hadith" :ref="'ഇബ്‍ൻ മാജഹ്:655'" />
                     </x-app.hadith-box>
 
                     <h6 class="text-accent-900 fw-bold m-0 mt-3 mb-2">5. ഖിബ്‌’ലക്ക് മുന്നിടുക.</h6>
