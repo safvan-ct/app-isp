@@ -194,12 +194,16 @@
                             <x-app.ref-button slug="abu-dawood" number="4927" type="hadith" :ref="'അബു ദാവൂദ്:4927'" />
                         </x-app.hadith-box>
 
-                        <x-app.hadith-box text="ഈദ് & വിവാഹങ്ങളിലും ഡഫ് ഉപയോഗിക്കാൻ അനുമതിയുണ്ട്.">
+                        <x-app.hadith-box text="ഈദ് & വിവാഹങ്ങളിലും ഡഫ് ഉപയോഗിക്കാൻ അനുമതിയുണ്ട്." class="mb-1">
                             <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="952" type="hadith"
                                 :ref="'ബുഖാരി:952'" />
                             <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="5162" type="hadith"
                                 :ref="'ബുഖാരി:5162'" />
                             <x-app.ref-button slug="ibn-e-majah" number="1896" type="hadith" :ref="'ഇബ്‍ൻ മാജഹ്:1896'" />
+                        </x-app.hadith-box>
+
+                        <x-app.hadith-box text="സ്ത്രീ മുഴുവനും ഒരു ഔറത്താണ്.">
+                            <x-app.ref-button slug="al-tirmidhi" number="1173" type="hadith" :ref="'തിർമിധി:1173'" />
                         </x-app.hadith-box>
                     </x-app.accordion>
 
