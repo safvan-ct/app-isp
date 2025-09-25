@@ -62,7 +62,7 @@
                     </div>
 
                     <h6 class="text-accent-900 fw-bold m-0 my-2">5. ഇശാ</h6>
-                    <div class="ref-box ref-summary text-dark shadow-sm rounded-1 mb-2">
+                    <div class="ref-box ref-summary text-dark shadow-sm rounded-1 mb-3">
                         <strong>നിർബന്ധം:</strong> 4 റക്അത്<br>
                         <strong>സുന്നത്:</strong> ശേഷം 2 റക്അത് <em>- അൽ-തിർമിധി:415, അബു ദാവൂദ്:1251</em><br>
 
@@ -75,8 +75,7 @@
                             </x-slot:text>
                         </x-app.hadith-box>
                     </div>
-
-                    <hr class="mt-2 mb-3" style="border: none; border-top: 2px solid #166534; opacity: 1;">
+                    <x-app.hr />
 
                     <x-app.hadith-box class="mb-2" reference="മുസ്ലിം:1575-76">
                         <x-slot:text>

@@ -68,7 +68,7 @@
                 </p>
 
                 @if (!$loop->last)
-                    <hr class="mt-2 mb-3" style="border: none; border-top: 2px solid #166534; opacity: 1;">
+                    <x-app.hr />
                 @endif
             @endforeach
         </article>

@@ -190,7 +190,7 @@
 
                         <h6 class="text-emerald-900 fw-bold mt-3">3. രണ്ട്‌ മുന്‍കൈകളും കഴുകുക.</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
-                            വിരലുകളുടെ അറ്റം മുതല്‍ രണ്ട്‌ കൈകളും മുട്ടുകള്‍ ഉള്‍പ്പെടുത്തി കഴുകുക. കൈകാലുകള്‍ കഴുകുന്ന
+                            വിരലുകളുടെ അറ്റം മുതല്‍ മണിക്കട്ട് (wrist) വരെ കഴുകുക. കൈകാലുകള്‍ കഴുകുന്ന
                             അവസരത്തില്‍ വിരലുകള്‍ അകറ്റിക്കഴുകല്‍ സുന്നത്താകുന്നു.
                         </p>
 
@@ -221,8 +221,8 @@
                             മുഖം കഴുകുമ്പോഴാണ് താടിയുടെ തിക്കകറ്റേണ്ടത്. കാരണം, താടിരോമങ്ങൾ മുഖത്തിന്റെ ഭാഗമാണ്.
                         </p>
 
-                        <x-app.hadith-box text="ഹദീസ്" class="mb-3 border-danger">
-                            <x-app.ref-button class="mb-1" slug="abu-dawood" number="145" type="hadith"
+                        <x-app.hadith-box text="ഹദീസ്" class="mb-3">
+                            <x-app.ref-button class="mb-1 text-danger" slug="abu-dawood" number="145" type="hadith"
                                 :ref="'അബു ദാവൂദ്:145'" />
                             <x-app.ref-button slug="mishkat" number="408" type="hadith" :ref="'മിഷ്‌കാത്:408'" />
                         </x-app.hadith-box>

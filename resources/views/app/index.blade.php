@@ -28,14 +28,22 @@
         <h5 class="mb-1 text-dark fw-bold">സ്വാഗതം 👋</h5>
         <h4 class="fw-bold">
             <span class="text-emerald">ഇസ്ലാമിക്</span>
-            <span class="text-accent">സ്റ്റഡി പോർട്ടൽ</span>
+            <span class="text-accent-900">സ്റ്റഡി പോർട്ടൽ</span>
         </h4>
     </div>
 
     <div class="container my-4 pb-5">
         <div class="base-card mb-4 bg-geometry">
             <div class="text-center mx-auto">
-                <h4 class="mb-3 text-emerald-900" style="text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);">
+                <h3 class="text-center fw-bold mb-2 text-emerald">യാത്രയ്ക്കുള്ള ദുആ</h3>
+                <h2 class="text-ar text-emerald-900 text-center text-shadow lh-lg">
+                    سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ
+                </h2>
+                <p class="text-center m-0 text-muted small">
+                    നമുക്ക് നിയന്ത്രിക്കാൻ കഴിഞ്ഞില്ലെങ്കിലും ഇതിനെ നമ്മുടെ നിയന്ത്രണത്തിലാക്കിയവന് സ്തുതി.
+                </p>
+
+                {{-- <h4 class="mb-3 text-emerald-900" style="text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);">
                     {{ __('app.seek_knowledge') }}</h4>
 
                 <div class="ayah-box mb-2 text-emerald">
@@ -47,14 +55,14 @@
 
                 <p class="text-muted mb-0 small">
                     Quran, Hadith and subjects — organized for focused, distraction-free learning.
-                </p>
+                </p> --}}
             </div>
         </div>
 
-        <h2 class="text-center text-emerald">🌿 ദൈനംദിന ദുആ</h2>
-        <hr class="my-2" style="border: none; border-top: 2px solid #166534; opacity: 1;">
-        <div id="duaCarousel" class="carousel slide d-flex justify-content-center align-items-center" data-bs-ride="false"
-            data-bs-interval="false">
+        <h2 class="text-center text-emerald d-none">🌿 ദൈനംദിന ദുആ</h2>
+        {{-- <x-app.hr /> --}}
+        <div id="duaCarousel" class="carousel slide d-flex justify-content-center align-items-center d-none"
+            data-bs-ride="false" data-bs-interval="false">
             <div class="carousel-inner" id="duaSlides"></div>
 
             <!-- Controls -->
@@ -67,9 +75,8 @@
         </div>
 
         <!-- Featured Courses -->
-        <h2 class="m-0 text-emerald text-center mt-4">{{ __('app.foundational_subjects') }}</h2>
-        <p class="text-center m-0">📖 അറിവ് തേടൂ, വിശ്വാസം വളർത്തൂ ✨</p>
-        <hr class="my-2" style="border: none; border-top: 2px solid #166534; opacity: 1;">
+        <h3 class="m-0 text-emerald text-center mt-4 mb-2">🌿 അറിവ് തേടൂ, വിശ്വാസം വളർത്തൂ</h3>
+        <x-app.hr />
 
         <div class="row g-2">
             <div class="row g-2">
@@ -81,8 +88,8 @@
             </div>
         </div>
 
-        <hr class="my-2 mt-4" style="border: none; border-top: 2px solid #166534; opacity: 1;">
-        <div class="base-card accent p-3">
+        {{-- <x-app.hr /> --}}
+        <div class="base-card accent p-3 d-none">
             <h3 class="text-center fw-bold mb-2 text-emerald">✨ ദുആയുടെ ശക്തി</h3>
             <p class="text-center mb-0">
                 “തീർച്ചയായും അല്ലാഹുവിനെക്കുറിച്ചുള്ള സ്മരണ കൊണ്ടാകുന്നു ഹൃദയങ്ങൾ ശാന്തമാകുന്നത്.” (Qur'an 13:28)
