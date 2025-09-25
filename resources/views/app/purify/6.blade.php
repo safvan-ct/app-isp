@@ -26,10 +26,16 @@
                             <x-app.ref-button slug="sahih-muslim" number="534" type="hadith" :ref="'മുസ്ലിം:534'" />
                         </x-app.hadith-box>
 
-                        <x-app.hadith-box text="ഹദീസ്." class="mb-3">
+                        <x-app.hadith-box text="ഹദീസ്." class="mb-1">
                             <x-app.ref-button slug="sahih-muslim" number="604" type="hadith" :ref="'മുസ്ലിം:604'" />
                         </x-app.hadith-box>
-                        <x-app.hr />
+
+                        <x-app.hadith-box text="മീശ വെട്ടുക താടി വളർത്തുക.">
+                            <x-app.ref-button class="mb-1" slug="sahih-bukhari" number="5892" type="hadith" :ref="'ബുഖാരി:5892'" />
+                            <x-app.ref-button class="mb-1" slug="sahih-muslim" number="600" type="hadith" :ref="'മുസ്ലിം:600'" />
+                            <x-app.ref-button class="mb-1" slug="sahih-muslim" number="603" type="hadith" :ref="'മുസ്ലിം:603'" />
+                            <x-app.ref-button slug="sunan-nasai" number="14" type="hadith" :ref="'അന-നസാഈ:14'" />
+                        </x-app.hadith-box>
                     </x-app.accordion>
 
                     <x-app.accordion :id="'topic2'" :title="'വിസർജ്ജന മര്യാദകൾ'">
@@ -135,7 +141,7 @@
                         </x-app.hadith-box>
 
                         <x-app.hadith-box class="mb-1" text="ഇരുന്നാണ് നിർവഹിക്കേണ്ടത്">
-                            <x-app.ref-button slug="sunan-nasai" number="29" type="hadith" :ref="'തിർമിധി:29'" />
+                            <x-app.ref-button slug="sunan-nasai" number="29" type="hadith" :ref="'അന-നസാഈ:29'" />
                         </x-app.hadith-box>
 
                         <x-app.hadith-box class="mb-1" text="നിന്നുകൊണ്ടു മൂത്ര വിസർജനം ആകാവുന്നത് എപ്പോൾ">
