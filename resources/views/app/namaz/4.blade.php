@@ -60,8 +60,7 @@
 
 @push('scripts')
     <script>
-        const baseSteps = [
-            {
+        const baseSteps = [{
                 title: '1. നിയ്യത്ത് ഉണ്ടായിരിക്കണം.',
                 icon: "{{ asset('img/namaz/st.jpg') }}",
                 steps: [{
@@ -1349,6 +1348,16 @@
                                 name: 'മുസ്ലിം'
                             }
                         ]
+                    },
+                    {
+                        title: 'ആർക്കെങ്കിലും ഒരു നമസ്കാരത്തിൽ നിന്ന് (യഥാസമയം) ഒരു റക്അത്ത് നമസ്കരിക്കാൻ കഴിഞ്ഞാൽ, അവൻ നമസ്കാരം നേടി.',
+                        dikr: [],
+                        quran: [],
+                        hadith: [{
+                            slug: 'sahih-bukhari',
+                            number: 580,
+                            name: 'ബുഖാരി'
+                        }]
                     }
                 ],
                 more: ''

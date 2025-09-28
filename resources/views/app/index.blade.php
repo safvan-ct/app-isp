@@ -8,23 +8,7 @@
         }
     </style>
 
-    @php
-        $topics = [
-            'purify' => 'ശുദ്ധി',
-            'namaz' => 'നിസ്കാരം',
-            'meelad' => 'നബിദിനം',
-        ];
-    @endphp
-
-    <x-app.topbar>
-        <x-slot:title>
-            <img src="{{ asset('img/apple-touch-icon.png') }}"class="me-2 rounded-circle shadow-sm"
-                style="height:30px; width:30px;">
-            <span class="text-ar fw-bold">{{ __('app.islamic_study_portal') }}</span>
-        </x-slot:title>
-    </x-app.topbar>
-
-    <div class="app-header">
+    <div class="app-header text-center notranslate">
         <h5 class="mb-1 text-dark fw-bold">സ്വാഗതം 👋</h5>
         <h4 class="fw-bold">
             <span class="text-emerald">ഇസ്ലാമിക്</span>
@@ -32,60 +16,54 @@
         </h4>
     </div>
 
-    <div class="container my-4 pb-5">
-        <div class="base-card mb-4 bg-geometry">
-            <div class="text-center mx-auto">
-                <h3 class="text-center fw-bold mb-2 text-emerald">യാത്രയ്ക്കുള്ള ദുആ</h3>
-                <h2 class="text-ar text-emerald-900 text-center text-shadow lh-lg">
-                    سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ
-                </h2>
-                <p class="text-center m-0 text-muted small">
-                    നമുക്ക് നിയന്ത്രിക്കാൻ കഴിഞ്ഞില്ലെങ്കിലും ഇതിനെ നമ്മുടെ നിയന്ത്രണത്തിലാക്കിയവന് സ്തുതി.
-                </p>
+    <div class="container my-4 pb-5 notranslate">
+        <div class="row g-2">
+            <div class="col-lg-7">
+                <div class="base-card mb-4 bg-geometry p-4">
+                    <div class="text-center mx-auto">
+                        <h4 class="mb-3 text-emerald-900" style="text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);">
+                            {{ __('app.seek_knowledge') }}</h4>
 
-                {{-- <h4 class="mb-3 text-emerald-900" style="text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);">
-                    {{ __('app.seek_knowledge') }}</h4>
+                        <div class="ayah-box mb-2 text-emerald">
+                            <h5 class="text-ar">
+                                <span class="mt-2">﴿ وَقُل رَّبِّ زِدْنِي عِلْمًا ﴾</span>
+                                <em class="text-muted small"> - 20:114</em>
+                            </h5>
+                        </div>
 
-                <div class="ayah-box mb-2 text-emerald">
-                    <h5 class="text-ar">
-                        <span class="mt-2">﴿ وَقُل رَّبِّ زِدْنِي عِلْمًا ﴾</span>
-                        <em class="text-muted small"> - 20:114</em>
-                    </h5>
+                        <p class="text-muted mb-0 small">
+                            Quran, Hadith and subjects — organized for focused, distraction-free learning.
+                        </p>
+                    </div>
                 </div>
-
-                <p class="text-muted mb-0 small">
-                    Quran, Hadith and subjects — organized for focused, distraction-free learning.
-                </p> --}}
             </div>
-        </div>
 
-        <h2 class="text-center text-emerald d-none">🌿 ദൈനംദിന ദുആ</h2>
-        {{-- <x-app.hr /> --}}
-        <div id="duaCarousel" class="carousel slide d-flex justify-content-center align-items-center d-none"
-            data-bs-ride="false" data-bs-interval="false">
-            <div class="carousel-inner" id="duaSlides"></div>
+            <div class="col-lg-5">
+                <div id="duaCarousel" class="carousel slide d-flex justify-content-center align-items-center"
+                    data-bs-ride="false" data-bs-interval="false">
+                    <div class="carousel-inner" id="duaSlides"></div>
 
-            <!-- Controls -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#duaCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#duaCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
+                    <!-- Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#duaCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#duaCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <!-- Featured Courses -->
         <h3 class="m-0 text-emerald text-center mt-4 mb-2">🌿 അറിവ് തേടൂ, വിശ്വാസം വളർത്തൂ</h3>
         <x-app.hr />
 
-        <div class="row g-2">
-            <div class="row g-2">
-                @foreach ($topics as $key => $item)
-                    <div class="col-6 col-md-3">
-                        <x-app.topic-card :title="$item" :url="route('questions.show', ['menu_slug' => 'topic', 'module_slug' => $key])" />
-                    </div>
-                @endforeach
-            </div>
+        <div class="row g-2 mb-4">
+            @foreach (exploreTopics() as $key => $item)
+                <div class="col-6 col-md-3">
+                    <x-app.topic-card :title="$item" :url="route('questions.show', ['menu_slug' => 'topic', 'module_slug' => $key])" />
+                </div>
+            @endforeach
         </div>
 
         {{-- <x-app.hr /> --}}

@@ -6,54 +6,8 @@ use App\Repository\Topic\TopicInterface;
 
 class TopicController extends Controller
 {
-    protected $questions;
-
     public function __construct(protected TopicInterface $topicRepository)
-    {
-        $this->questions = [
-            "namaz"  => [
-                "slug"     => "namaz",
-                "title"    => "സ്വലാത് (നമസ്കാരം)",
-                "desc"     => "തീർച്ചയായും നമസ്കാരം വിശ്വാസികൾക്ക് സമയബന്ധിതമായ ബാധ്യതയായി വിധിക്കപ്പെട്ടിരിക്കുന്നു.",
-                "chapters" => [
-                    "5 നിർബന്ധിത നമസ്കാരങ്ങൾ",
-                    "അദാൻ & ഇഖാമത്ത്",
-                    "നമസ്‌കാരത്തിന്റെ ശര്‍ത്തുകള്‍",
-                    "നമസ്കാരത്തിന്റെ ഫർളുകൾ",
-                    "ജമാഅത് (സംഘം) ചേർന്ന് നമസ്കരിക്കൽ",
-                    "നമസ്കാരത്തിന് ശേഷമുള്ള ദുആ",
-                    // "ജുമുഅ നമസ്കാരം",
-                    // "തറാവീഹ് നമസ്കാരം",
-                    // "വിത്ർ നമസ്കാരം",
-                    // "തഹജ്ജുദ് നമസ്കാരം",
-                    // "ളുഹാ നമസ്കാരം",
-                ],
-            ],
-            "purify" => [
-                "slug"     => "purify",
-                "title"    => "ശുദ്ധി",
-                "desc"     => "ശുചിത്വം വിശ്വാസത്തിന്റെ പകുതിയാണ് <em>- മുസ്ലിം:534</em>",
-                "chapters" => [
-                    "വുദു",
-                    "കുളി",
-                    "തയ്യമ്മും",
-                    "നജസുകൾ",
-                    "ആർത്തവം & പ്രസവരക്തം",
-                    "സുന്നത്തായ ശുദ്ധീകരണങ്ങൾ",
-                ],
-            ],
-            "meelad" => [
-                "slug"     => "meelad",
-                "title"    => "നബിദിനം",
-                "desc"     => "നബിദിനം ആഘോഷിക്കേണ്ടതിന്റെ അടിസ്ഥാനവും ശ്രേഷ്ഠതയും",
-                "chapters" => [
-                    "റബീഉൽ അവ്വൽ മാസവും നബിദിനവും",
-                    "നബിദിന ആഘോഷങ്ങളുടെ ചരിത്രം",
-                    "മൗലിദ് കൃതികൾ - ചരിത്രം",
-                ],
-            ],
-        ];
-    }
+    {}
 
     public function modules($menuSlug)
     {
@@ -72,7 +26,7 @@ class TopicController extends Controller
             //abort(404);
         }
 
-        $questions = $this->questions[$moduleSlug];
+        $questions = getTopicChapters($moduleSlug);
 
         return view("app.topic-chapters", compact("module", "menuSlug", "questions"));
     }
@@ -86,8 +40,11 @@ class TopicController extends Controller
         }
 
         $key       = $questionSlug + 1;
-        $questions = $this->questions[$moduleSlug];
+        $questions = getTopicChapters($moduleSlug);
+        $answer    = getChapterNotes($moduleSlug, $questionSlug + 1);
+        $question  = getTopicChapters($moduleSlug);
 
+        return view("app.topic-answers", compact("answer", "questions", "question", "questionSlug"));
         return view("app.{$moduleSlug}.{$key}", compact("question", "module", "menuSlug", "moduleSlug", "questionSlug", "questions"));
     }
 }

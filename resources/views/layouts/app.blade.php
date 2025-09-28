@@ -44,13 +44,66 @@
         $menus = isset($menus) ? $menus : [];
     @endphp
 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-emerald sticky-top shadow-lg notranslate">
+        <div class="container">
+            <a class="navbar-brand m-0" href="@yield('navbar_url', route('home'))">
+                <img src="{{ asset('img/apple-touch-icon.png') }}"class="me-1 rounded-circle shadow-sm"
+                    style="height:30px; width:30px;">
+                <span class="navbar-brand fw-bold text-accent m-0">@yield('navbar_title', __('app.islamic_study_portal'))</span>
+            </a>
+
+            <button class="btn btn-sm btn-outline-emerald text-accent d-lg-none ms-auto" data-bs-toggle="offcanvas"
+                data-bs-target="#curriculumOffcanvas">
+                <i class="fas fa-list fs-4"></i>
+            </button>
+
+            <div class="collapse navbar-collapse d-none d-lg-flex ms-3" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
+                    <li class="nav-item {{ Str::is('quran.*', $routeName) ? 'active' : '' }}">
+                        <a href="{{ route('quran.index') }}" class="text-accent text-decoration-none">
+                            {{ __('app.quran') }}
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Str::is('hadith.*', $routeName) ? 'active' : '' }}">
+                        <a href="{{ route('hadith.index') }}" class="text-accent text-decoration-none">
+                            {{ __('app.hadith') }}
+                        </a>
+                    </li>
+                    <li class="nav-item {{ $routeName == 'home' ? 'active' : '' }}">
+                        <a href="{{ route('home') }}" class="text-accent text-decoration-none">
+                            {{ __('app.home') }}
+                        </a>
+                    </li>
+
+                    <li
+                        class="nav-item {{ Str::is('modules.*', $routeName) || Str::is('questions.*', $routeName) || Str::is('answers.*', $routeName) ? 'active' : '' }}">
+                        <a href="{{ route('modules.show', 'topics') }}" class="text-accent text-decoration-none">
+                            {{ __('app.topics') }}
+                        </a>
+                    </li>
+
+                    <li class="nav-item {{ Str::is('likes', $routeName) ? 'active' : '' }}">
+                        <a href="javascript:void(0);" class="text-accent text-decoration-none">
+                            {{ __('app.books') }}
+                        </a>
+                    </li>
+                </ul>
+
+                <span class="navbar-text">
+                    <button class="btn btn-sm btn-outline-emerald text-accent" data-bs-toggle="offcanvas"
+                        data-bs-target="#curriculumOffcanvas"><i class="fas fa-list fs-4"></i></button>
+                </span>
+            </div>
+        </div>
+    </nav>
+
     @yield('content')
 
     <button type="button" class="btn emerald btn-lg rounded-circle shadow border-0" id="btn-back-to-top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <div class="bottom-nav notranslate">
+    <div class="bottom-nav notranslate d-lg-none">
         <a href="{{ route('quran.index') }}" class="{{ Str::is('quran.*', $routeName) ? 'active' : '' }}">
             <i class="fas fa-book-open"></i>{{ __('app.quran') }}
         </a>

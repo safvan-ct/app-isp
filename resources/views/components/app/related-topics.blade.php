@@ -7,5 +7,5 @@
         'menu_slug' => $menu_slug,
         'module_slug' => $module_slug,
         'question_slug' => $loop->index,
-    ])" :related="true" />
+    ])" :related="false" />
 @endforeach
