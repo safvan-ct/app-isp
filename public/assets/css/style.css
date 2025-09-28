@@ -479,3 +479,7 @@ body {
     background: #e9f7ef;
     color: #198754;
 }
+
+.accordion-link::after {
+    background-image: none !important;
+}

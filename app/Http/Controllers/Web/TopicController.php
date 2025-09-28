@@ -26,25 +26,23 @@ class TopicController extends Controller
             //abort(404);
         }
 
-        $questions = getTopicChapters($moduleSlug);
+        $topic = getTopicChapters($moduleSlug);
 
-        return view("app.topic-chapters", compact("module", "menuSlug", "questions"));
+        return view("app.topic-chapters", compact("module", "menuSlug", "topic"));
     }
 
-    public function answers($menuSlug, $moduleSlug, $questionSlug)
+    public function answers($menuSlug, $moduleSlug, $moduleId)
     {
-        $question = $this->topicRepository->getQuestionWithAll($questionSlug);
+        $question = $this->topicRepository->getQuestionWithAll($moduleId);
         $module   = $this->topicRepository->getModuleWithAll($moduleSlug);
         if (! $question) {
             //abort(404);
         }
 
-        $key       = $questionSlug + 1;
-        $questions = getTopicChapters($moduleSlug);
-        $answer    = getChapterNotes($moduleSlug, $questionSlug + 1);
-        $question  = getTopicChapters($moduleSlug);
+        $key    = $moduleId + 1;
+        $topic  = getTopicChapters($moduleSlug);
+        $module = getChapterNotes($moduleSlug, $moduleId + 1);
 
-        return view("app.topic-answers", compact("answer", "questions", "question", "questionSlug"));
-        return view("app.{$moduleSlug}.{$key}", compact("question", "module", "menuSlug", "moduleSlug", "questionSlug", "questions"));
+        return view("app.topic-answers", compact("topic", "module", "moduleId"));
     }
 }

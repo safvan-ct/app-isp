@@ -16,15 +16,14 @@
 
     <div class="row flex-column flex-md-row m-0 mb-1">
         <div class="col-12 col-md-6 order-1 order-md-2 p-0 ps-md-4">
-            <div class="text-emerald-900 notranslate text-justify" style="font-size: 20px; line-height: 1.6;"
-                dir="rtl">
+            <h6 class="text-emerald-900 notranslate text-justify" style="line-height: 1.6;" dir="rtl">
                 {{ $item->text }}
-                (<span class="fst-italic fs-6">{{ $item->hadith_number }}</span>)
-            </div>
+                <em class="small"> - {{ $item->hadith_number }}</em>
+            </h6>
         </div>
 
         <div class="col-12 col-md-6 order-2 order-md-1 p-0">
-            <div class="text-en text-justify">{{ $item->translation?->text }}</div>
+            <div class="text-en text-justify small">{{ $item->translation?->text }}</div>
         </div>
     </div>
 

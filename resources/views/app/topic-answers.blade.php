@@ -1,31 +1,19 @@
 @extends('layouts.app')
 
+@section('title', $topic['title'])
+@section('navbar_title', $topic['title'])
+@section('navbar_url', route('questions.show', ['menu_slug' => 'topics', 'module_slug' => $topic['slug']]))
+
 @section('content')
-    <header class="container-fluid py-3 bg-clr-surface shadow-sm notranslate">
-        <div class="container text-center">
-            <p class="mb-0 text-muted small">Module {{ $questionSlug + 1 }}: </p>
-            <h4 class="fw-bold text-emerald m-0 mb-1">{{ $question['chapters'][$questionSlug]['title'] }}</h4>
-            <p class="m-0 text-muted"> {{ $question['chapters'][$questionSlug]['desc'] }}</p>
-        </div>
-    </header>
+    <x-app.banner :number="$moduleId + 1" :type="'Module'" :title="$topic['modules'][$moduleId]['title']" :desc="$topic['modules'][$moduleId]['desc']" />
 
     <main class="container py-4 notranslate">
         <div class="row justify-content-center">
             <div class="col-lg-11">
-                @if ($answer['div_type'] != 'timeline')
-                    {{-- <section id="video-class" class="mb-5 p-4 bg-clr-surface rounded shadow">
-                        <h2 class="text-emerald mb-3"><i class="fas fa-video me-2 text-accent"></i> Video Demonstration</h2>
-                        <div class="ratio ratio-16x9 mb-3 rounded">
-                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Wudu Video Demonstration" allowfullscreen></iframe>
-                        </div>
-                        <p class="text-muted fst-italic">Watch the full practical demonstration by Sheikh Abdullah. Ensure full body parts are visible during the process.</p>
-                    </section> --}}
-
-                    {{-- <hr class="my-5 border-2 border-emerald opacity-25"> --}}
-
+                @if ($module['div_type'] != 'timeline')
                     <section id="steps-guide" class="mb-5">
                         <div class="sideline">
-                            @foreach ($answer['notes'] as $key => $note)
+                            @foreach ($module['notes'] as $key => $note)
                                 <div class="sideline-item" id="div-{{ $key }}">
                                     <h4 class="text-emerald fw-bold">{{ $key + 1 }}. {{ $note['title'] }}</h4>
 
@@ -69,7 +57,7 @@
                     </section>
                 @else
                     <div class="timeline mb-5">
-                        @foreach ($answer['notes'] as $note)
+                        @foreach ($module['notes'] as $note)
                             <div class="timeline-item">
                                 <div class="circle"></div>
                                 <div class="timeline-content pb-1">
@@ -87,128 +75,45 @@
         </div>
     </main>
 
-    {{-- <x-app.topbar :title="$questions['title']" :url="route('questions.show', ['menu_slug' => 'topics', 'module_slug' => $questions['slug']])" /> --}}
-
-    <div class="container my-3 pb-5 notranslate d-none">
-        <x-app.banner :title="$question['chapters'][$questionSlug]['title']" :desc="$questions['desc']" />
-
-        <div class="row mt-4 notranslate">
-            <div class="col-12 col-lg-8">
-
-                @if ($answer['div_type'] != 'timeline')
-                    @php
-                        $isAccordion = $answer['div_type'] == 'accordion';
-                        $componentName = $answer['div_type'] == 'accordion' ? 'app.accordion' : 'app.study-card';
-                    @endphp
-                    <div class="{{ $isAccordion ? 'accordion' : '' }}" id="{{ $isAccordion ? 'accordions' : '' }}">
-                        @foreach ($answer['notes'] as $key => $note)
-                            <x-dynamic-component :component="$componentName" :id="'topic' . $key" :title="$note['title']" :active="$note['active']"
-                                :class="$loop->last ? 'mb-4' : ''">
-                                @foreach ($note['points'] as $key2 => $point)
-                                    @foreach ($point['desc'] as $desc)
-                                        <div class="m-0 text-justify {{ $loop->last ? '' : 'mb-1' }}"
-                                            style="text-indent: 2em">
-                                            {!! $desc !!}
-                                        </div>
-                                    @endforeach
-
-                                    @if ($point['alert'])
-                                        <x-app.reference :text="$point['alert']" type="summary" class="mt-1" />
-                                    @endif
-
-                                    <div class="text-center mt-2">
-                                        <button id="btn-{{ $key }}-{{ $key2 }}"
-                                            class="btn btn-outline-success btn-sm" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapse-{{ $key }}-{{ $key2 }}"
-                                            aria-expanded="false"
-                                            aria-controls="collapse-{{ $key }}-{{ $key2 }}">
-                                            📖 റഫറൻസുകൾ
-                                        </button>
-                                    </div>
-
-                                    <div id="collapse-{{ $key }}-{{ $key2 }}"
-                                        class="collapse m-0 p-0 mt-2">
-                                        @foreach ($point['ref'] as $ref)
-                                            <x-app.reference :type="$ref['type']" :text="$ref['title']" :class="$loop->last ? '' : 'mb-1'">
-
-                                                @foreach ($ref['info'] as $info)
-                                                    <x-app.ref-button :slug="$info['slug']" :number="$info['number']"
-                                                        :type="$ref['type']" :class="$loop->last ? '' : 'mb-1'" />
-                                                @endforeach
-                                            </x-app.reference>
-                                        @endforeach
-                                    </div>
-
-                                    @if (!$loop->last)
-                                        <x-app.hr class="my-3" />
-                                    @endif
-                                @endforeach
-                            </x-dynamic-component>
-                        @endforeach
-                    </div>
-                @else
-                    <div class="timeline">
-                        @foreach ($answer['notes'] as $note)
-                            <div class="timeline-item">
-                                <div class="circle"></div>
-                                <div class="timeline-content pb-1">
-                                    <h5>{{ $note['title'] }}</h5>
-                                    @foreach ($note['desc'] as $desc)
-                                        <p class="m-0 text-justify" style="text-indent: 2em">{{ $desc }}</p>
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
-            </div>
-
-            {{-- <div class="col-12 col-lg-4 mb-4">
-                <x-app.related-topics :data="$questions['chapters']" :current="$questionSlug" :menu_slug="'topics'" :module_slug="$questions['slug']" />
-            </div> --}}
-        </div>
-    </div>
-
     <div class="offcanvas offcanvas-end notranslate" tabindex="-1" id="curriculumOffcanvas"
         aria-labelledby="curriculumLabel">
         <div class="offcanvas-header bg-emerald text-white">
-            <h5 class="offcanvas-title" id="curriculumLabel">Topic: {{ $questions['title'] }}</h5>
+            <h5 class="offcanvas-title" id="curriculumLabel">Topic: {{ $topic['title'] }}</h5>
             <button type="button" class="btn-close text-reset btn-close-white" data-bs-dismiss="offcanvas"
                 aria-label="Close"></button>
         </div>
         <div class="offcanvas-body p-0">
             <div class="accordion accordion-flush" id="curriculumAccordionOffcanvas">
-                @foreach ($questions['chapters'] as $key => $item)
+                @foreach ($topic['modules'] as $key => $item)
                     <div class="accordion-item">
-                        @if (!empty($item['lessons']))
-                            <h2 class="accordion-header">
+                        <h2 class="accordion-header">
+                            @if (!empty($item['lessons']))
                                 <button
-                                    class="accordion-button fw-bold text-emerald {{ $questionSlug == $key ? '' : 'collapsed' }} px-3"
+                                    class="accordion-button fw-bold text-emerald {{ $moduleId == $key ? '' : 'collapsed' }}"
                                     type="button" data-bs-toggle="collapse" data-bs-target="#{{ $key }}">
                                     <i
-                                        class="fas {{ $questionSlug == $key ? 'fa-check-circle text-success' : 'fa-circle text-accent' }} me-2 "></i>
+                                        class="fas {{ $moduleId == $key ? 'fa-check-circle text-success' : 'fa-circle text-accent' }} me-2 "></i>
                                     {{ $key + 1 }}. {{ $item['title'] }}
                                 </button>
-                            </h2>
-                        @else
-                            <h2 class="accordion-header {{ $questionSlug == $key ? 'bg-success-subtle' : '' }}">
-                                <a href="{{ route('answers.show', ['menu_slug' => 'topics', 'module_slug' => $question['slug'], 'question_slug' => $key]) }}"
-                                    class="h6 px-3 fw-bold text-emerald text-decoration-none">
-                                    <i class="fas fa-circle me-2 text-warning"></i>
+                            @else
+                                <a href="{{ route('answers.show', ['menu_slug' => 'topics', 'module_slug' => $topic['slug'], 'question_slug' => $key]) }}"
+                                    class="accordion-button fw-bold text-emerald {{ $moduleId == $key ? '' : 'collapsed' }} text-decoration-none accordion-link">
+                                    <i
+                                        class="fas {{ $moduleId == $key ? 'fa-check-circle text-success' : 'fa-circle text-accent' }} me-2 "></i>
                                     {{ $key + 1 }}. {{ $item['title'] }}
                                 </a>
-                            </h2>
-                        @endif
+                            @endif
+                        </h2>
 
                         @if (!empty($item['lessons']))
                             <div id="{{ $key }}"
-                                class="accordion-collapse collapse {{ $questionSlug == $key ? 'show' : '' }}"
+                                class="accordion-collapse collapse {{ $moduleId == $key ? 'show' : '' }}"
                                 data-bs-parent="#curriculumAccordionOffcanvas">
                                 <div class="accordion-body p-0">
                                     <div class="list-group list-group-flush">
 
                                         @foreach ($item['lessons'] as $lesson)
-                                            <a href="{{ route('answers.show', ['menu_slug' => 'topics', 'module_slug' => $question['slug'], 'question_slug' => $key]) }}#div-{{ $loop->index }}"
+                                            <a href="{{ route('answers.show', ['menu_slug' => 'topics', 'module_slug' => $topic['slug'], 'question_slug' => $key]) }}#div-{{ $loop->index }}"
                                                 class="list-group-item list-group-item-action small">
                                                 <i class="fas fa-file-alt me-2"></i> {{ $lesson }}
                                             </a>

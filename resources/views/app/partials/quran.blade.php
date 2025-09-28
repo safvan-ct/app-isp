@@ -1,12 +1,12 @@
 @foreach ($verses as $item)
     <article class="border-0 rounded-2 notranslate">
-        <h4 class="text-ar mb-2 text-emerald-900 lh-xl">
+        <h6 class="text-ar mb-2 text-emerald-900 lh-xl">
             {{ $item->text }}
             <span dir="ltr" class="ar-number fs-6">﴾{{ $item->number_in_chapter }}﴿</span>
-        </h4>
+        </h6>
 
         @if ($item->translation)
-            <p class="mb-2">{{ $item->translation->text }} ({{ $item->number_in_chapter }})</p>
+            <p class="mb-2 small">{{ $item->translation->text }} ({{ $item->number_in_chapter }})</p>
         @endif
 
         <p class="text-muted small fst-italic m-0">

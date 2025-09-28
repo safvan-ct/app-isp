@@ -1,34 +1,33 @@
 @extends('layouts.app')
 
+@section('title', __('app.hadith'))
+@section('navbar_title', __('app.hadith'))
+@section('navbar_url', route('hadith.chapters', [$chapter->book->id]))
+
 @section('content')
-    <x-app.topbar :title="$chapter->book->translation?->name ?? $chapter->book->name" :url="route('hadith.chapters', [$chapter->book->id])" />
+    <x-app.banner :title="$chapter->translation?->name ?? $chapter->name">
+        <p class='small m-0'>
+            {{ $chapter->book->translation?->writer ?? $chapter->book->writer }}
+            ({{ $chapter->book->writer_death_year }}H)
+        </p>
+        <p class="small m-0 mb-2">
+            {{ __('app.chapter') }}: <strong>{{ $chapter->chapter_number }}</strong> •
+            {{ __('app.hadiths') }}: <strong>{{ $chapter->verses->count() }}</strong>
+        </p>
 
-    <div class="container my-3 pb-5">
-        <x-app.banner :title="$chapter->translation?->name ?? $chapter->name" :search="false">
-            <x-slot:desc>
-                <p class='small m-0'>
-                    {{ $chapter->book->translation?->writer ?? $chapter->book->writer }}
-                    ({{ $chapter->book->writer_death_year }}H)
-                </p>
-            </x-slot:desc>
+        <div class="search-bar input-group">
+            <input type="search" class="form-control shadow-sm" placeholder="Search..." aria-label="Search" id="search"
+                data-book="{{ $chapter->book->id }}">
+            <button class="btn bg-warning" type="button" onclick="searchHadithByNumber()">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
 
-            <p class="small m-0 mb-2">
-                {{ __('app.chapter') }}: <strong>{{ $chapter->chapter_number }}</strong> •
-                {{ __('app.hadiths') }}: <strong>{{ $chapter->verses->count() }}</strong>
-            </p>
+        <div id="google_translate_element" class="mt-2 mb-0"></div>
+    </x-app.banner>
 
-            <div class="search-bar input-group">
-                <input type="search" class="form-control" placeholder="Search..." aria-label="Search" id="search"
-                    data-book="{{ $chapter->book->id }}">
-                <button class="btn bg-warning" type="button" onclick="searchHadithByNumber()">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-
-            <div id="google_translate_element" class="mt-2 mb-0"></div>
-        </x-app.banner>
-
-        <article class="p-1">
+    <main class="container py-4">
+        <article class="p-1 mb-2">
             @foreach ($verses as $item)
                 @if ($item->heading)
                     <div class="row flex-column flex-md-row m-0 mb-2">
@@ -68,15 +67,15 @@
                 </p>
 
                 @if (!$loop->last)
-                    <x-app.hr />
+                    <x-app.hr class="my-3"/>
                 @endif
             @endforeach
         </article>
 
-        <div class="d-flex justify-content-center mb-4 notranslate">
+        <div class="d-flex justify-content-center mb-5 notranslate">
             {{ $verses->onEachSide(1)->links() }}
         </div>
-    </div>
+    </main>
 @endsection
 
 @push('scripts')

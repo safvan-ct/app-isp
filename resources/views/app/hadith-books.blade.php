@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
+@section('title', __('app.hadith'))
+@section('navbar_title', __('app.hadith'))
+
 @section('content')
-    <x-app.topbar :title="__('app.hadith')" />
+    <x-app.banner :title="__('app.hadith_title')" :desc="'Canonical hadith books — authors, scope, and sample narrations. Search, filter, and open any book for details.'" />
 
-    <div class="container my-3 pb-5">
-        <x-app.banner :title="__('app.hadith_title')" :desc="'Canonical hadith books — authors, scope, and sample narrations. Search, filter, and open any book for details.'" />
-
-        <div class="row g-2">
+    <main class="container py-4 notranslate">
+        <div class="row g-2 mb-5">
             @foreach ($books as $item)
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="base-card d-flex flex-column h-100 justify-content-between rounded-2 border">
@@ -49,5 +50,5 @@
                 </div>
             @endforeach
         </div>
-    </div>
-@endsection
+        </div>
+    @endsection

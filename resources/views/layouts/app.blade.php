@@ -191,7 +191,7 @@
     </div>
 
     <div class="modal fade" id="addOnModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header notranslate"
                     style="position: sticky; top: 0; z-index: 5; background-color: #f8f9fa;">

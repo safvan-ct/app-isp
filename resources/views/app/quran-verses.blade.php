@@ -1,35 +1,33 @@
 @extends('layouts.app')
 
+@section('title', __('app.quran'))
+@section('navbar_title', __('app.quran'))
+@section('navbar_url', route('quran.index'))
+
 @section('content')
-    <x-app.topbar :url="route('quran.index')">
+    <x-app.banner>
         <x-slot:title>
-            <span class="text-ar">{{ $chapter->name }}</span>
+            <span class="text-ar">سُورَةُ {{ $chapter->name }}</span> .1
         </x-slot:title>
-    </x-app.topbar>
 
-    <div class="container my-3 pb-5">
-        <x-app.banner :search="false">
-            <x-slot:title>
-                <span class="text-ar">سُورَةُ {{ $chapter->name }}</span> .1
-            </x-slot:title>
+        <p class="m-0 mt-2">
+            {{ $chapter->translation?->name }} |
 
-            <p class="m-0 mt-2">
-                {{ $chapter->translation?->name }} |
+            <span class="small">
+                {{ $chapter->no_of_verses }} {{ __('app.ayahs') }} • {{ $chapter->revelation_place }}
+            </span>
+        </p>
 
-                <span class="small">
-                    {{ $chapter->no_of_verses }} {{ __('app.ayahs') }} • {{ $chapter->revelation_place }}
-                </span>
-            </p>
+        <form class="d-flex justify-content-center w-100 mt-2">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="quranSwitch">
+                <label class="form-check-label me-2" for="quranSwitch">Qur'an View</label>
+            </div>
+        </form>
+    </x-app.banner>
 
-            <form class="d-flex justify-content-center w-100 mt-2">
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="quranSwitch">
-                    <label class="form-check-label text-white me-2" for="quranSwitch">Qur'an View</label>
-                </div>
-            </form>
-        </x-app.banner>
-
-        <div class="mt-2">
+    <main class="container py-4 notranslate">
+        <div class="mt-2 mb-5">
             <div class="lh-xl fs-1 text-justify p-2 border border-success d-none" id="quranContent">
                 @if (!in_array($chapter->id, [1, 9]))
                     <div class="text-center text-ar mb-2 text-accent-900">بِسْمِ ٱللّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>
@@ -74,7 +72,7 @@
                 @endforeach
             </span>
         </div>
-    </div>
+    </main>
 @endsection
 
 @push('scripts')

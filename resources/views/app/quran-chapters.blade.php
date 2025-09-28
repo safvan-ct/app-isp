@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
+@section('title', __('app.quran'))
+@section('navbar_title', __('app.quran'))
+
 @section('content')
-    <x-app.topbar :title="__('app.quran')" />
-
-    <div class="container my-3 pb-5">
-        <x-app.banner />
-
-        <div class="row g-2">
+    <main class="container py-4 notranslate">
+        <div class="row g-2 mb-5">
             @foreach ($chapters as $chapter)
                 <div class="col-md-6 col-lg-4" style="cursor: pointer"
                     onclick="window.location.href = '{{ route('quran.chapter', $chapter->id) }}'">
@@ -29,5 +28,5 @@
                 </div>
             @endforeach
         </div>
-    </div>
+    </main>
 @endsection

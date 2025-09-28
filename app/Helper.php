@@ -98,7 +98,7 @@ if (! function_exists('exploreTopics')) {
 }
 
 if (! function_exists('getTopicChapters')) {
-    function getTopicChapters($topic = '')
+    function getTopicChapters($key = '')
     {
         $data = [
             "namaz"  => [
@@ -133,10 +133,10 @@ if (! function_exists('getTopicChapters')) {
                 ],
             ],
             "meelad" => [
-                "slug"     => "meelad",
-                "title"    => "നബിദിനം",
-                "desc"     => "നബിദിനം ആഘോഷിക്കേണ്ടതിന്റെ അടിസ്ഥാനവും ശ്രേഷ്ഠതയും",
-                "chapters" => [
+                "slug"    => "meelad",
+                "title"   => "നബിദിനം",
+                "desc"    => "നബിദിനം ആഘോഷിക്കേണ്ടതിന്റെ അടിസ്ഥാനവും ശ്രേഷ്ഠതയും",
+                "modules" => [
                     [
                         "title"   => "റബീഉൽ അവ്വൽ മാസവും നബിദിനവും",
                         "desc"    => "നബിദിനം ആഘോഷിക്കേണ്ടതിന്റെ അടിസ്ഥാനവും ശ്രേഷ്ഠതയും",
@@ -161,7 +161,7 @@ if (! function_exists('getTopicChapters')) {
             ],
         ];
 
-        return empty($topic) ? $data : $data[$topic];
+        return empty($key) ? $data : $data[$key];
     }
 }
 
@@ -182,9 +182,9 @@ if (! function_exists('hadithBookName')) {
 }
 
 if (! function_exists('getChapterNotes')) {
-    function getChapterNotes($topic, $chapter)
+    function getChapterNotes($topic, $module)
     {
-        $file = database_path("json/{$topic}/{$chapter}.json");
+        $file = database_path("json/{$topic}/{$module}.json");
         $data = json_decode(file_get_contents($file), true);
 
         return $data;
