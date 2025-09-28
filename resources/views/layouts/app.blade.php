@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title class="notranslate">@yield('title', __('app.islamic_study_portal'))</title>
 
     <!-- Favicon for most browsers -->

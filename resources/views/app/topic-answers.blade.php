@@ -15,7 +15,7 @@
                         <div class="sideline">
                             @foreach ($module['notes'] as $key => $note)
                                 <div class="sideline-item" id="div-{{ $key }}">
-                                    <h4 class="text-emerald fw-bold">{{ $key + 1 }}. {{ $note['title'] }}</h4>
+                                    <h4 class="text-emerald fw-bold text-break">{{ $key + 1 }}. {{ $note['title'] }}</h4>
 
                                     @foreach ($note['points'] as $key2 => $point)
                                         @foreach ($point['desc'] as $desc)
