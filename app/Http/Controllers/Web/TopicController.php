@@ -28,7 +28,7 @@ class TopicController extends Controller
 
         $topic = getTopicChapters($moduleSlug);
 
-        return view("app.topic-chapters", compact("module", "menuSlug", "topic"));
+        return view("app.modules", compact("module", "menuSlug", "topic"));
     }
 
     public function answers($menuSlug, $moduleSlug, $moduleId)
@@ -43,6 +43,6 @@ class TopicController extends Controller
         $topic  = getTopicChapters($moduleSlug);
         $module = getChapterNotes($moduleSlug, $moduleId + 1);
 
-        return view("app.topic-answers", compact("topic", "module", "moduleId"));
+        return view("app.module-{$module['page']}", compact("topic", "module", "moduleId"));
     }
 }

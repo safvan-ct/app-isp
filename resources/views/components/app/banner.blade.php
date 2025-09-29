@@ -3,7 +3,7 @@
 <header class="container-fluid py-3 bg-clr-surface shadow-sm notranslate">
     <div class="container text-center">
         @if ($type || $number)
-            <p class="mb-0 text-muted small">{{ $type }} {{ $number }}: </p>
+            <p class="mb-0 text-muted small d-none">{{ $type }} {{ $number }}: </p>
         @endif
 
         @if ($title)
@@ -11,7 +11,7 @@
         @endif
 
         @if ($desc)
-            <p class="m-0 text-muted mt-1"> {{ $desc }}</p>
+            <div class="m-0 text-muted mt-1"> {!! $desc !!}</div>
         @endif
 
         {{ $slot }}

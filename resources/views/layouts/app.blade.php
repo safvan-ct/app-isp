@@ -59,31 +59,36 @@
 
             <div class="collapse navbar-collapse d-none d-lg-flex ms-3" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
-                    <li class="nav-item {{ Str::is('quran.*', $routeName) ? 'active' : '' }}">
-                        <a href="{{ route('quran.index') }}" class="text-accent text-decoration-none">
-                            {{ __('app.quran') }}
-                        </a>
-                    </li>
-                    <li class="nav-item {{ Str::is('hadith.*', $routeName) ? 'active' : '' }}">
-                        <a href="{{ route('hadith.index') }}" class="text-accent text-decoration-none">
-                            {{ __('app.hadith') }}
-                        </a>
-                    </li>
-                    <li class="nav-item {{ $routeName == 'home' ? 'active' : '' }}">
-                        <a href="{{ route('home') }}" class="text-accent text-decoration-none">
+                    <li class="nav-item">
+                        <a href="{{ route('home') }}"
+                            class="{{ $routeName == 'home' ? 'text-accent' : 'text-white' }} text-decoration-none">
                             {{ __('app.home') }}
                         </a>
                     </li>
 
-                    <li
-                        class="nav-item {{ Str::is('modules.*', $routeName) || Str::is('questions.*', $routeName) || Str::is('answers.*', $routeName) ? 'active' : '' }}">
-                        <a href="{{ route('modules.show', 'topics') }}" class="text-accent text-decoration-none">
+                    <li class="nav-item">
+                        <a href="{{ route('quran.index') }}"
+                            class="{{ Str::is('quran.*', $routeName) ? 'text-accent' : 'text-white' }} text-decoration-none">
+                            {{ __('app.quran') }}
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('hadith.index') }}"
+                            class="{{ Str::is('hadith.*', $routeName) ? 'text-accent' : 'text-white' }} text-decoration-none">
+                            {{ __('app.hadith') }}
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('modules.show', 'topics') }}"
+                            class="text-decoration-none {{ Str::is('modules.*', $routeName) || Str::is('questions.*', $routeName) || Str::is('answers.*', $routeName) ? 'text-accent' : 'text-white' }}">
                             {{ __('app.topics') }}
                         </a>
                     </li>
 
-                    <li class="nav-item {{ Str::is('likes', $routeName) ? 'active' : '' }}">
-                        <a href="javascript:void(0);" class="text-accent text-decoration-none">
+                    <li class="nav-item">
+                        <a href="javascript:void(0);" class="text-white text-decoration-none">
                             {{ __('app.books') }}
                         </a>
                     </li>
