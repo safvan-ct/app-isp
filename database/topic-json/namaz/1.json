@@ -1,0 +1,284 @@
+{
+    "page": "lesson",
+    "lessons": [
+        {
+            "title": "സുബഹ് (ഫജ്ർ)",
+            "desc": "പ്രഭാത നമസ്കാരം",
+            "active": true,
+            "points": [
+                {
+                    "title": "സമയം",
+                    "desc": [
+                        "പുലർച്ചെ വെളിച്ചം പ്രത്യക്ഷപ്പെടുന്നത് മുതൽ സൂര്യോദയം വരെ."
+                    ],
+                    "ref": []
+                },
+                {
+                    "title": "റക്അത്തുകൾ",
+                    "desc": [
+                        "നിർബന്ധം (ഫർദ്): 2 റക്അത്.",
+                        "സുന്നത്ത് (റാതിബ): ഫർദിന് മുമ്പ് 2 റക്അത്."
+                    ],
+                    "ref": []
+                }
+            ]
+        },
+        {
+            "title": "ളുഹർ",
+            "desc": "മദ്ധ്യാഹ്ന നമസ്കാരം",
+            "active": false,
+            "points": [
+                {
+                    "title": "സമയം",
+                    "desc": [
+                        "സൂര്യൻ ആകാശമദ്ധ്യത്തിൽ നിന്ന് താഴേക്ക് മാറുമ്പോൾ മുതൽ ഒരു വസ്തുവിന്റെ നിഴലിന്റെ നീളം ആ വസ്തുവിന്റെ നീളത്തിന് സമമാകുന്നത് വരെ."
+                    ],
+                    "ref": []
+                },
+                {
+                    "title": "റക്അത്തുകൾ",
+                    "desc": [
+                        "നിർബന്ധം (ഫർദ്): 4 റക്അത്.",
+                        "സുന്നത്ത് (റാതിബ): ഫർദിന് മുമ്പ് 4 റക്അത്, ശേഷം 2 റക്അത്."
+                    ],
+                    "ref": []
+                }
+            ]
+        },
+        {
+            "title": "അസർ",
+            "desc": "വൈകുന്നേരത്തെ നമസ്കാരം",
+            "active": false,
+            "points": [
+                {
+                    "title": "സമയം",
+                    "desc": [
+                        "ഒരു വസ്തുവിന്റെ നീളം അതിന്റെ നിഴലിന്റെ നീളത്തിന് സമമാകുന്നത് മുതൽ സൂര്യാസ്തമയം വരെ."
+                    ],
+                    "ref": []
+                },
+                {
+                    "title": "റക്അത്തുകൾ",
+                    "desc": [
+                        "നിർബന്ധം (ഫർദ്): 4 റക്അത്."
+                    ],
+                    "ref": []
+                }
+            ]
+        },
+        {
+            "title": "മഗ്‌രിബ്",
+            "desc": "സന്ധ്യാ നമസ്കാരം",
+            "active": false,
+            "points": [
+                {
+                    "title": "സമയം",
+                    "desc": [
+                        "സൂര്യാസ്തമയം മുതൽ ആകാശത്തെ ചുവന്ന വെളിച്ചം (ശഫഖ്) ഇല്ലാതാകുന്നത് വരെ."
+                    ],
+                    "ref": []
+                },
+                {
+                    "title": "റക്അത്തുകൾ",
+                    "desc": [
+                        "നിർബന്ധം (ഫർദ്): 3 റക്അത്.",
+                        "സുന്നത്ത് (റാതിബ): ഫർദിന് ശേഷം 2 റക്അത്."
+                    ],
+                    "ref": []
+                }
+            ]
+        },
+        {
+            "title": "ഇശാ",
+            "desc": "രാത്രി നമസ്കാരം",
+            "active": false,
+            "points": [
+                {
+                    "title": "സമയം",
+                    "desc": [
+                        "ചുവന്ന വെളിച്ചം (ശഫഖ്) ഇല്ലാതാകുന്നത് മുതൽ അർദ്ധരാത്രി വരെ."
+                    ],
+                    "ref": []
+                },
+                {
+                    "title": "റക്അത്തുകൾ",
+                    "desc": [
+                        "നിർബന്ധം (ഫർദ്): 4 റക്അത്.",
+                        "സുന്നത്ത് (റാതിബ): ഫർദിന് ശേഷം 2 റക്അത്."
+                    ],
+                    "ref": []
+                }
+            ]
+        },
+        {
+            "title": "ഖുർആൻ & ഹദീസ് വിശകലനങ്ങൾ",
+            "desc": "",
+            "active": false,
+            "points": [
+                {
+                    "title": "നമസ്കാര സമയങ്ങൾ",
+                    "desc": [],
+                    "ref": [
+                        {
+                            "title": "നമസ്കാര സമയങ്ങൾ",
+                            "type": "quran",
+                            "info": [
+                                {
+                                    "type": "quran",
+                                    "slug": 17,
+                                    "number": 78
+                                },
+                                {
+                                    "type": "quran",
+                                    "slug": 11,
+                                    "number": 114
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "sahih-bukhari",
+                                    "number": 541
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "sahih-bukhari",
+                                    "number": 556
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "sahih-muslim",
+                                    "number": 1385
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "sahih-muslim",
+                                    "number": 1388
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "sahih-muslim",
+                                    "number": 1389
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "al-tirmidhi",
+                                    "number": 149
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "al-tirmidhi",
+                                    "number": 151
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "al-tirmidhi",
+                                    "number": 152
+                                }
+                            ]
+                        },
+                        {
+                            "title": "നമസ്കാരം ആദ്യ സമയങ്ങളിൽ നമസ്കരിക്കുക.",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "type": "hadith",
+                                    "slug": "sahih-bukhari",
+                                    "number": 527
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "റക്അത്തുകളുടെ എണ്ണം",
+                    "desc": [],
+                    "ref": [
+                        {
+                            "title": "റക്അത്തുകളുടെ എണ്ണം",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "type": "hadith",
+                                    "slug": "sahih-bukhari",
+                                    "number": 1089
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "sahih-bukhari",
+                                    "number": 1091
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "sahih-bukhari",
+                                    "number": 1109
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "sahih-muslim",
+                                    "number": 1581
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "sahih-muslim",
+                                    "number": 1582
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "sahih-muslim",
+                                    "number": 1688
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "sahih-muslim",
+                                    "number": 1689
+                                }
+                            ]
+                        },
+                        {
+                            "title": "നമസ്കാരം: താമസക്കാർക്ക് 4 റക്അത്ത്; യാത്രക്കാർക്ക് 2 റക്അത്ത്; ഭയമുള്ളവർക്ക് 1 റക്അത്ത്.",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "type": "hadith",
+                                    "slug": "sahih-muslim",
+                                    "number": 1575
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "sahih-muslim",
+                                    "number": 1576
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "സുന്നത്ത് നമസ്കാരങ്ങൾ",
+                    "desc": [],
+                    "ref": [
+                        {
+                            "title": "സുന്നത്ത് നമസ്കാരങ്ങൾ",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "type": "hadith",
+                                    "slug": "sahih-muslim",
+                                    "number": 1687
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "al-tirmidhi",
+                                    "number": 415
+                                },
+                                {
+                                    "type": "hadith",
+                                    "slug": "abu-dawood",
+                                    "number": 1251
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

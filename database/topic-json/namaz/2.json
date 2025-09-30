@@ -1,0 +1,241 @@
+{
+    "page": "lesson",
+    "lessons": [
+        {
+            "title": "അദാൻ (ബാങ്ക്)",
+            "desc": "നമസ്കാരത്തിനായി ആളുകളെ വിളിക്കുന്ന വാക്കുകൾ.",
+            "active": true,
+            "points": [
+                {
+                    "title": "അദാനിന്റെ ആരംഭം",
+                    "desc": [
+                        "മദീനയിലെത്തിയപ്പോൾ നമസ്കാര സമയം അറിയിക്കാനായി ഒരു മാർഗം വേണമെന്ന് തോന്നിയ നബി ﷺ, ബിലാൽ (റ) നെ നിയോഗിച്ചു; അതിലൂടെയാണ് അദാൻ തുടങ്ങിയത്."
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 603
+                                },
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 604
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 837
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "അദാനിന്റെ നിബന്ധനകൾ",
+                    "desc": [],
+                    "list": [
+                        "അദാൻ വിളിക്കുമ്പോൾ സമയം പാലിക്കുക (നമസ്കാരം സമയബന്ധിതമാണ്).",
+                        "വാക്കുകൾ ശരിയായി അറബിയിൽ പറയുക.",
+                        "മുഅദ്ദീൻ വിശ്വസ്തനും ബുദ്ധിശാലിയുമായിരിക്കണം."
+                    ],
+                    "ref": [
+                        {
+                            "title": "നമസ്കാരം സമയബന്ധിതമാണ്",
+                            "type": "quran",
+                            "info": [
+                                {
+                                    "slug": 4,
+                                    "number": 103
+                                }
+                            ]
+                        },
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": 517
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "അദാനിന്റെ ഘടനയും പ്രത്യേക നിയമങ്ങളും",
+                    "desc": [
+                        "അറബിക് വാചകങ്ങൾ:",
+                        "<span class='text-ar lh-lg text-emerald'> اللّٰهُ أَكْبَرُ اللّٰهُ أَكْبَرُ (×2)</span>",
+                        "<span class='text-ar lh-lg text-emerald'>أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ (×2)</span>",
+                        "<span class='text-ar lh-lg text-emerald'>أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ (×2)</span>",
+                        "<span class='text-ar lh-lg text-emerald'>حَيَّ عَلَى الصَّلَاةِ (×2)</span>",
+                        "<span class='text-ar lh-lg text-emerald'>حَيَّ عَلَى الْفَلَاحِ (×2)</span>",
+                        "<span class='text-ar lh-lg text-emerald'>الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ (×2)</span> (ഫജ്റ് നമസ്കാരത്തിന് മാത്രം)",
+                        "<span class='text-ar lh-lg text-emerald'>اللّٰهُ أَكْبَرُ (×2)</span>",
+                        "<span class='text-ar lh-lg text-emerald'>لَا إِلٰهَ إِلَّا اللّٰهُ (×1)</span>",
+                        "",
+                        "<b>പ്രത്യേക ശ്രദ്ധ:</b> 'ഹയ്യാ അലസ്-സലാഃ' എന്ന് പറയുമ്പോൾ മുഖം വലത്തേക്ക് തിരിക്കുക.",
+                        "'ഹയ്യാ അലൽ-ഫലാഹ്' എന്ന് പറയുമ്പോൾ മുഖം ഇടത്തേക്ക് തിരിക്കുക.",
+                        "<b>അടിയന്തിര സാഹചര്യങ്ങളിൽ:</b> വീടുകളിൽ വെച്ച് നമസ്കരിക്കാൻ കൽപ്പിക്കാൻ <span class='text-ar lh-lg text-emerald'>'صَلُّوا فِي الرِّحَالِ'</span> എന്ന് വിളിക്കാം."
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 842
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 1119
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 1600
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 1601
+                                },
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": 500
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "അദാനിന് ശേഷമുള്ള ദുആ (പ്രാർത്ഥന)",
+                    "desc": [
+                        "അദാൻ കേട്ട ശേഷം ഈ ദുആ ചൊല്ലുക:",
+                        "<p class='text-ar lh-lg text-emerald fs-5'>اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ وَالصَّلاَةِ الْقَائِمَةِ آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 614
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "മുഅദ്ദീന്റെ വാക്കുകളോടുള്ള പ്രതികരണം",
+                    "desc": [
+                        "മുഅദ്ദീന്റെ വാക്കുകൾ കേൾക്കുമ്പോൾ, പറയുന്നത് ആവർത്തിക്കുക. എന്നാൽ <span class='text-ar lh-lg text-emerald'>'حَيَّ عَلَى الصَّلَاةِ'</span> (നമസ്കാരത്തിലേക്ക് വരൂ) എന്നതിനും <span class='text-ar lh-lg text-emerald'>'حَيَّ عَلَى الْفَلَاحِ' </span>(വിജയത്തിലേക്ക് വരൂ) എന്നതിനും മറുപടിയായി <span class='text-ar lh-lg text-emerald'>'لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللهِ' </span>(അല്ലാഹുവിനെ കൊണ്ടല്ലാതെ ശക്തിയും കഴിവുമില്ല) എന്ന് പറയുക."
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 611
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 848
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 849
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 850
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "ഓർമ്മപ്പെടുത്തലുകൾ",
+                    "desc": [
+                        "<b>വുളൂ ഇല്ലാതെ</b> അദാൻ പറയുന്നത് സാധുവാണ്. വുളൂ ഉണ്ടെങ്കിൽ കൂടുതൽ ഉത്തമം.",
+                        "<b>ഖിബ്‌ലയുടെ ദിശയിൽ</b> അദാൻ വിളിക്കുന്നത് സുന്നത്താണ്, നിർബന്ധമില്ല."
+                    ],
+                    "ref": []
+                }
+            ]
+        },
+        {
+            "title": "ഇഖാമത്ത്",
+            "desc": "നമസ്കാരം തുടങ്ങാനായി നൽകുന്ന അറിയിപ്പ്.",
+            "active": false,
+            "points": [
+                {
+                    "title": "ഇഖാമത്തിന്റെ ഘടന",
+                    "desc": [
+                        "ഇഖാമത്ത് പ്രാർത്ഥന ഉടനെ തുടങ്ങാനാണ് വിളിക്കുന്നത്. ഇതിലെ വാചകങ്ങൾ ഇവയാണ് (അദാനിൽ നിന്ന് വ്യത്യാസമുണ്ട്):",
+                        "<span class='text-ar lh-lg text-emerald'>اللّٰهُ أَكْبَرُ (×2)</span>",
+                        "<span class='text-ar lh-lg text-emerald'>أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ</span>",
+                        "<span class='text-ar lh-lg text-emerald'>أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ</span>",
+                        "<span class='text-ar lh-lg text-emerald'>حَيَّ عَلَى الصَّلَاةِ</span>",
+                        "<span class='text-ar lh-lg text-emerald'>حَيَّ عَلَى الْفَلَاحِ</span>",
+                        "<span class='text-ar lh-lg text-emerald'>قَدْ قَامَتِ الصَّلَاةُ (×2)</span>",
+                        "<span class='text-ar lh-lg text-emerald'>اللّٰهُ أَكْبَرُ (×2)</span>",
+                        "<span class='text-ar lh-lg text-emerald'>لَا إِلٰهَ إِلَّا اللّٰهُ</span>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 607
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 838
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "മുഅദ്ദീന്റെ വാക്കുകളോടുള്ള പ്രതികരണം",
+                    "desc": [
+                        "ഇഖാമത്ത് കേൾക്കുമ്പോൾ മുഅദ്ദീൻ പറയുന്നത് ആവർത്തിക്കുക. <span class='text-ar lh-lg text-emerald'>'حَيَّ عَلَى الصَّلَاةِ'</span> എന്നതിനും <span class='text-ar lh-lg text-emerald'>'حَيَّ عَلَى الْفَلَاحِ' </span>എന്നതിനും മറുപടിയായി <span class='text-ar lh-lg text-emerald'>'لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللهِ' </span>(അല്ലാഹുവിനെ കൊണ്ടല്ലാതെ ശക്തിയും കഴിവുമില്ല) എന്ന് പറയുക.",
+                        "<span class='text-ar lh-lg text-emerald'>'قَدْ قَامَتِ الصَّلَاةُ'</span> എന്നതിന് മറുപടിയായി എന്ത് പറയണം എന്നതിൽ അഭിപ്രായ വ്യത്യാസമുണ്ട് (ചില പണ്ഡിതന്മാർ ഇത് ആവർത്തിക്കാൻ പറയുന്നു, മറ്റു ചിലർ 'ആത്തീമുഹാ വ അഖീമുഹാ' എന്ന് പറയുന്നു).",
+                        "ഈ പ്രതികരണം അദാൻ കേൾക്കുമ്പോഴുള്ള പ്രതികരണത്തിന് സമാനമാണ്."
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 611
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 848
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 849
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 850
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -49,11 +49,11 @@
             <a class="navbar-brand m-0" href="@yield('navbar_url', route('home'))">
                 <img src="{{ asset('img/apple-touch-icon.png') }}"class="me-1 rounded-circle shadow-sm"
                     style="height:30px; width:30px;">
-                <span class="navbar-brand fw-bold text-accent m-0">@yield('navbar_title', __('app.islamic_study_portal'))</span>
+                <span class="fs-6 fw-bold text-accent m-0">@yield('navbar_title', __('app.islamic_study_portal'))</span>
             </a>
 
             <button class="btn btn-sm btn-outline-emerald text-accent d-lg-none ms-auto" data-bs-toggle="offcanvas"
-                data-bs-target="#curriculumOffcanvas">
+                data-bs-target="#menuPanel">
                 <i class="fas fa-list fs-4"></i>
             </button>
 
@@ -200,7 +200,7 @@
             <div class="modal-content">
                 <div class="modal-header notranslate"
                     style="position: sticky; top: 0; z-index: 5; background-color: #f8f9fa;">
-                    <h5 class="modal-title me-3" id="addOnModalLabel">Reference — Adhan Start</h5>
+                    <h5 class="modal-title me-3" id="addOnModalLabel">Reference</h5>
                     <div id="google_translate_element" class="mt-2 mb-2 text-center d-none"></div>
                     <button class="btn-close" data-bs-dismiss="modal"></button>
                 </div>

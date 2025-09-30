@@ -101,7 +101,7 @@
                                     <button class="accordion-button {{ $active ? '' : 'collapsed' }} fw-bold text-emerald"
                                         type="button" data-bs-toggle="collapse" data-bs-target="#module{{ $key + 1 }}"
                                         aria-expanded="false" aria-controls="module{{ $key + 1 }}">
-                                        <span class="step-marker fard">{{ $key + 1 }}</span>
+                                        <span class="step-marker sunnah">{{ $key + 1 }}</span>
                                         {{ $lesson['title'] }}
                                     </button>
                                 </h2>
@@ -131,14 +131,28 @@
                                                 </div>
                                             @endforeach
 
+                                            @if (isset($point['list']))
+                                                <ul class="m-0">
+                                                    @foreach ($point['list'] as $list)
+                                                        <li class="m-0 text-justify">
+                                                            {!! $list !!}
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+
                                             @foreach ($point['ref'] as $ref)
                                                 @if (!isset($ref['active']) || (isset($ref['active']) && $ref['active']))
                                                     <div
                                                         class="source-callout mt-2 {{ $ref['type'] == 'quran' ? 'border-dark' : '' }}">
                                                         <p class="small fst-italic mb-0">
-                                                            {{ $ref['title'] }}
+                                                            {{ isset($ref['title']) ? $ref['title'] : '' }}
 
-                                                            @foreach ($ref['info'] as $info)
+                                                            @php
+                                                                $infos = isset($ref['info']) ? $ref['info'] : [];
+                                                            @endphp
+
+                                                            @foreach ($infos as $info)
                                                                 @php
                                                                     $sahih = isset($info['sahih'])
                                                                         ? $info['sahih']
@@ -217,8 +231,7 @@
 
             <div class="col-lg-4">
                 <section id="full-curriculum" class="mb-5">
-                    <h2 class="h5 text-emerald mb-3 border-bottom pb-2 fw-bold">
-                        <i class="fas fa-lightbulb text-accent me-1"></i>
+                    <h2 class="h5 text-emerald mb-3 border-bottom pb-2">
                         ബന്ധപ്പെട്ട വിഷയങ്ങൾ
                     </h2>
 
@@ -229,17 +242,17 @@
                                 <h2 class="accordion-header shadow-sm">
                                     @if (!empty($item['lessons']))
                                         <button
-                                            class="accordion-button fw-bold text-emerald {{ $moduleId == $key ? '' : 'collapsed' }}"
+                                            class="accordion-button related fw-bold text-emerald-900 {{ $moduleId == $key ? '' : 'collapsed' }}"
                                             type="button" data-bs-toggle="collapse" data-bs-target="#{{ $key }}">
                                             <i
-                                                class="fas {{ $moduleId == $key ? 'fa-check-circle text-success' : 'fa-circle text-accent' }} me-2 "></i>
+                                                class="fas fa-circle {{ $moduleId == $key ? 'text-success' : 'text-accent' }} me-2 "></i>
                                             {{ $key + 1 }}. {{ $item['title'] }}
                                         </button>
                                     @else
                                         <a href="{{ route('answers.show', ['menu_slug' => 'topics', 'module_slug' => $topic['slug'], 'question_slug' => $key]) }}"
-                                            class="accordion-button fw-bold text-emerald {{ $moduleId == $key ? '' : 'collapsed' }} text-decoration-none accordion-link">
+                                            class="accordion-button related fw-bold text-emerald-900 {{ $moduleId == $key ? '' : 'collapsed' }} text-decoration-none accordion-link">
                                             <i
-                                                class="fas {{ $moduleId == $key ? 'fa-check-circle text-success' : 'fa-circle text-accent' }} me-2 "></i>
+                                                class="fas fa-circle {{ $moduleId == $key ? 'text-success' : 'text-accent' }} me-2 "></i>
                                             {{ $key + 1 }}. {{ $item['title'] }}
                                         </a>
                                     @endif
@@ -248,7 +261,7 @@
                                 @if (!empty($item['lessons']))
                                     <div id="{{ $key }}"
                                         class="accordion-collapse collapse {{ $moduleId == $key ? 'show' : '' }}"
-                                        data-bs-parent="#curriculumAccordionOffcanvas"
+                                        data-bs-parent="#curriculumAccordion"
                                         style="border-left: 3px solid var(--clr-accent);">
                                         <div class="accordion-body p-0">
                                             <div class="list-group list-group-flush">
