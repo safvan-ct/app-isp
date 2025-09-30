@@ -138,7 +138,7 @@
                                             @endforeach
 
                                             @if (isset($point['list']))
-                                                <ul class="m-0">
+                                                <ul class="m-0 mt-1">
                                                     @foreach ($point['list'] as $list)
                                                         <li class="m-0 text-justify">
                                                             {!! $list !!}
