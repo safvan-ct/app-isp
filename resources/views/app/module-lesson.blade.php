@@ -114,6 +114,12 @@
                                             <img src="{{ asset($lesson['img']) }}" class="img-fluid mb-3 w-100 w-md-50">
                                         @endif
 
+                                        @if (isset($lesson['icon']))
+                                            @foreach ($lesson['icon'] as $icon)
+                                                <img src="{{ asset($icon) }}" class="icon-img mb-3 ms-3" alt="step icon" />
+                                            @endforeach
+                                        @endif
+
                                         @foreach ($lesson['points'] as $key2 => $point)
                                             @if ($point['title'])
                                                 <h6 class="text-accent-900 fw-bold text-break">
@@ -232,7 +238,7 @@
             <div class="col-lg-4">
                 <section id="full-curriculum" class="mb-5">
                     <h2 class="h5 text-emerald mb-3 border-bottom pb-2">
-                        ബന്ധപ്പെട്ട വിഷയങ്ങൾ
+                        Related Lessons
                     </h2>
 
                     <div class="accordion accordion-flush" id="curriculumAccordion">
