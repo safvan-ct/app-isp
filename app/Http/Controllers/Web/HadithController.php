@@ -39,7 +39,7 @@ class HadithController extends Controller
         if (! $chapter) {
             abort(404);
         }
-        $verses = $chapter->verses()->paginate(5);
+        $verses = $chapter->verses()->paginate(500);
 
         return view("app.hadith-verses", compact("chapter", "verses"));
     }

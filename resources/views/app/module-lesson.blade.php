@@ -130,6 +130,53 @@
                                                 </h6>
                                             @endif
 
+                                            @if (isset($point['notes']) && count($point['notes']) > 0)
+                                                @foreach ($point['notes'] as $note)
+                                                    <div class="{{ $loop->last ? '' : 'mb-2' }}">
+                                                        @foreach ($note['desc'] as $desc)
+                                                            <div class="m-0 text-justify {{ $loop->last ? '' : 'mb-1' }}"
+                                                                style="text-indent: 2em">
+                                                                {!! $desc !!}
+                                                            </div>
+                                                        @endforeach
+
+                                                        @foreach ($note['ref'] as $ref)
+                                                            @if (!isset($ref['active']) || (isset($ref['active']) && $ref['active']))
+                                                                <div
+                                                                    class="source-callout mt-2 {{ $ref['type'] == 'quran' ? 'border-dark' : '' }}">
+                                                                    <p class="small mb-0">
+                                                                        {!! isset($ref['title']) ? $ref['title'] : '' !!}
+
+                                                                        @php
+                                                                            $infos = isset($ref['info'])
+                                                                                ? $ref['info']
+                                                                                : [];
+                                                                        @endphp
+
+                                                                        @foreach ($infos as $info)
+                                                                            @php
+                                                                                $sahih = isset($info['sahih'])
+                                                                                    ? $info['sahih']
+                                                                                    : true;
+
+                                                                                $cls = $sahih ? '' : 'text-danger';
+                                                                            @endphp
+
+                                                                            <x-app.ref-button :slug="$info['slug']"
+                                                                                :number="$info['number']" :class="$cls .
+                                                                                    (!$loop->last ? ' mb-1' : '')"
+                                                                                :type="isset($info['type'])
+                                                                                    ? $info['type']
+                                                                                    : $ref['type']" />
+                                                                        @endforeach
+                                                                    </p>
+                                                                </div>
+                                                            @endif
+                                                        @endforeach
+                                                    </div>
+                                                @endforeach
+                                            @endif
+
                                             @foreach ($point['desc'] as $desc)
                                                 <div class="m-0 text-justify {{ $loop->last ? '' : 'mb-1' }}"
                                                     style="text-indent: 2em">
@@ -151,8 +198,8 @@
                                                 @if (!isset($ref['active']) || (isset($ref['active']) && $ref['active']))
                                                     <div
                                                         class="source-callout mt-2 {{ $ref['type'] == 'quran' ? 'border-dark' : '' }}">
-                                                        <p class="small fst-italic mb-0">
-                                                            {{ isset($ref['title']) ? $ref['title'] : '' }}
+                                                        <p class="small mb-0">
+                                                            {!! isset($ref['title']) ? $ref['title'] : '' !!}
 
                                                             @php
                                                                 $infos = isset($ref['info']) ? $ref['info'] : [];
@@ -204,8 +251,8 @@
                                                     @if (!isset($ref['active']) || (isset($ref['active']) && $ref['active']))
                                                         <div
                                                             class="source-callout mt-1 {{ $ref['type'] == 'quran' ? 'border-dark' : '' }}">
-                                                            <p class="small fst-italic mb-0">
-                                                                {{ $ref['title'] }}
+                                                            <p class="small mb-0">
+                                                                {!! $ref['title'] !!}
 
                                                                 @foreach ($ref['info'] as $info)
                                                                     @php

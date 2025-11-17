@@ -1,0 +1,41 @@
+{
+    "page": "lesson",
+    "lessons": [
+        {
+            "title": "മരണം: വിശ്വാസവും തയ്യാറെടുപ്പും",
+            "desc": "മരണത്തെക്കുറിച്ചുള്ള ഇസ്‌ലാമിക വീക്ഷണവും, അതിനുവേണ്ടിയുള്ള വിശ്വാസപരമായ തയ്യാറെടുപ്പുകളും.",
+            "active": true,
+            "points": [
+
+                {
+                    "title": "Khabar vichaarana",
+                    "desc": [],
+                    "ref": [
+                        {
+                            "title": "",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": 4753
+                                },
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 1379
+                                },
+                                {
+                                    "slug": "sunan-nasai",
+                                    "number": 2049
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 2232
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
