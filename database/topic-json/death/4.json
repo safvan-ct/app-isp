@@ -97,12 +97,27 @@
                     ],
                     "ref": [
                         {
-                            "title": "കുട്ടികൾക്ക് നിസ്കരിച്ചില്ല",
+                            "title": "കപടവിശ്വാസികൾക്ക് വേണ്ടി നീ നമസ്കരിക്കരുത്",
+                            "type": "quran",
+                            "info": [
+                                {
+                                    "slug": 9,
+                                    "number": 84
+                                }
+                            ]
+                        },
+                        {
+                            "title": "കുട്ടികൾക്ക്, ആത്മഹത്യ ചെയ്തവർക്ക് നബി (സ) നമസ്കരിച്ചില്ല",
                             "type": "hadith",
                             "info": [
                                 {
                                     "slug": "abu-dawood",
                                     "number": 3187
+                                },
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "book": "കിതാബുൽ ജനാഇസ് (Funerals)",
+                                    "number": 1363
                                 }
                             ]
                         },
@@ -117,23 +132,11 @@
                                 {
                                     "slug": "sahih-bukhari",
                                     "number": 1333
-                                }
-                            ]
-                        },
-                        {
-                            "title": "ഒന്നാം തക്ബീറിനു ശേഷം ഫാതിഹ പാരായണം",
-                            "type": "hadith",
-                            "info": [
+                                },
                                 {
                                     "slug": "sahih-bukhari",
                                     "number": 1335
-                                }
-                            ]
-                        },
-                        {
-                            "title": "രണ്ടാം തക്ബീറിനു ശേഷം സ്വലാത്തും മൂന്നാം തക്ബീറിനു ശേഷം ദുആയും",
-                            "type": "hadith",
-                            "info": [
+                                },
                                 {
                                     "slug": "sahih-muslim",
                                     "number": 2210
@@ -167,27 +170,6 @@
                                 {
                                     "slug": "abu-dawood",
                                     "number": 3189
-                                }
-                            ]
-                        },
-                        {
-                            "title": "കപടവിശ്വാസികൾക്ക് വേണ്ടി നീ നമസ്കരിക്കരുത്",
-                            "type": "quran",
-                            "info": [
-                                {
-                                    "slug": 9,
-                                    "number": 84
-                                }
-                            ]
-                        },
-                        {
-                            "title": "ആത്മഹത്യ ചെയ്തവർക്ക് നബി (സ) നമസ്കരിച്ചില്ല",
-                            "type": "hadith",
-                            "info": [
-                                {
-                                    "slug": "sahih-bukhari",
-                                    "book": "കിതാബുൽ ജനാഇസ് (Funerals)",
-                                    "number": 1363
                                 }
                             ]
                         }
