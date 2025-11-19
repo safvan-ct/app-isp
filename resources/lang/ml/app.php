@@ -5,11 +5,11 @@ return [
     "islamic_study_portal"  => "ഇസ്ലാമിക് സ്റ്റഡി പോർട്ടൽ",
 
     // Menus
-    'home'                  => 'ഹോം',
-    "quran"                 => "ഖുർആൻ",
-    "hadith"                => "ഹദീസ്",
+    // 'home'                  => 'ഹോം',
+    // "quran"                 => "ഖുർആൻ",
+    // "hadith"                => "ഹദീസ്",
     "calendar"              => "കലണ്ടർ",
-    "topics"                => "വിഷയങ്ങൾ",
+    // "topics"                => "വിഷയങ്ങൾ",
     "login"                 => "ലോഗിന്",
     "profile"               => "പ്രോഫൈല്‍",
     "account"               => "അക്കൗംട്",
@@ -17,10 +17,10 @@ return [
     "bookmarks"             => "ബുക്ക്മാർക്കുകൾ",
     "logout"                => "ലോഗൗട്ട്",
     "books"                 => "ഗ്രന്ഥങ്ങള്‍",
-    "notifications"         => "നോട്ടിഫിക്കേഷൻസ്",
-    "settings"              => "സെറ്റിങ്‌സ്",
-    "about"                 => "എബൗട്",
-    "privacy"               => "പ്രൈവസി",
+    // "notifications"         => "നോട്ടിഫിക്കേഷൻസ്",
+    // "settings"              => "സെറ്റിങ്‌സ്",
+    // "about"                 => "എബൗട്",
+    // "privacy"               => "പ്രൈവസി",
     'references'            => 'പ്രമാണം',
 
     // Index page

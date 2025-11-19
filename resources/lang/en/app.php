@@ -17,6 +17,10 @@ return [
     "bookmarks"             => "Bookmarks",
     "logout"                => "Logout",
     "books"                 => "Books",
+    "notifications"         => "Notifications",
+    "settings"              => "Settings",
+    "about"                 => "About",
+    "privacy"               => "Privacy",
 
     // Index page
     "seek_knowledge"        => "Seek Knowledge with Ease.",
