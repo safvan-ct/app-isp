@@ -43,6 +43,6 @@ class TopicController extends Controller
         $topic  = getTopicChapters($moduleSlug);
         $module = getChapterNotes($moduleSlug, $moduleId + 1);
 
-        return view("app.module-{$module['page']}", compact("topic", "module", "moduleId"));
+        return view("app.module-{$module['page']}", compact("topic", "module", "moduleId", "moduleSlug"));
     }
 }

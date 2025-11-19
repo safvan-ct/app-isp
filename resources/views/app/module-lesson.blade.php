@@ -81,10 +81,17 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <section id="" class="mb-5">
-                    <h2 class="h5 text-emerald mb-3 border-bottom pb-2">
-                        <i class="fas fa-list-check me-2 text-accent"></i>
-                        Step-by-Step Guide
-                    </h2>
+                    <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                        <h2 class="h5 text-emerald mb-0">
+                            <i class="fas fa-list-check me-2 text-accent"></i>
+                            Step-by-Step Guide
+                        </h2>
+
+                        <a href="{{ route('questions.show', ['menu_slug' => 'topics', 'module_slug' => $moduleSlug]) }}"
+                            class="btn btn-sm btn-outline-secondary">
+                            Back
+                        </a>
+                    </div>
 
                     <div class="accordion module-steps-accordion" id="moduleAccordion">
                         @foreach ($module['lessons'] as $key => $lesson)
@@ -99,8 +106,9 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header shadow-sm">
                                     <button class="accordion-button {{ $active ? '' : 'collapsed' }} fw-bold text-emerald"
-                                        type="button" data-bs-toggle="collapse" data-bs-target="#module{{ $key + 1 }}"
-                                        aria-expanded="false" aria-controls="module{{ $key + 1 }}">
+                                        type="button" @if (count($module['lessons']) > 1) data-bs-toggle="collapse" @endif
+                                        data-bs-target="#module{{ $key + 1 }}" aria-expanded="false"
+                                        aria-controls="module{{ $key + 1 }}">
                                         <span class="step-marker sunnah">{{ $key + 1 }}</span>
                                         {{ $lesson['title'] }}
                                     </button>
