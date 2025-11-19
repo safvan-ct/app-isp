@@ -6,6 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title class="notranslate">@yield('title', __('app.islamic_study_portal'))</title>
 
+    <meta name="description"
+        content="മലയാളം ഇസ്ലാമിക് സ്റ്റഡി പോർട്ടൽ — ഖുർആൻ മലയാളം തർജ്ജമ, ഹദീസ് വിശദീകരണം, ഫിഖ് മാർഗ്ഗങ്ങൾ, ജനാസ നിയമങ്ങൾ, ഇസ്ലാമിക ദുആകൾ, അഖീദ, റമദാൻ നിർദ്ദേശങ്ങൾ, പഠന സാമഗ്രികൾ, ഇസ്ലാമിക ചോദ്യോത്തരങ്ങൾ — വിശ്വസനീയവും പരാമർശങ്ങളോട് കൂടി.">
+    <meta name="keywords"
+        content="ഇസ്ലാം, ഇസ്ലാമിക് പഠനം, ഖുർആൻ മലയാളം, ഹദീസ് മലയാളം, ഫിഖ് മലയാളം, ജനാസ നിയമങ്ങൾ, ദുആകൾ, ഖദർ, സുന്നത്ത്, Aqeedah Malayalam, Islamic Study Malayalam, Quran Tafseer Malayalam, Hadith Malayalam Explanation, Janaza Guide Malayalam">
+
+    <meta property="og:title" content="മലയാളം ഇസ്ലാമിക് സ്റ്റഡി പോർട്ടൽ">
+    <meta property="og:description"
+        content="ഖുർആൻ, ഹദീസ്, ഫിഖ്, ദുആകൾ, ഇസ്ലാമിക ചോദ്യോത്തരങ്ങൾ — വിശ്വാസമേറിയ മലയാളം ഇസ്‌ലാമിക വിജ്ഞാനകേന്ദ്രം.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://islamicstudyportal.org/img/apple-touch-icon.png">
+    <meta property="og:url" content="https://islamicstudyportal.org">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="മലയാളം ഇസ്ലാമിക് സ്റ്റഡി പോർട്ടൽ">
+    <meta name="twitter:description" content="ഖുർആൻ, ഹദീസ്, ഫിഖ് മാർഗ്ഗങ്ങൾ, ദുആകൾ — മലയാളത്തിൽ ലളിതമായി.">
+    <meta name="twitter:image" content="https://islamicstudyportal.org/img/apple-touch-icon.png">
+
     <!-- Favicon for most browsers -->
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('img/favicon-16x16.png') }}">
@@ -88,10 +105,17 @@
                     </li>
 
                     <li class="nav-item">
+                        <a href="{{ route('contact.form') }}"
+                            class="{{ Str::is('contact.*', $routeName) ? 'text-accent' : 'text-white' }} text-decoration-none">
+                            Contact
+                        </a>
+                    </li>
+
+                    {{-- <li class="nav-item">
                         <a href="javascript:void(0);" class="text-white text-decoration-none">
                             {{ __('app.books') }}
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
 
                 <span class="navbar-text">
@@ -126,9 +150,13 @@
             <i class="fas fa-search"></i>{{ __('app.topics') }}
         </a>
 
-        <a href="javascript:void(0);" class="{{ Str::is('likes', $routeName) ? 'active' : '' }}">
-            <i class="fas fa-book"></i>{{ __('app.books') }}
+        <a href="{{ route('contact.form') }}" class="{{ Str::is('contact.*', $routeName) ? 'active' : '' }}">
+            <i class="fas fa-message"></i>Contact
         </a>
+
+        {{-- <a href="javascript:void(0);" class="{{ Str::is('likes', $routeName) ? 'active' : '' }}">
+            <i class="fas fa-book"></i>{{ __('app.books') }}
+        </a> --}}
     </div>
 
     <div class="offcanvas offcanvas-start notranslate" tabindex="-1" id="menuPanel">

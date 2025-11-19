@@ -23,6 +23,9 @@ Route::get('calendar', [HomeController::class, 'calendar'])->name('calendar');
 Route::get('likes', [HomeController::class, 'likes'])->name('likes');
 Route::get('change-language/{lang}', [HomeController::class, 'changeLanguage'])->name('change.language');
 
+Route::get('/contact', [HomeController::class, 'showForm'])->name('contact.form');
+Route::post('/contact', [HomeController::class, 'sendMail'])->name('contact.send');
+
 // ------------------------------
 // Fetch (AJAX / API-like Endpoints)
 // ------------------------------
