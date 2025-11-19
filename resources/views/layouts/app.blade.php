@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title class="notranslate">@yield('title', __('app.islamic_study_portal'))</title>
 
+    <meta name="google-site-verification" content="OKnz62VGeCr4Y1wyF1Zub_GLB1pI-DFdldoYKmareBY" />
+
     <meta name="description"
         content="മലയാളം ഇസ്ലാമിക് സ്റ്റഡി പോർട്ടൽ — ഖുർആൻ മലയാളം തർജ്ജമ, ഹദീസ് വിശദീകരണം, ഫിഖ് മാർഗ്ഗങ്ങൾ, ജനാസ നിയമങ്ങൾ, ഇസ്ലാമിക ദുആകൾ, അഖീദ, റമദാൻ നിർദ്ദേശങ്ങൾ, പഠന സാമഗ്രികൾ, ഇസ്ലാമിക ചോദ്യോത്തരങ്ങൾ — വിശ്വസനീയവും പരാമർശങ്ങളോട് കൂടി.">
     <meta name="keywords"
