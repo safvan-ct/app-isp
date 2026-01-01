@@ -5,7 +5,7 @@
 @section('navbar_url', route('hadith.chapters', [$chapter->book->id]))
 
 @section('content')
-    <x-app.banner :title="$chapter->translation?->name ?? $chapter->name">
+    <x-app.banner :title="$chapter->translation?->name ?? $chapter->name" :url="route('hadith.chapter.verses', ['book' => $chapter->book->slug, 'chapter' => $chapter->id])">
         <p class='small m-0'>
             {{ $chapter->book->translation?->writer ?? $chapter->book->writer }}
             ({{ $chapter->book->writer_death_year }}H)
@@ -15,38 +15,36 @@
             {{ __('app.hadiths') }}: <strong>{{ $chapter->verses->count() }}</strong>
         </p>
 
-        <div class="search-bar input-group">
-            <input type="search" class="form-control shadow-sm" placeholder="Search..." aria-label="Search" id="search"
-                data-book="{{ $chapter->book->id }}">
-            <button class="btn bg-warning" type="button" onclick="searchHadithByNumber()">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
+        <x-app.search :books="$books" :book_id="$chapter->book->id" :search="$verseNumber ?? ''"/>
 
         <div id="google_translate_element" class="mt-2 mb-0"></div>
     </x-app.banner>
 
-    <main class="container py-4">
-        <article class="p-1 mb-2">
+    <main class="container py-4 bg-light">
+        <article class="p-1 mb-2 ">
             @foreach ($verses as $item)
                 @if ($item->heading)
                     <div class="row flex-column flex-md-row m-0 mb-2">
                         <div class="col-12 col-md-6 order-1 order-md-2 p-0 ps-md-4">
                             <h6 class="text-emerald-900 notranslate fw-bold fs-5 m-0 text-justify"
-                                style="line-height: 1.4; direction: rtl">
+                                style="font-size: 22px; line-height: 1.6; font-family: 'Scheherazade New', serif;"
+                                dir="rtl">
                                 {{ $item->heading }}
                             </h6>
                         </div>
 
                         <div class="col-12 col-md-6 order-2 order-md-1 m-0 p-0">
-                            <h6 class="fw-bold fs-6 m-0 text-justify">{{ $item->translation?->heading }}</h6>
+                            <h6 class="fw-bold fs-6 m-0 text-justify" style="font-size: 17px;">
+                                {{ $item->translation?->heading }}
+                            </h6>
                         </div>
                     </div>
                 @endif
 
                 <div class="row flex-column flex-md-row m-0 mb-1">
                     <div class="col-12 col-md-6 order-1 order-md-2 p-0 ps-md-4">
-                        <div class="text-emerald-900 notranslate text-justify" style="font-size: 20px; line-height: 1.6;"
+                        <div class="text-emerald-900 notranslate text-justify"
+                            style="font-size: 19px; line-height: 1.8; font-family: 'Scheherazade New', serif;"
                             dir="rtl">
                             {{ $item->text }}
                             (<span class="fst-italic fs-6">{{ $verses->firstItem() + $loop->index }}</span>)
@@ -54,20 +52,22 @@
                     </div>
 
                     <div class="col-12 col-md-6 order-2 order-md-1 p-0">
-                        <div class="text-en text-justify">{{ $item->translation?->text }}</div>
+                        <div class="text-en text-justify" style="font-size: 14px;">
+                            {{ $item->translation?->text }}
+                        </div>
                     </div>
                 </div>
 
                 <p class="text-muted small notranslate fst-italic m-0">
-                    {{--  {{ $chapter->book->translation?->name ?? $chapter->book->name }}, --}}
-                    🔖 {{ __('app.volume') }}: {{ $item->volume }},
-                    {{-- {{ __('app.chapter') }}: {{ $chapter->translation?->name ?? $chapter->name }}, --}}
+                    🔖 {{ $chapter->book->translation?->name ?? $chapter->book->name }},
+                    {{ __('app.volume') }}: {{ $item->volume }},
+                    {{ __('app.chapter') }}: {{ $chapter->translation?->name ?? $chapter->name }},
                     {{ __('app.hadith') }}: {{ $item->hadith_number }},
                     {{ __('app.status') }}: {{ __('app.' . strtolower($item->status)) }}
                 </p>
 
                 @if (!$loop->last)
-                    <x-app.hr class="my-3"/>
+                    <x-app.hr class="my-3" />
                 @endif
             @endforeach
         </article>

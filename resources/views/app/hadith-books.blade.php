@@ -4,7 +4,10 @@
 @section('navbar_title', __('app.hadith'))
 
 @section('content')
-    <x-app.banner :title="__('app.hadith_title')" :desc="'Canonical hadith books — authors, scope, and sample narrations. Search, filter, and open any book for details.'" />
+    <x-app.banner :title="__('app.hadith_title')" :desc="'Canonical hadith books — authors, scope, and sample narrations. Search, filter, and open any book for details.'">
+        <div class="py-1"></div>
+        <x-app.search :books="$books" />
+    </x-app.banner>
 
     <main class="container py-4 notranslate">
         <div class="row g-2 mb-5">

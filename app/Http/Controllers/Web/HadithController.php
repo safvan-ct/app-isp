@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\HadithBook;
 use App\Models\HadithVerse;
 use App\Repository\Hadith\HadithBookInterface;
 use App\Repository\Hadith\HadithChapterInterface;
@@ -18,6 +19,7 @@ class HadithController extends Controller
     public function hadith()
     {
         $books = $this->hadithBookRepository->getWithTranslations();
+
         return view("app.hadith-books", compact("books"));
     }
 
@@ -25,12 +27,16 @@ class HadithController extends Controller
     {
         $book      = $this->hadithBookRepository->getWithChapters($bookId);
         $chapterId = $chapterId ?? $book->chapters->first()->id;
-        $verses    = HadithVerse::select('id', 'hadith_book_id', 'hadith_chapter_id', 'chapter_number', 'hadith_number', 'heading', 'text', 'volume', 'status')
+
+        $books = HadithBook::select('id', 'name')->with('translations')->get();
+
+        $verses = HadithVerse::select('id', 'hadith_book_id', 'hadith_chapter_id', 'chapter_number', 'hadith_number', 'heading', 'text', 'volume', 'status')
             ->with(['translations'])
             ->where('hadith_chapter_id', $chapterId)
             ->active()
             ->paginate(3);
-        return view("app.hadith-chapters", compact("book", "verses"));
+
+        return view("app.hadith-chapters", compact("book", "verses", "books"));
     }
 
     public function hadithChapterVerses($bookSlug, $chapterId)
@@ -39,9 +45,12 @@ class HadithController extends Controller
         if (! $chapter) {
             abort(404);
         }
+
+        $books = HadithBook::select('id', 'name')->with('translations')->get();
+
         $verses = $chapter->verses()->paginate(500);
 
-        return view("app.hadith-verses", compact("chapter", "verses"));
+        return view("app.hadith-verses", compact("chapter", "verses", "books"));
     }
 
     public function hadithVerseByNumber($bookId, $verseNumber)
@@ -59,8 +68,11 @@ class HadithController extends Controller
         if (! $chapter) {
             abort(404);
         }
+
+        $books = HadithBook::select('id', 'name')->with('translations')->get();
+
         $verses = $chapter->verses()->where('hadith_number', $verseNumber)->paginate(1);
 
-        return view("app.hadith-verses", compact("chapter", "verses"));
+        return view("app.hadith-verses", compact("chapter", "verses", "books", "verseNumber"));
     }
 }

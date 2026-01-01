@@ -291,8 +291,9 @@
         });
 
         function searchHadithByNumber() {
+            const bookId = $('#selectedBook').val();
             const number = parseInt($('#search').val(), 10);
-            const bookId = $('#search').data('book');
+            // const bookId = $('#search').data('book');
 
             if (isNaN(number) || number < 1) {
                 alert("Please enter a valid Hadith number.");

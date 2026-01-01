@@ -1,4 +1,4 @@
-@props(['number' => '', 'type' => '', 'title' => '', 'desc' => '', 'search' => false])
+@props(['number' => '', 'type' => '', 'title' => '', 'desc' => '', 'search' => false, 'url' => '#'])
 
 <header class="container-fluid py-3 bg-clr-surface shadow-sm notranslate">
     <div class="container text-center">
@@ -7,7 +7,10 @@
         @endif
 
         @if ($title)
-            <h4 class="fw-bold text-emerald m-0 mb-1">{{ $title }}</h4>
+            <h4 class="fw-bold text-emerald m-0 mb-1" onclick="window.location.href = '{{ $url }}'"
+                @if ($url !== '#') style="cursor: pointer" @endif>
+                {{ $title }}
+            </h4>
         @endif
 
         @if ($desc)

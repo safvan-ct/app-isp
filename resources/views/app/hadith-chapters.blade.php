@@ -11,13 +11,7 @@
             {{ __('app.chapters') }}: <strong>{{ $book->chapter_count }}</strong>
         </p>
 
-        <div class="search-bar input-group">
-            <input type="search" class="form-control shadow-sm" placeholder="Search..." aria-label="Search" id="search"
-                data-book="{{ $book->id }}">
-            <button class="btn bg-warning" type="button" onclick="searchHadithByNumber()">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
+        <x-app.search :books="$books" :book_id="$book->id" />
     </x-app.banner>
 
     <main class="container py-4 notranslate">
