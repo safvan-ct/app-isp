@@ -30,7 +30,7 @@
                     </x-app.accordion>
 
                     <x-app.accordion :id="'topic2'" :title="'ആർത്തവ സംബന്ധമായ വിധി വിലക്കുകൾ'" class="mb-4">
-                        <h6 class="text-emerald-900 fw-bold">1. നമസ്കാരം</h6>
+                        <h6 class="text-black fw-bold">1. നമസ്കാരം</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             ആർത്തവകാരി നമസ്കരിക്കാൻ പാടില്ല, നിർബന്ധമായതും ഐച്ഛികമായതും. നമസ്കരിച്ചാൽ അത് സ്വീകാര്യവും അല്ല.
                             അവള്‍ ഈ അവസ്ഥയില്‍ നിന്നും ശുദ്ധി കൈവരിച്ചാല്‍ ഒഴിവാക്കിയ നമസ്‌കാരം നമസ്‌കരിച്ചു വീട്ടേണ്ടതില്ല.
@@ -40,7 +40,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">2. നോമ്പ്</h6>
+                        <h6 class="text-black fw-bold mt-3">2. നോമ്പ്</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             ആർത്തവകാരി നോമ്പ് അനുഷ്ഠിക്കാൻ പാടില്ല, നിർബന്ധമായതും ഐച്ഛികമായതും. നോമ്പ് അനുഷ്ഠിച്ചാൽ അത്
                             സ്വീകാര്യവും അല്ല. എന്നാൽ നിര്‍ബന്ധ നോമ്പ് മറ്റൊരവസരത്തിൽ നോറ്റ് വീട്ടണം.
@@ -50,7 +50,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">3. ത്വവാഫ്</h6>
+                        <h6 class="text-black fw-bold mt-3">3. ത്വവാഫ്</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             ആർത്തവകാരി ത്വവാഫ് ചെയ്യാൻ പാടില്ല, നിർബന്ധമായതും ഐച്ഛികമായതും. ത്വവാഫ് ചെയ്താൽ അത് സ്വീകാര്യവും
                             അല്ല.
@@ -60,7 +60,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">4. പള്ളിയിൽ പ്രവേശിക്കലും താമസിക്കലും</h6>
+                        <h6 class="text-black fw-bold mt-3">4. പള്ളിയിൽ പ്രവേശിക്കലും താമസിക്കലും</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             ആർത്തവകാരി ത്വവാഫ് ചെയ്യാൻ പാടില്ല, നിർബന്ധമായതും ഐച്ഛികമായതും. ത്വവാഫ് ചെയ്താൽ അത് സ്വീകാര്യവും
                             അല്ല.
@@ -72,7 +72,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">5. ലൈംഗിക വേഴ്ച</h6>
+                        <h6 class="text-black fw-bold mt-3">5. ലൈംഗിക വേഴ്ച</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             ആർത്തവകാരിയുമായി ഭർത്താവ് ലൈംഗിക ബന്ധത്തിൽ ഏര്‍പ്പെടുന്നത് നിഷിദ്ധമാണ്. ഭർത്താവിൻറെ ആവശ്യത്തിന്
                             അവൾ വഴങ്ങാനും പാടില്ല.
@@ -90,7 +90,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">6. ത്വലാഖ്</h6>
+                        <h6 class="text-black fw-bold mt-3">6. ത്വലാഖ്</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             ആർത്തവകാരിയുമായി ഭർത്താവ് ലൈംഗിക ബന്ധത്തിൽ ഏര്‍പ്പെടുന്നത് നിഷിദ്ധമാണ്. ഭർത്താവിൻറെ ആവശ്യത്തിന്
                             അവൾ വഴങ്ങാനും പാടില്ല.
@@ -103,7 +103,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">
+                        <h6 class="text-black fw-bold mt-3">
                             7. ആര്‍ത്തവ സമയത്ത് നഖവും മുടിയും നീക്കം ചെയ്യുന്നത് തെറ്റാണോ?
                         </h6>
                     </x-app.accordion>

@@ -2,14 +2,21 @@
 
 return [
     // Titles
-    "islamic_study_portal"  => "ഇസ്ലാമിക് സ്റ്റഡി പോർട്ടൽ",
+    "islam"                 => "ഇസ്ലാം",
+    "tagline"               => "ഖുർആൻ & സുന്നത്ത്",
 
     // Menus
-    // 'home'                  => 'ഹോം',
-    // "quran"                 => "ഖുർആൻ",
-    // "hadith"                => "ഹദീസ്",
-    "calendar"              => "കലണ്ടർ",
-    // "topics"                => "വിഷയങ്ങൾ",
+    'home'                  => 'ഹോം',
+    "quran"                 => "ഖുർആൻ",
+    "hadith"                => "ഹദീസ്",
+    "topics"                => "വിഷയങ്ങൾ",
+    "contact"               => "കോണ്ടാക്ട്",
+    "notifications"         => "നോട്ടിഫിക്കേഷൻസ്",
+    "settings"              => "സെറ്റിങ്‌സ്",
+    "about"                 => "ഉള്ളടക്കം",
+    "privacy"               => "പ്രൈവസി",
+    "related_topics"        => "അനുബന്ധ വിഷയങ്ങൾ",
+
     "login"                 => "ലോഗിന്",
     "profile"               => "പ്രോഫൈല്‍",
     "account"               => "അക്കൗംട്",
@@ -17,10 +24,6 @@ return [
     "bookmarks"             => "ബുക്ക്മാർക്കുകൾ",
     "logout"                => "ലോഗൗട്ട്",
     "books"                 => "ഗ്രന്ഥങ്ങള്‍",
-    // "notifications"         => "നോട്ടിഫിക്കേഷൻസ്",
-    // "settings"              => "സെറ്റിങ്‌സ്",
-    // "about"                 => "എബൗട്",
-    // "privacy"               => "പ്രൈവസി",
     'references'            => 'പ്രമാണം',
 
     // Index page

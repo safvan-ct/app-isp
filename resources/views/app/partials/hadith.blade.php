@@ -2,7 +2,7 @@
     {{-- @if ($item->heading)
         <div class="row flex-column flex-md-row m-0 mb-2">
             <div class="col-12 col-md-6 order-1 order-md-2 p-0 ps-md-4">
-                <h6 class="text-emerald-900 notranslate fw-bold fs-5 m-0 text-justify"
+                <h6 class="text-black notranslate fw-bold fs-5 m-0 text-justify"
                     style="line-height: 1.4; direction: rtl">
                     {{ $item->heading }}
                 </h6>
@@ -16,7 +16,7 @@
 
     <div class="row flex-column flex-md-row m-0 mb-1">
         <div class="col-12 col-md-6 order-1 order-md-2 p-0 ps-md-4">
-            <h6 class="text-emerald-900 notranslate text-justify" style="line-height: 1.6;" dir="rtl">
+            <h6 class="text-black notranslate text-justify" style="line-height: 1.6;" dir="rtl">
                 {{ $item->text }}
                 <em class="small"> - {{ $item->hadith_number }}</em>
             </h6>

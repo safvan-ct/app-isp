@@ -10,19 +10,19 @@
             <div class="col-12 col-md-8">
                 <ul class="nav nav-tabs mb-3" id="mainTabs" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link text-emerald active" id="home-tab" data-bs-toggle="tab"
+                        <button class="nav-link text-dark active" id="home-tab" data-bs-toggle="tab"
                             data-bs-target="#home" type="button">
                             <i class="fas fa-home"></i>
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link text-emerald" id="adhan-tab" data-bs-toggle="tab" data-bs-target="#adhan"
+                        <button class="nav-link text-dark" id="adhan-tab" data-bs-toggle="tab" data-bs-target="#adhan"
                             type="button">
                             അദാൻ
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link text-emerald" id="iqama-tab" data-bs-toggle="tab" data-bs-target="#iqama"
+                        <button class="nav-link text-dark" id="iqama-tab" data-bs-toggle="tab" data-bs-target="#iqama"
                             type="button">
                             ഇഖാമത്
                         </button>
@@ -88,7 +88,7 @@
 
                         <x-app.study-card title="അദാനിന്റെ ഘടന">
                             <x-slot:desc>
-                                <p class="text-center text-ar lh-lg text-emerald-900 m-0 my-1">
+                                <p class="text-center text-ar lh-lg text-black m-0 my-1">
                                     اللّٰهُ أَكْبَرُ اللّٰهُ أَكْبَرُ ×2<br> أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ ×2<br>
                                     أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ ×2<br> حَيَّ عَلَى الصَّلَاةِ ×2<br>
                                     حَيَّ عَلَى الْفَلَاحِ ×2<br> الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ ×2 (ഫജ്റ് മാത്രം)<br>
@@ -136,10 +136,10 @@
                             <x-slot:desc>
                                 <p class="m-0 mb-1">
                                     മുഅദ്ദീന്റെ വാക്കുകൾ കേൾക്കുമ്പോൾ, പറയുന്നത് ആവർത്തിക്കുകയും. അവൻ
-                                    '<span class="fs-5 text-emerald">حَيَّ عَلَى الصَّلَاةِ</span>' OR
-                                    '<span class="fs-5 text-emerald">حَيَّ عَلَى الْفَلَاحِ</span>'
+                                    '<span class="fs-5 text-dark">حَيَّ عَلَى الصَّلَاةِ</span>' OR
+                                    '<span class="fs-5 text-dark">حَيَّ عَلَى الْفَلَاحِ</span>'
                                     എന്നു പറയുമ്പോൾ - അതിനുത്തരം നിങ്ങൾ പറയേണ്ടത്:
-                                    <span class="fs-5 text-emerald fw-bold">لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللهِ</span>.
+                                    <span class="fs-5 text-dark fw-bold">لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللهِ</span>.
                                 </p>
                             </x-slot:desc>
 
@@ -168,7 +168,7 @@
                             <x-slot:desc>
                                 <p>ഇഖാമത് പ്രാർത്ഥന ഉടനെ തുടങ്ങാനാണ് വിളിക്കുന്നത് .</p>
 
-                                <p class="text-center text-ar lh-lg text-emerald-900">
+                                <p class="text-center text-ar lh-lg text-black">
                                     اللّٰهُ أَكْبَرُ ×2<br> أَشْهَدُ أَنْ لَا إِلٰهَ إِلَّا اللّٰهُ<br>
                                     أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللّٰهِ<br> حَيَّ عَلَى الصَّلَاةِ<br>
                                     حَيَّ عَلَى الْفَلَاحِ<br> قَدْ قَامَتِ الصَّلَاةُ ×2<br> اللّٰهُ أَكْبَرُ ×2<br>
@@ -186,10 +186,10 @@
                             <x-slot:desc>
                                 <p class="m-0 mb-1">
                                     മുഅദ്ദീന്റെ വാക്കുകൾ കേൾക്കുമ്പോൾ, പറയുന്നത് ആവർത്തിക്കുകയും. അവൻ
-                                    '<span class="fs-5 text-emerald">حَيَّ عَلَى الصَّلَاةِ</span>' OR
-                                    '<span class="fs-5 text-emerald">حَيَّ عَلَى الْفَلَاحِ</span>'
+                                    '<span class="fs-5 text-dark">حَيَّ عَلَى الصَّلَاةِ</span>' OR
+                                    '<span class="fs-5 text-dark">حَيَّ عَلَى الْفَلَاحِ</span>'
                                     എന്നു പറയുമ്പോൾ - അതിനുത്തരം നിങ്ങൾ പറയേണ്ടത്:
-                                    <span class="fs-5 text-emerald fw-bold">لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللهِ</span>.
+                                    <span class="fs-5 text-dark fw-bold">لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللهِ</span>.
                                 </p>
                             </x-slot:desc>
 

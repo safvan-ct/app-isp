@@ -1,5 +1,5 @@
 @props(['data', 'current', 'menu_slug', 'module_slug'])
-<h5 class="text-emerald fw-bold">ബന്ധപ്പെട്ട വിഷയങ്ങൾ</h5>
+<h5 class="text-dark fw-bold">ബന്ധപ്പെട്ട വിഷയങ്ങൾ</h5>
 @foreach ($data as $item)
     @continue($current == $loop->index)
 

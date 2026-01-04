@@ -67,11 +67,11 @@
                         title: 'നിയ്യത്ത് (ഹൃദയത്തിലെ ഉറച്ച ഉദ്ദേശം) ഉണ്ടായിരിക്കണം - <span class="badge bg-success text-white rounded-pill ms-2">നിർബന്ധം</span>',
                         dikr: [{
                                 title: "നിയ്യത്ത് ചുരുങ്ങിയ രൂപം: <i>(നിസ്കാരത്തിന്റെ പേര്)</i> എന്ന ഫർള് ഞാൻ നിസ്കരിക്കുന്നു",
-                                desc: "<span class='text-accent-900'>ഉദാ: <span class='fw-bold'>ളുഹർ</span> എന്ന ഫർള് ഞാൻ നിസ്കരിക്കുന്നു.</span>"
+                                desc: "<span class='text-yl-900'>ഉദാ: <span class='fw-bold'>ളുഹർ</span> എന്ന ഫർള് ഞാൻ നിസ്കരിക്കുന്നു.</span>"
                             },
                             {
                                 title: "നിയ്യത്ത് പൂർണ്ണ രൂപം: <i>(നിസ്കാരത്തിന്റെ പേര്)</i> എന്ന <i>(ഫർള്/സുന്നത്ത്)</i> നിസ്കാരം <i>(റകഅതുകളുടെ എണ്ണം)</i> റക്അത്ത് ഖിബ്ലക്ക് മുന്നിട്ട് <i>(അദാആയി/ഖളാആയി)</i> അല്ലാഹുവിന് വേണ്ടി ഞാൻ <i>(ജമാഅത്തായി(ഒറ്റക്ക് അല്ലെങ്കിൽ))</i> നിസ്കരിക്കുന്നു.",
-                                desc: "<span class='text-accent-900'>ഉദാ: <span class='fw-bold'>ളുഹർ</span> എന്ന <span class='fw-bold'>ഫർള്</span> നിസ്കാരം <span class='fw-bold'>നാല്</span> റക്അത്ത് ഖിബ്ലക്ക് മുന്നിട്ട് <span class='fw-bold'>അദാആയി</span> അല്ലാഹുവിന് വേണ്ടി ഞാൻ നിസ്കരിക്കുന്നു.</span>"
+                                desc: "<span class='text-yl-900'>ഉദാ: <span class='fw-bold'>ളുഹർ</span> എന്ന <span class='fw-bold'>ഫർള്</span> നിസ്കാരം <span class='fw-bold'>നാല്</span> റക്അത്ത് ഖിബ്ലക്ക് മുന്നിട്ട് <span class='fw-bold'>അദാആയി</span> അല്ലാഹുവിന് വേണ്ടി ഞാൻ നിസ്കരിക്കുന്നു.</span>"
                             }
                         ],
                         quran: [{
@@ -1392,7 +1392,7 @@
 
             stepsPanel.innerHTML = (Array.isArray(s.steps) ? s.steps : [s.steps])
                 .map((step, i) => `<div class="card border-warning shadow-sm p-2 mb-3">
-                        <div class="text-center fw-bold m-0 text-emerald mb-2">${i + 1}. ${step.title}</div>
+                        <div class="text-center fw-bold m-0 text-dark mb-2">${i + 1}. ${step.title}</div>
 
                         ${step.dikr.map(h => `<p class="m-0 fw-bold">${h.title}</p><div class="mb-2">${h.desc}</div>`).join('')}
 

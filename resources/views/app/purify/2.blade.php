@@ -10,7 +10,7 @@
             <div class="col-12 col-lg-8">
                 <div class="accordion" id="accordions">
                     <x-app.accordion :id="'topic1'" :title="'കുളി നിർബന്ധമാക്കുന്ന കാര്യങ്ങൾ'">
-                        <h6 class="text-emerald-900 fw-bold">1. ജനാബത്ത് (സ്വപ്നസ്ഖലനം, ശാരീരിക ബന്ധം മുതലായ കാരണങ്ങൾ).</h6>
+                        <h6 class="text-black fw-bold">1. ജനാബത്ത് (സ്വപ്നസ്ഖലനം, ശാരീരിക ബന്ധം മുതലായ കാരണങ്ങൾ).</h6>
                         <x-app.quran-box class="mb-1"
                             text="നിങ്ങള്‍ ജനാബത്ത് (വലിയ അശുദ്ധി) ബാധിച്ചവരായാല്‍ നിങ്ങള്‍ (കുളിച്ച്‌) ശുദ്ധിയാകുക.">
                             <x-app.ref-button slug="5" number="6" type="quran" :ref="__('app.quran') . ' 5:6'" />
@@ -28,7 +28,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">2. ഇസ്ലാം സ്വീകരിക്കൽ</h6>
+                        <h6 class="text-black fw-bold mt-3">2. ഇസ്ലാം സ്വീകരിക്കൽ</h6>
                         <x-app.hadith-box class="mb-3" text="ഹദീസ്">
                             <x-app.ref-button class="mb-1" slug="abu-dawood" number="355" type="hadith"
                                 :ref="'അബു ദാവൂദ്:355'" />
@@ -36,7 +36,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">3. ആർത്തവം (ഹൈള്)</h6>
+                        <h6 class="text-black fw-bold mt-3">3. ആർത്തവം (ഹൈള്)</h6>
                         <x-app.quran-box class="mb-1" text="">
                             <x-app.ref-button slug="2" number="222" type="quran" :ref="__('app.quran') . ' 2:222'" />
                         </x-app.quran-box>
@@ -46,14 +46,14 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">4. പ്രസവാനന്തര രക്തസ്രാവം(നിഫാസ്)</h6>
+                        <h6 class="text-black fw-bold mt-3">4. പ്രസവാനന്തര രക്തസ്രാവം(നിഫാസ്)</h6>
                         <x-app.hadith-box text="ഹദീസ്">
                             <x-app.ref-button slug="sahih-bukhari" number="228" type="hadith" :ref="'ബുഖാരി:228'" />
                         </x-app.hadith-box>
                     </x-app.accordion>
 
                     <x-app.accordion :id="'topic2'" :title="'കുളിയുടെ രൂപം'" class="mb-4">
-                        <h6 class="text-emerald-900 fw-bold">1. നീയ്യത്ത് (ഉദ്ദേശ്യം) വേണം</h6>
+                        <h6 class="text-black fw-bold">1. നീയ്യത്ത് (ഉദ്ദേശ്യം) വേണം</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             നിയ്യത്തിന്റെ സ്ഥാനം ഹൃദയമാണ്. വലിയ അശുദ്ധിയിൽ നിന്ന് ശുദ്ധിയാകുന്നതിനായി കുളിക്കുന്നുവെന്ന്
                             കരുതുക.
@@ -67,14 +67,14 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">2. ശരീരം മുഴുവൻ വെള്ളം കൊണ്ട് കഴുകൽ</h6>
+                        <h6 class="text-black fw-bold mt-3">2. ശരീരം മുഴുവൻ വെള്ളം കൊണ്ട് കഴുകൽ</h6>
                         <x-app.quran-box class="mb-3"
                             text="നിങ്ങള്‍ ജനാബത്ത് (വലിയ അശുദ്ധി) ബാധിച്ചവരായാല്‍ നിങ്ങള്‍ (കുളിച്ച്‌) ശുദ്ധിയാകുക.">
                             <x-app.ref-button slug="5" number="6" type="quran" :ref="__('app.quran') . ' 5:6'" />
                         </x-app.quran-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">3. നബി ﷺ യുടെ സുന്നത്തിന്റെ അടിസ്ഥാനത്തിൽ കുളിക്കുക</h6>
+                        <h6 class="text-black fw-bold mt-3">3. നബി ﷺ യുടെ സുന്നത്തിന്റെ അടിസ്ഥാനത്തിൽ കുളിക്കുക</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             നബി ﷺ ജനാബത്ത് കുളിക്കാൻ ഉദ്ദേശിച്ചാൽ ആദ്യം മുൻകൈകൾ കഴുകും. പിന്നീട് ഗുഹ്യസ്ഥാനം കഴുകുകയും
                             ജനാബത് കൊണ്ടുണ്ടായിട്ടുള്ളതെല്ലാം അവിടെ നിന്ന് ശുദ്ധിയാക്കുകയും ചെയ്യും. പിന്നീട്‌ പൂർണമായ

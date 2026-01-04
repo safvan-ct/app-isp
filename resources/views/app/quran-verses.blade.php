@@ -28,24 +28,24 @@
 
     <main class="container py-4 notranslate">
         <div class="mt-2 mb-5">
-            <div class="lh-xl fs-1 text-justify p-2 border border-success d-none" id="quranContent">
+            <div class="lh-xl fs-1 text-justify p-2 border border-gold d-none" id="quranContent">
                 @if (!in_array($chapter->id, [1, 9]))
-                    <div class="text-center text-ar mb-2 text-accent-900">بِسْمِ ٱللّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>
+                    <div class="text-center text-ar mb-2 text-yl-900">بِسْمِ ٱللّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>
                 @endif
 
                 <p class="text-ar m-0">
                     @foreach ($chapter->verses as $item)
                         {{ $item->text }}
-                        <span dir="rtl" class="ar-number text-accent-900 fs-4">﴿{{ $item->number_in_chapter }}﴾</span>
+                        <span dir="rtl" class="ar-number text-yl-900 fs-4">﴿{{ $item->number_in_chapter }}﴾</span>
                     @endforeach
                 </p>
             </div>
 
             <span id="otherContent">
                 @foreach ($chapter->verses as $item)
-                    <article class="base-card pt-4 mb-2 border rounded-2" tabindex="0"
+                    <article class="base-card pt-4 mb-2 border border-gold rounded-2" tabindex="0"
                         id="ayah-{{ $item->number_in_chapter }}">
-                        <h4 class="text-ar mb-2 text-emerald-900 lh-xl">
+                        <h4 class="text-ar mb-2 text-black lh-xl">
                             {{ $item->text }}
                             <span dir="rtl" class="ar-number fs-6">﴿{{ $item->number_in_chapter }}﴾</span>
                         </h4>
@@ -54,7 +54,7 @@
                             <p class="mb-2">{{ $item->translation->text }} ({{ $item->number_in_chapter }})</p>
                         @endif
 
-                        <div class="d-flex gap-2 align-items-center justify-content-end">
+                        <div class="d-flex gap-2 align-items-center justify-content-end d-none">
                             <button class="btn btn-sm btn-outline-success play-btn" title="Play Ayah"
                                 data-surah="{{ $chapter->id }}" data-ayah="{{ $item->number_in_chapter }}">
                                 <i class="far fa-play-circle"></i>

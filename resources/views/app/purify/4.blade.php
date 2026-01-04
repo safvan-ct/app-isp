@@ -18,7 +18,7 @@
                         </p>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">1. തെളിവുകൾ വ്യക്തമാക്കിയ നജസുകൾ</h6>
+                        <h6 class="text-black fw-bold mt-3">1. തെളിവുകൾ വ്യക്തമാക്കിയ നജസുകൾ</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             മനുഷ്യന്റെ മൂത്രം, മലം, ഛർദിൽ: ഭക്ഷണം കഴിച്ചിട്ടില്ലാത്ത ആൺകുട്ടിയുടെ മൂത്രം ഇതിൽനിന്ന് ഒഴിവാണ്;
                             അതിൽ വെള്ളം തെളിച്ചാൽ മതിയാകും.
@@ -35,7 +35,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">
+                        <h6 class="text-black fw-bold mt-3">
                             2. മാംസം ഭക്ഷ്യയോഗ്യമായ മൃഗത്തിൽനിന്ന് ഒഴുക്കപ്പെട്ട രക്തം.
                         </h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
@@ -47,7 +47,7 @@
                         </x-app.quran-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">3. ശവം</h6>
+                        <h6 class="text-black fw-bold mt-3">3. ശവം</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             മതപരമായ നിലക്കുള്ള അറവു നടത്താതെ സ്വാഭാവിക മരണത്തിലൂടെ ജീവൻ പോയതാണത്.
                         </p>
@@ -61,13 +61,13 @@
                         </x-app.ref-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">4. ആർത്തവ രക്തം</h6>
+                        <h6 class="text-black fw-bold mt-3">4. ആർത്തവ രക്തം</h6>
                         <x-app.hadith-box text="ഹദീസ്." class="mb-3">
                             <x-app.ref-button slug="sahih-bukhari" number="227" type="hadith" :ref="'ബുഖാരി:227'" />
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">5. മദ്‌യ്</h6>
+                        <h6 class="text-black fw-bold mt-3">5. മദ്‌യ്</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             വെളുത്തതും നേർത്തതും കൊഴുത്തതുമായ ദ്രാവകമാണത്. രതിചേഷ്ടകളുടെ അവസരത്തിലോ സംഭോഗത്തെക്കുറിച്ച്
                             സ്മരിക്കുമ്പോഴോ സ്രവിക്കുന്നതാണത്. വികാരം ശക്തിപ്രാപിച്ചോ തെറിച്ചുകൊണ്ടോ ആയിരിക്കില്ല അത്
@@ -80,26 +80,26 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">6. വദ്‌യ്</h6>
+                        <h6 class="text-black fw-bold mt-3">6. വദ്‌യ്</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             ചിലരിൽ മൂത്ര വിസർജനത്തിനു ശേഷം പുറപ്പെടുന്ന കടുത്ത ഒരുതരം വെളുത്ത ദ്രാവകമാണത്. അതുണ്ടായവൻ തന്റെ
                             ജനനേന്ദ്രിയം കഴുകുകയും വുദൂഅ് ചെയ്യുകയും വേണം. കുളിക്കേണ്ടതില്ല.
                         </p>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">7. പൂച്ച, എലി, പോലുള്ള</h6>
+                        <h6 class="text-black fw-bold mt-3">7. പൂച്ച, എലി, പോലുള്ള</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             മാംസം ഭക്ഷ്യയോഗ്യമല്ലാത്ത എല്ലാ മൃഗങ്ങളുടെയും കാഷ്ടവും മൂത്രവും.
                         </p>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">
+                        <h6 class="text-black fw-bold mt-3">
                             8. മൂക്കിലൂടെയും മറ്റും മനുഷ്യനിൽനിന്നു പുറപ്പെടുന്ന മോശമായ രക്തം.
                         </h6>
                     </x-app.accordion>
 
                     <x-app.accordion :id="'topic2'" :title="'നജസ് ശുദ്ധീകരിക്കുന്ന രീതി'" class="mb-4">
-                        <h6 class="text-emerald-900 fw-bold">1. നജസ് മണ്ണിലോ ഒരു സ്ഥലത്തോ ആയാൽ:</h6>
+                        <h6 class="text-black fw-bold">1. നജസ് മണ്ണിലോ ഒരു സ്ഥലത്തോ ആയാൽ:</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             അത് ശുദ്ധീകരിക്കുവാൻ നജസിനെ നീക്കുന്ന രീതിയിൽ ഒരു തവണ കഴുകിയാൽ മതിയാകും. വെള്ളം ഒരു തവണ അതിൽ
                             ഒഴിക്കുക.
@@ -109,7 +109,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">
+                        <h6 class="text-black fw-bold mt-3">
                             2. നജസ് മണ്ണിലല്ലെങ്കിൽ, അഥവാ വസ്ത്രത്തിലോ പാത്രത്തിലോ ആയാൽ:
                         </h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">

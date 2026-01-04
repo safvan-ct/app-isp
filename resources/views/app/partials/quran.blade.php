@@ -1,6 +1,6 @@
 @foreach ($verses as $item)
     <article class="border-0 rounded-2 notranslate">
-        <h6 class="text-ar mb-2 text-emerald-900 lh-xl">
+        <h6 class="text-ar mb-2 text-black lh-xl">
             {{ $item->text }}
             <span dir="ltr" class="ar-number fs-6">﴾{{ $item->number_in_chapter }}﴿</span>
         </h6>

@@ -13,7 +13,7 @@
                         <x-app.ref-box>പുലർച്ചെ വെളിച്ചം മുതൽ സൂര്യോദയം വരെ.</x-app.ref-box>
 
                         <x-app.ref-box>
-                            <strong class="text-emerald">നിർബന്ധം:</strong> 2 റക്അത്.<br>
+                            <strong class="text-dark">നിർബന്ധം:</strong> 2 റക്അത്.<br>
                             <strong>സുന്നത്:</strong> മുമ്പ് 2 റക്അത്.
                         </x-app.ref-box>
                     </x-slot:desc>
@@ -27,7 +27,7 @@
                         </x-app.ref-box>
 
                         <x-app.ref-box>
-                            <strong class="text-emerald">നിർബന്ധം:</strong> 4 റക്അത്.<br>
+                            <strong class="text-dark">നിർബന്ധം:</strong> 4 റക്അത്.<br>
                             <strong>സുന്നത്:</strong> മുമ്പ് 4 റക്അത്, ശേഷം 2 റക്അത്.
                         </x-app.ref-box>
                     </x-slot:desc>
@@ -40,7 +40,7 @@
                         </x-app.ref-box>
 
                         <x-app.ref-box>
-                            <strong class="text-emerald">നിർബന്ധം:</strong> 4 റക്അത്
+                            <strong class="text-dark">നിർബന്ധം:</strong> 4 റക്അത്
                         </x-app.ref-box>
                     </x-slot:desc>
                 </x-app.study-card>
@@ -50,7 +50,7 @@
                         <x-app.ref-box>സൂര്യാസ്തമയം മുതൽ ചുവന്ന വെളിച്ചം ഇല്ലാതാകുന്നത് വരെ.</x-app.ref-box>
 
                         <x-app.ref-box>
-                            <strong class="text-emerald">നിർബന്ധം:</strong> 3 റക്അത്<br>
+                            <strong class="text-dark">നിർബന്ധം:</strong> 3 റക്അത്<br>
                             <strong>സുന്നത്:</strong> ശേഷം 2 റക്അത്
                         </x-app.ref-box>
                     </x-slot:desc>
@@ -61,7 +61,7 @@
                         <x-app.ref-box>ചുവന്ന വെളിച്ചം ഇല്ലാതാകുന്നത് മുതൽ അർദ്ധരാത്രി വരെ.</x-app.ref-box>
 
                         <x-app.ref-box>
-                            <strong class="text-emerald">നിർബന്ധം:</strong> 4 റക്അത്<br>
+                            <strong class="text-dark">നിർബന്ധം:</strong> 4 റക്അത്<br>
                             <strong>സുന്നത്:</strong> ശേഷം 2 റക്അത്
                         </x-app.ref-box>
                     </x-slot:desc>

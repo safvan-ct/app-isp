@@ -6,6 +6,6 @@
             <i class="fa-regular fa-star"></i>
         </div>
 
-        <h6 class="text-emerald-900 fw-bold m-0 small">{{ $title }}</h6>
+        <h6 class="text-black fw-bold m-0 small">{{ $title }}</h6>
     </a>
 </div>

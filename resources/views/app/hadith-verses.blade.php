@@ -6,27 +6,26 @@
 
 @section('content')
     <x-app.banner :title="$chapter->translation?->name ?? $chapter->name" :url="route('hadith.chapter.verses', ['book' => $chapter->book->slug, 'chapter' => $chapter->id])">
-        <p class='small m-0'>
-            {{ $chapter->book->translation?->writer ?? $chapter->book->writer }}
-            ({{ $chapter->book->writer_death_year }}H)
-        </p>
-        <p class="small m-0 mb-2">
+        <div class="small m-0 mb-2">
+            <a class='m-0 p-0 text-dark' href="{{ route('hadith.chapters', [$chapter->book->id]) }}">
+                {{ $chapter->book->translation?->name ?? $chapter->book->name }}
+            </a> •
             {{ __('app.chapter') }}: <strong>{{ $chapter->chapter_number }}</strong> •
             {{ __('app.hadiths') }}: <strong>{{ $chapter->verses->count() }}</strong>
-        </p>
+        </div>
 
-        <x-app.search :books="$books" :book_id="$chapter->book->id" :search="$verseNumber ?? ''"/>
+        <x-app.search :books="$books" :book_id="$chapter->book->id" :search="$verseNumber ?? ''" />
 
         <div id="google_translate_element" class="mt-2 mb-0"></div>
     </x-app.banner>
 
-    <main class="container py-4 bg-light">
-        <article class="p-1 mb-2 ">
-            @foreach ($verses as $item)
+    <main class="container px-1 px-sm-0 p-0 my-3 pb-3 pb-sm-0">
+        @foreach ($verses as $item)
+            <article class="p-2 py-3 mb-2 rounded-2 shadow-sm border border-gold">
                 @if ($item->heading)
                     <div class="row flex-column flex-md-row m-0 mb-2">
                         <div class="col-12 col-md-6 order-1 order-md-2 p-0 ps-md-4">
-                            <h6 class="text-emerald-900 notranslate fw-bold fs-5 m-0 text-justify"
+                            <h6 class="text-black notranslate fw-bold fs-5 m-0 text-justify"
                                 style="font-size: 22px; line-height: 1.6; font-family: 'Scheherazade New', serif;"
                                 dir="rtl">
                                 {{ $item->heading }}
@@ -43,7 +42,7 @@
 
                 <div class="row flex-column flex-md-row m-0 mb-1">
                     <div class="col-12 col-md-6 order-1 order-md-2 p-0 ps-md-4">
-                        <div class="text-emerald-900 notranslate text-justify"
+                        <div class="text-black notranslate text-justify"
                             style="font-size: 19px; line-height: 1.8; font-family: 'Scheherazade New', serif;"
                             dir="rtl">
                             {{ $item->text }}
@@ -58,6 +57,8 @@
                     </div>
                 </div>
 
+
+                <x-app.hr class="mt-3 mb-2" />
                 <p class="text-muted small notranslate fst-italic m-0">
                     🔖 {{ $chapter->book->translation?->name ?? $chapter->book->name }},
                     {{ __('app.volume') }}: {{ $item->volume }},
@@ -65,12 +66,8 @@
                     {{ __('app.hadith') }}: {{ $item->hadith_number }},
                     {{ __('app.status') }}: {{ __('app.' . strtolower($item->status)) }}
                 </p>
-
-                @if (!$loop->last)
-                    <x-app.hr class="my-3" />
-                @endif
-            @endforeach
-        </article>
+            </article>
+        @endforeach
 
         <div class="d-flex justify-content-center mb-5 notranslate">
             {{ $verses->onEachSide(1)->links() }}

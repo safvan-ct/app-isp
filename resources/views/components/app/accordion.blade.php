@@ -1,7 +1,7 @@
 @props([
     'id',
     'parent' => 'accordions',
-    'icon' => '<i class="fas fa-lightbulb text-accent me-2"></i>',
+    'icon' => '<i class="fas fa-lightbulb text-gold me-2"></i>',
     'title',
     'active' => false,
     'class' => '',
@@ -9,7 +9,7 @@
 
 <div class="accordion-item {{ $class }}">
     <h2 class="accordion-header">
-        <button class="accordion-button {{ $active ? '' : 'collapsed' }} text-emerald" type="button"
+        <button class="accordion-button {{ $active ? '' : 'collapsed' }} text-dark" type="button"
             data-bs-toggle="collapse" data-bs-target="#{{ $id }}" aria-expanded="true">
             {!! $icon !!} <span class="fw-bold">{{ $title }}</span>
         </button>

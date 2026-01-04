@@ -9,7 +9,7 @@
         <div class="row mt-4">
             <div class="col-12 col-md-8">
                 <x-app.content :title="'5 നമസ്കാരങ്ങളുടെ റക്അത്തുകൾ'">
-                    <h6 class="text-accent-900 fw-bold m-0 my-2 mt-3">1. സുബഹ് (ഫജ്ർ)</h6>
+                    <h6 class="text-yl-900 fw-bold m-0 my-2 mt-3">1. സുബഹ് (ഫജ്ർ)</h6>
                     <div class="ref-box ref-summary text-dark shadow-sm rounded-1 mb-3">
                         <strong>സുന്നത്:</strong> മുമ്പ് 2 റക്അത് <em>- മുസ്ലിം:1687, അൽ-തിർമിധി:415, അബു
                             ദാവൂദ്:1251</em><br>
@@ -22,7 +22,7 @@
                         </x-app.hadith-box>
                     </div>
 
-                    <h6 class="text-accent-900 fw-bold m-0 my-2">2. ളുഹർ</h6>
+                    <h6 class="text-yl-900 fw-bold m-0 my-2">2. ളുഹർ</h6>
                     <div class="ref-box ref-summary text-dark shadow-sm rounded-1 mb-3">
                         <strong>സുന്നത്:</strong> മുമ്പ് 4 റക്അത് <em>- അൽ-തിർമിധി:415, അബു ദാവൂദ്:1251</em><br>
                         <strong>നിർബന്ധം:</strong> 4 റക്അത്<br>
@@ -35,7 +35,7 @@
                         </x-app.hadith-box>
                     </div>
 
-                    <h6 class="text-accent-900 fw-bold m-0 my-2">3. അസർ</h6>
+                    <h6 class="text-yl-900 fw-bold m-0 my-2">3. അസർ</h6>
                     <div class="ref-box ref-summary text-dark shadow-sm rounded-1 mb-3">
                         <strong>നിർബന്ധം:</strong> 4 റക്അത്<br>
                         <x-app.hadith-box class="mt-2" reference="മുസ്ലിം:1581-82, ബുഖാരി:1089">
@@ -47,7 +47,7 @@
                         </x-app.hadith-box>
                     </div>
 
-                    <h6 class="text-accent-900 fw-bold m-0 my-2">4. മഗ്രിബ്</h6>
+                    <h6 class="text-yl-900 fw-bold m-0 my-2">4. മഗ്രിബ്</h6>
                     <div class="ref-box ref-summary text-dark shadow-sm rounded-1 mb-3">
                         <strong>നിർബന്ധം:</strong> 3 റക്അത്<br>
                         <strong>സുന്നത്:</strong> ശേഷം 2 റക്അത് <em>- അൽ-തിർമിധി:415, അബു ദാവൂദ്:1251</em><br>
@@ -61,7 +61,7 @@
                         </x-app.hadith-box>
                     </div>
 
-                    <h6 class="text-accent-900 fw-bold m-0 my-2">5. ഇശാ</h6>
+                    <h6 class="text-yl-900 fw-bold m-0 my-2">5. ഇശാ</h6>
                     <div class="ref-box ref-summary text-dark shadow-sm rounded-1 mb-3">
                         <strong>നിർബന്ധം:</strong> 4 റക്അത്<br>
                         <strong>സുന്നത്:</strong> ശേഷം 2 റക്അത് <em>- അൽ-തിർമിധി:415, അബു ദാവൂദ്:1251</em><br>
@@ -96,7 +96,7 @@
             </div>
 
             <div class="col-12 col-md-4">
-                <h5 class="text-emerald fw-bold">Related Topics</h5>
+                <h5 class="text-dark fw-bold">Related Topics</h5>
                 @foreach ($questions['chapters'] as $item)
                     @continue($questionSlug == $loop->index)
 

@@ -16,7 +16,7 @@
             top: 35px;
             bottom: -1.2rem;
             width: 3px;
-            background-color: var(--clr-emerald);
+            background-color: var(--clr-dark);
             z-index: 0;
         }
 
@@ -25,7 +25,7 @@
         }
 
         .accordion-button {
-            background-color: var(--clr-surface);
+            background-color: var(--clr-white);
             border-radius: 8px !important;
             padding: 1rem;
             position: relative;
@@ -47,23 +47,23 @@
             color: white;
             flex-shrink: 0;
             margin-right: 15px;
-            border: 2px solid var(--clr-surface);
-            box-shadow: 0 0 0 2px var(--clr-emerald-900);
+            border: 2px solid var(--clr-white);
+            box-shadow: 0 0 0 2px var(--clr-black);
         }
 
         .step-marker.fard {
-            background-color: var(--clr-accent-900);
+            background-color: var(--clr-yl-900);
         }
 
         .step-marker.sunnah {
-            background-color: var(--clr-emerald);
+            background-color: var(--clr-dark);
         }
 
         .accordion-collapse {
-            border-left: .2rem solid var(--clr-emerald);
+            border-left: .2rem solid var(--clr-dark);
             margin-left: 17px;
             padding: 20px 0 10px 10px;
-            background-color: var(--clr-surface);
+            background-color: var(--clr-white);
             border-radius: none !important;
         }
 
@@ -77,10 +77,10 @@
 @section('content')
     <x-app.banner :type="'Topic'" :title="$topic['title']" :desc="$topic['desc']" />
 
-    <main class="container py-4 notranslate">
+    <main class="container px-1 px-sm-0 p-0 my-3 pb-3 pb-sm-0 notranslate">
         <div class="row justify-content-center">
             {{-- <div class="col-lg-8">
-                <h6 class="fw-bold mb-2 text-emerald">അനുബന്ധ വിഷയങ്ങൾ</h6>
+                <h6 class="fw-bold mb-2 text-dark">അനുബന്ധ വിഷയങ്ങൾ</h6>
 
                 @foreach ($topic['modules'] as $item)
                     <x-app.topic-chapter :title="$loop->index + 1 . ' : ' . $item['title']" :url="route('answers.show', [
@@ -93,10 +93,10 @@
 
             <div class="col-lg-8">
                 <section class="mb-5">
-                    <h6 class="fw-bold mb-2 text-emerald border-bottom pb-2">അനുബന്ധ വിഷയങ്ങൾ</h6>
+                    <h6 class="fw-bold mb-2 text-dark border-bottom pb-2 d-none">അനുബന്ധ വിഷയങ്ങൾ</h6>
 
-                    {{-- <h2 class="h5 text-emerald mb-3 border-bottom pb-2 fw-bold">
-                        <i class="fas fa-lightbulb text-accent me-1"></i>
+                    {{-- <h2 class="h5 text-dark mb-3 border-bottom pb-2 fw-bold">
+                        <i class="fas fa-lightbulb text-gold me-1"></i>
                         ബന്ധപ്പെട്ട വിഷയങ്ങൾ
                     </h2> --}}
 
@@ -105,29 +105,29 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header shadow-sm">
                                     {{-- @if (!empty($item['lessons']))
-                                        <button class="accordion-button fw-bold text-emerald" type="button"
+                                        <button class="accordion-button fw-bold text-dark" type="button"
                                            >
                                             <i class="fas fa-check-circle text-success me-2 "></i>
                                             {{ $key + 1 }}. {{ $item['title'] }}
                                         </button>
                                     @else
                                         <a href="{{ route('answers.show', ['menu_slug' => 'topics', 'module_slug' => $topic['slug'], 'question_slug' => $key]) }}"
-                                            class="accordion-button fw-bold text-emerald text-decoration-none accordion-link">
+                                            class="accordion-button fw-bold text-dark text-decoration-none accordion-link">
                                             <i class="fas fa-check-circle text-success me-2 "></i>
                                             {{ $key + 1 }}. {{ $item['title'] }}
                                         </a>
                                     @endif --}}
 
                                     <a href="{{ route('answers.show', ['menu_slug' => 'topics', 'module_slug' => $topic['slug'], 'question_slug' => $key]) }}"
-                                        class="accordion-button fw-bold text-emerald text-decoration-none accordion-link">
-                                        <i class="fas fa-play-circle text-success me-2 "></i>
+                                        class="accordion-button fw-bold text-decoration-none accordion-link">
+                                        <i class="fas fa-play-circle text-gold me-2 "></i>
                                         {{ $key + 1 }}. {{ $item['title'] }}
                                     </a>
                                 </h2>
 
                                 @if (!empty($item['lessons']))
                                     <div id="{{ $key }}" class="accordion-collapse collapse show"
-                                        style="border-left: 3px solid var(--clr-accent);">
+                                        style="border-left: 3px solid var(--clr-gold);">
                                         <div class="accordion-body p-0">
                                             <div class="list-group list-group-flush">
 

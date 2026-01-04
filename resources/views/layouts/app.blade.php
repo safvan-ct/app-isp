@@ -63,53 +63,56 @@
         $menus = isset($menus) ? $menus : [];
     @endphp
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-emerald sticky-top shadow-lg notranslate">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-lg notranslate">
         <div class="container">
-            <a class="navbar-brand m-0" href="@yield('navbar_url', route('home'))">
-                <img src="{{ asset('img/apple-touch-icon.png') }}"class="me-1 rounded-circle shadow-sm"
-                    style="height:30px; width:30px;">
-                <span class="fs-6 fw-bold text-accent m-0">@yield('navbar_title', __('app.islamic_study_portal'))</span>
+            <a class="navbar-brand m-0 d-inline-flex flex-column lh-1" href="@yield('navbar_url', route('home'))">
+                <div class="fs-5 fw-bold text-gold m-0 p-0 mb-1 text-center shadow">
+                    {{ __('app.islam') }}
+                </div>
+                <span class="fs-small fw-normal text-white m-0 opacity-75" style="font-size: 0.75rem;">
+                    {{ __('app.tagline') }}
+                </span>
             </a>
 
-            <button class="btn btn-sm btn-outline-emerald text-accent d-lg-none ms-auto" data-bs-toggle="offcanvas"
+            <button class="btn btn-sm btn-outline-dark text-gold d-lg-none ms-auto" data-bs-toggle="offcanvas"
                 data-bs-target="#menuPanel">
                 <i class="fas fa-list fs-4"></i>
             </button>
 
             <div class="collapse navbar-collapse d-none d-lg-flex ms-3" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
                     <li class="nav-item">
                         <a href="{{ route('home') }}"
-                            class="{{ $routeName == 'home' ? 'text-accent' : 'text-white' }} text-decoration-none">
+                            class="{{ $routeName == 'home' ? 'text-gold' : 'text-white' }} text-decoration-none">
                             {{ __('app.home') }}
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a href="{{ route('quran.index') }}"
-                            class="{{ Str::is('quran.*', $routeName) ? 'text-accent' : 'text-white' }} text-decoration-none">
+                            class="{{ Str::is('quran.*', $routeName) ? 'text-gold' : 'text-white' }} text-decoration-none">
                             {{ __('app.quran') }}
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a href="{{ route('hadith.index') }}"
-                            class="{{ Str::is('hadith.*', $routeName) ? 'text-accent' : 'text-white' }} text-decoration-none">
+                            class="{{ Str::is('hadith.*', $routeName) ? 'text-gold' : 'text-white' }} text-decoration-none">
                             {{ __('app.hadith') }}
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a href="{{ route('modules.show', 'topics') }}"
-                            class="text-decoration-none {{ Str::is('modules.*', $routeName) || Str::is('questions.*', $routeName) || Str::is('answers.*', $routeName) ? 'text-accent' : 'text-white' }}">
+                            class="text-decoration-none {{ Str::is('modules.*', $routeName) || Str::is('questions.*', $routeName) || Str::is('answers.*', $routeName) ? 'text-gold' : 'text-white' }}">
                             {{ __('app.topics') }}
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a href="{{ route('contact.form') }}"
-                            class="{{ Str::is('contact.*', $routeName) ? 'text-accent' : 'text-white' }} text-decoration-none">
-                            Contact
+                            class="{{ Str::is('contact.*', $routeName) ? 'text-gold' : 'text-white' }} text-decoration-none">
+                            {{ __('app.contact') }}
                         </a>
                     </li>
 
@@ -120,17 +123,17 @@
                     </li> --}}
                 </ul>
 
-                <span class="navbar-text">
-                    <button class="btn btn-sm btn-outline-emerald text-accent" data-bs-toggle="offcanvas"
+                {{-- <span class="navbar-text">
+                    <button class="btn btn-sm btn-outline-dark text-gold" data-bs-toggle="offcanvas"
                         data-bs-target="#curriculumOffcanvas"><i class="fas fa-list fs-4"></i></button>
-                </span>
+                </span> --}}
             </div>
         </div>
     </nav>
 
     @yield('content')
 
-    <button type="button" class="btn emerald btn-lg rounded-circle shadow border-0" id="btn-back-to-top">
+    <button type="button" class="btn dark btn-lg rounded-circle shadow border-0" id="btn-back-to-top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -165,11 +168,9 @@
         <!-- Header with logo -->
         <div class="offcanvas-header border-bottom">
             <div class="d-flex align-items-center">
-                <img src="{{ asset('img/apple-touch-icon.png') }}" alt="{{ __('app.islamic_study_portal') }}"
-                    class="me-2 rounded-circle shadow-sm" style="height:40px;width:40px;">
                 <div class="m-0 align-self-center">
-                    <h6 class="mb-0 fw-bold">{{ __('app.islamic_study_portal') }}</h6>
-                    <small class="text-muted">അറിവ് തേടൂ, വിശ്വാസം വളർത്തൂ.</small>
+                    <h6 class="mb-0 fw-bold text-gold">{{ __('app.islam') }}</h6>
+                    <small class="text-muted">{{ __('app.tagline') }}</small>
                 </div>
             </div>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>

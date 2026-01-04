@@ -8,7 +8,7 @@
             </a>
         @endif
 
-        <h6 class="fw-bold mb-0 text-emerald">{{ $title }}</h6>
+        <h6 class="fw-bold mb-0 text-dark">{{ $title }}</h6>
     </div>
 
     @if ($panel)

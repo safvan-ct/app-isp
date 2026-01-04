@@ -32,7 +32,7 @@
                     </x-app.accordion>
 
                     <x-app.accordion :id="'topic2'" :title="'തയമ്മും അനുവദനീയമാകുന്നത്'">
-                        <h6 class="text-emerald-900 fw-bold">1. വെള്ളം കിട്ടിയില്ലെങ്കില്‍</h6>
+                        <h6 class="text-black fw-bold">1. വെള്ളം കിട്ടിയില്ലെങ്കില്‍</h6>
                         <x-app.quran-box class="mb-3"
                             text="നിങ്ങള്‍ക്ക് വെള്ളം കിട്ടിയില്ലെങ്കില്‍ ശുദ്ധമായ ഭൂമുഖം തേടിക്കൊള്ളുക. എന്നിട്ട് അതുകൊണ്ട് നിങ്ങളുടെ മുഖവും കൈകളും തടവുക.">
                             <x-app.ref-button class="mb-1" slug="5" number="6" type="quran"
@@ -41,7 +41,7 @@
                         </x-app.quran-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">2. ശരീരത്തില്‍ മുറിവോ രോഗമോ ഉണ്ട്.</h6>
+                        <h6 class="text-black fw-bold mt-3">2. ശരീരത്തില്‍ മുറിവോ രോഗമോ ഉണ്ട്.</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             വെള്ളം ഉപയോഗിച്ചാല്‍ രോഗം മൂ൪ച്ഛിക്കാനും ശമനം വൈകാനും സാധ്യതയുണ്ട്.
                         </p>
@@ -54,7 +54,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">3. വെള്ളം ശക്തമായ തണുപ്പുള്ളതാണ്.</h6>
+                        <h6 class="text-black fw-bold mt-3">3. വെള്ളം ശക്തമായ തണുപ്പുള്ളതാണ്.</h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             ഉപയോഗിച്ചാല്‍ അപകട സാധ്യതയുണ്ട്. ചൂടാക്കിയോ മറ്റോ വെള്ളത്തിന്റെ തണുപ്പ് കുറക്കാന്‍
                             കഴിയുന്നില്ല.
@@ -65,7 +65,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">4. ദാഹം ഭയന്നാല്‍ വെള്ളം സൂക്ഷിച്ച് വെക്കുകയും തയമ്മും
+                        <h6 class="text-black fw-bold mt-3">4. ദാഹം ഭയന്നാല്‍ വെള്ളം സൂക്ഷിച്ച് വെക്കുകയും തയമ്മും
                             ചെയ്യുകയും ചെയ്യാം.</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             യാത്രക്കാരന്റെ കൈയ്യില്‍ വെള്ളമുണ്ട്. പക്ഷേ, അത് ഉപയോഗിച്ചാല്‍ പിന്നീട് കുടിക്കാന്‍
@@ -76,7 +76,7 @@
                         </x-app.quran-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">5. വെള്ളം ഉണ്ട്. എന്നാല്‍ വുളൂഇനോ കുളിക്കോ അത് തികയില്ല.
+                        <h6 class="text-black fw-bold mt-3">5. വെള്ളം ഉണ്ട്. എന്നാല്‍ വുളൂഇനോ കുളിക്കോ അത് തികയില്ല.
                         </h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             ഉള്ള വെള്ളം കൊണ്ട് വുളൂഅ് എടുക്കുക. വുളൂഅ് പൂ൪ത്തിയാകാത്ത ഭാഗത്തിന് വേണ്ടി തയമ്മും ചെയ്യുക.
@@ -94,7 +94,7 @@
                     </x-app.accordion>
 
                     <x-app.accordion :id="'topic3'" :title="'തയമ്മുമിന്റെ രൂപം'">
-                        <h6 class="text-emerald-900 fw-bold">1. നീയ്യത്ത് (ഉദ്ദേശ്യം) വേണം</h6>
+                        <h6 class="text-black fw-bold">1. നീയ്യത്ത് (ഉദ്ദേശ്യം) വേണം</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             നിയ്യത്തിന്റെ സ്ഥാനം ഹൃദയമാണ്. ഏത് അശുദ്ധിയെ നീക്കാനാണോ തയമ്മും ചെയ്യുന്നത് അത് മനസ്സില്‍
                             കരുതുക.
@@ -108,13 +108,13 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">2. ബിസ്മില്ലാഹ് ചൊല്ലൽ</h6>
+                        <h6 class="text-black fw-bold mt-3">2. ബിസ്മില്ലാഹ് ചൊല്ലൽ</h6>
                         <x-app.hadith-box text="അല്ലാഹുവിന്റെ നാമം ഉച്ചരിക്കാത്തവന്റെ വുദു സാധുവല്ല." class="mb-3">
                             <x-app.ref-button slug="abu-dawood" number="101" type="hadith" :ref="'അബു ദാവൂദ്:101'" />
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">3. പൂർണ്ണ രൂപം </h6>
+                        <h6 class="text-black fw-bold mt-3">3. പൂർണ്ണ രൂപം </h6>
                         <p class="m-0 mb-2 text-justify" style="text-indent: 2em">
                             വിരലുകള്‍ നിവ൪ത്തി പിടിച്ച് ഉള്ളം കൈകള്‍ കൊണ്ട് ശുദ്ധിയുള്ള മണ്ണില്‍ ഒരു തവണ അടിക്കുകയും ഉള്ളം
                             കൈകള്‍ കൊണ്ട് മുഖം തടവുകയും പിന്നീട് മുന്‍കൈകളുടെ പുറം ഭാഗം തടവുകയും ചെയ്യുക. അതായത് ആദ്യം
@@ -132,7 +132,7 @@
                     </x-app.accordion>
 
                     <x-app.accordion :id="'topic4'" :title="'തയമ്മും മുറിയുന്ന കാര്യങ്ങള്‍'" class="mb-4">
-                        <h6 class="text-emerald-900 fw-bold">
+                        <h6 class="text-black fw-bold">
                             1. വുളൂഅ് മുറിയുന്ന കാര്യങ്ങളില്‍ എന്തെങ്കിലും ഉണ്ടാകല്‍
                         </h6>
                         <p class="m-0 mb-3 text-justify" style="text-indent: 2em">
@@ -142,7 +142,7 @@
                         </p>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">2. വെള്ളം ലഭിക്കാത്തയാള്‍ക്ക് അത് ലഭിക്കല്‍</h6>
+                        <h6 class="text-black fw-bold mt-3">2. വെള്ളം ലഭിക്കാത്തയാള്‍ക്ക് അത് ലഭിക്കല്‍</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             വെള്ളം ഉപയോഗിക്കാന്‍ ഉണ്ടായിരുന്ന തടസ്സം നീങ്ങല്‍, വെള്ളം ലഭിക്കാത്തയാള്‍ക്ക് അത് ലഭിക്കല്‍.
                         </p>

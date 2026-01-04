@@ -8,23 +8,82 @@
         }
     </style>
 
-    <div class="app-header text-center notranslate">
+    {{-- <div class="app-header text-center notranslate">
         <h5 class="mb-1 text-dark fw-bold">സ്വാഗതം 👋</h5>
         <h4 class="fw-bold">
-            <span class="text-emerald">ഇസ്ലാമിക്</span>
-            <span class="text-accent-900">സ്റ്റഡി പോർട്ടൽ</span>
+            <span class="text-dark">ഇസ്ലാമിക്</span>
+            <span class="text-yl-900">സ്റ്റഡി പോർട്ടൽ</span>
         </h4>
-    </div>
+    </div> --}}
 
     <div class="container my-4 pb-5 notranslate">
-        <div class="row g-2">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+        <style>
+            :root {
+                --clr-dark: #1e2222;
+                --clr-gold: #c5a059;
+            }
+
+            .dua-swiper {
+                padding: 20px 0 50px;
+            }
+
+            .dua-card {
+                background: var(--clr-dark);
+                border: 1px solid var(--clr-gold);
+                border-radius: 15px;
+                min-height: 300px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                transition: transform 0.3s ease;
+            }
+
+            .text-ar {
+                font-family: 'Amiri', serif;
+                /* Recommended for Arabic */
+                color: var(--clr-gold);
+                font-size: 1.8rem;
+            }
+
+            .title-box {
+                border-bottom: 1px dashed rgba(197, 160, 89, 0.3);
+                color: var(--clr-gold);
+            }
+
+            .swiper-pagination-bullet-active {
+                background: var(--clr-gold) !important;
+            }
+
+            .swiper-button-next,
+            .swiper-button-prev {
+                color: var(--clr-gold);
+            }
+        </style>
+
+        <div class="container mt-4">
+            <div class="swiper dua-swiper">
+                <div class="swiper-wrapper" id="duaSlides">
+                </div>
+
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next d-none d-md-flex"></div>
+                <div class="swiper-button-prev d-none d-md-flex"></div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+        {{-- <div class="row g-2">
             <div class="col-lg-7">
                 <div class="base-card mb-4 bg-geometry p-4">
                     <div class="text-center mx-auto">
-                        <h4 class="mb-3 text-emerald-900" style="text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);">
+                        <h4 class="mb-3 text-black" style="text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);">
                             {{ __('app.seek_knowledge') }}</h4>
 
-                        <div class="ayah-box mb-2 text-emerald">
+                        <div class="ayah-box mb-2 text-dark">
                             <h5 class="text-ar">
                                 <span class="mt-2">﴿ وَقُل رَّبِّ زِدْنِي عِلْمًا ﴾</span>
                                 <em class="text-muted small"> - 20:114</em>
@@ -52,10 +111,10 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Featured Courses -->
-        <h3 class="m-0 text-emerald text-center mt-4 mb-2">🌿 അറിവ് തേടൂ, വിശ്വാസം വളർത്തൂ</h3>
+        <h3 class="m-0 text-dark text-center mt-4 mb-2">🌿 അറിവ് തേടൂ, വിശ്വാസം വളർത്തൂ</h3>
         <x-app.hr />
 
         <div class="row g-2 mb-4">
@@ -68,7 +127,7 @@
 
         {{-- <x-app.hr /> --}}
         <div class="base-card accent p-3 d-none">
-            <h3 class="text-center fw-bold mb-2 text-emerald">✨ ദുആയുടെ ശക്തി</h3>
+            <h3 class="text-center fw-bold mb-2 text-dark">✨ ദുആയുടെ ശക്തി</h3>
             <p class="text-center mb-0">
                 “തീർച്ചയായും അല്ലാഹുവിനെക്കുറിച്ചുള്ള സ്മരണ കൊണ്ടാകുന്നു ഹൃദയങ്ങൾ ശാന്തമാകുന്നത്.” (Qur'an 13:28)
             </p>
@@ -92,7 +151,7 @@
             },
             {
                 title: "ഉണരുമ്പോഴുള്ള ദുആ",
-                arabic: "الحمدُ للهِ الذي أحيانا بعدما أماتنا وإليه النشور",
+                arabic: "الحمدُ للهِ الذي أحيانا بعدما أمատنا وإليه النشور",
                 translit: "Alhamdu lillahil-lathee ahyana ba’da ma amatana wa ilayhin-nushoor",
                 translation: "നമ്മെ ജീവനിൽ നിന്ന് എടുത്തതിനു ശേഷം നമ്മെ ജീവിപ്പിച്ച അല്ലാഹുവിനാണ് സർവ്വ സ്തുതിയും. അവനിലേക്കാണ് ഉയിർത്തെഴുന്നേൽപ്പ്."
             },
@@ -104,27 +163,53 @@
             }
         ];
 
-        const duaSlides = document.getElementById("duaSlides");
-
         function renderSlides() {
-            duaSlides.innerHTML = "";
-            duas.forEach((dua, idx) => {
-                const activeClass = idx === 0 ? "active" : "";
-                const cardClass = idx % 2 === 0 ? "emerald" : "accent";
+            const duaSlides = document.getElementById("duaSlides");
+            duaSlides.innerHTML = duas.map(dua => `
+        <div class="swiper-slide">
+            <div class="dua-card p-4 shadow-lg text-center">
+                <div class="title-box mb-3 pb-2">
+                    <h5 class="fw-bold m-0 text-white">${dua.title}</h5>
+                </div>
+                <h2 class="text-ar mb-3 lh-lg" dir="rtl">${dua.arabic}</h2>
+                <p class="text-muted small fst-italic mb-2">${dua.translit}</p>
+                <p class="text-white-50 m-0">${dua.translation}</p>
+            </div>
+        </div>
+    `).join('');
 
-                duaSlides.innerHTML += `
-                    <div class="carousel-item ${activeClass}">
-                        <div class="base-card emerald p-3">
-                            <h3 class="text-center fw-bold mb-3">${dua.title}</h3>
-                            <h2 class="text-ar text-accent text-center text-shadow lh-base">${dua.arabic}</h2>
-                            <div class="translit d-none">${dua.translit}</div>
-                            <p class="text-center m-0">${dua.translation}</p>
-                        </div>
-                    </div>
-                `;
+            // Initialize Swiper after rendering
+            const swiper = new Swiper('.dua-swiper', {
+                loop: true,
+                spaceBetween: 30,
+                grabCursor: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    // Show 1 slide on mobile, 2 on tablets, 3 on desktop
+                    320: {
+                        slidesPerView: 1
+                    },
+                    768: {
+                        slidesPerView: 1
+                    },
+                    1024: {
+                        slidesPerView: 1
+                    }
+                }
             });
         }
 
-        renderSlides();
+        document.addEventListener("DOMContentLoaded", renderSlides);
     </script>
 @endsection

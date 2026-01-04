@@ -39,7 +39,7 @@
                     </x-app.accordion>
 
                     <x-app.accordion :id="'topic2'" :title="'വിസർജ്ജന മര്യാദകൾ'">
-                        <h6 class="text-emerald-900 fw-bold">1. ഇസ്തിൻജാഉം ഇസ്തിജ്മാറും</h6>
+                        <h6 class="text-black fw-bold">1. ഇസ്തിൻജാഉം ഇസ്തിജ്മാറും</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             മലമൂത്രദ്വാരങ്ങളിലൂടെ പുറത്തുവന്നത് വെള്ളംകൊണ്ട് ശുചീകരിക്കലാണ് ഇസ്തിൻജാഅ്. കല്ലു പോലുള്ള
                             ശുദ്ധവും അനുവദനീയവും വൃത്തിയാക്കാവുന്നതുമായ വസ്തുകൊണ്ട് തടവുന്നതിനാണ് ഇസ്തിജ്മാറ് എന്നു
@@ -53,7 +53,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">
+                        <h6 class="text-black fw-bold mt-3">
                             2. വിസർജ്ജന സ്ഥലത്ത് പ്രവേശിക്കുമ്പോൾ ഇസ്തിആദത്ത് ചൊല്ലുക
                         </h6>
                         <h5 class="m-0 text-ar lh-lg">اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ
@@ -66,7 +66,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">3. ക്വിബ്‌ലക്ക് അഭിമുഖമാകലും പിന്തിരിയലും</h6>
+                        <h6 class="text-black fw-bold mt-3">3. ക്വിബ്‌ലക്ക് അഭിമുഖമാകലും പിന്തിരിയലും</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             മലമൂത്ര വിസർജനവേളയിൽ മരുഭൂമിയിൽ മറയില്ലാതെ ക്വിബ്‌ലയെ അഭിമുഖീകരിക്കലും പിന്തിരിയലും
                             അനുവദനീയമല്ല. വിസർജനം നിർവഹിക്കുന്നവന്റെയും കഅ്ബയുടെയും ഇടയിൽ മറയായി വല്ലതുമുണ്ടെങ്കിൽ അതിൽ
@@ -84,7 +84,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">4. വിസർജ്ജനം പാടില്ലാത്ത സ്ഥലങ്ങൾ</h6>
+                        <h6 class="text-black fw-bold mt-3">4. വിസർജ്ജനം പാടില്ലാത്ത സ്ഥലങ്ങൾ</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             ഉറവകളിലും വഴിയിലും തണലിലും, മാളത്തിൽ, കെട്ടിനിൽക്കുന്ന വെള്ളത്തിൽ, ഖബ്റിൽ
                         </p>
@@ -122,7 +122,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">5. മര്യാദകൾ</h6>
+                        <h6 class="text-black fw-bold mt-3">5. മര്യാദകൾ</h6>
                         <p class="m-0 mb-1 text-justify" style="text-indent: 2em">
                             ജനദൃഷ്ടിയിൽ നിന്നും മറഞ്ഞിരിക്കുക, വസ്ത്രം ഉയർത്തേണ്ടത്, ഇരുന്നാണ് നിർവഹിക്കേണ്ടത്, ഇടതു കൈ
                             കൊണ്ട് ശുദ്ധിയാക്കുക, ഇസ്തിൻജാഇന് ശേഷം കൈ വൃത്തിയാക്കുക.
@@ -196,7 +196,7 @@
                         </x-app.hadith-box>
                         <x-app.hr />
 
-                        <h6 class="text-emerald-900 fw-bold mt-3">6. ടോയ്ലറ്റിൽ നിന്നും പുറത്ത് കടക്കുമ്പോൾ</h6>
+                        <h6 class="text-black fw-bold mt-3">6. ടോയ്ലറ്റിൽ നിന്നും പുറത്ത് കടക്കുമ്പോൾ</h6>
                         <h5 class="m-0 mb-1 text-ar lh-lg">
                             غُفْرَانَكَ
                         </h5>
