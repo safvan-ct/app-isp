@@ -16,7 +16,7 @@
         <x-app.search :books="$books" :book_id="$book->id" />
     </x-app.banner>
 
-    <main class="container px-1 px-sm-0 p-0 my-3 pb-3 pb-sm-0 notranslate">
+    <main class="container px-1 px-sm-0 p-0 my-3 pb-3 pb-sm-1 notranslate">
         <div class="row g-2 mb-5">
             @foreach ($book->chapters as $chapter)
                 <div class="col-md-6 col-lg-4 all-chapters"

@@ -5,7 +5,7 @@
 @section('navbar_url', route('hadith.chapters', [$chapter->book->id]))
 
 @section('content')
-    <x-app.banner :title="$chapter->translation?->name ?? $chapter->name" :url="route('hadith.chapter.verses', ['book' => $chapter->book->slug, 'chapter' => $chapter->id])">
+    <x-app.banner :title="$chapter->translation?->name . ' - ' . $chapter->name" :url="route('hadith.chapter.verses', ['book' => $chapter->book->slug, 'chapter' => $chapter->id])">
         <div class="small m-0 mb-2">
             <a class='m-0 p-0 text-dark' href="{{ route('hadith.chapters', [$chapter->book->id]) }}">
                 {{ $chapter->book->translation?->name ?? $chapter->book->name }}
@@ -41,7 +41,7 @@
                 @endif
 
                 <div class="row flex-column flex-md-row m-0 mb-1">
-                    <div class="col-12 col-md-6 order-1 order-md-2 p-0 ps-md-4">
+                    <div class="col-12 {{ empty($item->translation?->text) ? 'col-md-12' : 'col-md-6' }} order-1 order-md-2 p-0 ps-md-4">
                         <div class="text-black notranslate text-justify"
                             style="font-size: 19px; line-height: 1.8; font-family: 'Scheherazade New', serif;"
                             dir="rtl">
@@ -50,13 +50,14 @@
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-6 order-2 order-md-1 p-0">
-                        <div class="text-en text-justify" style="font-size: 14px;">
-                            {{ $item->translation?->text }}
+                    @if (!empty($item->translation?->text))
+                        <div class="col-12 col-md-6 order-2 order-md-1 p-0">
+                            <div class="text-en text-justify" style="font-size: 14px;">
+                                {{ $item->translation?->text }}
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
-
 
                 <x-app.hr class="mt-3 mb-2" />
                 <p class="text-muted small notranslate fst-italic m-0">
