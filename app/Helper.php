@@ -186,6 +186,50 @@ if (! function_exists('getTopicChapters')) {
                     ],
                 ],
             ],
+            "namaz-1" => [
+                "slug"    => "namaz-1",
+                "title"   => "സ്വലാത് (നമസ്കാരം)",
+                "desc"    => "തീർച്ചയായും നമസ്കാരം വിശ്വാസികൾക്ക് സമയബന്ധിതമായ ബാധ്യതയായി വിധിക്കപ്പെട്ടിരിക്കുന്നു.",
+                "modules" => [
+                    "introduction"   => [
+                        "title"   => "ആമുഖം",
+                        "slug"    => "introduction",
+                        "lessons" => [
+                            "what-is-namaz"         => "എന്താണ് നമസ്ക്കാരം?",
+                            "how-it-became-worship" => "എങ്ങനെ ആണ് ആരാധന ആയത്?",
+                            "ruling-on-abandoning"  => "നമസ്കാരം ഉപേക്ഷിച്ചാലുള്ള വിധി:",
+                        ],
+                    ],
+                    "times-of-namaz" => [
+                        "title"   => "നമസ്കാര സമയങ്ങൾ",
+                        "slug"    => "times-of-namaz",
+                        "lessons" => [
+                            "times"          => "സമയം",
+                            "no-of-raka"     => "റക്അത്തുകളുടെ എണ്ണം",
+                            "rawattib-sunna" => "റവാത്തിബ് നമസ്കാരങ്ങൾ",
+                        ],
+                    ],
+                    "azan-and-iqama" => [
+                        "title"   => "ബാങ്ക്, ഇഖാമത്ത്",
+                        "slug"    => "azan-and-iqama",
+                        "lessons" => [
+                            "introduction" => "ആമുഖം",
+                            "conditions"   => "നിബന്ധനകൾ",
+                            "form"         => "രൂപം",
+                            "muazzin"      => "മുഅദ്ദിൻ",
+                            "dua"          => "ദുആ",
+                        ],
+                    ],
+                    "namaz-sharth"   => [
+                        "title"   => "ശര്‍ത്തുകള്‍",
+                        "slug"    => "namaz-sharth",
+                        "lessons" => [
+                            "introduction" => "ആമുഖം",
+                            "conditions"   => "നിബന്ധനകൾ",
+                        ],
+                    ],
+                ],
+            ],
             "namaz"   => [
                 "slug"    => "namaz",
                 "title"   => "സ്വലാത് (നമസ്കാരം)",
@@ -456,7 +500,7 @@ if (! function_exists('getTopicChapters')) {
             ],
         ];
 
-        return empty($key) ? $data : $data[$key];
+        return empty($key) ? $data : $data[$key] ?? [];
     }
 }
 
@@ -476,6 +520,15 @@ if (! function_exists('hadithBookName')) {
         return empty($slug) ? $data : $data[$slug];
     }
 
+}
+
+if (! function_exists('getModuleLesson')) {
+    function getModuleLesson($folder, $file)
+    {
+        $data = database_path("topics/{$folder}/{$file}.json");
+
+        return json_decode(file_get_contents($data), true);
+    }
 }
 
 if (! function_exists('getChapterNotes')) {

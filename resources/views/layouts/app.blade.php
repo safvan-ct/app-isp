@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title class="notranslate">@yield('title', __('app.islamic_study_portal'))</title>
+    <title class="notranslate">@yield('title', __('app.islam'))</title>
 
     <meta name="google-site-verification" content="OKnz62VGeCr4Y1wyF1Zub_GLB1pI-DFdldoYKmareBY" />
 

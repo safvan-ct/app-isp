@@ -9,14 +9,20 @@ class TopicController extends Controller
     public function __construct(protected TopicInterface $topicRepository)
     {}
 
+    public function topics()
+    {
+        return view("app.topics");
+    }
+
     public function modules($menuSlug)
     {
         $topic = $this->topicRepository->getMenuWithAll($menuSlug);
         if (! $topic) {
             //abort(404);
         }
+        $topic = getTopicChapters($menuSlug);
 
-        return view("app.topics", compact("topic", "menuSlug"));
+        return view("app.modules-1", compact("topic"));
     }
 
     public function questions($menuSlug, $moduleSlug)
@@ -41,8 +47,16 @@ class TopicController extends Controller
 
         $key    = $moduleId + 1;
         $topic  = getTopicChapters($moduleSlug);
-        $module = getChapterNotes($moduleSlug, $moduleId + 1);
+        $module = getChapterNotes($moduleSlug, $key);
 
         return view("app.module-{$module['page']}", compact("topic", "module", "moduleId", "moduleSlug"));
+    }
+
+    public function lessons($topicSlug, $moduleSlug, $lessonSlug = null)
+    {
+        $topic  = getTopicChapters($topicSlug);
+        $module = getModuleLesson($topicSlug, $moduleSlug);
+
+        return view("app.module-{$module['page']}", compact("topic", "module", "moduleSlug", "lessonSlug"));
     }
 }

@@ -1,147 +1,213 @@
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <style>
-        .carousel-control-next,
-        .carousel-control-prev {
-            width: 5% !important;
+        .about-section {
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .about-section h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--clr-gold);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .about-section p {
+            color: #555;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .source-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--clr-gold);
+        }
+
+        .source-box h4 {
+            margin-top: 0;
+            color: var(--clr-gold);
         }
     </style>
 
-    {{-- <div class="app-header text-center notranslate">
-        <h5 class="mb-1 text-dark fw-bold">സ്വാഗതം 👋</h5>
-        <h4 class="fw-bold">
-            <span class="text-dark">ഇസ്ലാമിക്</span>
-            <span class="text-yl-900">സ്റ്റഡി പോർട്ടൽ</span>
-        </h4>
-    </div> --}}
+    <style>
+        /* Hero Slider Container */
+        .hero-slider-section {
+            width: 100%;
+            padding: 40px 0;
+            background: var(--clr-dark);
+        }
 
-    <div class="container my-4 pb-5 notranslate">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        /* Ensuring Equal Height for all slides */
+        .swiper-slide {
+            height: auto;
+            display: flex;
+        }
 
-        <style>
-            :root {
-                --clr-dark: #1e2222;
-                --clr-gold: #c5a059;
-            }
+        .dua-card {
+            background: linear-gradient(145deg, #1a1a1a, #000000);
+            border: 2px solid var(--clr-gold);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            color: var(--clr-white);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
 
-            .dua-swiper {
-                padding: 20px 0 50px;
+        .dua-arabic {
+            font-size: 1.8rem;
+            color: var(--clr-gold);
+            margin-bottom: 20px;
+            font-family: 'Amiri', serif;
+            line-height: 1.6;
+        }
+
+        .dua-malayalam {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .dua-reference {
+            font-size: 0.9rem;
+            color: var(--clr-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Swiper Custom Navigation */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--clr-gold) !important;
+        }
+
+        .swiper-pagination-bullet {
+            background: var(--clr-gold) !important;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .dua-arabic {
+                font-size: 1.5rem;
             }
 
             .dua-card {
-                background: var(--clr-dark);
-                border: 1px solid var(--clr-gold);
-                border-radius: 15px;
-                min-height: 300px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                transition: transform 0.3s ease;
+                padding: 25px;
             }
+        }
+    </style>
 
-            .text-ar {
-                font-family: 'Amiri', serif;
-                /* Recommended for Arabic */
-                color: var(--clr-gold);
-                font-size: 1.8rem;
-            }
+    <div class="container my-4 pb-5 notranslate">
+        <section class="hero-slider-section">
+            <div class="container">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
 
-            .title-box {
-                border-bottom: 1px dashed rgba(197, 160, 89, 0.3);
-                color: var(--clr-gold);
-            }
-
-            .swiper-pagination-bullet-active {
-                background: var(--clr-gold) !important;
-            }
-
-            .swiper-button-next,
-            .swiper-button-prev {
-                color: var(--clr-gold);
-            }
-        </style>
-
-        <div class="container mt-4">
-            <div class="swiper dua-swiper">
-                <div class="swiper-wrapper" id="duaSlides">
-                </div>
-
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next d-none d-md-flex"></div>
-                <div class="swiper-button-prev d-none d-md-flex"></div>
-            </div>
-        </div>
-
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-
-        {{-- <div class="row g-2">
-            <div class="col-lg-7">
-                <div class="base-card mb-4 bg-geometry p-4">
-                    <div class="text-center mx-auto">
-                        <h4 class="mb-3 text-black" style="text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);">
-                            {{ __('app.seek_knowledge') }}</h4>
-
-                        <div class="ayah-box mb-2 text-dark">
-                            <h5 class="text-ar">
-                                <span class="mt-2">﴿ وَقُل رَّبِّ زِدْنِي عِلْمًا ﴾</span>
-                                <em class="text-muted small"> - 20:114</em>
-                            </h5>
+                        <div class="swiper-slide">
+                            <div class="dua-card">
+                                <div class="dua-arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً
+                                </div>
+                                <div class="dua-malayalam">"ഞങ്ങളുടെ നാഥാ, ഞങ്ങൾക്ക് ദുനിയാവിലും ആഖിറത്തിലും നന്മ നൽകേണമേ."
+                                </div>
+                                <div class="dua-reference">അൽ-ബഖറ: 201</div>
+                            </div>
                         </div>
 
-                        <p class="text-muted mb-0 small">
-                            Quran, Hadith and subjects — organized for focused, distraction-free learning.
-                        </p>
+                        <div class="swiper-slide">
+                            <div class="dua-card">
+                                <div class="dua-arabic">رَبِّ زِدْنِي عِلْمًا</div>
+                                <div class="dua-malayalam">"എന്റെ നാഥാ, എനിക്ക് നീ അറിവ് വർദ്ധിപ്പിച്ചു തരേണമേ."</div>
+                                <div class="dua-reference">സൂറത്ത് ത്വാഹാ: 114</div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="dua-card">
+                                <div class="dua-arabic">يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِي عَلَى دِينِكَ</div>
+                                <div class="dua-malayalam">"ഹൃദയങ്ങളെ മാറ്റിമറിക്കുന്നവനേ, എന്റെ ഹൃദയത്തെ നിന്റെ ദീനിൽ
+                                    ഉറപ്പിച്ചു നിർത്തേണമേ."</div>
+                                <div class="dua-reference">തിർമിദി</div>
+                            </div>
+                        </div>
+
                     </div>
+
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
+        </section>
 
-            <div class="col-lg-5">
-                <div id="duaCarousel" class="carousel slide d-flex justify-content-center align-items-center"
-                    data-bs-ride="false" data-bs-interval="false">
-                    <div class="carousel-inner" id="duaSlides"></div>
+        <section class="about-section mt-4">
+            <div class="container">
+                <h2>ഞങ്ങളെക്കുറിച്ച്</h2>
 
-                    <!-- Controls -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#duaCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#duaCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </button>
+                <p class="text-desc">
+                    മനുഷ്യജീവിതത്തിന്റെ യഥാർത്ഥ ലക്ഷ്യം അല്ലാഹുവിനെ ആരാധിക്കുക (ഇബാദത്ത്) എന്നതാണ്. ഈ മഹത്തായ
+                    ലക്ഷ്യത്തെക്കുറിച്ചും, ആരാധനകളുടെ ശരിയായ രീതികളെക്കുറിച്ചും കൃത്യമായ അറിവ് നൽകാനാണ് ഞങ്ങൾ
+                    പരിശ്രമിക്കുന്നത്. വിശ്വാസികൾക്ക് തങ്ങളുടെ ജീവിതം അല്ലാഹുവിന്റെ പ്രീതിക്കനുസരിച്ച് ക്രമീകരിക്കാൻ
+                    ആവശ്യമായ മാർഗ്ഗനിർദ്ദേശങ്ങൾ ഇവിടെ ലഭ്യമാണ്.
+                </p>
+
+                <div class="source-box">
+                    <h4>അടിസ്ഥാന പ്രമാണങ്ങൾ</h4>
+                    <p class="text-desc">
+                        പരിശുദ്ധമായ <b>ഖുർആനിന്റെ</b> അധ്യാപനങ്ങളും, പ്രവാചകൻ മുഹമ്മദ് നബി (സ്വ)യുടെ ചര്യകൾ വ്യക്തമാക്കുന്ന
+                        <b>കുത്തുബുസ്സിത്ത</b> (സ്വഹീഹുൽ ബുഖാരി, സ്വഹീഹ് മുസ്‌ലിം, സുനാൻ അബു ദാവൂദ്, ജാമി അൽ-തിർമിധി, സുനാൻ
+                        അന-നസാഈ, സുനാൻ ഇബ്നു മാജ) എന്നീ ആധികാരിക ഹദീസ് ഗ്രന്ഥങ്ങളും അടിസ്ഥാനമാക്കിയാണ് ആരാധനകളെക്കുറിച്ചുള്ള
+                        വിശദീകരണങ്ങൾ ഞങ്ങൾ നൽകുന്നത്.
+                    </p>
                 </div>
             </div>
-        </div> --}}
-
-        <!-- Featured Courses -->
-        <h3 class="m-0 text-dark text-center mt-4 mb-2">🌿 അറിവ് തേടൂ, വിശ്വാസം വളർത്തൂ</h3>
-        <x-app.hr />
-
-        <div class="row g-2 mb-4">
-            @foreach (exploreTopics() as $key => $item)
-                <div class="col-6 col-md-3">
-                    <x-app.topic-card :title="$item" :url="route('questions.show', ['menu_slug' => 'topic', 'module_slug' => $key])" />
-                </div>
-            @endforeach
-        </div>
-
-        {{-- <x-app.hr /> --}}
-        <div class="base-card accent p-3 d-none">
-            <h3 class="text-center fw-bold mb-2 text-dark">✨ ദുആയുടെ ശക്തി</h3>
-            <p class="text-center mb-0">
-                “തീർച്ചയായും അല്ലാഹുവിനെക്കുറിച്ചുള്ള സ്മരണ കൊണ്ടാകുന്നു ഹൃദയങ്ങൾ ശാന്തമാകുന്നത്.” (Qur'an 13:28)
-            </p>
-        </div>
-
-        <h5 class="mb-3 mt-4 d-none">{{ __('app.explore_by_topics') }}</h5>
-        <div class="d-flex gap-2 flex-wrap d-none">
-            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">Development</span>
-            <span class="badge bg-success-subtle text-success rounded-pill px-3 py-2">Design</span>
-            <span class="badge bg-warning-subtle text-warning rounded-pill px-3 py-2">Business</span>
-            <span class="badge bg-danger-subtle text-danger rounded-pill px-3 py-2">Languages</span>
-        </div>
+        </section>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            // Responsiveness
+            breakpoints: {
+                768: {
+                    slidesPerView: 1,
+                },
+                1024: {
+                    slidesPerView: 1,
+                }
+            }
+        });
+    </script>
     <script>
         const duas = [{
                 title: "യാത്രയ്ക്കുള്ള ദുആ",
@@ -162,54 +228,5 @@
                 translation: "അല്ലാഹുവിന്റെ നാമത്തിൽ, അല്ലാഹുവിന്റെ അനുഗ്രഹത്താൽ ഞാൻ ആരംഭിക്കുന്നു."
             }
         ];
-
-        function renderSlides() {
-            const duaSlides = document.getElementById("duaSlides");
-            duaSlides.innerHTML = duas.map(dua => `
-        <div class="swiper-slide">
-            <div class="dua-card p-4 shadow-lg text-center">
-                <div class="title-box mb-3 pb-2">
-                    <h5 class="fw-bold m-0 text-white">${dua.title}</h5>
-                </div>
-                <h2 class="text-ar mb-3 lh-lg" dir="rtl">${dua.arabic}</h2>
-                <p class="text-muted small fst-italic mb-2">${dua.translit}</p>
-                <p class="text-white-50 m-0">${dua.translation}</p>
-            </div>
-        </div>
-    `).join('');
-
-            // Initialize Swiper after rendering
-            const swiper = new Swiper('.dua-swiper', {
-                loop: true,
-                spaceBetween: 30,
-                grabCursor: true,
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                breakpoints: {
-                    // Show 1 slide on mobile, 2 on tablets, 3 on desktop
-                    320: {
-                        slidesPerView: 1
-                    },
-                    768: {
-                        slidesPerView: 1
-                    },
-                    1024: {
-                        slidesPerView: 1
-                    }
-                }
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", renderSlides);
     </script>
 @endsection

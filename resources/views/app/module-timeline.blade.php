@@ -142,7 +142,7 @@
                                                             'menu_slug' => 'topics',
                                                             'module_slug' => $topic['slug'],
                                                             'question_slug' => $key,
-                                                        ]) }}?lesson_slug={{ $loop->index + 1 }}">
+                                                        ]) }}?lesson={{ $loop->index + 1 }}">
                                                         {{ $key + 1 }}.{{ $loop->index + 1 }}: {{ $lesson }}
                                                     </a>
                                                 @endforeach

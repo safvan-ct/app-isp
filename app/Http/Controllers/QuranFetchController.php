@@ -33,6 +33,13 @@ class QuranFetchController extends Controller
 
     public function fetchReference($slug, $number)
     {
+        $numbers = explode('-', $number);
+
+        $ayahs   = count($numbers) == 1 ? [$numbers[0]] :[];
+        for ($i = $numbers[0]; $i <= $numbers[count($numbers) - 1]; $i++) {
+            array_push($ayahs, (int) $i);
+        }
+
         $chapter = QuranChapter::where('id', $slug)->first();
         $result  = QuranVerse::select('id', 'quran_chapter_id', 'number_in_chapter', 'text')
             ->with([
@@ -40,7 +47,7 @@ class QuranFetchController extends Controller
                 'chapter' => fn($q) => $q->select('id', 'name')->with('translations'),
             ])
             ->where('quran_chapter_id', $chapter->id)
-            ->where('number_in_chapter', $number)
+            ->whereIn('number_in_chapter', $ayahs)
             ->active()
             ->get();
 

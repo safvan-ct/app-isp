@@ -46,6 +46,13 @@ body {
     color: var(--clr-black);
 }
 
+.text-desc {
+    text-indent: 2.5rem;
+    margin: 0px;
+    padding: 0px;
+    text-align: justify;
+}
+
 .border-gold {
     border-color: var(--clr-gold) !important;
 }
@@ -376,8 +383,8 @@ body {
 .source-callout {
     border: 1px dashed var(--clr-gold);
     background-color: #fffaf0;
-    padding: 8px;
-    border-radius: 6px;
+    padding: 5px;
+    border-left: 3px solid var(--clr-gold);
 }
 
 /* Mobile */
