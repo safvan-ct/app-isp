@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
-@push('styles')
-    <style>
-
-    </style>
-@endpush
+@section('title', $topic['title'] . ' | ' . __('app.chapters'))
 
 @section('content')
     <x-app.banner :type="'Topic'" :title="$topic['title']" :desc="$topic['desc']" />
@@ -17,7 +13,7 @@
 
                     <div class="accordion accordion-flush" id="">
                         @foreach ($topic['modules'] as $key => $module)
-                            <div class="accordion-item">
+                            <div class="accordion-item mb-2">
                                 <h2 class="accordion-header shadow-sm">
                                     <a class="accordion-button fw-bold text-decoration-none accordion-link border border-3 border-gold"
                                         href="{{ route('lessons.show', ['topic_slug' => $topic['slug'], 'module_slug' => $module['slug']]) }}">

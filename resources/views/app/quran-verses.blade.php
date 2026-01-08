@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('app.quran'))
-@section('navbar_title', __('app.quran'))
-@section('navbar_url', route('quran.index'))
+@section('title', __('app.quran') . ' | ' . $chapter->translation?->name ?? $chapter->name)
 
 @section('content')
     <x-app.banner>

@@ -101,6 +101,123 @@ if (! function_exists('getTopicChapters')) {
     function getTopicChapters($key = '')
     {
         $data = [
+            "islam-1" => [
+                "slug"    => "islam-1",
+                "title"   => "ഇസ്ലാം",
+                "desc"    => "പ്രപഞ്ച സ്രഷ്ടാവായ ഏകദൈവത്തിന് സമ്പൂർണ്ണമായി കീഴടങ്ങി ജീവിക്കുക എന്നതാണ് ഇസ്‌ലാം എന്നതുകൊണ്ട് ഉദ്ദേശിക്കുന്നത്.",
+                "modules" => [
+                    "how-to-be-muslim"  => [
+                        "slug"    => "how-to-be-muslim",
+                        "title"   => "മുസ്ലിം ആവാനുള്ള അടിസ്ഥാനം",
+                        "desc"    => "ദൈവത്തിന്റെ ഇഷ്ടത്തിന് അനുസരിച്ച് സമാധാനപരമായി ജീവിക്കാൻ തിരഞ്ഞെടുക്കുന്ന ആദർശ സമൂഹമാണ് മുസ്‌ലിം",
+                        "lessons" => [],
+                    ],
+                    "five-pillars-of-islam" => [
+                        "slug"    => "five-pillars-of-islam",
+                        "title"   => "ഇസ്‌ലാമിന്റെ അഞ്ചു തൂണുകൾ",
+                        "desc"    => "ഇസ്‌ലാമിന്റെ അഞ്ചു തൂണുകൾ, അല്ലാഹുവിനോടുള്ള സമർപ്പണത്തിന്റെയും സാമൂഹിക പ്രതിബദ്ധതയുടെയും പ്രതീകമാണ്.",
+                        "lessons" => [],
+                    ],
+                    "six-beliefs-of-islam" => [
+                        "slug"    => "six-beliefs-of-islam",
+                        "title"   => "വിശ്വാസത്തിന്റെ അടിസ്ഥാനങ്ങൾ",
+                        "desc"    => "ഒരു മുസ്‌ലിം നിർബന്ധമായും വിശ്വസിക്കേണ്ട ആറ് അടിസ്ഥാനപരമായ വിശ്വാസകാര്യങ്ങളാണ്",
+                        "lessons" => [],
+                    ],
+                ],
+            ],
+            "namaz-1" => [
+                "slug"    => "namaz-1",
+                "title"   => "സ്വലാത് (നമസ്കാരം)",
+                "desc"    => "തീർച്ചയായും നമസ്കാരം വിശ്വാസികൾക്ക് സമയബന്ധിതമായ ബാധ്യതയായി വിധിക്കപ്പെട്ടിരിക്കുന്നു.",
+                "modules" => [
+                    "introduction"    => [
+                        "title"   => "ആമുഖം",
+                        "slug"    => "introduction",
+                        "lessons" => [
+                            "what-is-namaz"         => "എന്താണ് നമസ്ക്കാരം?",
+                            "how-it-became-worship" => "എങ്ങനെ ആണ് ആരാധന ആയത്?",
+                            "ruling-on-abandoning"  => "നമസ്കാരം ഉപേക്ഷിച്ചാലുള്ള വിധി:",
+                        ],
+                    ],
+                    "times-of-namaz"  => [
+                        "title"   => "നമസ്കാര സമയങ്ങൾ",
+                        "slug"    => "times-of-namaz",
+                        "lessons" => [
+                            "times"          => "സമയം",
+                            "no-of-raka"     => "റക്അത്തുകളുടെ എണ്ണം",
+                            "rawattib-sunna" => "റവാത്തിബ് നമസ്കാരങ്ങൾ",
+                        ],
+                    ],
+                    "azan-and-iqama"  => [
+                        "title"   => "ബാങ്ക്, ഇഖാമത്ത്",
+                        "slug"    => "azan-and-iqama",
+                        "lessons" => [
+                            "conditions" => "നിബന്ധനകൾ",
+                            "form"       => "രൂപം",
+                            "muazzin"    => "മുഅദ്ദിൻ",
+                            "dua"        => "ദുആ",
+                        ],
+                    ],
+                    "namaz-sharth"    => [
+                        "title"   => "ശര്‍ത്തുകള്‍",
+                        "slug"    => "namaz-sharth",
+                        "lessons" => [],
+                    ],
+                    "namaz-fard"      => [
+                        "title"   => "ഫർളുകൾ",
+                        "slug"    => "namaz-fard",
+                        "lessons" => [],
+                    ],
+                    "namaz-wajib"     => [
+                        "title"   => "വാജിബുകൾ",
+                        "slug"    => "namaz-wajib",
+                        "lessons" => [],
+                    ],
+                    "namaz-sunnah"    => [
+                        "title"   => "സുന്നത്തുകൾ",
+                        "slug"    => "namaz-sunnah",
+                        "lessons" => [],
+                    ],
+                    "sujood-of-sahav" => [
+                        "title"   => "സഹ്‌വിന്റെ സുജൂദ്",
+                        "slug"    => "sujood-of-sahav",
+                        "lessons" => [],
+                    ],
+                    "complete-form"   => [
+                        "title"   => "പൂർണ്ണ രൂപം",
+                        "slug"    => "complete-form",
+                        "lessons" => [
+                            "introduction" => "മുൻപുള്ള കാര്യങ്ങൾ",
+                            "conditions"   => "ഘടന",
+                        ],
+                    ],
+                    "namaz-lose"      => [
+                        "title"   => "ബാത്വിലാകുന്ന കാര്യങ്ങൾ",
+                        "slug"    => "namaz-lose",
+                        "lessons" => [],
+                    ],
+                    "group-namaz"     => [
+                        "title"   => "ജമാഅത് നിസ്കാരം",
+                        "slug"    => "group-namaz",
+                        "lessons" => [],
+                    ],
+                    "jumua"           => [
+                        "title"   => "ജുമുഅ",
+                        "slug"    => "jumua",
+                        "lessons" => [],
+                    ], "after-duas" => [
+                        "title"   => "ശേഷമുള്ള ദിക്റുകൾ",
+                        "slug"    => "after-duas",
+                        "lessons" => [],
+                    ], "sunnath-namaz" => [
+                        "title"   => "സുന്നത് നമസ്കാരങ്ങൾ",
+                        "slug"    => "sunnath-namaz",
+                        "lessons" => [],
+                    ],
+                ],
+            ],
+
             "islam"   => [
                 "slug"    => "islam",
                 "title"   => "ഇസ്ലാം",
@@ -182,50 +299,6 @@ if (! function_exists('getTopicChapters')) {
                             "നബിമാരുടെ ചര്യകൾ (ശുദ്ധപ്രകൃതി ചര്യകള്‍)",
                             "വിസർജ്ജന മര്യാദകൾ",
                             "നഖം വെട്ടൽ",
-                        ],
-                    ],
-                ],
-            ],
-            "namaz-1" => [
-                "slug"    => "namaz-1",
-                "title"   => "സ്വലാത് (നമസ്കാരം)",
-                "desc"    => "തീർച്ചയായും നമസ്കാരം വിശ്വാസികൾക്ക് സമയബന്ധിതമായ ബാധ്യതയായി വിധിക്കപ്പെട്ടിരിക്കുന്നു.",
-                "modules" => [
-                    "introduction"   => [
-                        "title"   => "ആമുഖം",
-                        "slug"    => "introduction",
-                        "lessons" => [
-                            "what-is-namaz"         => "എന്താണ് നമസ്ക്കാരം?",
-                            "how-it-became-worship" => "എങ്ങനെ ആണ് ആരാധന ആയത്?",
-                            "ruling-on-abandoning"  => "നമസ്കാരം ഉപേക്ഷിച്ചാലുള്ള വിധി:",
-                        ],
-                    ],
-                    "times-of-namaz" => [
-                        "title"   => "നമസ്കാര സമയങ്ങൾ",
-                        "slug"    => "times-of-namaz",
-                        "lessons" => [
-                            "times"          => "സമയം",
-                            "no-of-raka"     => "റക്അത്തുകളുടെ എണ്ണം",
-                            "rawattib-sunna" => "റവാത്തിബ് നമസ്കാരങ്ങൾ",
-                        ],
-                    ],
-                    "azan-and-iqama" => [
-                        "title"   => "ബാങ്ക്, ഇഖാമത്ത്",
-                        "slug"    => "azan-and-iqama",
-                        "lessons" => [
-                            "introduction" => "ആമുഖം",
-                            "conditions"   => "നിബന്ധനകൾ",
-                            "form"         => "രൂപം",
-                            "muazzin"      => "മുഅദ്ദിൻ",
-                            "dua"          => "ദുആ",
-                        ],
-                    ],
-                    "namaz-sharth"   => [
-                        "title"   => "ശര്‍ത്തുകള്‍",
-                        "slug"    => "namaz-sharth",
-                        "lessons" => [
-                            "introduction" => "ആമുഖം",
-                            "conditions"   => "നിബന്ധനകൾ",
                         ],
                     ],
                 ],

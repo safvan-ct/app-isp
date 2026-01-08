@@ -2,8 +2,8 @@
     "page": "lesson-1",
     "lessons": [
         {
-            "title": "ആമുഖം",
-            "slug": "introduction",
+            "title": "നിബന്ധനകൾ",
+            "slug": "conditions",
             "active": false,
             "desc": [
                 {
@@ -36,14 +36,7 @@
                             ]
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "title": "നിബന്ധനകൾ",
-            "slug": "conditions",
-            "active": false,
-            "desc": [
+                },
                 {
                     "title": [
                         "സമയം പ്രവേശിക്കൽ, വാക്കുകൾ കൃത്യതയോടെ തുടർച്ചയായി അറബിയിൽ പറയുക, ശബ്ദം ഉയർത്തൽ"

@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('app.hadith'))
-@section('navbar_title', __('app.hadith'))
-@section('navbar_url', route('hadith.index'))
+@section('title', ($book->translation?->name ?? $book->name) . ' | ' . __('app.chapters'))
 
 @section('content')
     <x-app.banner :title="$book->translation?->name ?? $book->name">

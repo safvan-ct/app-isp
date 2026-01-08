@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
-@section('title', __('app.hadith'))
-@section('navbar_title', __('app.hadith'))
-@section('navbar_url', route('hadith.chapters', [$chapter->book->id]))
+@section('title', ($chapter->book->translation?->name ?? $chapter->book->name) . ' | ' . ($chapter->translation?->name
+    ?? $chapter->name))
 
 @section('content')
     <x-app.banner :title="$chapter->translation?->name . ' - ' . $chapter->name" :url="route('hadith.chapter.verses', ['book' => $chapter->book->slug, 'chapter' => $chapter->id])">
@@ -41,7 +40,8 @@
                 @endif
 
                 <div class="row flex-column flex-md-row m-0 mb-1">
-                    <div class="col-12 {{ empty($item->translation?->text) ? 'col-md-12' : 'col-md-6' }} order-1 order-md-2 p-0 ps-md-4">
+                    <div
+                        class="col-12 {{ empty($item->translation?->text) ? 'col-md-12' : 'col-md-6' }} order-1 order-md-2 p-0 ps-md-4">
                         <div class="text-black notranslate text-justify"
                             style="font-size: 19px; line-height: 1.8; font-family: 'Scheherazade New', serif;"
                             dir="rtl">

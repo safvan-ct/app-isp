@@ -2,9 +2,9 @@
     "page": "lesson-1",
     "lessons": [
         {
-            "title": "ആമുഖം",
+            "title": "നമസ്കാരത്തിന്റെ ശര്‍ത്തുകള്‍",
             "slug": "introduction",
-            "active": false,
+            "active": true,
             "desc": [
                 {
                     "title": [
@@ -50,13 +50,7 @@
                         }
                     ]
                 }
-            ]
-        },
-        {
-            "title": "നിബന്ധനകൾ",
-            "slug": "conditions",
-            "active": false,
-            "desc": [],
+            ],
             "sub_topics": [
                 {
                     "title": "മുസ്‌ലിം ആയിരിക്കണം",

@@ -72,7 +72,7 @@
                                             class="accordion-button bg-light text-dark {{ $moduleSlug == $key ? '' : 'collapsed' }} text-decoration-none accordion-link"
                                             style="font-size: 14px">
                                             <i
-                                                class="fas fa-circle {{ $moduleSlug == $key ? 'text-success' : 'text-gold' }} me-2 "></i>
+                                                class="fas fa-circle {{ $moduleSlug == $key ? 'text-black' : 'text-gold' }} me-2 "></i>
                                             {{ $loop->index + 1 }}. {{ $module['title'] }}
                                         </a>
                                     @endif
@@ -167,13 +167,23 @@
                                             </ul>
                                         @endisset
 
+                                        @if (isset($desc['list']))
+                                            <ul class="m-0 mt-1">
+                                                @foreach ($desc['list'] as $list)
+                                                    <li class="m-0 text-justify">
+                                                        {!! $list !!}
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+
                                         @if (isset($desc['ref']) && !empty($desc['ref']))
                                             @foreach ($desc['ref'] as $ref)
                                                 @php $infos = isset($ref['info']) ? $ref['info'] : []; @endphp
 
                                                 <div
                                                     class="source-callout mt-2 border-gold small mb-0 text-black d-inline-block text-justify">
-                                                    {{ $ref['title'] }}
+                                                    {!! $ref['title'] !!}
 
                                                     @foreach ($infos as $info)
                                                         @php
@@ -205,6 +215,10 @@
                                         {!! !$loop->last ? '<hr class="border-2 my-2 mb-3 text-black opacity-100">' : '' !!}
                                     @endforeach
 
+                                    @if (!empty($subTopics) && !empty($descriptions))
+                                        <hr class="border-2 my-2 mb-3 text-black opacity-100">
+                                    @endif
+
                                     @foreach ($subTopics as $key2 => $subTopic)
                                         @if ($subTopic['title'])
                                             <h6 class="text-yl-900 fw-bold text-break">
@@ -219,13 +233,23 @@
                                             @endforeach
                                         @endisset
 
+                                        @if (isset($subTopic['list']))
+                                            <ul class="m-0 mt-1">
+                                                @foreach ($subTopic['list'] as $list)
+                                                    <li class="m-0 text-justify">
+                                                        {!! $list !!}
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+
                                         @if (isset($subTopic['ref']) && !empty($subTopic['ref']))
                                             @foreach ($subTopic['ref'] as $ref)
                                                 @php $infos = isset($ref['info']) ? $ref['info'] : []; @endphp
 
                                                 <div
                                                     class="source-callout mt-2 border-gold small mb-0 text-black d-inline-block text-justify">
-                                                    {{ $ref['title'] }}
+                                                    {!! $ref['title'] !!}
 
                                                     @foreach ($infos as $info)
                                                         @php
