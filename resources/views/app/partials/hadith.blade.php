@@ -15,7 +15,7 @@
     @endif --}}
 
     <div class="row flex-column flex-md-row m-0 mb-1">
-        <div class="col-12 col-md-6 order-1 order-md-2 p-0 ps-md-4">
+        <div class="col-12 {{ empty($item->translation?->text) ? 'col-md-12' : 'col-md-6' }} order-1 order-md-2 p-0 ps-md-4">
             <h6 class="text-black notranslate text-justify"
                 style="font-size: 19px; line-height: 1.8; font-family: 'Scheherazade New', serif;" dir="rtl">
                 {{ $item->text }}

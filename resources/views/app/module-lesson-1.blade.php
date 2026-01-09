@@ -150,6 +150,10 @@
                                 class="accordion-collapse collapse {{ $active ? 'show' : '' }} module-accordion-collapse ms-3"
                                 data-bs-parent="#moduleAccordion">
                                 <div class="accordion-body p-0 pe-2 ">
+                                    @if (isset($lesson['img']))
+                                        <img src="{{ asset($lesson['img']) }}" class="img-fluid mb-3 w-100 w-md-50">
+                                    @endif
+
                                     @foreach ($descriptions as $desc)
                                         @isset($desc['title'])
                                             @foreach ((array) $desc['title'] as $para)
