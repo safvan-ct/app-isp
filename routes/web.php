@@ -99,11 +99,7 @@ Route::controller(HadithController::class)->prefix('hadith')->name('hadith.')->g
 // ------------------------------
 // Topic Routes (Catch-All)
 // ------------------------------
-
-Route::get('topics', [TopicController::class, 'topics'])->name('modules.show');
-Route::get('topic/{menu_slug}/{module_slug}', [TopicController::class, 'questions'])->name('questions.show');
-Route::get('topic/{menu_slug}/{module_slug}/{question_slug}', [TopicController::class, 'answers'])->name('answers.show');
-
-Route::get('{topic_slug}', [TopicController::class, 'modules'])->name('modules.show');
-Route::get('{topic_slug}/{module_slug}/{lesson_slug?}', [TopicController::class, 'lessons'])->name('lessons.show');
+Route::get('topics', [TopicController::class, 'topics'])->name('topic.index');
+Route::get('{topic_slug}', [TopicController::class, 'modules'])->name('topic.modules');
+Route::get('{topic_slug}/{module_slug}/{lesson_slug?}', [TopicController::class, 'lessons'])->name('module.lessons');
 

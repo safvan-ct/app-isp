@@ -1,79 +1,6 @@
 @extends('layouts.app')
 
 @section('title', $topic['title'])
-@section('navbar_title', $topic['title'])
-@section('navbar_url', route('questions.show', ['menu_slug' => 'topics', 'module_slug' => $topic['slug']]))
-
-@push('styles')
-    <style>
-        .accordion-item {
-            border: none;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-
-        /* Vertical Line for Timeline */
-        .module-steps-accordion .accordion-item::before {
-            content: '';
-            position: absolute;
-            left: 17px;
-            top: 35px;
-            bottom: -1.2rem;
-            width: 3px;
-            background-color: #dee2e6;
-            z-index: 0;
-        }
-
-        .module-steps-accordion .accordion-item:last-child::before {
-            display: none;
-        }
-
-        .accordion-button {
-            background-color: var(--clr-white);
-            border-radius: 8px !important;
-            padding: 1rem;
-            position: relative;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-            z-index: 1;
-        }
-
-        .step-marker {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 28px;
-            font-weight: 700;
-            color: white;
-            flex-shrink: 0;
-            margin-right: 15px;
-            border: 2px solid var(--clr-white);
-            box-shadow: 0 0 0 2px var(--clr-black);
-        }
-
-        .step-marker.fard {
-            background-color: var(--clr-yl-900);
-        }
-
-        .step-marker.sunnah {
-            background-color: var(--clr-dark);
-        }
-
-        .accordion-collapse {
-            /* border-left: 3px solid var(--clr-gold); */
-            margin-left: 20px;
-            padding: 20px 0 10px 10px;
-            background-color: var(--clr-white);
-            border-radius: 0 0 8px 8px;
-        }
-
-        .active-lesson {
-            background-color: var(--clr-bg);
-            border-left: 3px solid var(--clr-gold);
-            font-weight: 600;
-        }
-    </style>
-@endpush
 
 @section('content')
     @php
@@ -104,7 +31,7 @@
                                             {{ $loop->index + 1 }}. {{ $module['title'] }}
                                         </button>
                                     @else
-                                        <a href="{{ route('lessons.show', ['topic_slug' => $topic['slug'], 'module_slug' => $module['slug']]) }}"
+                                        <a href="{{ route('module.lessons', ['topic_slug' => $topic['slug'], 'module_slug' => $module['slug']]) }}"
                                             class="accordion-button bg-light text-dark {{ $moduleSlug == $key ? '' : 'collapsed' }} text-decoration-none accordion-link"
                                             style="font-size: 14px">
                                             <i
@@ -124,7 +51,7 @@
 
                                                 @foreach ($module['lessons'] as $lessonKey => $lesson)
                                                     <a class="list-group-item list-group-item-action small"
-                                                        href="{{ route('lessons.show', ['topic_slug' => $topic['slug'], 'module_slug' => $module['slug'], 'lesson_slug' => $lessonKey]) }}">
+                                                        href="{{ route('module.lessons', ['topic_slug' => $topic['slug'], 'module_slug' => $module['slug'], 'lesson_slug' => $lessonKey]) }}">
                                                         {{ $loop->parent->index + 1 }}.{{ $loop->index + 1 }}:
                                                         {{ $lesson }}
                                                     </a>
@@ -145,12 +72,12 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-2">
                                 <li class="breadcrumb-item small">
-                                    <a href="{{ route('modules.show', 'topics') }}" class="text-dark">
+                                    <a href="{{ route('topic.index') }}" class="text-dark">
                                         {{ __('app.topics') }}
                                     </a>
                                 </li>
                                 <li class="breadcrumb-item small active">
-                                    <a href="{{ route('modules.show', ['topic_slug' => $topic['slug']]) }}"
+                                    <a href="{{ route('topic.modules', ['topic_slug' => $topic['slug']]) }}"
                                         class="text-dark">
                                         {{ $topic['title'] }}
                                     </a>

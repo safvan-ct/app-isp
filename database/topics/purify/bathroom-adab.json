@@ -1,0 +1,287 @@
+{
+    "page": "lesson",
+    "lessons": [
+        {
+            "title": "വിസർജ്ജന മര്യാദകൾ (Toilet Adab)",
+            "slug": "introduction",
+            "active": true,
+            "desc": [],
+            "sub_topics": [
+                {
+                    "title": "ശുദ്ധീകരണം: ഇസ്തിൻജാഉം ഇസ്തിജ്മാറും",
+                    "list": [
+                        "<b>ഇസ്തിൻജാഅ്:</b> മലമൂത്രദ്വാരങ്ങളിലൂടെ പുറത്തുവന്നത് വെള്ളംകൊണ്ട് കഴുകി ശുചീകരിക്കൽ.",
+                        "<b>ഇസ്തിജ്മാറ്:</b> കല്ലുപോലുള്ള ശുദ്ധവും അനുവദനീയവുമായ വസ്തുക്കൾ കൊണ്ട് തടവി വൃത്തിയാക്കൽ."
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഇസ്തിൻജാഅ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 620
+                                }
+                            ]
+                        },
+                        {
+                            "title": "ഇസ്തിജ്മാറ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": 40
+                                },
+                                {
+                                    "slug": "al-tirmidhi",
+                                    "number": 16
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "ടോയ്ലറ്റിൽ പ്രവേശിക്കുമ്പോഴുള്ള ദുആ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1'>اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ<strong> / </strong> بسمِ اللهِ، اللهمَّ إنَّي أعوذُ بكَ منَ الخبُثِ والخبائِثِ</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>അല്ലാഹുവേ, തിന്മയിൽ നിന്നും ദുഷ്ടതയിൽ നിന്നും ഞാൻ നിന്നോട് അഭയം തേടുന്നു. / അല്ലാഹുവിന്റെ നാമത്തിൽ, അല്ലാഹുവേ, തിന്മയിൽ നിന്നും ദുഷ്ടതയിൽ നിന്നും ഞാൻ നിന്നോട് അഭയം തേടുന്നു.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ദുആ",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 142
+                                },
+                                {
+                                    "slug": "ibn-e-majah",
+                                    "number": 297
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "പുറത്ത് കടക്കുമ്പോഴുള്ള ദുആ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1'>غُفْرَانَكَ</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>എനിക്ക് നിൻ്റെ മാപ്പ് തരേണമേ.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ദുആ",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": 30
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "ക്വിബ്‌ല: അഭിമുഖമാകലും പിന്തിരിയലും",
+                    "desc": [
+                        "<p class='text-desc'>മരുഭൂമിയിൽ മറയില്ലാത്ത സ്ഥലത്ത് ക്വിബ്‌ലക്ക് (കഅ്ബക്ക്) നേർക്ക് മലമൂത്ര വിസർജ്ജനം നടത്തുകയോ അതിനു പിന്തിരിയുകയോ ചെയ്യരുത്.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ക്വിബ്‌ലക്ക് അഭിമുഖമാകരുത്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 394
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": "609,610"
+                                },
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": 11,
+                                    "sahih": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "മര്യാദകൾ",
+                    "desc": [
+                        "<p class='text-desc'>ജനദൃഷ്ടിയിൽ നിന്നും മറഞ്ഞിരിക്കുക, ഇരുന്നാണ് നിർവഹിക്കേണ്ടത്, ഇടതു കൈ കൊണ്ട് ശുദ്ധിയാക്കുക, ഇസ്തിൻജാഇന് ശേഷം കൈ വൃത്തിയാക്കുക.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ജനദൃഷ്ടിയിൽ നിന്ന് മറഞ്ഞിരിക്കുക.",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 363
+                                },
+                                {
+                                    "slug": "ibn-e-majah",
+                                    "number": "335,336"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "ഇരുന്നാണ് വിസർജ്ജനം ചെയ്യേണ്ടത് (ആവശ്യമായ സാഹചര്യത്തിൽ നിന്നുകൊണ്ടാകാം).",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 225
+                                },
+                                {
+                                    "slug": "al-tirmidhi",
+                                    "number": 14
+                                },
+                                {
+                                    "slug": "sunan-nasai",
+                                    "number": 29
+                                }
+                            ]
+                        },
+                        {
+                            "title": "വലതുകൈ കൊണ്ട് ശുദ്ധിയാക്കുകയോ ലിംഗം പിടിക്കുകയോ ചെയ്യരുത്. ശുചീകരിക്കുന്നത് ഇടത് കൈ കൊണ്ടായിരിക്കണം. ശേഷം കൈ നന്നായി വൃത്തിയാക്കണം.",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 154
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": "613,614"
+                                },
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": 45
+                                },
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": 33,
+                                    "sahih": false
+                                }
+                            ]
+                        },
+                        {
+                            "title": "വിസർജ്ജനം പിടിച്ചുവെച്ച് നമസ്കരിക്കരുത്. വിസർജ്ജന വേളയിൽ സലാം പറയുകയോ മടക്കുകയോ വേണ്ടതില്ല. മൂത്രവിസജ്ജർനം: അലസത കാണിക്കരുത്.",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 218
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": "1246,822,823"
+                                },
+                                {
+                                    "slug": "ibn-e-majah",
+                                    "number": "617,352"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "വെള്ളം ലഭിക്കാതെ കല്ലോ മറ്റോ ഉപയോഗിക്കുമ്പോൾ, എല്ലും ചാണകവും ഉപയോഗിക്കരുത്.",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": "607,560"
+                                },
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": 96
+                                },
+                                {
+                                    "slug": "al-tirmidhi",
+                                    "number": 18
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "വിസർജ്ജനം പാടില്ലാത്ത സ്ഥലങ്ങൾ",
+                    "desc": [
+                        "<p class='text-desc'>ഉറവകളിലും വഴിയിലും തണലിലും. മാളത്തിൽ. കെട്ടിനിൽക്കുന്ന വെള്ളത്തിൽ (കുളിക്കരുത്). ഖബ്റിടങ്ങളിൽ. കുളിപ്പുരയിൽ മൂത്രമൊഴിക്കരുത്.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഉറവകളിലും വഴിയിലും തണലിലും",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 618
+                                },
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": 26,
+                                    "sahih": false
+                                }
+                            ]
+                        },
+                        {
+                            "title": "മാളത്തിൽ",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "ibn-e-majah",
+                                    "number": 328
+                                },
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": 29,
+                                    "sahih": false
+                                }
+                            ]
+                        },
+                        {
+                            "title": "കെട്ടിനിൽക്കുന്ന വെള്ളത്തിൽ",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 655
+                                }
+                            ]
+                        },
+                        {
+                            "title": "ഖബ്റിടങ്ങളിൽ",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "ibn-e-majah",
+                                    "number": 1567
+                                }
+                            ]
+                        },
+                        {
+                            "title": "കുളിപ്പുരയിൽ",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": "656,658"
+                                },
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": 27,
+                                    "sahih": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,42 +1,9 @@
 @extends('layouts.app')
 
-@section('title', $topic['title'])
-@section('navbar_title', $topic['title'])
-@section('navbar_url', route('questions.show', ['menu_slug' => 'topics', 'module_slug' => $topic['slug']]))
+@section('title', $topic['title'] . ' | ' . $topic['modules'][$moduleSlug]['title'])
 
 @push('styles')
     <style>
-        .accordion-item {
-            border: none;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-
-        /* Vertical Line for Timeline */
-        .module-steps-accordion .accordion-item::before {
-            content: '';
-            position: absolute;
-            left: 17px;
-            top: 35px;
-            bottom: -1.2rem;
-            width: 3px;
-            background-color: var(--clr-dark);
-            z-index: 0;
-        }
-
-        .module-steps-accordion .accordion-item:last-child::before {
-            display: none;
-        }
-
-        .accordion-button {
-            background-color: var(--clr-white);
-            border-radius: 8px !important;
-            padding: 1rem;
-            position: relative;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-            z-index: 1;
-        }
-
         .step-marker {
             width: 30px;
             height: 30px;
@@ -49,37 +16,14 @@
             margin-right: 15px;
             border: 2px solid var(--clr-white);
             box-shadow: 0 0 0 2px var(--clr-black);
-        }
-
-        .step-marker.fard {
-            background-color: var(--clr-yl-900);
-        }
-
-        .step-marker.sunnah {
             background-color: var(--clr-gold);
         }
 
-        .accordion-collapse {
+        .module-accordion-collapse {
             border-left: .2rem solid var(--clr-dark);
-            margin-left: 17px;
             padding: 20px 0 10px 10px;
-            background-color: var(--clr-white);
-            border-radius: none !important;
         }
 
-        .accordion-item:last-of-type>.accordion-collapse {
-            border-bottom-right-radius: 0 !important;
-            border-bottom-left-radius: 0 !important;
-        }
-
-        /* Sidebar Styling */
-        .curriculum-sidebar {
-            background: #f8f9fa;
-            border-radius: 12px;
-            border: 1px solid #e9ecef;
-        }
-
-        /* Main Content area */
         .module-steps-accordion .accordion-item {
             border: none;
             margin-bottom: 1rem;
@@ -88,64 +32,65 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
-        .source-callout {
-            border-left: 3px solid var(--clr-gold);
+        .curriculum-sidebar {
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
         }
     </style>
 @endpush
 
 @section('content')
-    {{-- <x-app.banner :number="$moduleId + 1" :type="'Module'" :title="$topic['modules'][$moduleId]['title']" :desc="$topic['modules'][$moduleId]['desc']" /> --}}
+    @php
+        $modules = $topic['modules'] ?? [];
+        $lessons = $module['lessons'] ?? [];
+    @endphp
 
     <main class="container mt-4 pb-5 notranslate">
         <div class="row g-4">
-            <div class="col-lg-3 order-2 order-lg-1">
+            <div class="col-lg-3 order-2 order-lg-1 mb-4">
                 <aside class="curriculum-sidebar p-3 sticky-top" style="top: 80px; z-index: 10;">
-                    <h6 class="fw-bold text-uppercase tracking-wider mb-3 text-muted small">
+                    <h6 class="fw-bold text-uppercase tracking-wider mb-3 text-dark small">
                         <i class="fas fa-book-open me-2"></i> {{ __('app.related_topics') }}
                     </h6>
 
                     <div class="accordion accordion-flush" id="curriculumAccordion">
-
-                        @foreach ($topic['modules'] as $key => $item)
-                            <div class="accordion-item">
+                        @foreach ($modules as $key => $module)
+                            <div class="accordion-item mb-2 shadow-sm border border-gold">
                                 <h6 class="accordion-header shadow-sm">
-                                    @if (!empty($item['lessons']))
+                                    @if (!empty($module['lessons']))
                                         <button
-                                            class="accordion-button bg-light text-dark {{ $moduleId == $key ? '' : 'collapsed' }}"
+                                            class="accordion-button bg-light text-dark {{ $moduleSlug == $key ? '' : 'collapsed' }}"
                                             type="button" data-bs-toggle="collapse" data-bs-target="#{{ $key }}"
                                             style="font-size: 14px">
                                             <i
-                                                class="fas fa-circle {{ $moduleId == $key ? 'text-success' : 'text-gold' }} me-2 "></i>
-                                            {{ $key + 1 }}. {{ $item['title'] }}
+                                                class="fas fa-circle {{ $moduleSlug == $key ? 'text-black' : 'text-gold' }} me-2 "></i>
+                                            {{ $loop->index + 1 }}. {{ $module['title'] }}
                                         </button>
                                     @else
-                                        <a href="{{ route('answers.show', ['menu_slug' => 'topics', 'module_slug' => $topic['slug'], 'question_slug' => $key]) }}"
-                                            class="accordion-button bg-light text-dark {{ $moduleId == $key ? '' : 'collapsed' }} text-decoration-none accordion-link"
+                                        <a href="{{ route('module.lessons', ['topic_slug' => $topic['slug'], 'module_slug' => $module['slug']]) }}"
+                                            class="accordion-button bg-light text-dark {{ $moduleSlug == $key ? '' : 'collapsed' }} text-decoration-none accordion-link"
                                             style="font-size: 14px">
                                             <i
-                                                class="fas fa-circle {{ $moduleId == $key ? 'text-success' : 'text-gold' }} me-2 "></i>
-                                            {{ $key + 1 }}. {{ $item['title'] }}
+                                                class="fas fa-circle {{ $moduleSlug == $key ? 'text-black' : 'text-gold' }} me-2 "></i>
+                                            {{ $loop->index + 1 }}. {{ $module['title'] }}
                                         </a>
                                     @endif
                                 </h6>
 
-                                @if (!empty($item['lessons']))
+                                @if (!empty($module['lessons']))
                                     <div id="{{ $key }}"
-                                        class="accordion-collapse collapse {{ $moduleId == $key ? 'show' : '' }}"
+                                        class="accordion-collapse collapse {{ $moduleSlug == $key ? 'show' : '' }}"
                                         data-bs-parent="#curriculumAccordion"
                                         style="border-left: 3px solid var(--clr-gold);">
                                         <div class="accordion-body p-0">
                                             <div class="list-group list-group-flush">
 
-                                                @foreach ($item['lessons'] as $lesson)
+                                                @foreach ($module['lessons'] as $lessonKey => $lesson)
                                                     <a class="list-group-item list-group-item-action small"
-                                                        href="{{ route('answers.show', [
-                                                            'menu_slug' => 'topics',
-                                                            'module_slug' => $topic['slug'],
-                                                            'question_slug' => $key,
-                                                        ]) }}?lesson_slug={{ $loop->index + 1 }}">
-                                                        {{ $key + 1 }}.{{ $loop->index + 1 }}: {{ $lesson }}
+                                                        href="{{ route('module.lessons', ['topic_slug' => $topic['slug'], 'module_slug' => $module['slug'], 'lesson_slug' => $lessonKey]) }}">
+                                                        {{ $loop->parent->index + 1 }}.{{ $loop->index + 1 }}:
+                                                        {{ $lesson }}
                                                     </a>
                                                 @endforeach
                                             </div>
@@ -159,17 +104,17 @@
             </div>
 
             <div class="col-lg-9 order-1 order-lg-2">
-                <header class="mb-4 d-flex align-items-end justify-content-between">
+                <header class="mb-3 d-flex align-items-end justify-content-between">
                     <div>
                         <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb mb-1">
+                            <ol class="breadcrumb mb-2">
                                 <li class="breadcrumb-item small">
-                                    <a href="{{ route('modules.show', 'topics') }}" class="text-dark">
+                                    <a href="{{ route('topic.index') }}" class="text-dark">
                                         {{ __('app.topics') }}
                                     </a>
                                 </li>
                                 <li class="breadcrumb-item small active">
-                                    <a href="{{ route('questions.show', ['menu_slug' => 'topics', 'module_slug' => $moduleSlug]) }}"
+                                    <a href="{{ route('topic.modules', ['topic_slug' => $topic['slug']]) }}"
                                         class="text-dark">
                                         {{ $topic['title'] }}
                                     </a>
@@ -177,117 +122,58 @@
                             </ol>
                         </nav>
                         <h5 class="h5 fw-bold m-0">
-                            <i class="fas fa-list-check me-2 text-gold"></i>{{ $topic['modules'][$moduleId]['title'] }}
+                            <i class="fas fa-list-check me-2 text-gold"></i>{{ $topic['modules'][$moduleSlug]['title'] }}
                         </h5>
                     </div>
                 </header>
 
                 <div class="accordion module-steps-accordion" id="moduleAccordion">
-                    @foreach ($module['lessons'] as $key => $lesson)
+                    @foreach ($lessons as $lesson)
                         @php
-                            $active = isset($_GET['lesson_slug'])
-                                ? $_GET['lesson_slug'] == $key + 1
-                                : (isset($lesson['active'])
-                                    ? $lesson['active']
-                                    : false);
+                            $active = $lessonSlug == $lesson['slug'] ? true : $lesson['active'];
+                            $descriptions = isset($lesson['desc']) ? $lesson['desc'] : [];
+                            $subTopics = isset($lesson['sub_topics']) ? $lesson['sub_topics'] : [];
                         @endphp
 
                         <div class="accordion-item border border-gold">
                             <h2 class="accordion-header shadow-sm">
                                 <button class="accordion-button {{ $active ? '' : 'collapsed' }} fw-bold" type="button"
-                                    @if (count($module['lessons']) > 1) data-bs-toggle="collapse" @endif
-                                    data-bs-target="#module{{ $key + 1 }}" aria-expanded="false"
-                                    aria-controls="module{{ $key + 1 }}">
-                                    <span class="step-marker sunnah">{{ $key + 1 }}</span>
+                                    @if (count($lessons) > 1) data-bs-toggle="collapse" @endif
+                                    data-bs-target="#module{{ $lesson['slug'] }}" aria-expanded="false"
+                                    aria-controls="module{{ $lesson['slug'] }}">
+                                    <span class="step-marker sunnah">{{ $loop->index + 1 }}</span>
                                     {{ $lesson['title'] }}
                                 </button>
                             </h2>
 
-                            <div id="module{{ $key + 1 }}"
-                                class="accordion-collapse collapse {{ $active ? 'show' : '' }} module-accordion-collapse"
+                            <div id="module{{ $lesson['slug'] }}"
+                                class="accordion-collapse collapse {{ $active ? 'show' : '' }} module-accordion-collapse ms-3"
                                 data-bs-parent="#moduleAccordion">
                                 <div class="accordion-body p-0 pe-2 ">
                                     @if (isset($lesson['img']))
                                         <img src="{{ asset($lesson['img']) }}" class="img-fluid mb-3 w-100 w-md-50">
                                     @endif
 
-                                    @if (isset($lesson['icon']))
-                                        @foreach ($lesson['icon'] as $icon)
-                                            <img src="{{ asset($icon) }}" class="icon-img mb-3 ms-3" alt="step icon" />
-                                        @endforeach
-                                    @endif
-
-                                    @foreach ($lesson['points'] as $key2 => $point)
-                                        @if ($point['title'])
-                                            <h6 class="text-yl-900 fw-bold text-break">
-                                                <span class="text-black">
-                                                    {{ $key + 1 }}.{{ $key2 + 1 }}:
-                                                </span>
-                                                {!! $point['title'] !!}
-                                            </h6>
-                                        @endif
-
-                                        @if (isset($point['notes']) && count($point['notes']) > 0)
-                                            @foreach ($point['notes'] as $note)
-                                                <div class="{{ $loop->last ? '' : 'mb-2' }}">
-                                                    @if (isset($note['desc']))
-                                                        @foreach ($note['desc'] as $desc)
-                                                            <div class="m-0 text-justify {{ $loop->last ? '' : 'mb-1' }}"
-                                                                style="text-indent: 2em">
-                                                                {!! $desc !!}
-                                                            </div>
-                                                        @endforeach
-                                                    @endif
-
-                                                    @if (isset($note['ref']))
-                                                        @foreach ($note['ref'] as $ref)
-                                                            @if (!isset($ref['active']) || (isset($ref['active']) && $ref['active']))
-                                                                <div
-                                                                    class="source-callout mt-2 {{ $ref['type'] == 'quran' ? 'border-dark' : '' }}">
-                                                                    <p class="small mb-0">
-                                                                        {!! isset($ref['title']) ? $ref['title'] : '' !!}
-
-                                                                        @php
-                                                                            $infos = isset($ref['info'])
-                                                                                ? $ref['info']
-                                                                                : [];
-                                                                        @endphp
-
-                                                                        @foreach ($infos as $info)
-                                                                            @php
-                                                                                $sahih = isset($info['sahih'])
-                                                                                    ? $info['sahih']
-                                                                                    : true;
-
-                                                                                $cls = $sahih ? '' : 'text-danger';
-                                                                            @endphp
-
-                                                                            <x-app.ref-button :slug="$info['slug']"
-                                                                                :number="$info['number']" :class="$cls .
-                                                                                    (!$loop->last ? ' mb-1' : '')"
-                                                                                :type="isset($info['type'])
-                                                                                    ? $info['type']
-                                                                                    : $ref['type']" />
-                                                                        @endforeach
-                                                                    </p>
-                                                                </div>
-                                                            @endif
-                                                        @endforeach
-                                                    @endif
-                                                </div>
+                                    @foreach ($descriptions as $desc)
+                                        @isset($desc['title'])
+                                            @foreach ((array) $desc['title'] as $para)
+                                                {!! !empty($para) ? $para : '' !!}
                                             @endforeach
-                                        @endif
+                                        @endisset
 
-                                        @foreach ($point['desc'] as $desc)
-                                            <div class="m-0 text-justify {{ $loop->last ? '' : 'mb-1' }}"
-                                                style="text-indent: 2em">
-                                                {!! $desc !!}
-                                            </div>
-                                        @endforeach
+                                        @isset($desc['points'])
+                                            <ul class="m-0 {{ empty($desc['title']) ? '' : 'mt-1' }}">
+                                                @foreach ($desc['points'] as $point)
+                                                    <li class="m-0 text-justify">
+                                                        <strong>{{ $point['title'] }}</strong>: {{ $point['desc'] }}
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endisset
 
-                                        @if (isset($point['list']))
+                                        @if (isset($desc['list']))
                                             <ul class="m-0 mt-1">
-                                                @foreach ($point['list'] as $list)
+                                                @foreach ($desc['list'] as $list)
                                                     <li class="m-0 text-justify">
                                                         {!! $list !!}
                                                     </li>
@@ -295,84 +181,113 @@
                                             </ul>
                                         @endif
 
-                                        @foreach ($point['ref'] as $ref)
-                                            @if (!isset($ref['active']) || (isset($ref['active']) && $ref['active']))
-                                                <div
-                                                    class="source-callout mt-2 {{ $ref['type'] == 'quran' ? 'border-dark' : '' }}">
-                                                    <p class="small mb-0">
-                                                        {!! isset($ref['title']) ? $ref['title'] : '' !!}
+                                        @if (isset($desc['ref']) && !empty($desc['ref']))
+                                            @foreach ($desc['ref'] as $ref)
+                                                @php $infos = isset($ref['info']) ? $ref['info'] : []; @endphp
 
+                                                <div
+                                                    class="source-callout mt-2 border-gold small mb-0 text-black d-inline-block text-justify">
+                                                    {!! $ref['title'] !!}
+
+                                                    @foreach ($infos as $info)
                                                         @php
-                                                            $infos = isset($ref['info']) ? $ref['info'] : [];
+                                                            $numbers = explode(',', $info['number']);
+                                                            $type = isset($info['type']) ? $info['type'] : $ref['type'];
+                                                            $sahih = isset($info['sahih']) ? $info['sahih'] : true;
+                                                            $madhab = isset($info['madhab']) ? $info['madhab'] : false;
                                                         @endphp
 
-                                                        @foreach ($infos as $info)
-                                                            @php
-                                                                $sahih = isset($info['sahih']) ? $info['sahih'] : true;
-
-                                                                $cls = $sahih ? '' : 'text-danger';
-                                                            @endphp
-
-                                                            <x-app.ref-button :slug="$info['slug']" :number="$info['number']"
-                                                                :class="$cls . (!$loop->last ? ' mb-1' : '')" :type="isset($info['type'])
-                                                                    ? $info['type']
-                                                                    : $ref['type']" />
+                                                        @foreach ($numbers as $number)
+                                                            <span role="button"
+                                                                class="small authentic {{ $madhab ? 'text-primary' : ($sahih ? 'text-muted' : 'text-danger') }}"
+                                                                data-slug="{{ $info['slug'] }}"
+                                                                data-number="{{ $number }}"
+                                                                data-type="{{ $type }}">
+                                                                @if ($loop->first)
+                                                                    {{ $type == 'hadith' ? hadithBookName($info['slug']) . ':' . $number : $info['slug'] . ':' . $number }}{{ !$loop->last ? ', ' : '' }}
+                                                                @else
+                                                                    {{ $number }}{{ !$loop->last ? ', ' : '' }}
+                                                                @endif
+                                                            </span>
                                                         @endforeach
-                                                    </p>
-                                                </div>
-                                            @endif
-                                        @endforeach
 
-                                        @if (isset($point['alert']) && $point['alert'])
-                                            <x-app.reference :text="$point['alert']" type="quran" class="mt-2" />
+                                                        {{ !$loop->last ? ' | ' : '' }}
+                                                    @endforeach
+                                                </div>
+                                            @endforeach
+                                        @endif
+
+                                        {!! !$loop->last ? '<hr class="border-2 my-2 mb-3 text-black opacity-100">' : '' !!}
+                                    @endforeach
+
+                                    @if (!empty($subTopics) && !empty($descriptions))
+                                        <hr class="border-2 my-2 mb-3 text-black opacity-100">
+                                    @endif
+
+                                    @foreach ($subTopics as $key2 => $subTopic)
+                                        @if ($subTopic['title'])
+                                            <h6 class="text-yl-900 fw-bold text-break">
+                                                <span class="text-black">{{ $loop->index + 1 }}.</span>
+                                                {!! $subTopic['title'] !!}
+                                            </h6>
+                                        @endif
+
+                                        @isset($subTopic['desc'])
+                                            @foreach ((array) $subTopic['desc'] as $para)
+                                                {!! !empty($para) ? $para : '' !!}
+                                            @endforeach
+                                        @endisset
+
+                                        @if (isset($subTopic['list']))
+                                            <ul class="m-0 mt-1">
+                                                @foreach ($subTopic['list'] as $list)
+                                                    <li class="m-0 text-justify">
+                                                        {!! $list !!}
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+
+                                        @if (isset($subTopic['ref']) && !empty($subTopic['ref']))
+                                            @foreach ($subTopic['ref'] as $ref)
+                                                @php $infos = isset($ref['info']) ? $ref['info'] : []; @endphp
+
+                                                <div
+                                                    class="source-callout mt-2 border-gold small mb-0 text-black d-inline-block text-justify">
+                                                    {!! $ref['title'] !!}
+
+                                                    @foreach ($infos as $info)
+                                                        @php
+                                                            $numbers = explode(',', $info['number']);
+                                                            $type = isset($info['type']) ? $info['type'] : $ref['type'];
+                                                            $sahih = isset($info['sahih']) ? $info['sahih'] : true;
+                                                            $madhab = isset($info['madhab']) ? $info['madhab'] : false;
+                                                        @endphp
+
+                                                        @foreach ($numbers as $number)
+                                                            <span role="button"
+                                                                class="small authentic {{ $madhab ? 'text-primary' : ($sahih ? 'text-muted' : 'text-danger') }}"
+                                                                data-slug="{{ $info['slug'] }}"
+                                                                data-number="{{ $number }}"
+                                                                data-type="{{ $type }}">
+                                                                @if ($loop->first)
+                                                                    {{ $type == 'hadith' ? hadithBookName($info['slug']) . ':' . $number : $info['slug'] . ':' . $number }}{{ !$loop->last ? ', ' : '' }}
+                                                                @else
+                                                                    {{ $number }}{{ !$loop->last ? ', ' : '' }}
+                                                                @endif
+                                                            </span>
+                                                        @endforeach
+
+                                                        {{ !$loop->last ? ' | ' : '' }}
+                                                    @endforeach
+                                                </div>
+                                            @endforeach
                                         @endif
 
                                         @if (!$loop->last)
                                             <x-app.hr class="my-3" />
                                         @endif
                                     @endforeach
-
-                                    @if (isset($lesson['extra_notes']) && count($lesson['extra_notes']) > 0)
-                                        @php
-                                            $extra_notes = $lesson['extra_notes'][0];
-                                        @endphp
-                                        <x-app.reference :text="$extra_notes['title']" type="summary" class="mt-2">
-
-                                            <ul class="m-0">
-                                                @foreach ($extra_notes['points'] as $point)
-                                                    <li class="m-0 text-justify">
-                                                        {!! $point !!}
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-
-                                            @foreach ($extra_notes['ref'] as $ref)
-                                                @if (!isset($ref['active']) || (isset($ref['active']) && $ref['active']))
-                                                    <div
-                                                        class="source-callout mt-1 {{ $ref['type'] == 'quran' ? 'border-dark' : '' }}">
-                                                        <p class="small mb-0">
-                                                            {!! $ref['title'] !!}
-
-                                                            @foreach ($ref['info'] as $info)
-                                                                @php
-                                                                    $sahih = isset($info['sahih'])
-                                                                        ? $info['sahih']
-                                                                        : true;
-
-                                                                    $cls = $sahih ? '' : 'text-danger';
-                                                                @endphp
-
-                                                                <x-app.ref-button :slug="$info['slug']" :number="$info['number']"
-                                                                    :class="$cls . (!$loop->last ? ' mb-1' : '')" :type="isset($info['type'])
-                                                                        ? $info['type']
-                                                                        : $ref['type']" />
-                                                            @endforeach
-                                                        </p>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                        </x-app.reference>
-                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -381,130 +296,6 @@
             </div>
         </div>
     </main>
-
-    <!-- References Offcanvas -->
-    <div class="offcanvas offcanvas-start notranslate" tabindex="-1" id="referencesPanel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title">References</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body py-0">
-            <div class="ref-box ref-hadith m-0 mb-1" id="ref1">
-                <span class="fw-bold">[1]. ഇമാം അബൂ ഹനീഫ (80 - 150 ഹി)</span><br>
-
-                <p class="m-0 small mb-1">
-                    നിശ്ചിത സമയങ്ങളെ, ശരീഅത്ത് നിർദ്ദേശിക്കാതെ, ആരാധനയ്‌ക്കായി വേർതിരിക്കുന്നത് ബിദ്അത് ആണ്. - <em>അൽ-ഹിദായ,
-                        അൽ-മബ്സൂത്</em>
-                </p>
-
-                <p class="m-0 small mb-2">
-                    ഇമാം അബൂ യൂസുഫ് (d. 182H), ഇമാം മുഹമ്മദ് (d. 189H) എന്നിവരുടെ പുസ്തകങ്ങളിലോ (അഥവാ ആസാർ, ഫിഖ്ഹ് രചനകൾ) റ.
-                    അ. മാസത്തെ ശ്രേഷ്ടതയെ കുറിച് രേഖപ്പെടുത്തിയിട്ടില്ല.
-                </p>
-
-                <p class="m-0 small">
-                    <span class="fw-bold">ഇമാം അൽ-മർഘീനാനി (d - 593 ഹി)</span><br>
-                    <em>- അൽ-ഹിദായ, Vol. 4, (Dar al-Fikr ed.)</em><br>
-
-                    <span class="fw-bold">ഇമാം സർഖസി (d - 483 ഹി)</span><br>
-                    <em>- അൽ-മബ്സൂത്, vol. 2, Dar al-Maʿrifah ed.</em><br>
-
-                    <span class="fw-bold">Ibn ʿĀbidīn (d - 483 ഹി)</span><br>
-                    <em>- Radd al-Muhtār, vol. 2</em><br>
-
-                    <br><em>- Al-Fatawa al-Hindiyya (Fatāwā ʿĀlamgīriyya) (vol. 1)</em><br>
-                </p>
-            </div>
-
-            <div class="ref-box ref-hadith m-0 mb-1" id="ref2">
-                <span class="fw-bold">[2]. ഇമാം മാലിക് (93 - 179 ഹി)</span><br>
-
-                <p class="m-0 small mb-2">
-                    സലഫുകൾ (ആദ്യകാല സഹാബികൾ, താബിഉൻ) ആരും ചെയ്തിട്ടില്ല, അത് ബിദ്അത് ആണ്.
-                </p>
-
-                <p class="m-0 small">
-                    <span class="fw-bold">ഇമാം അൽ-ഷാതിബി (d - 790 ഹി)</span><br>
-                    <em>- അൽ-ഇ'തിസാം, Vol. 1, (Dar Ibn 'Affan print)</em><br>
-
-                    <span class="fw-bold">Ibn al-Hajj al-Maliki (d - 737 ഹി)</span><br>
-                    <em>- Al-Maddkhal (vol. 2, Dar al-Kutub al-'Ilmiyyah print)</em><br>
-
-                    <span class="fw-bold">Imam Sahnun</span><br>
-                    <em>- Al-Mudawwana al-Kubra (vol. 1)</em><br>
-                </p>
-            </div>
-
-            <div class="ref-box ref-hadith m-0 mb-1" id="ref3">
-                <span class="fw-bold">[3]. ഇമാം ശാഫിഈ (150 - 204 ഹി)</span><br>
-
-                <p class="m-0 small mb-2">
-                    <em>നേരിട്ട് മീലാദിനെക്കുറിച്ച് പറഞ്ഞിട്ടില്ല.</em><br>
-                    ഒരു കാര്യത്തെ നല്ല ബിദ്അത് എന്നും, മോശം ബിദ്അത് എന്നും പറയാം. - <em>മനാഖിബ് അൽ-ശാഫിഈ</em>
-                </p>
-
-                <p class="m-0 small">
-                    <span class="fw-bold">അൽ-ബൈഹഖി (d - 458 ഹി)</span><br>
-                    <em>- മനാഖിബ് അൽ-ശാഫിഈ, Vol. 1</em><br>
-
-                    <span class="fw-bold">ഇമാം നവവി (d - 676 ഹി)</span><br>
-                    <em>- Tahdhib al-Asma' wa'l-Lughat, vol. 3</em> (ബിദ്അത്തെ “ഹസന” / “സയ്യിഅ” തരം തിരിച്ചു.)<br>
-
-                    <span class="fw-bold">ഇമാം സുയൂത്തി (d - 911 ഹി)</span><br>
-                    <em>- Husn al-Maqsid fi 'Amal al-Mawlid (മീലാദിനെ “ബിദ്അത് ഹസന” എന്ന് അഭിപ്രായപ്പെടുന്നു.)</em><br>
-                </p>
-            </div>
-
-            <div class="ref-box ref-hadith m-0 mb-1" id="ref4">
-                <span class="fw-bold">[4]. ഇമാം അഹ്മദ് ബിൻ ഹൻബൽ (164 - 241 ഹി)</span><br>
-
-                <p class="m-0 small mb-2">
-                    എനിക്ക് അത് ബിദ്അത് ആയി തോന്നുന്നു - <em>ഇഖ്തിദാഉൽ സിറാത്ത്</em>
-                </p>
-
-                <p class="m-0 small">
-                    <span class="fw-bold">ഇബ്ന് തൈമിയ്യ (d - 728 ഹി)</span><br>
-                    <em>- Iqtidā' aṣ-Ṣirāṭ al-Mustaqīm, (Dar al-'Āṣimah ed.)</em><br>
-
-                    <span class="fw-bold">Ibn Qudāmah al-Maqdisi (d - 620 ഹി)</span><br>
-                    <em>- al-Mughnī, vol. 2, (Dar al-Fikr ed.)</em><br>
-
-                    <span class="fw-bold">Ibn al-Jawzī (d - 597 ഹി)</span><br>
-                    <em>- Talbīs Iblīs, (Dar al-Kutub al-'Ilmiyyah ed.)</em><br>
-                </p>
-            </div>
-
-            <div class="ref-box ref-hadith m-0 mb-3" id="ref5">
-                <span class="fw-bold">[5].</span><br>
-
-                <p class="m-0 small mb-2">
-                    <span class="fw-bold">റ. അ. 8 - ഇബ്നു ഹസ്മ് (d - 456 ഹി)</span><br>
-                    <em>- Volume 1. (<span class="text-ar">الفصل في الملل والأهواء والنحل</span>)</em><br>
-                    <em>- ഇബ്ന്‍ കതീർ തന്റെ “അൽ-ബിദായ വൽ നിഹായ” - ൽ ഇബ്നു ഹസ്മ്-ന്റെ ഈ അഭിപ്രായം റ. അ. 8 ആയി
-                        ഉദ്ധരിച്ചിരിക്കുന്നു.</em>
-                </p>
-
-                <p class="m-0 small mb-2">
-                    <span class="fw-bold">റ. അ. 9 - ഇബ്ന്‍ ദിഹ്യ (d ~ 633 ഹി)</span><br>
-                    <em>- ഇബ്ന്‍ കതീർ “അൽ-ബിദായ വൽ നിഹായ” - ൽ “in his book” എന്ന പരാമർശത്തോടെ ഇബ്ന്‍ ദിഹ്യ-യുടെ
-                        വാദമയിന്നു സൂചിപ്പിക്കുന്നു.</em>
-                </p>
-
-                <p class="m-0 small">
-                    <span class="fw-bold">റ. അ. 12 - ഇബ്നു ഇഷാഖ് (d ~ 150 ഹി)</span><br>
-                    <em>- Volume 1, early chapters (“Mawlid al-Nabi ﷺ”). (“അൽ-സീറ”)</em><br>
-                    <em>- ഇബ്ന്‍ ഇഷാഖിന്റെ ഒറിജിനൽ പുസ്തകം നഷ്ടപ്പെട്ടു. ഇപ്പോൾ കിട്ടുന്നത് ഇബ്ന്‍ ഹിഷാം (d. 218
-                        ഹി) ചെയ്ത സംഗ്രഹത്തിലൂടെയാണ് “സീരത്തുൽ നബവിയ്യ” (Seerah Ibn Hisham).</em>
-                </p>
-
-                <p class="m-0 small">
-                    <span class="fw-bold">ഇബ്ന്‍ കതീർ (d - 774 ഹി)</span><br>
-                    <em>- “അൽ-ബിദായ വൽ നിഹായ” (Vol. 3, Chapter: Dhikr Mawlidihi al-Sharif) -ൽ വ്യക്തമാക്കുന്നു: “ഇബ്നു
-                        ഇഷാഖിന്റെ അഭിപ്രായത്തിൽ ഏറ്റവും പ്രസിദ്ധമായ അഭിപ്രായം - റ. അ. 12”</em>
-                </p>
-            </div>
-        </div>
-    </div>
 @endsection
 
 @push('scripts')
@@ -535,41 +326,6 @@
                     if (header) {
                         scrollWithOffset(header);
                     }
-                });
-            });
-        });
-
-        document.querySelectorAll('[data-bs-toggle="offcanvas"]').forEach(el => {
-            el.addEventListener('click', function() {
-                const refId = this.getAttribute('data-ref-id');
-                const targetId = this.getAttribute('data-bs-target');
-                if (!targetId) return;
-
-                const offcanvasEl = document.querySelector(targetId);
-                if (!offcanvasEl) return;
-
-                const offcanvasBody = offcanvasEl.querySelector('.offcanvas-body');
-
-                offcanvasEl.addEventListener('shown.bs.offcanvas', function() {
-                    offcanvasBody.querySelectorAll('.ref-quran').forEach(child => {
-                        child.classList.remove('ref-quran');
-                        child.classList.add('ref-hadith');
-                    });
-
-                    if (refId) {
-                        const target = document.getElementById(refId);
-                        if (target) {
-                            target.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-
-                            target.classList.remove('ref-hadith');
-                            target.classList.add('ref-quran');
-                        }
-                    }
-                }, {
-                    once: true
                 });
             });
         });

@@ -103,8 +103,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('modules.show', 'topics') }}"
-                            class="text-decoration-none {{ Str::is('modules.*', $routeName) || Str::is('questions.*', $routeName) || Str::is('answers.*', $routeName) ? 'text-gold' : 'text-white' }}">
+                        <a href="{{ route('topic.index') }}"
+                            class="text-decoration-none {{ Str::is('topic.*', $routeName) || Str::is('module.*', $routeName) ? 'text-gold' : 'text-white' }}">
                             {{ __('app.topics') }}
                         </a>
                     </li>
@@ -115,18 +115,7 @@
                             {{ __('app.contact') }}
                         </a>
                     </li>
-
-                    {{-- <li class="nav-item">
-                        <a href="javascript:void(0);" class="text-white text-decoration-none">
-                            {{ __('app.books') }}
-                        </a>
-                    </li> --}}
                 </ul>
-
-                {{-- <span class="navbar-text">
-                    <button class="btn btn-sm btn-outline-dark text-gold" data-bs-toggle="offcanvas"
-                        data-bs-target="#curriculumOffcanvas"><i class="fas fa-list fs-4"></i></button>
-                </span> --}}
             </div>
         </div>
     </nav>
@@ -150,18 +139,14 @@
             <i class="fas fa-home"></i>{{ __('app.home') }}
         </a>
 
-        <a href="{{ route('modules.show', 'topics') }}"
-            class="{{ Str::is('modules.*', $routeName) || Str::is('questions.*', $routeName) || Str::is('answers.*', $routeName) ? 'active' : '' }}">
+        <a href="{{ route('topic.index') }}"
+            class="{{ Str::is('topic.*', $routeName) || Str::is('module.*', $routeName) ? 'active' : '' }}">
             <i class="fas fa-search"></i>{{ __('app.topics') }}
         </a>
 
         <a href="{{ route('contact.form') }}" class="{{ Str::is('contact.*', $routeName) ? 'active' : '' }}">
             <i class="fas fa-message"></i>Contact
         </a>
-
-        {{-- <a href="javascript:void(0);" class="{{ Str::is('likes', $routeName) ? 'active' : '' }}">
-            <i class="fas fa-book"></i>{{ __('app.books') }}
-        </a> --}}
     </div>
 
     <div class="offcanvas offcanvas-start notranslate" tabindex="-1" id="menuPanel">
@@ -186,7 +171,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('modules.show', 'topics') }}" class="menu-item">
+                        <a href="{{ route('topic.index') }}" class="menu-item">
                             <i class="fa-solid fa-search me-2"></i>{{ __('app.topics') }}
                         </a>
                     </li>

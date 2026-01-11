@@ -1,0 +1,308 @@
+{
+    "page": "lesson",
+    "lessons": [
+        {
+            "title": "സമയം",
+            "slug": "times",
+            "active": false,
+            "desc": [
+                {
+                    "title": [],
+                    "points": [
+                        {
+                            "title": "സുബ്ഹി",
+                            "desc": "ഉദയത്തിന് മുമ്പ് (അരുണോദയം മുതൽ സൂര്യോദയം വരെ)"
+                        },
+                        {
+                            "title": "ളുഹ്‌ർ",
+                            "desc": "മധ്യാഹ്നം കഴിഞ്ഞ് സൂര്യൻ പടിഞ്ഞാറോട്ട് നീങ്ങുന്നത് മുതൽ"
+                        },
+                        {
+                            "title": "അസർ",
+                            "desc": "ഉച്ചതിരിഞ്ഞ് വസ്തുക്കളുടെ നിഴൽ അതിന് തുല്യമാകുന്നത് മുതൽ സൂര്യ അസ്തമയം വരെ"
+                        },
+                        {
+                            "title": "മഗ്‌രിബ്",
+                            "desc": "സൂര്യൻ പൂർണ്ണമായും അസ്തമിച്ചത് മുതൽ സന്ധ്യാശോഭ മായുന്നത് വരെ"
+                        },
+                        {
+                            "title": "ഇശാ",
+                            "desc": "സന്ധ്യാശോഭ മാഞ്ഞത് മുതൽ അർദ്ധരാത്രി വരെ (അല്ലെങ്കിൽ സുബ്ഹിക്ക് മുമ്പ് വരെ)"
+                        }
+                    ],
+                    "ref": [
+                        {
+                            "title": "നമസ്കാര സമയങ്ങൾ",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "type": "quran",
+                                    "slug": 17,
+                                    "number": 78
+                                },
+                                {
+                                    "type": "quran",
+                                    "slug": 11,
+                                    "number": 114
+                                },
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": "541,556"
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": "1385,1388,1389"
+                                },
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": 393
+                                },
+                                {
+                                    "slug": "al-tirmidhi",
+                                    "number": "149,151,152"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "നമസ്കാരം ആദ്യ സമയങ്ങളിൽ നമസ്കരിക്കുക.",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 527
+                                }
+                            ]
+                        },
+                        {
+                            "title": "ഒരു നമസ്കാരത്തിൽ നിന്ന് (യഥാസമയം) ഒരു റക്അത്ത് നമസ്കരിക്കാൻ കഴിഞ്ഞാൽ, ആ നമസ്കാരം നേടിയതായി കണക്കാക്കും.",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 580
+                                }
+                            ]
+                        },
+                        {
+                            "title": "മനഃപൂർവ്വമോ അല്ലാതെയോ നഷ്ടപ്പെട്ട നമസ്കാരങ്ങൾ പിന്നീട് നിർവ്വഹിക്കുക",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": "597,1953"
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": "1566"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "റക്അത്തുകളുടെ എണ്ണം",
+            "slug": "no-of-raka",
+            "active": false,
+            "desc": [
+                {
+                    "title": [
+                        "സുബ്ഹി: 2, ളുഹ്‌ർ: 4, അസർ: 4, മഗ്‌രിബ്: 3, ഇശാ: 4"
+                    ],
+                    "ref": [
+                        {
+                            "title": "നമസ്കാരം ആദ്യമായി നിർബന്ധമാക്കപ്പെട്ടപ്പോൾ രണ്ട് റക്അത്തുകൾ വീതമായിരുന്നു",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": "350"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "സുബ്ഹി രണ്ട് റക്അത്ത്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": "1688,1689"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "ളുഹർ, അസർ നാല് റക്അത്ത്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": "1089"
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": "1581,1582"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "മഗ്‌രിബ് മൂന്ന്, ഇശാ നാല് റക്അത്ത്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": "1091,1109"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "യാത്രക്കാരന് രണ്ട് റക്അത്തും, താമസക്കാരന് നാല് റക്അത്തും, അപകടത്തിലായവർക്ക് ഒരു റക്അത്ത്.",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "type": "quran",
+                                    "slug": 4,
+                                    "number": "101"
+                                },
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": "1080,1081,1102"
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": "1573,1575,1576"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "യാത്രയിലോ മറ്റ് പ്രയാസകരമായ ഘട്ടങ്ങളിലോ രണ്ട് നിസ്കാരങ്ങൾ ഒരുമിച്ച് നിർവ്വഹിക്കൽ",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": "1111, 1091"
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": "1625,1627"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "റവാത്തിബ്  നമസ്കാരങ്ങൾ",
+            "slug": "rawattib-sunna",
+            "active": false,
+            "desc": [
+                {
+                    "title": [
+                        "ഫർദ് നമസ്കാരങ്ങൾക്ക് മുമ്പും ശേഷവുമായി നബി (സ) സ്ഥിരമായി നിർവ്വഹിച്ചിരുന്ന സുന്നത്ത് നമസ്കാരങ്ങൾ."
+                    ],
+                    "ref": [
+                        {
+                            "title": "10 റക്അത്തുകളാണെന്ന അഭിപ്രായം.",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 1180
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 1698
+                                }
+                            ]
+                        },
+                        {
+                            "title": "12 റക്അത്തുകൾ ആണെന്ന അഭിപ്രായം.",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": 1696
+                                },
+                                {
+                                    "slug": "al-tirmidhi",
+                                    "number": "415"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "സുബ്ഹിക്ക് മുമ്പ് 2",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": "1169,1180"
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": "1687"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "ളുഹ്‌റിന് മുമ്പ് 2, ശേഷം 2, മഗ്‌രിബിന് ശേഷം 2, ഇശാഅ് ശേഷം 2",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 1180
+                                },
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": "1698"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "ളുഹ്‌റിന് മുമ്പ് 4",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": 1251
+                                },
+                                {
+                                    "slug": "al-tirmidhi",
+                                    "number": "415"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "ളുഹ്‌റിന് മുമ്പുള്ള 4 റക്അത്തുകൾ രണ്ട് സലാമുകളിലായി (2+2) നിർവ്വഹിക്കണമെന്ന അഭിപ്രായം.",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": 1295
+                                },
+                                {
+                                    "slug": "al-tirmidhi",
+                                    "number": "597"
+                                },
+                                {
+                                    "slug": "ibn-e-majah",
+                                    "number": "1322"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "ളുഹ്‌റിന് മുമ്പുള്ള 4 റക്അത്തുകൾ ഒരുമിച്ച് നിർവ്വഹിക്കണമെന്ന അഭിപ്രായം..",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "al-tirmidhi",
+                                    "number": "478"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
