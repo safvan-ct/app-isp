@@ -81,7 +81,7 @@ if (! function_exists('exploreTopics')) {
         return [
             'islam'   => 'ഇസ്ലാം',
             'purify'  => 'ശുദ്ധി',
-            'namaz'   => 'നിസ്കാരം',
+            'namaz'   => 'നമസ്കാരം',
             'zakat'   => 'സകാത്',
             'fasting' => 'നോമ്പ്',
             'hajj'    => 'ഹജ്ജ്',
@@ -106,22 +106,19 @@ if (! function_exists('getTopicChapters')) {
                 "title"   => "ഇസ്ലാം",
                 "desc"    => "പ്രപഞ്ച സ്രഷ്ടാവായ ഏകദൈവത്തിന് സമ്പൂർണ്ണമായി കീഴടങ്ങി ജീവിക്കുക എന്നതാണ് ഇസ്‌ലാം എന്നതുകൊണ്ട് ഉദ്ദേശിക്കുന്നത്.",
                 "modules" => [
-                    "how-to-be-muslim"      => [
-                        "slug"    => "how-to-be-muslim",
+                    "introduction" => [
+                        "slug"    => "introduction",
                         "title"   => "മുസ്ലിം ആവാനുള്ള അടിസ്ഥാനം",
-                        "desc"    => "ദൈവത്തിന്റെ ഇഷ്ടത്തിന് അനുസരിച്ച് സമാധാനപരമായി ജീവിക്കാൻ തിരഞ്ഞെടുക്കുന്ന ആദർശ സമൂഹമാണ് മുസ്‌ലിം",
                         "lessons" => [],
                     ],
-                    "five-pillars-of-islam" => [
-                        "slug"    => "five-pillars-of-islam",
-                        "title"   => "ഇസ്‌ലാമിന്റെ അഞ്ചു തൂണുകൾ",
-                        "desc"    => "ഇസ്‌ലാമിന്റെ അഞ്ചു തൂണുകൾ, അല്ലാഹുവിനോടുള്ള സമർപ്പണത്തിന്റെയും സാമൂഹിക പ്രതിബദ്ധതയുടെയും പ്രതീകമാണ്.",
+                    "five-pillars" => [
+                        "slug"    => "five-pillars",
+                        "title"   => "ഇസ്‌ലാമിന്റെ തത്ത്വങ്ങൾ",
                         "lessons" => [],
                     ],
-                    "six-beliefs-of-islam"  => [
-                        "slug"    => "six-beliefs-of-islam",
+                    "six-beliefs"  => [
+                        "slug"    => "six-beliefs",
                         "title"   => "വിശ്വാസത്തിന്റെ അടിസ്ഥാനങ്ങൾ",
-                        "desc"    => "ഒരു മുസ്‌ലിം നിർബന്ധമായും വിശ്വസിക്കേണ്ട ആറ് അടിസ്ഥാനപരമായ വിശ്വാസകാര്യങ്ങളാണ്",
                         "lessons" => [],
                     ],
                 ],
@@ -131,53 +128,52 @@ if (! function_exists('getTopicChapters')) {
                 "title"   => "ശുദ്ധി",
                 "desc"    => "ശുചിത്വം വിശ്വാസത്തിന്റെ പകുതിയാണ് <em>- മുസ്ലിം:534</em>",
                 "modules" => [
-                    "wudu"          => [
-                        "slug"    => "wudu",
+                    "ablution"                  => [
+                        "slug"    => "ablution",
                         "title"   => "വുദു",
-                        "desc"    => "ശുചിത്വം വിശ്വാസത്തിന്റെ പകുതിയാണ് <em>- മുസ്ലിം:534</em>",
                         "lessons" => [
-                            "sharth-of-wudu"        => "നിബന്ധനകൾ (ശർത്ത്)",
-                            "fard-of-wudu"          => "നിർബന്ധ ഘടകങ്ങൾ",
-                            "sunna-of-wudu"         => "സുന്നത്ത് ഘടകങ്ങൾ",
-                            "form"                  => "രൂപം",
-                            "break-off-wudu"        => "വുദു മുറിയുന്ന കാര്യങ്ങള്‍",
-                            "worships-require-wudu" => "വുദു നിർബന്ധമാകുന്ന ആരാധനകൾ",
-                            "good-of-wudu"          => "വുദു സുന്നത്തായ ആരാധനകൾ",
+                            "conditions"      => "നിബന്ധനകൾ (ശർത്ത്)",
+                            "obligations"     => "നിർബന്ധ ഘടകങ്ങൾ",
+                            "sunnah"          => "സുന്നത്ത് ഘടകങ്ങൾ",
+                            "procedure"       => "രൂപം",
+                            "nullifiers-acts" => "മുറിയുന്ന കാര്യങ്ങള്‍",
+                            "mandatory-acts"  => "നിർബന്ധമാകുന്ന ആരാധനകൾ",
+                            "preferable-acts" => "സുന്നത്തായ ആരാധനകൾ",
                         ],
                     ],
-                    "ghusl"         => [
+                    "ghusl"                     => [
                         "slug"    => "ghusl",
                         "title"   => "കുളി",
                         "desc"    => "ശുചിത്വം വിശ്വാസത്തിന്റെ പകുതിയാണ് <em>- മുസ്ലിം:534</em>",
                         "lessons" => [
-                            "worships-require-ghusl" => "നിർബന്ധമാക്കുന്ന സാഹചര്യങ്ങൾ",
-                            "form"                   => "രൂപം (ഗുസ്ൽ)",
+                            "obligating-situations" => "നിർബന്ധമാക്കുന്ന സാഹചര്യങ്ങൾ",
+                            "procedure"             => "രൂപം (ഗുസ്ൽ)",
                         ],
                     ],
-                    "tayammum"      => [
+                    "tayammum"                  => [
                         "slug"    => "tayammum",
                         "title"   => "തയ്യമ്മും",
                         "desc"    => "വെള്ളം ലഭ്യമല്ലാത്തതോ ഉപയോഗിക്കാൻ തടസ്സമുള്ളതോ ആയ അവസരങ്ങളിൽ വുളൂഇനും കുളിക്കും പകരമായി ശുദ്ധമായ മണ്ണ് ഉപയോഗിച്ച് മുഖവും കൈകളും തടവുന്ന ശുദ്ധീകരണ രീതിയാണ് തയമ്മും.",
                         "lessons" => [
-                            "introduction"  => "തയമ്മും, അനുവദനീയമാകുന്ന സാഹചര്യങ്ങൾ",
-                            "form"          => "തയമ്മുമിന്റെ രൂപം",
-                            "lose-tayammum" => "തയമ്മും മുറിയുന്ന കാര്യങ്ങൾ",
+                            "permissible-situations" => "അനുവദനീയമാകുന്ന സാഹചര്യങ്ങൾ",
+                            "procedure"              => "തയ്യമ്മും രൂപം",
+                            "nullifiers-acts"        => "തയമ്മും മുറിയുന്ന കാര്യങ്ങൾ",
                         ],
                     ],
-                    "najaz"         => [
-                        "slug"    => "najaz",
+                    "impurity"                  => [
+                        "slug"    => "impurity",
                         "title"   => "നജസുകൾ",
                         "desc"    => "ശുചിത്വം വിശ്വാസത്തിന്റെ പകുതിയാണ് <em>- മുസ്ലിം:534</em>",
                         "lessons" => [],
                     ],
-                    "bathroom-adab" => [
-                        "slug"    => "bathroom-adab",
+                    "toileting-etiquettes"      => [
+                        "slug"    => "toileting-etiquettes",
                         "title"   => "വിസർജ്ജന മര്യാദകൾ",
                         "desc"    => "ശുചിത്വം വിശ്വാസത്തിന്റെ പകുതിയാണ് <em>- മുസ്ലിം:534</em>",
                         "lessons" => [],
                     ],
-                    "sunnat-purify" => [
-                        "slug"    => "sunnat-purify",
+                    "recommended-purifications" => [
+                        "slug"    => "recommended-purifications",
                         "title"   => "സുന്നത്തായ ശുദ്ധീകരണങ്ങൾ",
                         "desc"    => "ശുചിത്വം വിശ്വാസത്തിന്റെ പകുതിയാണ് <em>- മുസ്ലിം:534</em>",
                         "lessons" => [],
@@ -186,93 +182,83 @@ if (! function_exists('getTopicChapters')) {
             ],
             "namaz"   => [
                 "slug"    => "namaz",
-                "title"   => "സ്വലാത് (നമസ്കാരം)",
+                "title"   => "നമസ്കാരം",
                 "desc"    => "തീർച്ചയായും നമസ്കാരം വിശ്വാസികൾക്ക് സമയബന്ധിതമായ ബാധ്യതയായി വിധിക്കപ്പെട്ടിരിക്കുന്നു.",
                 "modules" => [
-                    "introduction"    => [
+                    "introduction"          => [
                         "title"   => "ആമുഖം",
                         "slug"    => "introduction",
                         "lessons" => [
-                            "what-is-namaz"         => "എന്താണ് നമസ്ക്കാരം?",
-                            "how-it-became-worship" => "എങ്ങനെ ആണ് ആരാധന ആയത്?",
-                            "ruling-on-abandoning"  => "നമസ്കാരം ഉപേക്ഷിച്ചാലുള്ള വിധി:",
+                            "definition"           => "എന്താണ് നമസ്ക്കാരം?",
+                            "ruling-on-neglecting" => "ഉപേക്ഷിച്ചാലുള്ള വിധി",
                         ],
                     ],
-                    "times-of-namaz"  => [
+                    "times"                 => [
                         "title"   => "നമസ്കാര സമയങ്ങൾ",
-                        "slug"    => "times-of-namaz",
-                        "lessons" => [
-                            "times"          => "സമയം",
-                            "no-of-raka"     => "റക്അത്തുകളുടെ എണ്ണം",
-                            "rawattib-sunna" => "റവാത്തിബ് നമസ്കാരങ്ങൾ",
-                        ],
+                        "slug"    => "times",
+                        "lessons" => [],
                     ],
-                    "azan-and-iqama"  => [
+                    "adan-iqama"            => [
                         "title"   => "ബാങ്ക്, ഇഖാമത്ത്",
-                        "slug"    => "azan-and-iqama",
-                        "lessons" => [
-                            "conditions" => "നിബന്ധനകൾ",
-                            "form"       => "രൂപം",
-                            "muazzin"    => "മുഅദ്ദിൻ",
-                            "dua"        => "ദുആ",
-                        ],
+                        "slug"    => "adan-iqama",
+                        "lessons" => [],
                     ],
-                    "namaz-sharth"    => [
+                    "conditions"            => [
                         "title"   => "ശര്‍ത്തുകള്‍",
-                        "slug"    => "namaz-sharth",
+                        "slug"    => "conditions",
                         "lessons" => [],
                     ],
-                    "namaz-fard"      => [
+                    "obligations"           => [
                         "title"   => "ഫർളുകൾ",
-                        "slug"    => "namaz-fard",
+                        "slug"    => "obligations",
                         "lessons" => [],
                     ],
-                    "namaz-wajib"     => [
+                    "necessary"             => [
                         "title"   => "വാജിബുകൾ",
-                        "slug"    => "namaz-wajib",
+                        "slug"    => "necessary",
                         "lessons" => [],
                     ],
-                    "namaz-sunnah"    => [
+                    "sunnah"                => [
                         "title"   => "സുന്നത്തുകൾ",
-                        "slug"    => "namaz-sunnah",
+                        "slug"    => "sunnah",
                         "lessons" => [],
                     ],
-                    "sujood-of-sahav" => [
+                    "sujood-of-sahav"       => [
                         "title"   => "സഹ്‌വിന്റെ സുജൂദ്",
                         "slug"    => "sujood-of-sahav",
                         "lessons" => [],
                     ],
-                    "complete-form"   => [
+                    "procedure"             => [
                         "title"   => "പൂർണ്ണ രൂപം",
-                        "slug"    => "complete-form",
+                        "slug"    => "procedure",
                         "lessons" => [
                             "introduction" => "മുൻപുള്ള കാര്യങ്ങൾ",
                             "conditions"   => "ഘടന",
                         ],
                     ],
-                    "namaz-lose"      => [
+                    "nullifiers-acts"       => [
                         "title"   => "ബാത്വിലാകുന്ന കാര്യങ്ങൾ",
-                        "slug"    => "namaz-lose",
+                        "slug"    => "nullifiers-acts",
                         "lessons" => [],
                     ],
-                    "group-namaz"     => [
+                    "congregational-prayer" => [
                         "title"   => "ജമാഅത് നിസ്കാരം",
-                        "slug"    => "group-namaz",
+                        "slug"    => "congregational-prayer",
                         "lessons" => [],
                     ],
-                    "jumua"           => [
+                    "friday-prayer"         => [
                         "title"   => "ജുമുഅ",
-                        "slug"    => "jumua",
+                        "slug"    => "friday-prayer",
                         "lessons" => [],
                     ],
-                    "after-duas"      => [
+                    "after-duas"            => [
                         "title"   => "ശേഷമുള്ള ദിക്റുകൾ",
                         "slug"    => "after-duas",
                         "lessons" => [],
                     ],
-                    "sunnath-namaz"   => [
+                    "sunnah-prayers"        => [
                         "title"   => "സുന്നത് നമസ്കാരങ്ങൾ",
-                        "slug"    => "sunnath-namaz",
+                        "slug"    => "sunnah-prayers",
                         "lessons" => [
                             "eid"       => "ഈദ് നമസ്‌കാരം",
                             "taraweeh"  => "തറാവീഹ് നമസ്കാരം",
@@ -331,19 +317,19 @@ if (! function_exists('getTopicChapters')) {
                 "title"   => "നോമ്പ്",
                 "desc"    => "റമളാൻ മാസം കാണുകയോ, ശഅ്ബാൻ 30 പൂർത്തിയാക്കുകയോ ചെയ്താൽ നോമ്പ് നിർബന്ധമാകും.",
                 "modules" => [
-                    "fasting"       => [
-                        "slug"    => "fasting",
+                    "ramadan"         => [
+                        "slug"    => "ramadan",
                         "title"   => "റമളാൻ നോമ്പ്",
-                        "desc"    => "റമളാൻ മാസം കാണുകയോ, ശഅ്ബാൻ 30 പൂർത്തിയാക്കുകയോ ചെയ്താൽ നോമ്പ് നിർബന്ധമാകും.",
-                        "lessons" => [
-                            "ramadan-fasting" => "നോമ്പ് അനുഷ്ഠിക്കൽ",
-                            "lose-of-fasting" => "നോമ്പ് മുറിയുന്ന കാര്യങ്ങൾ",
-                        ],
+                        "lessons" => [],
                     ],
-                    "sunna-fasting" => [
-                        "slug"    => "sunna-fasting",
+                    "nullifiers-acts" => [
+                        "slug"    => "nullifiers-acts",
+                        "title"   => "മുറിയുന്ന കാര്യങ്ങൾ",
+                        "lessons" => [],
+                    ],
+                    "sunnah"   => [
+                        "slug"    => "sunnah",
                         "title"   => "സുന്നത്ത് നോമ്പുകൾ",
-                        "desc"    => "ഫർള് (നിർബന്ധം) അല്ലാത്തതും പ്രവാചകൻ ﷺ പ്രോത്സാഹിപ്പിക്കുകയും പതിവാക്കുകയും ചെയ്തതുമായ നോമ്പുകളും അതിൻ്റെ പ്രത്യേകതകളും.",
                         "lessons" => [],
                     ],
                 ],

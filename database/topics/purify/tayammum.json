@@ -3,7 +3,7 @@
     "lessons": [
         {
             "title": "തയമ്മും, അനുവദനീയമാകുന്ന സാഹചര്യങ്ങൾ",
-            "slug": "introduction",
+            "slug": "permissible-situations",
             "active": false,
             "desc": [
                 {
@@ -149,7 +149,7 @@
         },
         {
             "title": "തയമ്മുമിന്റെ രൂപം",
-            "slug": "form",
+            "slug": "procedure",
             "active": false,
             "desc": [],
             "sub_topics": [
@@ -231,7 +231,7 @@
         },
         {
             "title": "തയമ്മും മുറിയുന്ന കാര്യങ്ങൾ",
-            "slug": "lose-tayammum",
+            "slug": "nullifiers-acts",
             "active": false,
             "desc": [],
             "sub_topics": [

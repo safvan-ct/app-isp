@@ -3,7 +3,7 @@
     "lessons": [
         {
             "title": "വുളൂഇന്റെ നിബന്ധനകൾ (ശർത്ത്)",
-            "slug": "sharth-of-wudu",
+            "slug": "conditions",
             "active": false,
             "desc": [
                 {
@@ -176,7 +176,7 @@
         },
         {
             "title": "വുളൂഇന്റെ ഫർദുകൾ (നിർബന്ധ ഘടകങ്ങൾ)",
-            "slug": "fard-of-wudu",
+            "slug": "obligations",
             "active": false,
             "desc": [],
             "sub_topics": [
@@ -326,7 +326,7 @@
         },
         {
             "title": "വുളൂഇന്റെ സുന്നത്ത് (ഐച്ഛിക) കാര്യങ്ങൾ",
-            "slug": "sunna-of-wudu",
+            "slug": "sunnah",
             "active": false,
             "desc": [],
             "sub_topics": [
@@ -520,7 +520,7 @@
         },
         {
             "title": "വുളൂഇന്റെ രൂപം",
-            "slug": "form",
+            "slug": "procedure",
             "active": false,
             "desc": [
                 {
@@ -559,7 +559,7 @@
                     ]
                 }
             ],
-            "img": "img/namaz/wudu.webp",
+            "img": "img/namaz/ablution.webp",
             "sub_topics": [
                 {
                     "title": "നിയ്യത്ത് (ഉദ്ദേശ്യം) & ബിസ്മി",
@@ -614,7 +614,7 @@
         },
         {
             "title": "വുളൂഅ് മുറിയുന്ന കാര്യങ്ങള്‍",
-            "slug": "break-off-wudu",
+            "slug": "nullifiers-acts",
             "active": false,
             "desc": [],
             "sub_topics": [
@@ -821,7 +821,7 @@
         },
         {
             "title": "വുദു നിർബന്ധമാകുന്ന ആരാധനകൾ",
-            "slug": "worships-require-wudu",
+            "slug": "mandatory-acts",
             "active": false,
             "desc": [],
             "sub_topics": [
@@ -916,7 +916,7 @@
         },
         {
             "title": "വുദു സുന്നത്തായ ആരാധനകൾ",
-            "slug": "good-of-wudu",
+            "slug": "preferable-acts",
             "active": false,
             "desc": [],
             "sub_topics": [
