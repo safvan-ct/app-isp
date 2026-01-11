@@ -194,11 +194,12 @@
                                                             $numbers = explode(',', $info['number']);
                                                             $type = isset($info['type']) ? $info['type'] : $ref['type'];
                                                             $sahih = isset($info['sahih']) ? $info['sahih'] : true;
+                                                            $madhab = isset($info['madhab']) ? $info['madhab'] : false;
                                                         @endphp
 
                                                         @foreach ($numbers as $number)
                                                             <span role="button"
-                                                                class="small authentic {{ $sahih ? 'text-muted' : 'text-danger' }}"
+                                                                class="small authentic {{ $madhab ? 'text-primary' : ($sahih ? 'text-muted' : 'text-danger') }}"
                                                                 data-slug="{{ $info['slug'] }}"
                                                                 data-number="{{ $number }}"
                                                                 data-type="{{ $type }}">
@@ -260,11 +261,12 @@
                                                             $numbers = explode(',', $info['number']);
                                                             $type = isset($info['type']) ? $info['type'] : $ref['type'];
                                                             $sahih = isset($info['sahih']) ? $info['sahih'] : true;
+                                                            $madhab = isset($info['madhab']) ? $info['madhab'] : false;
                                                         @endphp
 
                                                         @foreach ($numbers as $number)
                                                             <span role="button"
-                                                                class="small authentic {{ $sahih ? 'text-muted' : 'text-danger' }}"
+                                                                class="small authentic {{ $madhab ? 'text-primary' : ($sahih ? 'text-muted' : 'text-danger') }}"
                                                                 data-slug="{{ $info['slug'] }}"
                                                                 data-number="{{ $number }}"
                                                                 data-type="{{ $type }}">

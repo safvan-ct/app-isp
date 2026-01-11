@@ -76,13 +76,95 @@
 @endpush
 
 @section('content')
-    <x-app.banner :number="$moduleId + 1" :type="'Module'" :title="$topic['modules'][$moduleId]['title']" :desc="$topic['modules'][$moduleId]['desc']" />
+    @php
+        $modules = $topic['modules'] ?? [];
+        $lessons = $module['lessons'] ?? [];
+        $notes = $module['notes'] ?? [];
+    @endphp
 
     <main class="container py-4 notranslate">
         <div class="row justify-content-center">
-            <div class="col-lg-11">
+            <div class="col-lg-3 order-2 order-lg-1 mb-4">
+                <aside class="curriculum-sidebar p-3 sticky-top" style="top: 80px; z-index: 10;">
+                    <h6 class="fw-bold text-uppercase tracking-wider mb-3 text-dark small">
+                        <i class="fas fa-book-open me-2"></i> {{ __('app.related_topics') }}
+                    </h6>
+
+                    <div class="accordion accordion-flush" id="curriculumAccordion">
+                        @foreach ($modules as $key => $module)
+                            <div class="accordion-item mb-2 shadow-sm border border-gold">
+                                <h6 class="accordion-header shadow-sm">
+                                    @if (!empty($module['lessons']))
+                                        <button
+                                            class="accordion-button bg-light text-dark {{ $moduleSlug == $key ? '' : 'collapsed' }}"
+                                            type="button" data-bs-toggle="collapse" data-bs-target="#{{ $key }}"
+                                            style="font-size: 14px">
+                                            <i
+                                                class="fas fa-circle {{ $moduleSlug == $key ? 'text-black' : 'text-gold' }} me-2 "></i>
+                                            {{ $loop->index + 1 }}. {{ $module['title'] }}
+                                        </button>
+                                    @else
+                                        <a href="{{ route('lessons.show', ['topic_slug' => $topic['slug'], 'module_slug' => $module['slug']]) }}"
+                                            class="accordion-button bg-light text-dark {{ $moduleSlug == $key ? '' : 'collapsed' }} text-decoration-none accordion-link"
+                                            style="font-size: 14px">
+                                            <i
+                                                class="fas fa-circle {{ $moduleSlug == $key ? 'text-black' : 'text-gold' }} me-2 "></i>
+                                            {{ $loop->index + 1 }}. {{ $module['title'] }}
+                                        </a>
+                                    @endif
+                                </h6>
+
+                                @if (!empty($module['lessons']))
+                                    <div id="{{ $key }}"
+                                        class="accordion-collapse collapse {{ $moduleSlug == $key ? 'show' : '' }}"
+                                        data-bs-parent="#curriculumAccordion"
+                                        style="border-left: 3px solid var(--clr-gold);">
+                                        <div class="accordion-body p-0">
+                                            <div class="list-group list-group-flush">
+
+                                                @foreach ($module['lessons'] as $lessonKey => $lesson)
+                                                    <a class="list-group-item list-group-item-action small"
+                                                        href="{{ route('lessons.show', ['topic_slug' => $topic['slug'], 'module_slug' => $module['slug'], 'lesson_slug' => $lessonKey]) }}">
+                                                        {{ $loop->parent->index + 1 }}.{{ $loop->index + 1 }}:
+                                                        {{ $lesson }}
+                                                    </a>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+                </aside>
+            </div>
+
+            <div class="col-lg-9 order-1 order-lg-2">
+                <header class="mb-3 d-flex align-items-end justify-content-between">
+                    <div>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-2">
+                                <li class="breadcrumb-item small">
+                                    <a href="{{ route('modules.show', 'topics') }}" class="text-dark">
+                                        {{ __('app.topics') }}
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item small active">
+                                    <a href="{{ route('modules.show', ['topic_slug' => $topic['slug']]) }}"
+                                        class="text-dark">
+                                        {{ $topic['title'] }}
+                                    </a>
+                                </li>
+                            </ol>
+                        </nav>
+                        <h5 class="h5 fw-bold m-0">
+                            <i class="fas fa-list-check me-2 text-gold"></i>{{ $topic['modules'][$moduleSlug]['title'] }}
+                        </h5>
+                    </div>
+                </header>
+
                 <div class="timeline mb-5">
-                    @foreach ($module['notes'] as $note)
+                    @foreach ($notes as $note)
                         <div class="timeline-item">
                             <div class="circle"></div>
                             <div class="timeline-content pb-1">
@@ -97,63 +179,6 @@
                         </div>
                     @endforeach
                 </div>
-            </div>
-
-            <div class="col-lg-8">
-                <section id="full-curriculum" class="mb-5">
-                    <h2 class="h5 text-dark mb-3 border-bottom pb-2 fw-bold">
-                        <i class="fas fa-lightbulb text-gold me-1"></i>
-                        ബന്ധപ്പെട്ട വിഷയങ്ങൾ
-                    </h2>
-
-                    <div class="accordion accordion-flush" id="curriculumAccordion">
-                        @foreach ($topic['modules'] as $key => $item)
-                            <div class="accordion-item">
-                                <h2 class="accordion-header shadow-sm">
-                                    @if (!empty($item['lessons']))
-                                        <button
-                                            class="accordion-button fw-bold {{ $moduleId == $key ? '' : 'collapsed' }}"
-                                            type="button" data-bs-toggle="collapse" data-bs-target="#{{ $key }}">
-                                            <i
-                                                class="fas {{ $moduleId == $key ? 'fa-check-circle text-success' : 'fa-circle text-gold' }} me-2 "></i>
-                                            {{ $key + 1 }}. {{ $item['title'] }}
-                                        </button>
-                                    @else
-                                        <a href="{{ route('answers.show', ['menu_slug' => 'topics', 'module_slug' => $topic['slug'], 'question_slug' => $key]) }}"
-                                            class="accordion-button fw-bold {{ $moduleId == $key ? '' : 'collapsed' }} text-decoration-none accordion-link">
-                                            <i
-                                                class="fas {{ $moduleId == $key ? 'fa-check-circle text-success' : 'fa-circle text-gold' }} me-2 "></i>
-                                            {{ $key + 1 }}. {{ $item['title'] }}
-                                        </a>
-                                    @endif
-                                </h2>
-
-                                @if (!empty($item['lessons']))
-                                    <div id="{{ $key }}"
-                                        class="accordion-collapse collapse {{ $moduleId == $key ? 'show' : '' }}"
-                                        data-bs-parent="#curriculumAccordionOffcanvas"
-                                        style="border-left: 3px solid var(--clr-gold);">
-                                        <div class="accordion-body p-0">
-                                            <div class="list-group list-group-flush">
-
-                                                @foreach ($item['lessons'] as $lesson)
-                                                    <a class="list-group-item list-group-item-action small"
-                                                        href="{{ route('answers.show', [
-                                                            'menu_slug' => 'topics',
-                                                            'module_slug' => $topic['slug'],
-                                                            'question_slug' => $key,
-                                                        ]) }}?lesson={{ $loop->index + 1 }}">
-                                                        {{ $key + 1 }}.{{ $loop->index + 1 }}: {{ $lesson }}
-                                                    </a>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                            </div>
-                        @endforeach
-                    </div>
-                </section>
             </div>
         </div>
     </main>
