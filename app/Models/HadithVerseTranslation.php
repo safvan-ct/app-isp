@@ -9,7 +9,7 @@ class HadithVerseTranslation extends Model
 {
     use LogsActivity;
 
-    protected $fillable = ['hadith_verse_id', 'lang', 'heading', 'text', 'created_by', 'is_active'];
+    protected $fillable = ['hadith_verse_id', 'lang', 'narrator', 'heading', 'text', 'created_by', 'is_active'];
 
     protected static $recordEvents = ['updated'];
 

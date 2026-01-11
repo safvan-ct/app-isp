@@ -100,6 +100,7 @@ return new class extends Migration
             $table->foreignId('hadith_verse_id')->constrained('hadith_verses')->onDelete('CASCADE');
 
             $table->string('lang');
+            $table->text('narrator')->nullable();
             $table->text('heading')->nullable();
             $table->text('text')->nullable();
             $table->foreignId('created_by')->constrained('users')->default(1);

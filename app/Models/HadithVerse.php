@@ -38,7 +38,7 @@ class HadithVerse extends Model
     public function translations()
     {
         return $this->hasMany(HadithVerseTranslation::class)
-            ->select('id', 'hadith_verse_id', 'heading', 'text')
+            ->select('id', 'hadith_verse_id', 'narrator', 'heading', 'text')
             ->active()
             ->lang('en');
     }

@@ -13,6 +13,9 @@ class QuranVerseSeeder extends Seeder
 {
     public function run(): void
     {
+        set_time_limit(0);             // safer than -1 in some environments
+        ini_set('memory_limit', '-1'); // Unlimited memory
+
         if (QuranVerse::exists()) {
             $this->command->info('Quran verses already seeded.');
             return;

@@ -28,7 +28,7 @@
                             </div>
 
                             <div class="flex-1">
-                                <h6 class="text-dark fw-bold m-0">{{ $chapter->translation?->name }}</h6>
+                                <h6 class="text-dark fw-bold m-0">{{ $chapter->translation?->name ?? $chapter->name }}</h6>
                                 <p class="text-muted m-0 small">{{ $chapter->translation?->translation }}</p>
                             </div>
                         </div>

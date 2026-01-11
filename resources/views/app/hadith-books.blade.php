@@ -12,25 +12,29 @@
     <main class="container px-1 px-sm-0 p-0 my-3 pb-3 pb-sm-0 notranslate">
         <div class="row g-2 mb-5">
             @foreach ($books as $item)
-                <div class="col-12 col-sm-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4 {{ $loop->remaining < 3 ? 'mb-4' : '' }}">
                     <div class="base-card d-flex flex-column h-100 justify-content-between rounded-2 border border-gold">
                         <div class="d-flex align-items-center mb-1">
                             @php
-                                $slug = $item->slug;
-                                $parts = explode('-', $slug);
+                                $ignore = ['the', 'of', 'and', 'in'];
+                                $string = $item->slug;
+                                $words = explode('-', $string);
+                                $acronym = '';
 
-                                $letters = array_map(function ($part) {
-                                    return strtoupper(substr($part, 0, 1));
-                                }, $parts);
-
-                                $acronym = implode('', $letters);
+                                foreach ($words as $word) {
+                                    if (!in_array(strtolower($word), $ignore)) {
+                                        $acronym .= strtoupper($word[0]);
+                                    }
+                                }
                             @endphp
+
                             <div class="icon-thumb accent me-3">{{ $acronym }}</div>
 
                             <div class="flex-1">
                                 <h6 class="text-black fw-bold m-0">{{ $item->translation?->name ?: $item->name }}</h6>
-                                <p class="small m-0">{{ $item->translation?->writer ?: $item->writer }}
-                                    ({{ $item->writer_death_year }}H)
+                                <p class="small m-0">
+                                    {{ $item->translation?->writer ?: $item->writer }}
+                                    {{ $item->writer_death_year ? "({$item->writer_death_year}H)" : '' }}
                                 </p>
                             </div>
                         </div>
@@ -48,6 +52,5 @@
                     </div>
                 </div>
             @endforeach
-        </div>
         </div>
     @endsection

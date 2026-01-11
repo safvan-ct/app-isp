@@ -52,6 +52,12 @@
 
                     @if (!empty($item->translation?->text))
                         <div class="col-12 col-md-6 order-2 order-md-1 p-0">
+                            @if (!empty($item->translation?->text))
+                                <p class="fw-bold m-0 p-0 text-justify" style="font-size: 14px;">
+                                    {{ $item->translation?->narrator }}
+                                </p>
+                            @endif
+
                             <div class="text-en text-justify" style="font-size: 14px;">
                                 {{ $item->translation?->text }}
                             </div>
@@ -62,10 +68,17 @@
                 <x-app.hr class="mt-3 mb-2" />
                 <p class="text-muted small notranslate fst-italic m-0">
                     🔖 {{ $chapter->book->translation?->name ?? $chapter->book->name }},
-                    {{ __('app.volume') }}: {{ $item->volume }},
+
+                    @if (!is_null($item->volume))
+                        {{ __('app.volume') }}: {{ $item->volume }},
+                    @endif
+
                     {{ __('app.chapter') }}: {{ $chapter->translation?->name ?? $chapter->name }},
-                    {{ __('app.hadith') }}: {{ $item->hadith_number }},
-                    {{ __('app.status') }}: {{ __('app.' . strtolower($item->status)) }}
+                    {{ __('app.hadith') }}: {{ $item->hadith_number }}{{!is_null($item->status) ? ', ' : ''}}
+
+                    @if (!is_null($item->status))
+                        {{ __('app.status') }}: {{ __('app.' . strtolower($item->status)) }}
+                    @endif
                 </p>
             </article>
         @endforeach
