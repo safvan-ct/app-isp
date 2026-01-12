@@ -327,7 +327,7 @@ if (! function_exists('getTopicChapters')) {
                         "title"   => "മുറിയുന്ന കാര്യങ്ങൾ",
                         "lessons" => [],
                     ],
-                    "sunnah"   => [
+                    "sunnah"          => [
                         "slug"    => "sunnah",
                         "title"   => "സുന്നത്ത് നോമ്പുകൾ",
                         "lessons" => [],
@@ -374,61 +374,32 @@ if (! function_exists('getTopicChapters')) {
                 "title"   => "മരണം",
                 "desc"    => "മരണം എല്ലാ സൃഷ്ടികൾക്കും നിശ്ചയിക്കപ്പെട്ടതും ഒഴിച്ചുകൂടാനാവാത്തതുമാണ്.",
                 "modules" => [
-                    "death"           => [
-                        "slug"    => "death",
-                        "title"   => "മരണം",
-                        "desc"    => "മരണം എല്ലാ സൃഷ്ടികൾക്കും നിശ്ചയിക്കപ്പെട്ടതും ഒഴിച്ചുകൂടാനാവാത്തതുമാണ്.",
+                    "introduction"    => [
+                        "slug"    => "introduction",
+                        "title"   => "വിശ്വാസവും തയ്യാറെടുപ്പും",
                         "lessons" => [
-                            "rule"           => "മരണം: വിശ്വാസവും തയ്യാറെടുപ്പും",
-                            "responsibility" => "മരണം ആസന്നമായ വ്യക്തിക്ക് ചെയ്യേണ്ട കാര്യങ്ങൾ",
-                            "shaheed"        => "രക്തസാക്ഷികൾ",
-                            "others"         => "മറ്റുള്ളവ",
-                            "post-mortem"    => "പോസ്റ്റ്‌മോർട്ടം",
+                            "definition" => "മരണം: വിശ്വാസവും തയ്യാറെടുപ്പും",
+                            "types"      => "മരണങ്ങൾ",
                         ],
                     ],
-                    "death-home"      => [
-                        "slug"    => "death-home",
+                    "rituals"         => [
+                        "slug"    => "rituals",
                         "title"   => "മരണ വീട്ടിലെ ആചാരങ്ങൾ",
-                        "desc"    => "",
-                        "lessons" => [
-                            "sabr-for-family" => "കുടുംബത്തെ ആശ്വസിപ്പിക്കുക",
-                            "read"            => "മരണവീട്ടിലെ വിലാപം, ഖുർആൻ പാരായണം",
-                            "days"            => "മരണാനന്തര അനുബന്ധ ആചാരങ്ങൾ (3, 7, 40, ആണ്ട്)",
-                        ],
+                        "lessons" => [],
                     ],
-                    "bath-kafan"      => [
-                        "slug"    => "bath-kafan",
-                        "title"   => "മയ്യിത്ത് കുളിപ്പിക്കൽ, കഫൻ ചെയ്യൽ",
-                        "desc"    => "",
-                        "lessons" => [
-                            "bath"  => "മയ്യിത്ത് കുളിപ്പിക്കൽ",
-                            "kafan" => "കഫൻ ചെയ്യൽ",
-                        ],
+                    "kafan"           => [
+                        "slug"    => "kafan",
+                        "title"   => "കുളിപ്പിക്കൽ, കഫൻ ചെയ്യൽ",
+                        "lessons" => [],
                     ],
-                    "namaz"           => [
-                        "slug"    => "namaz",
+                    "funeral-procession"           => [
+                        "slug"    => "funeral-procession",
                         "title"   => "വിലാപ യാത്ര, മയ്യിത്ത് നമസ്കാരം",
-                        "desc"    => "",
-                        "lessons" => [
-                            "travel"     => "വിലാപ യാത്ര",
-                            "namaz"      => "മയ്യിത്ത് നമസ്കാരം",
-                            "namaz-form" => "മയ്യിത്ത് നമസ്കാര രൂപം",
-                        ],
+                        "lessons" => [],
                     ],
-                    "khabar-siyarath" => [
-                        "slug"    => "khabar-siyarath",
+                    "grave-visitation" => [
+                        "slug"    => "grave-visitation",
                         "title"   => "മറമാടൽ, ഖബർ സന്ദർശനം",
-                        "desc"    => "",
-                        "lessons" => [
-                            "khabar"   => "ഖബർ",
-                            "grave"    => "മറമാടൽ",
-                            "siyarath" => "ഖബർ സിയാറത്ത് (സന്ദർശനം)",
-                        ],
-                    ],
-                    "debt"            => [
-                        "slug"    => "debt",
-                        "title"   => "മയ്യിത്തിൻ്റെ കടം",
-                        "desc"    => "",
                         "lessons" => [],
                     ],
                 ],

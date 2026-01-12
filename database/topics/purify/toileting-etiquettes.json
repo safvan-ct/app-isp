@@ -43,7 +43,7 @@
                 {
                     "title": "ടോയ്ലറ്റിൽ പ്രവേശിക്കുമ്പോഴുള്ള ദുആ",
                     "desc": [
-                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1'>اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ<strong> / </strong> بسمِ اللهِ، اللهمَّ إنَّي أعوذُ بكَ منَ الخبُثِ والخبائِثِ</p>",
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ<strong> / </strong> بسمِ اللهِ، اللهمَّ إنَّي أعوذُ بكَ منَ الخبُثِ والخبائِثِ</p>",
                         "<p class='small text-dark text-center m-0 p-0 fst-italic'>അല്ലാഹുവേ, തിന്മയിൽ നിന്നും ദുഷ്ടതയിൽ നിന്നും ഞാൻ നിന്നോട് അഭയം തേടുന്നു. / അല്ലാഹുവിന്റെ നാമത്തിൽ, അല്ലാഹുവേ, തിന്മയിൽ നിന്നും ദുഷ്ടതയിൽ നിന്നും ഞാൻ നിന്നോട് അഭയം തേടുന്നു.</p>"
                     ],
                     "ref": [
@@ -66,7 +66,7 @@
                 {
                     "title": "പുറത്ത് കടക്കുമ്പോഴുള്ള ദുആ",
                     "desc": [
-                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1'>غُفْرَانَكَ</p>",
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>غُفْرَانَكَ</p>",
                         "<p class='small text-dark text-center m-0 p-0 fst-italic'>എനിക്ക് നിൻ്റെ മാപ്പ് തരേണമേ.</p>"
                     ],
                     "ref": [
