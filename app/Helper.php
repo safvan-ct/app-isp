@@ -86,6 +86,7 @@ if (! function_exists('exploreTopics')) {
             'fasting' => 'നോമ്പ്',
             'hajj'    => 'ഹജ്ജ്',
             'death'   => 'മരണം',
+            'birth'   => 'ജനനം',
             'milad'   => 'നബിദിനം',
             'dua'     => 'ദുആ',
             // 'വിവാഹം',
@@ -385,6 +386,18 @@ if (! function_exists('getTopicChapters')) {
                     ],
                 ],
             ],
+            "birth"   => [
+                "slug"    => "birth",
+                "title"   => "ജനനം",
+                "desc"    => "കുട്ടി ജനിച്ചാൽ മാതാപിതാക്കൾ ശ്രദ്ധിക്കേണ്ട കാര്യങ്ങൾ",
+                "modules" => [
+                    "introduction" => [
+                        "slug"    => "introduction",
+                        "title"   => "കുട്ടി ജനിച്ചാൽ ആചാരങ്ങൾ",
+                        "lessons" => [],
+                    ],
+                ],
+            ],
             "milad"   => [
                 "slug"    => "milad",
                 "title"   => "നബിദിനം",
@@ -407,17 +420,17 @@ if (! function_exists('getTopicChapters')) {
                     ],
                 ],
             ],
-             "dua"   => [
+            "dua"     => [
                 "slug"    => "dua",
                 "title"   => "ദുആ",
                 "desc"    => "പ്രാർത്ഥനകളും ദുആകളും ഇസ്‌ലാമിൽ വളരെയധികം പ്രാധാന്യമുള്ള കാര്യങ്ങളാണ്.",
                 "modules" => [
-                    "introduction"  => [
+                    "introduction" => [
                         "slug"    => "introduction",
                         "title"   => "പ്രാർത്ഥനകളും പ്രത്യേക സമയങ്ങളും",
                         "lessons" => [],
                     ],
-                    "quran"  => [
+                    "quran"        => [
                         "slug"    => "quran",
                         "title"   => "ഖുർആൻ ആയത്തുകൾ ",
                         "lessons" => [],
