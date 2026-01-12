@@ -86,7 +86,7 @@ if (! function_exists('exploreTopics')) {
             'fasting' => 'നോമ്പ്',
             'hajj'    => 'ഹജ്ജ്',
             'death'   => 'മരണം',
-            'meelad'  => 'നബിദിനം',
+            'milad'   => 'നബിദിനം',
             // 'വിവാഹം',
             // 'അഖീഖത്',
             // 'ഈദ് (പെരുന്നാൾ)',
@@ -374,7 +374,7 @@ if (! function_exists('getTopicChapters')) {
                 "title"   => "മരണം",
                 "desc"    => "മരണം എല്ലാ സൃഷ്ടികൾക്കും നിശ്ചയിക്കപ്പെട്ടതും ഒഴിച്ചുകൂടാനാവാത്തതുമാണ്.",
                 "modules" => [
-                    "introduction"    => [
+                    "introduction"       => [
                         "slug"    => "introduction",
                         "title"   => "വിശ്വാസവും തയ്യാറെടുപ്പും",
                         "lessons" => [
@@ -382,52 +382,46 @@ if (! function_exists('getTopicChapters')) {
                             "types"      => "മരണങ്ങൾ",
                         ],
                     ],
-                    "rituals"         => [
+                    "rituals"            => [
                         "slug"    => "rituals",
                         "title"   => "മരണ വീട്ടിലെ ആചാരങ്ങൾ",
                         "lessons" => [],
                     ],
-                    "kafan"           => [
+                    "kafan"              => [
                         "slug"    => "kafan",
                         "title"   => "കുളിപ്പിക്കൽ, കഫൻ ചെയ്യൽ",
                         "lessons" => [],
                     ],
-                    "funeral-procession"           => [
+                    "funeral-procession" => [
                         "slug"    => "funeral-procession",
                         "title"   => "വിലാപ യാത്ര, മയ്യിത്ത് നമസ്കാരം",
                         "lessons" => [],
                     ],
-                    "grave-visitation" => [
+                    "grave-visitation"   => [
                         "slug"    => "grave-visitation",
                         "title"   => "മറമാടൽ, ഖബർ സന്ദർശനം",
                         "lessons" => [],
                     ],
                 ],
             ],
-            "meelad"  => [
-                "slug"    => "meelad",
+            "milad"   => [
+                "slug"    => "milad",
                 "title"   => "നബിദിനം",
                 "desc"    => "നബിദിനം ആഘോഷിക്കേണ്ടതിന്റെ അടിസ്ഥാനവും ശ്രേഷ്ഠതയും",
                 "modules" => [
-                    "ra-awwal-month" => [
-                        "slug"    => "ra-awwal-month",
-                        "title"   => "റബീഉൽ അവ്വൽ മാസവും നബിദിനവും",
-                        "desc"    => "നബിദിനം ആഘോഷിക്കേണ്ടതിന്റെ അടിസ്ഥാനവും ശ്രേഷ്ഠതയും",
-                        "lessons" => [
-                            "ra-awwal" => "റബീഉൽ അവ്വൽ",
-                            "meelad"   => "പ്രവാചക ചര്യകളും ബിദ്അത്തും",
-                        ],
-                    ],
-                    "meelad-history" => [
-                        "slug"    => "meelad-history",
-                        "title"   => "നബിദിന ആഘോഷങ്ങളുടെ ചരിത്രം",
-                        "desc"    => "കാലഘട്ടങ്ങളിലൂടെ നബിദിന (മൗലിദ്) ആഘോഷങ്ങളുടെ വികാസം",
+                    "milad-un-nabi"  => [
+                        "slug"    => "milad-un-nabi",
+                        "title"   => "റ. അവ്വൽ & നബിദിനം",
                         "lessons" => [],
                     ],
-                    "moulid"         => [
-                        "slug"    => "moulid",
+                    "milad-history"  => [
+                        "slug"    => "milad-history",
+                        "title"   => "നബിദിന ആഘോഷങ്ങളുടെ ചരിത്രം",
+                        "lessons" => [],
+                    ],
+                    "mawlid-history" => [
+                        "slug"    => "mawlid-history",
                         "title"   => "മൗലിദ് കൃതികൾ - ചരിത്രം",
-                        "desc"    => "പ്രധാനപ്പെട്ട മൗലിദ് കൃതികളും ആരംഭവും",
                         "lessons" => [],
                     ],
                 ],
