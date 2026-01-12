@@ -277,21 +277,21 @@ if (! function_exists('getTopicChapters')) {
                 "title"   => "സകാത്ത്",
                 "desc"    => "സമ്പന്നരായ മുസ്‌ലിംകൾ അവരുടെ സമ്പാദ്യത്തിൽ നിന്ന് ഒരു നിശ്ചിത ഭാഗം പാവപ്പെട്ടവർക്ക് നിർബന്ധമായും നൽകുന്ന ധനപരമായ ആരാധനയാണ്.",
                 "modules" => [
-                    "introduction"            => [
+                    "introduction" => [
                         "slug"    => "introduction",
                         "title"   => "സകാത്ത്",
                         "lessons" => [],
                     ],
-                    "sadaqa"           => [
+                    "sadaqa"       => [
                         "slug"    => "sadaqa",
                         "title"   => "സദഖ (ദാനധർമ്മം)",
                         "lessons" => [],
                     ],
-                    "intrest"          => [
+                    "intrest"      => [
                         "slug"    => "intrest",
                         "title"   => "പലിശ",
                         "lessons" => [],
-                    ]
+                    ],
                 ],
             ],
             "fasting" => [
@@ -324,7 +324,6 @@ if (! function_exists('getTopicChapters')) {
                     "hajj"     => [
                         "slug"    => "hajj",
                         "title"   => "ഹജ്ജ്",
-                        "desc"    => "കഴിവുള്ള മുസ്‌ലിംകൾ ജീവിതത്തിൽ ഒരിക്കലെങ്കിലും മക്കയിലേക്ക് പോയി അനുഷ്ഠിക്കേണ്ട നിർബന്ധിത തീർത്ഥാടനമാണ്.",
                         "lessons" => [
                             "rule"       => "ഹജ്ജിന്റെ നിർബന്ധ ഘടകങ്ങൾ",
                             "ihram"      => "ഇഹ്‌റാം: പ്രവേശന ശുദ്ധിയും തൽബിയത്തും",
@@ -335,7 +334,6 @@ if (! function_exists('getTopicChapters')) {
                     "umrah"    => [
                         "slug"    => "umrah",
                         "title"   => "ഉംറ",
-                        "desc"    => "വർഷത്തിൽ എപ്പോൾ വേണമെങ്കിലും മക്കയിൽ പോയി അനുഷ്ഠിക്കാവുന്ന ചെറിയ തീർത്ഥാടനമാണ്.",
                         "lessons" => [
                             "rule"       => "ഉംറ: ഇഹ്റാമിൽ പ്രവേശിക്കൽ",
                             "tawaf"      => "കഅ്ബയിലെ ത്വവാഫ്",
