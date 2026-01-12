@@ -87,6 +87,7 @@ if (! function_exists('exploreTopics')) {
             'hajj'    => 'ഹജ്ജ്',
             'death'   => 'മരണം',
             'milad'   => 'നബിദിനം',
+            'dua'     => 'ദുആ',
             // 'വിവാഹം',
             // 'അഖീഖത്',
             // 'ഈദ് (പെരുന്നാൾ)',
@@ -402,6 +403,23 @@ if (! function_exists('getTopicChapters')) {
                     "mawlid-history" => [
                         "slug"    => "mawlid-history",
                         "title"   => "മൗലിദ് കൃതികൾ - ചരിത്രം",
+                        "lessons" => [],
+                    ],
+                ],
+            ],
+             "dua"   => [
+                "slug"    => "dua",
+                "title"   => "ദുആ",
+                "desc"    => "പ്രാർത്ഥനകളും ദുആകളും ഇസ്‌ലാമിൽ വളരെയധികം പ്രാധാന്യമുള്ള കാര്യങ്ങളാണ്.",
+                "modules" => [
+                    "introduction"  => [
+                        "slug"    => "introduction",
+                        "title"   => "പ്രാർത്ഥനകളും പ്രത്യേക സമയങ്ങളും",
+                        "lessons" => [],
+                    ],
+                    "quran"  => [
+                        "slug"    => "quran",
+                        "title"   => "ഖുർആൻ ആയത്തുകൾ ",
                         "lessons" => [],
                     ],
                 ],

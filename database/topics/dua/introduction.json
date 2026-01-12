@@ -1,0 +1,418 @@
+{
+    "page": "lesson",
+    "lessons": [
+        {
+            "title": "പ്രാർത്ഥനകളും പ്രത്യേക സമയങ്ങളും",
+            "slug": "introduction",
+            "desc": [],
+            "active": true,
+            "sub_topics": [
+                {
+                    "title": "ഉറക്കമുണരുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>നമ്മെ മരിപ്പിച്ചതിന് ശേഷം നമ്മെ ജീവിപ്പിച്ച അല്ലാഹുവിന് സ്തുതി. അവങ്കലേക്കാണ് ഉയിർത്തെഴുന്നേൽപ്.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": 6312
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "ഉറങ്ങാൻ കിടക്കുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>ദൈവമേ, നിന്റെ നാമത്തിൽ ഞാൻ മരിക്കുന്നു, ജീവിക്കുന്നു.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": "6324"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "ഭക്ഷണം തുടങ്ങുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>بِسْمِ اللَّهِ / بِسْمِ اللَّهِ أَوَّلَهُ وَآخِرَهُ </p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>അല്ലാഹുവിന്റെ നാമത്തിൽ (ഞാൻ തുടങ്ങുന്നു).</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": "3767"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "ഭക്ഷണം കഴിച്ച ശേഷം",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَذَا الطَّعَامَ وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>എന്റെ കഴിവും കരുത്തുമില്ലാതെ ഇത് എനിക്ക് നൽകുകയും ഭക്ഷിപ്പിക്കുകയും ചെയ്ത അല്ലാഹുവിന് സർവ്വ സ്തുതിയും.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "al-tirmidhi",
+                                    "number": "3458"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "വീട്ടിൽ നിന്ന് ഇറങ്ങുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>അല്ലാഹുവിന്റെ നാമത്തിൽ, ഞാൻ അല്ലാഹുവിൽ ഭരമേല്പിക്കുന്നു. അല്ലാഹുവെക്കൊണ്ടല്ലാതെ യാതൊരു കഴിവും ശക്തിയുമില്ല.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": "5095",
+                                    "sahih": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "വീട്ടിൽ പ്രവേശിക്കുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>بِسْمِ اللَّهِ وَلَجْنَا وَبِسْمِ اللَّهِ خَرَجْنَا</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>ദൈവത്തിന്റെ നാമത്തിൽ ഞങ്ങൾ അകത്തു കയറി, ദൈവത്തിന്റെ നാമത്തിൽ ഞങ്ങൾ പോയി.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": "5096",
+                                    "sahih": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "പള്ളിയിൽ പ്രവേശിക്കുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>അല്ലാഹുവേ, നിന്റെ കാരുണ്യത്തിന്റെ കവാടങ്ങൾ എനിക്ക് തുറന്നു തരേണമേ.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": "1652"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "പള്ളിയിൽ നിന്ന് ഇറങ്ങുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>اللهم إني أسألك من فضلك</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>ദൈവമേ, ഞാൻ നിന്നോട് അനുഗ്രഹം ചോദിക്കുന്നു.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": "1652"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "ശുചിമുറിയിൽ പ്രവേശിക്കുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>അല്ലാഹുവേ, അശുദ്ധരായ ആൺ-പെൺ പിശാചുക്കളിൽ നിന്ന് ഞാൻ നിന്നോട് ശരണം തേടുന്നു.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": "142"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "ശുചിമുറിയിൽ നിന്ന് ഇറങ്ങുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>غفرانك</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>എനിക്ക് നിൻ്റെ മാപ്പ് തരേണമേ.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": "30"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "വുളൂഇന് ശേഷം",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، ‏‏‏‏‏‏اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>അല്ലാഹുവല്ലാതെ മറ്റൊരു ദൈവവുമില്ലെന്നും, ഏകനും പങ്കാളിയുമില്ലെന്നും, മുഹമ്മദ് അവന്റെ ദാസനും ദൂതനുമാണെന്നും ഞാൻ സാക്ഷ്യം വഹിക്കുന്നു. അല്ലാഹുവേ, എന്നെ പശ്ചാത്തപിക്കുന്നവരുടെ കൂട്ടത്തിലും, എന്നെ ശുദ്ധീകരിക്കുന്നവരുടെ കൂട്ടത്തിലും ഉൾപ്പെടുത്തേണമേ.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": 169
+                                },
+                                {
+                                    "slug": "al-tirmidhi",
+                                    "number": 55
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "വാഹനത്തിൽ കയറുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ * وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>ഇതിനെ ഞങ്ങൾക്ക് കീഴ്പ്പെടുത്തിത്തന്നവൻ എത്ര പരിശുദ്ധൻ! ഞങ്ങൾക്ക് ഇതിന് കഴിയുമായിരുന്നില്ല. തീർച്ചയായും ഞങ്ങൾ ഞങ്ങളുടെ രക്ഷിതാവിലേക്ക് മടങ്ങുന്നവരാണ്.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഖുർആൻ",
+                            "type": "quran",
+                            "info": [
+                                {
+                                    "slug": "43",
+                                    "number": "13-14"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "യാത്ര തുടങ്ങുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>അല്ലാഹുവേ, ഞങ്ങളുടെ ഈ യാത്രയിൽ പുണ്യവും ഭക്തിയും ഞങ്ങൾ നിന്നോട് ചോദിക്കുന്നു.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-muslim",
+                                    "number": "3275"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "പുതിയ വസ്ത്രം ധരിക്കുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>اللَّهُمَّ لَكَ الْحَمْدُ أَنْتَ كَسَوْتَنِيهِ، أَسْأَلُكَ مِنْ خَيْرِهِ وَخَيْرِ مَا صُنِعَ لَهُ</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>അല്ലാഹുവേ, നിനക്കാണ് സർവ്വ സ്തുതിയും. നീയാണ് എനിക്കിത് ധരിപ്പിച്ചത്. ഇതിന്റെ നന്മയും ഇതിന്റെ നിർമ്മാണ ലക്ഷ്യത്തിലുള്ള നന്മയും ഞാൻ നിന്നോട് ചോദിക്കുന്നു.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "abu-dawood",
+                                    "number": "4020"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "തുമ്മുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>الْحَمْدُ لِلَّهِ</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>എല്ലാ സ്തുതിയും അല്ലാഹുവിനാണ്. (കേൾക്കുന്നവർ 'യർഹമുകല്ലാഹ്' എന്ന് പറയണം).</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": "6224"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "ദേഷ്യം വരുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>ശപിക്കപ്പെട്ട പിശാചിൽ നിന്നും ഞാൻ അല്ലാഹുവോട് ശരണം തേടുന്നു.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": "6115"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "കടബാധ്യത ഉണ്ടാകുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>അല്ലാഹുവേ, ഹറാമുകളിൽ നിന്ന് അകറ്റി നിന്റെ ഹലാൽ കൊണ്ട് എനിക്ക് നീ മതിയാക്കേണമേ. നിന്റെ ഔദാര്യം കൊണ്ട് മറ്റുള്ളവരിൽ നിന്നെന്നെ ഐശ്വര്യവാനാക്കേണമേ.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "al-tirmidhi",
+                                    "number": "3563"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "മഴ പെയ്യുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>اللَّهُمَّ صَيِّبًا نَافِعًا</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>അല്ലാഹുവേ, ഉപകാരപ്രദമായ മഴയാക്കേണമേ.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": "1032"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "രോഗിയെ കാണുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>لَا بَأْسَ طَهُورٌ إِنْ شَاءَ اللَّهُ</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>വിഷമിക്കേണ്ട, അല്ലാഹു ഇച്ഛിച്ചാൽ ഇത് പാപങ്ങളിൽ നിന്നുള്ള ശുദ്ധീകരണമാണ്.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഹദീസ്",
+                            "type": "hadith",
+                            "info": [
+                                {
+                                    "slug": "sahih-bukhari",
+                                    "number": "3616"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "മരണവാർത്ത കേൾക്കുമ്പോൾ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>തീർച്ചയായും നാം അല്ലാഹുവിനുള്ളതാണ്, അവനിലേക്കുതന്നെയാണ് നാം മടങ്ങുന്നതും.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഖുർആൻ",
+                            "type": "quran",
+                            "info": [
+                                {
+                                    "slug": "2",
+                                    "number": "156"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "വിഷമഘട്ടങ്ങളിൽ",
+                    "desc": [
+                        "<p class='fs-4 text-ar lh-lg text-dark text-center m-0 mt-1 fw-bold'>لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ</p>",
+                        "<p class='small text-dark text-center m-0 p-0 fst-italic'>നീയല്ലാതെ യാതൊരു ദൈവവുമില്ല, നീ എത്ര പരിശുദ്ധൻ! തീർച്ചയായും ഞാൻ അക്രമികളുടെ കൂട്ടത്തിൽ പെട്ടുപോയിരിക്കുന്നു.</p>"
+                    ],
+                    "ref": [
+                        {
+                            "title": "ഖുർആൻ",
+                            "type": "quran",
+                            "info": [
+                                {
+                                    "slug": "21",
+                                    "number": "87"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
