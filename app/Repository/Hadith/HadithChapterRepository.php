@@ -77,4 +77,50 @@ class HadithChapterRepository implements HadithChapterInterface
             ->active()
             ->get();
     }
+
+    public function getPaginatedChaptersWithFilters(\App\Models\HadithBook $book, array $filters, int $perPage)
+    {
+        $query = HadithChapter::query()
+            ->select('id', 'hadith_book_id', 'chapter_number', 'slug', 'name', 'hadith_count', 'sort', 'is_active')
+            ->where('hadith_book_id', $book->id);
+
+        // Filter by active status (defaults to true)
+        $active = isset($filters['active']) ? filter_var($filters['active'], FILTER_VALIDATE_BOOLEAN) : true;
+        $query->where('is_active', $active);
+
+        // Filter by chapter name
+        if (! empty($filters['chapter_name'])) {
+            $query->where('name', 'like', '%' . $filters['chapter_name'] . '%');
+        }
+
+        // Filter by translation language
+        if (! empty($filters['translation'])) {
+            $lang = $filters['translation'];
+            $query->whereHas('translations', function ($q) use ($lang) {
+                $q->where('lang', $lang)->where('is_active', true);
+            });
+        }
+
+        // Filter by name in translation (name search by translation)
+        if (! empty($filters['chapter_name'])) {
+            $transName = $filters['chapter_name'];
+            $query->whereHas('translations', function ($q) use ($transName) {
+                $q->where('name', 'like', '%' . $transName . '%')->where('is_active', true);
+            });
+        }
+
+        // Eager load translations (excluding created_at, updated_at, created_by)
+        $query->with(['translations' => function ($q) use ($filters) {
+            $q->select('id', 'hadith_chapter_id', 'lang', 'name', 'name_romanized', 'description', 'hadith_count_romanized', 'is_active');
+
+            // If a specific language is filtered, only load that translation
+            if (! empty($filters['translation'])) {
+                $q->where('lang', $filters['translation']);
+            }
+
+            $q->where('is_active', true);
+        }]);
+
+        return $query->orderBy('chapter_number', 'asc')->cursorPaginate($perPage);
+    }
 }

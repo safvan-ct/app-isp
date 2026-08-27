@@ -105,4 +105,18 @@ class HadithBookRepository implements HadithBookInterface
 
         return $query->orderBy('priority', 'asc')->cursorPaginate($perPage);
     }
+
+    public function getBySlugWithActiveTranslation(string $slug, ?string $lang = null)
+    {
+        return HadithBook::where('slug', $slug)
+            ->active()
+            ->with(['translations' => function ($q) use ($lang) {
+                $q->select('id', 'hadith_book_id', 'lang', 'name', 'name_romanized', 'writer', 'writer_romanized', 'status_romanized', 'life_span_romanized', 'chapter_count_romanized', 'hadith_count_romanized', 'description', 'is_active')
+                    ->when($lang, function ($query) use ($lang) {
+                        $query->where('lang', $lang);
+                    })
+                    ->where('is_active', true);
+            }])
+            ->firstOrFail();
+    }
 }

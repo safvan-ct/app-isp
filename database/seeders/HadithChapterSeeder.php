@@ -59,7 +59,7 @@ class HadithChapterSeeder extends Seeder
                         'hadith_book_id' => $book->id,
                         'chapter_number' => (int) $chapter['chapterNumber'],
                         'slug'           => Str::slug($chapter['chapterEnglish'] ?? 'chapter-' . $chapterId),
-                        'name'           => $chapter['chapterArabic'] ?? '',
+                        'name'           => $chapter['chapterArabic'] ?? null,
                         'sort'           => $sort++,
                         'created_at'     => $now,
                         'updated_at'     => $now,
@@ -68,7 +68,7 @@ class HadithChapterSeeder extends Seeder
                     $translations[] = [
                         'hadith_chapter_id' => $chapterId,
                         'lang'              => 'ar',
-                        'name'              => $chapter['chapterArabic'] ?? '',
+                        'name'              => $chapter['chapterArabic'] ?? null,
                         'name_romanized'    => null,
                         'description'       => null,
                         'created_by'        => 1,
@@ -76,13 +76,13 @@ class HadithChapterSeeder extends Seeder
                         'updated_at'        => $now,
                     ];
 
-                    $en             = parseHadithTitle($chapter['chapterEnglish'] ?? '');
+                    $en             = parseHadithTitle($chapter['chapterEnglish'] ?? null);
                     $translations[] = [
                         'hadith_chapter_id' => $chapterId,
                         'lang'              => 'en',
-                        'name'              => $en['title'] ?? '',
-                        'name_romanized'    => $en['romanized'] ?? '',
-                        'description'       => $en['description'] ?? '',
+                        'name'              => $en['title'] ?? null,
+                        'name_romanized'    => $en['romanized'] ?? null,
+                        'description'       => $en['description'] ?? null,
                         'created_by'        => 1,
                         'created_at'        => $now,
                         'updated_at'        => $now,

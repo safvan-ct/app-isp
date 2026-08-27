@@ -213,7 +213,7 @@ class HadithBookSeeder extends Seeder
                             'name'                => $translation['name'],
                             'writer'              => $translation['writer'] ?? null,
                             'life_span_romanized' => $translation['life_span'] ?? null,
-                            'description'         => $translation['description'] ?? null,
+                            'description'         => $translation['desc'] ?? null,
                             'created_by'          => 1,
                             'created_at'          => $now,
                             'updated_at'          => $now,

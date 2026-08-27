@@ -47,7 +47,11 @@ return new class extends Migration
             $table->string('chapter_count_romanized')->nullable();
             $table->string('hadith_count_romanized')->nullable();
 
-            $table->text('description')->nullable()->fulltext();
+            if (Schema::getConnection()->getDriverName() === 'sqlite') {
+                $table->text('description')->nullable();
+            } else {
+                $table->text('description')->nullable()->fulltext();
+            }
 
             $table->foreignId('created_by')->constrained('users')->onDelete('RESTRICT');
 

@@ -16,4 +16,6 @@ interface HadithChapterInterface
     public function getwithAll($id = null, $hadithNumber = null);
 
     public function getChpaters($bookId, $name = null);
+
+    public function getPaginatedChaptersWithFilters(\App\Models\HadithBook $book, array $filters, int $perPage);
 }
