@@ -1,6 +1,7 @@
 <?php
 namespace App\Repository\Hadith;
 
+use App\Models\HadithBook;
 use App\Models\HadithChapter;
 
 interface HadithChapterInterface
@@ -17,5 +18,7 @@ interface HadithChapterInterface
 
     public function getChpaters($bookId, $name = null);
 
-    public function getPaginatedChaptersWithFilters(\App\Models\HadithBook $book, array $filters, int $perPage);
+    public function getPaginatedChaptersWithFilters(HadithBook $book, array $filters, int $perPage);
+
+    public function getBySlugAndBook(string $slug, HadithBook $book, ?string $lang = null);
 }

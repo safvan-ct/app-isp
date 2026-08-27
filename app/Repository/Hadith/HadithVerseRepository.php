@@ -2,6 +2,7 @@
 namespace App\Repository\Hadith;
 
 use App\Models\BookmarkItem;
+use App\Models\HadithChapter;
 use App\Models\HadithVerse;
 use App\Models\Like;
 
@@ -90,5 +91,30 @@ class HadithVerseRepository implements HadithVerseInterface
             ->toArray();
 
         return $this->getVerseById($ids, $paginate);
+    }
+
+    public function getPaginatedVersesWithFilters(HadithChapter $chapter, array $filters, int $perPage)
+    {
+        $query = HadithVerse::query()
+            ->select('id', 'hadith_book_id', 'hadith_chapter_id', 'chapter_number', 'hadith_number', 'heading', 'text', 'volume', 'status', 'is_active')
+            ->where('hadith_chapter_id', $chapter->id);
+
+        // Filter by active status (defaults to true)
+        $active = isset($filters['active']) ? filter_var($filters['active'], FILTER_VALIDATE_BOOLEAN) : true;
+        $query->where('is_active', $active);
+
+        // Eager load translations (excluding created_at, updated_at, created_by)
+        $query->with(['translations' => function ($q) use ($filters) {
+            $q->select('id', 'hadith_verse_id', 'lang', 'narrator', 'heading', 'text', 'status_romanized', 'is_active');
+
+            // If a specific language is filtered, only load that translation
+            if (! empty($filters['translation'])) {
+                $q->where('lang', $filters['translation']);
+            }
+
+            $q->where('is_active', true);
+        }]);
+
+        return $query->orderBy('hadith_number', 'asc')->cursorPaginate($perPage);
     }
 }

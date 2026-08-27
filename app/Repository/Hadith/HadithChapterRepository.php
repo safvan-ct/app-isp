@@ -1,6 +1,7 @@
 <?php
 namespace App\Repository\Hadith;
 
+use App\Models\HadithBook;
 use App\Models\HadithChapter;
 
 class HadithChapterRepository implements HadithChapterInterface
@@ -122,5 +123,20 @@ class HadithChapterRepository implements HadithChapterInterface
         }]);
 
         return $query->orderBy('chapter_number', 'asc')->cursorPaginate($perPage);
+    }
+
+    public function getBySlugAndBook(string $slug, HadithBook $book, ?string $lang = null)
+    {
+        return HadithChapter::where('hadith_book_id', $book->id)
+            ->where('slug', $slug)
+            ->active()
+            ->with([
+                'translations' => function ($q) use ($lang) {
+                    $q->select('id', 'hadith_chapter_id', 'lang', 'name', 'name_romanized', 'description', 'hadith_count_romanized', 'is_active')
+                        ->when($lang, fn($q) => $q->where('lang', $lang))
+                        ->where('is_active', true);
+                },
+            ])
+            ->firstOrFail();
     }
 }
