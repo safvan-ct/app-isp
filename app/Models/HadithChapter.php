@@ -9,7 +9,15 @@ class HadithChapter extends Model
 {
     use LogsActivity;
 
-    protected $fillable = ['hadith_book_id', 'chapter_number', 'name', 'is_active'];
+    protected $fillable = [
+        'hadith_book_id',
+        'chapter_number',
+        'slug',
+        'name',
+        'hadith_count',
+        'sort',
+        'is_active',
+    ];
 
     protected static $recordEvents = ['updated'];
 

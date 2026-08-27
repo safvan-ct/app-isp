@@ -15,7 +15,7 @@ class HadithBookController extends Controller
     {
         $validated = $request->validated();
 
-        $perPage = (int) ($validated['per_page'] ?? 3);
+        $perPage = (int) ($validated['per_page'] ?? 10);
 
         // Filter keys only for query parameters
         $filters = array_intersect_key($validated, array_flip(['book_name', 'translation', 'active']));

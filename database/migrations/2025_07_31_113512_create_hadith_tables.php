@@ -65,11 +65,15 @@ return new class extends Migration
             $table->foreignId('hadith_book_id')->constrained('hadith_books')->onDelete('CASCADE');
 
             $table->unsignedSmallInteger('chapter_number');
+            $table->string('slug');
             $table->string('name');
+            $table->unsignedSmallInteger('hadith_count')->nullable();
+            $table->integer('sort')->default(0);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
 
             $table->unique(['hadith_book_id', 'chapter_number']);
+            $table->unique(['hadith_book_id', 'slug']);
             $table->index('is_active');
         });
 
@@ -79,6 +83,9 @@ return new class extends Migration
 
             $table->string('lang');
             $table->string('name');
+            $table->string('name_romanized')->nullable();
+            $table->text('description')->nullable();
+            $table->text('hadith_count_romanized')->nullable();
             $table->foreignId('created_by')->constrained('users')->onDelete('RESTRICT');
 
             $table->boolean('is_active')->default(true);

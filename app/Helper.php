@@ -17,6 +17,26 @@ function deleteFile($path)
     Storage::disk('public')->delete($path);
 }
 
+function parseHadithTitle(string $title): array
+{
+    // $pattern = '/^(.*?)\s*\((.*?)\)\s*:\s*(.*)$/';
+    $pattern = '/^(.*?)\s*\((.*?)\)(?:\s*:\s*(.*))?$/';
+
+    if (preg_match($pattern, $title, $matches)) {
+        return [
+            'title'       => trim($matches[1]),
+            'romanized'   => trim($matches[2]),
+            'description' => isset($matches[3]) ? trim($matches[3]) : null,
+        ];
+    }
+
+    return [
+        'description' => null,
+        'romanized'   => null,
+        'title'       => trim($title),
+    ];
+}
+
 if (! function_exists('convertAsTitle')) {
     function convertAsTitle($string)
     {

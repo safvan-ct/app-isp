@@ -9,7 +9,16 @@ class HadithChapterTranslation extends Model
 {
     use LogsActivity;
 
-    protected $fillable = ['hadith_chapter_id', 'lang', 'name', 'created_by', 'is_active'];
+    protected $fillable = [
+        'hadith_chapter_id',
+        'lang',
+        'name',
+        'name_romanized',
+        'description',
+        'hadith_count_romanized',
+        'created_by',
+        'is_active',
+    ];
 
     protected static $recordEvents = ['updated'];
 

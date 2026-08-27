@@ -8,6 +8,7 @@ use App\Services\ApiService;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class HadithChapterSeeder extends Seeder
 {
@@ -50,21 +51,38 @@ class HadithChapterSeeder extends Seeder
                 $chapters     = [];
                 $translations = [];
 
+                $sort = 1;
                 foreach ($chaptersData as $chapter) {
                     $chapterId  = $chapter['id'];
                     $chapters[] = [
                         'id'             => $chapterId,
                         'hadith_book_id' => $book->id,
                         'chapter_number' => (int) $chapter['chapterNumber'],
+                        'slug'           => Str::slug($chapter['chapterEnglish'] ?? 'chapter-' . $chapterId),
                         'name'           => $chapter['chapterArabic'] ?? '',
+                        'sort'           => $sort++,
                         'created_at'     => $now,
                         'updated_at'     => $now,
                     ];
 
                     $translations[] = [
                         'hadith_chapter_id' => $chapterId,
+                        'lang'              => 'ar',
+                        'name'              => $chapter['chapterArabic'] ?? '',
+                        'name_romanized'    => null,
+                        'description'       => null,
+                        'created_by'        => 1,
+                        'created_at'        => $now,
+                        'updated_at'        => $now,
+                    ];
+
+                    $en             = parseHadithTitle($chapter['chapterEnglish'] ?? '');
+                    $translations[] = [
+                        'hadith_chapter_id' => $chapterId,
                         'lang'              => 'en',
-                        'name'              => $chapter['chapterEnglish'] ?? '',
+                        'name'              => $en['title'] ?? '',
+                        'name_romanized'    => $en['romanized'] ?? '',
+                        'description'       => $en['description'] ?? '',
                         'created_by'        => 1,
                         'created_at'        => $now,
                         'updated_at'        => $now,
@@ -80,6 +98,8 @@ class HadithChapterSeeder extends Seeder
                             'hadith_chapter_id' => $chapterId,
                             'lang'              => 'ml',
                             'name'              => $found['name'],
+                            'name_romanized'    => null,
+                            'description'       => null,
                             'created_by'        => 1,
                             'created_at'        => $now,
                             'updated_at'        => $now,
