@@ -9,7 +9,17 @@ class HadithVerse extends Model
 {
     use LogsActivity;
 
-    protected $fillable = ['hadith_book_id', 'hadith_chapter_id', 'chapter_number', 'hadith_number', 'heading', 'text', 'volume', 'status', 'is_active'];
+    protected $fillable = [
+        'hadith_book_id',
+        'hadith_chapter_id',
+        'chapter_number',
+        'hadith_number',
+        'heading',
+        'text',
+        'volume',
+        'status',
+        'is_active',
+    ];
 
     protected static $recordEvents = ['updated'];
 
@@ -39,8 +49,7 @@ class HadithVerse extends Model
     {
         return $this->hasMany(HadithVerseTranslation::class)
             ->select('id', 'hadith_verse_id', 'narrator', 'heading', 'text')
-            ->active()
-            ->lang('en');
+            ->active();
     }
 
     // --------------------

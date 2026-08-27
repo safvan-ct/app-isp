@@ -89,21 +89,22 @@ class HadithVerseSeeder extends Seeder
                         'heading'           => $hadith['headingArabic'],
                         'text'              => $hadith['hadithArabic'],
                         'volume'            => $hadith['volume'],
-                        'status'            => $hadith['status'],
+                        'status'            => strtolower($hadith['status']),
                         'is_active'         => 1,
                         'created_at'        => $now,
                         'updated_at'        => $now,
                     ];
 
                     $translations[] = [
-                        'hadith_verse_id' => $hadith['id'],
-                        'lang'            => 'en',
-                        'heading'         => $hadith['headingEnglish'],
-                        'text'            => $hadith['hadithEnglish'],
-                        'is_active'       => 1,
-                        'created_by'      => 1,
-                        'created_at'      => $now,
-                        'updated_at'      => $now,
+                        'hadith_verse_id'  => $hadith['id'],
+                        'lang'             => 'en',
+                        'heading'          => $hadith['headingEnglish'],
+                        'text'             => $hadith['hadithEnglish'],
+                        'status_romanized' => strtolower($hadith['status']),
+                        'is_active'        => 1,
+                        'created_by'       => 1,
+                        'created_at'       => $now,
+                        'updated_at'       => $now,
                     ];
                 }
 

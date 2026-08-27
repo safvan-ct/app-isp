@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(HadithBookSeeder::class);
         $this->call(HadithChapterSeeder::class);
-        // $this->call(HadithVerseSeeder::class);
+        $this->call(HadithVerseSeeder::class);
         // $this->call(HadithVerseJsonSeeder::class);
     }
 }

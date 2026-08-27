@@ -128,6 +128,7 @@ return new class extends Migration
             $table->text('narrator')->nullable();
             $table->text('heading')->nullable();
             $table->text('text')->nullable();
+            $table->string('status_romanized')->nullable();
             $table->foreignId('created_by')->constrained('users')->default(1);
 
             $table->boolean('is_active')->default(true);
