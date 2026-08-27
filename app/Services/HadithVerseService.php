@@ -40,7 +40,7 @@ class HadithVerseService
         return [
             'book'    => new HadithBookResource($book),
             'chapter' => new HadithChapterResource($verse->chapter),
-            'verse'   => new HadithVerseResource($verse),
+            'verses'  => ['data' => [new HadithVerseResource($verse)]],
         ];
     }
 }

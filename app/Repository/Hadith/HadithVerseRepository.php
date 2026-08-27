@@ -131,7 +131,7 @@ class HadithVerseRepository implements HadithVerseInterface
                         ->where('is_active', true);
                 },
                 'chapter'      => function ($q) use ($lang) {
-                    $q->select('id', 'hadith_book_id', 'chapter_number', 'slug', 'name', 'is_active')
+                    $q->select('id', 'hadith_book_id', 'chapter_number', 'slug', 'name', 'hadith_count', 'is_active')
                         ->active()
                         ->with([
                             'translations' => function ($tQ) use ($lang) {
