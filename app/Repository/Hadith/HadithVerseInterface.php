@@ -1,6 +1,7 @@
 <?php
 namespace App\Repository\Hadith;
 
+use App\Models\HadithBook;
 use App\Models\HadithChapter;
 use App\Models\HadithVerse;
 
@@ -25,4 +26,6 @@ interface HadithVerseInterface
     public function getBookmarkedVerses($userId, $collectionId, $paginate = true);
 
     public function getPaginatedVersesWithFilters(HadithChapter $chapter, array $filters, int $perPage);
+
+    public function getByBookAndNumber(int $hadithNumber, HadithBook $book, ?string $lang = null);
 }

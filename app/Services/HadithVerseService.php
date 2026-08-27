@@ -29,4 +29,18 @@ class HadithVerseService
             'verses'  => HadithVerseResource::collection($paginatedVerses)->response()->getData(true),
         ];
     }
+
+    public function getVerse(string $bookSlug, int $hadithNumber, array $filters)
+    {
+        $lang = $filters['translation'] ?? null;
+
+        $book  = $this->hadithBookRepository->getBySlugWithActiveTranslation($bookSlug, $lang);
+        $verse = $this->hadithVerseRepository->getByBookAndNumber($hadithNumber, $book, $lang);
+
+        return [
+            'book'    => new HadithBookResource($book),
+            'chapter' => new HadithChapterResource($verse->chapter),
+            'verse'   => new HadithVerseResource($verse),
+        ];
+    }
 }

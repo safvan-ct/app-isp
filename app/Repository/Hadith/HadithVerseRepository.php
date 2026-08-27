@@ -2,6 +2,7 @@
 namespace App\Repository\Hadith;
 
 use App\Models\BookmarkItem;
+use App\Models\HadithBook;
 use App\Models\HadithChapter;
 use App\Models\HadithVerse;
 use App\Models\Like;
@@ -116,5 +117,31 @@ class HadithVerseRepository implements HadithVerseInterface
         }]);
 
         return $query->orderBy('hadith_number', 'asc')->cursorPaginate($perPage);
+    }
+
+    public function getByBookAndNumber(int $hadithNumber, HadithBook $book, ?string $lang = null)
+    {
+        return HadithVerse::where('hadith_book_id', $book->id)
+            ->where('hadith_number', $hadithNumber)
+            ->active()
+            ->with([
+                'translations' => function ($q) use ($lang) {
+                    $q->select('id', 'hadith_verse_id', 'lang', 'narrator', 'heading', 'text', 'status_romanized', 'is_active')
+                        ->when(! empty($lang), fn($query) => $query->where('lang', $lang))
+                        ->where('is_active', true);
+                },
+                'chapter'      => function ($q) use ($lang) {
+                    $q->select('id', 'hadith_book_id', 'chapter_number', 'slug', 'name', 'is_active')
+                        ->active()
+                        ->with([
+                            'translations' => function ($tQ) use ($lang) {
+                                $tQ->select('id', 'hadith_chapter_id', 'lang', 'name', 'description')
+                                    ->when(! empty($lang), fn($query) => $query->where('lang', $lang))
+                                    ->where('is_active', true);
+                            },
+                        ]);
+                },
+            ])
+            ->firstOrFail();
     }
 }
