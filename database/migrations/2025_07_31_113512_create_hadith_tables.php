@@ -17,10 +17,14 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('slug')->unique();
+            $table->string('abbreviation')->nullable();
             $table->string('writer')->nullable();
-            $table->unsignedSmallInteger('writer_death_year')->nullable();
+            $table->string('status')->nullable();
+            $table->string('group')->nullable();
+            $table->string('life_span')->nullable();
             $table->unsignedSmallInteger('chapter_count')->nullable();
             $table->unsignedSmallInteger('hadith_count')->nullable();
+            $table->integer('priority')->default(0);
 
             $table->boolean('is_active')->default(true);
             $table->timestamps();
@@ -31,10 +35,20 @@ return new class extends Migration
         Schema::create('hadith_book_translations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('hadith_book_id')->constrained('hadith_books')->onDelete('CASCADE');
-
             $table->string('lang');
+
             $table->string('name');
+            $table->string('name_romanized')->nullable();
             $table->string('writer')->nullable();
+            $table->string('writer_romanized')->nullable();
+            $table->string('status_romanized')->nullable();
+
+            $table->string('life_span_romanized')->nullable();
+            $table->string('chapter_count_romanized')->nullable();
+            $table->string('hadith_count_romanized')->nullable();
+
+            $table->text('description')->nullable()->fulltext();
+
             $table->foreignId('created_by')->constrained('users')->onDelete('RESTRICT');
 
             $table->boolean('is_active')->default(true);

@@ -60,4 +60,49 @@ class HadithBookRepository implements HadithBookInterface
 
         return $id ? $query->find($id) : $query->get();
     }
+
+    public function getPaginatedWithFilters(array $filters, int $perPage)
+    {
+        $query = HadithBook::query()
+            ->select('id', 'name', 'slug', 'abbreviation', 'writer', 'status', 'group', 'life_span', 'chapter_count', 'hadith_count', 'priority', 'is_active');
+
+        // Filter by active status (defaults to true)
+        $active = isset($filters['active']) ? filter_var($filters['active'], FILTER_VALIDATE_BOOLEAN) : true;
+        $query->where('is_active', $active);
+
+        // Filter by book name
+        if (! empty($filters['book_name'])) {
+            $query->where('name', 'like', '%' . $filters['book_name'] . '%');
+        }
+
+        // Filter by translation language
+        if (! empty($filters['translation'])) {
+            $lang = $filters['translation'];
+            $query->whereHas('translations', function ($q) use ($lang) {
+                $q->where('lang', $lang)->where('is_active', true);
+            });
+        }
+
+        // Filter by name in translation (name search by translation)
+        if (! empty($filters['book_name'])) {
+            $transName = $filters['book_name'];
+            $query->whereHas('translations', function ($q) use ($transName) {
+                $q->where('name', 'like', '%' . $transName . '%')->where('is_active', true);
+            });
+        }
+
+        // Eager load translations (excluding created_at, updated_at, created_by)
+        $query->with(['translations' => function ($q) use ($filters) {
+            $q->select('id', 'hadith_book_id', 'lang', 'name', 'name_romanized', 'writer', 'writer_romanized', 'status_romanized', 'life_span_romanized', 'chapter_count_romanized', 'hadith_count_romanized', 'description', 'is_active');
+
+            // If a specific language is filtered, only load that translation
+            if (! empty($filters['translation'])) {
+                $q->where('lang', $filters['translation']);
+            }
+
+            $q->where('is_active', true);
+        }]);
+
+        return $query->orderBy('priority', 'asc')->cursorPaginate($perPage);
+    }
 }

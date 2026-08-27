@@ -18,4 +18,6 @@ interface HadithBookInterface
     public function getWithTranslations();
 
     public function getWithChapters($id = null);
+
+    public function getPaginatedWithFilters(array $filters, int $perPage);
 }

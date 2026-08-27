@@ -9,14 +9,26 @@ class HadithBook extends Model
 {
     use LogsActivity;
 
-    protected $fillable = ['name', 'slug', 'writer', 'writer_death_year', 'chapter_count', 'hadith_count', 'is_active'];
+    protected $fillable = [
+        'name',
+        'slug',
+        'abbreviation',
+        'writer',
+        'status',
+        'group',
+        'life_span',
+        'chapter_count',
+        'hadith_count',
+        'priority',
+        'is_active',
+    ];
 
     protected static $recordEvents = ['updated'];
 
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['is_active', 'name', 'writer'])
+            ->logOnly(['is_active', 'name', 'writer', 'status'])
             ->useLogName('hadith_books')
             ->logOnlyDirty()
             ->dontSubmitEmptyLogs();
@@ -39,8 +51,7 @@ class HadithBook extends Model
     {
         return $this->hasMany(HadithBookTranslation::class)
             ->select('id', 'hadith_book_id', 'name', 'writer')
-            ->active()
-            ->lang();
+            ->active();
     }
 
     // --------------------

@@ -62,6 +62,15 @@ return Application::configure(basePath: dirname(__DIR__))
             }
         });
 
+        // HttpException (handles 429 Too Many Requests, etc.)
+        $exceptions->render(function (\Symfony\Component\HttpKernel\Exception\HttpException $e, Request $request) {
+            if ($request->is('api/*') || $request->expectsJson()) {
+                return response()->json([
+                    'message' => $e->getMessage() ?: 'Too many requests.',
+                ], $e->getStatusCode());
+            }
+        });
+
         // Generic fallback
         $exceptions->render(function (Throwable $e, Request $request) {
             if ($request->is('api/*') || $request->expectsJson()) {
