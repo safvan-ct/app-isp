@@ -1,7 +1,6 @@
 <?php
 namespace Database\Seeders;
 
-use App\Models\HadithBook;
 use App\Models\HadithVerse;
 use App\Models\HadithVerseTranslation;
 use App\Services\ApiService;
@@ -10,7 +9,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class HadithVerseSeeder extends Seeder
+class HadithMissingVerseSeeder extends Seeder
 {
     public function __construct(protected ApiService $apiService)
     {}
@@ -23,56 +22,29 @@ class HadithVerseSeeder extends Seeder
         set_time_limit(0);             // safer than -1 in some environments
         ini_set('memory_limit', '-1'); // Unlimited memory
 
-        $book = HadithBook::with(['chapters:id,hadith_book_id', 'verses:id,hadith_book_id'])
-            ->select(['id', 'slug'])
-            ->whereHas('chapters')
-            ->whereDoesntHave('verses')
-            ->orderBy('id')
-            ->first();
         $apiKey  = config('services.hadith.api_key');
         $baseUrl = config('services.hadith.hadith');
         $now     = now();
         $urlBase = str_replace("{api_key}", $apiKey, $baseUrl);
 
-        if (! $book) {
-            $this->command->info("Hadith verse seeding completed at: {$now->toDateTimeString()}");
-            return;
-        }
+        $bookSlug = 'mishkat';
+        $pages    = [
+            62, 63, 124, 125, 126, 127, 247, 248, 249, 250, 251,
+        ];
 
-        $this->command->info("Hadith verse seeding started at: {$now->toDateTimeString()}");
+        $this->command->info("Hadith missing verse seeding started at: {$now->toDateTimeString()}");
 
         try {
-            // foreach ($book->chapters as $chapter) {
-            //     $url     = "{$url}&book={$chapter->book->slug}&chapter={$chapter->id}&paginate=300";
-            // }
+            $this->command->info("Seeding book: {$bookSlug}");
 
-            if (! $book->chapters->count()) {
-                $this->command->warn("No chapters for book: {$book->slug}. Skipping.");
-                return;
-            }
+            $url = "{$urlBase}&book={$bookSlug}&paginate=500&page=1";
 
-            if ($book->verses->count()) {
-                $this->command->warn("Verses already exist for book: {$book->slug}. Skipping.");
-                return;
-            }
-
-            $this->command->info("Seeding book: {$book->slug}");
-
-            $url       = "{$urlBase}&book={$book->slug}&paginate=500&page=1";
-            $firstPage = $this->apiService->get("{$url}&page=1");
-            if (Arr::get($firstPage, 'status') !== 200) {
-                $this->command->error("Failed: {$book->slug}");
-                return;
-            }
-
-            $totalPages = Arr::get($firstPage, 'result.hadiths.last_page', 0);
-
-            for ($page = 1; $page <= $totalPages; $page++) {
+            foreach ($pages as $page) {
                 $url      = "{$url}&page={$page}";
                 $response = $this->apiService->get($url);
                 if (Arr::get($response, 'status') !== 200) {
                     $this->command->error("Error on page {$page}: " . ($response['message'] ?? ''));
-                    Log::error("Error on page {$page} for book: {$book->slug} " . ($response['message'] ?? ''));
+                    Log::error("Error on page {$page} for book: {$bookSlug} " . ($response['message'] ?? ''));
                     continue;
                 }
 
@@ -114,22 +86,14 @@ class HadithVerseSeeder extends Seeder
                     HadithVerseTranslation::insert($translations);
                 });
 
-                $this->command->info("Inserted page {$page} of {$totalPages} for book: {$book->slug}");
+                $this->command->info("Inserted page {$page} for book: {$bookSlug}");
+                Log::info("Inserted page {$page} for book: {$bookSlug}");
 
                 unset($hadiths, $translations);
                 gc_collect_cycles(); // clear memory
             }
 
-            $this->command->info("Hadith verse seeding completed at: " . date('Y-m-d H:i:s'));
-            $books = HadithBook::select(['id', 'slug'])
-                ->whereHas('chapters')
-                ->whereDoesntHave('verses')
-                ->count();
-
-            if ($books > 0) {
-                $this->command->info("Seeding remaining books: {$books}");
-                $this->command->call('db:seed', ['--class' => HadithVerseSeeder::class]);
-            }
+            $this->command->info("Hadith missing verse seeding completed at: " . date('Y-m-d H:i:s'));
 
         } catch (\Exception $e) {
             $this->command->error('Error fetching hadiths: ' . $e->getMessage());

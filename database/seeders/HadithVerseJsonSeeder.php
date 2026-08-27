@@ -18,25 +18,94 @@ class HadithVerseJsonSeeder extends Seeder
      */
     public function run(): void
     {
+        $bookTranslationsInfo = [
+            'muwatta-malik'           => [
+                'en' => [
+                    'name'         => 'The Muwaṭṭa',
+                    'writer'       => 'Imam Malik ibn Anas',
+                    'life_span'    => '93-179 AH',
+                    'status'       => 'muwatta',
+                    'abbreviation' => 'MW',
+                    'desc'         => 'Islamic jurisprudence, worship, transactions, manners, and Prophetic traditions.',
+                    'group'        => "Kutub al-Tis'ah",
+                ],
+                'ar' => [
+                    'name' => 'المواطأ', 'writer' => 'مالك بن أنس', 'life_span' => '93-179 هـ',
+                ],
+                'ml' => [
+                    'name'      => 'അൽ-മുവത്ത',
+                    'writer'    => 'മാലിക് ഇബ്നു അനസ്',
+                    'life_span' => '93-179 ഹി',
+                ],
+            ],
+            'musnad-ahmad-ibn-hanbal' => [
+                'en' => [
+                    'name'         => 'Musnad Ahmad ibn Hanbal',
+                    'writer'       => 'Ahmad ibn Muhammad ibn Hanbal',
+                    'desc'         => 'Hadith collection arranged primarily according to the Companion narrator, rather than by fiqh subject.',
+                    'status'       => 'musnad',
+                    'abbreviation' => 'MAH',
+                    'group'        => "Kutub al-Tis'ah",
+                    'life_span'    => '164-241 AH',
+                ],
+                'ar' => [
+                    'name' => 'مُسْنَد أَحْمَد بْن حَنْبَل', 'writer' => 'اَحْمَد بْن مُحَمَّد بْن حَنْبَل', 'life_span' => '164-241 هـ',
+                ],
+                'ml' => [
+                    'name'      => 'മുസ്നാദ് അഹ്മദ് ഇബ്ന് ഹന്ബൽ',
+                    'writer'    => 'അഹ്മദ് ഇബ്നു മുഹമ്മദ് ഇബ്ന് ഹന്ബൽ',
+                    'life_span' => '164-241 ഹി',
+                ],
+            ],
+            'sunan-al-darimi'         => [
+                'en' => [
+                    'name'         => 'Sunan al-Darimi',
+                    'writer'       => 'Abdullah ibn Abd al-Rahman al-Darimi',
+                    'desc'         => "A major hadith collection arranged by subject, covering jurisprudence, worship, manners, and other aspects of the Sunnah.",
+                    'status'       => 'sunan',
+                    'abbreviation' => 'SD',
+                    'group'        => "Kutub al-Tis'ah",
+                    'life_span'    => '181-255 AH',
+                ],
+                'ar' => [
+                    'name' => 'سنن الدارمي', 'writer' => 'عبد الله بن عبد الرحمن الدارمي', 'life_span' => '181-255 هـ',
+                ],
+                'ml' => [
+                    'name'      => 'സുനാൻ അൽ-ദാരിമി',
+                    'writer'    => 'അബ്ദുള്ളാ ഇബ്നു അബ്ദുൽ റഹ്മാൻ അൽ-ദാരിമി',
+                    'life_span' => '181-255 ഹി',
+                ],
+            ],
+            'riyad-as-salihin'        => [
+                'en' => [
+                    'name'         => 'Riyad as-Salihin',
+                    'writer'       => "Yahya ibn Sharaf al-Nawawi",
+                    'desc'         => 'Focusing on worship, manners, ethics, spirituality, and righteous conduct',
+                    'status'       => 'collection',
+                    'abbreviation' => 'RAS',
+                    'group'        => 'Thematic',
+                    'life_span'    => '631-676 AH',
+                ],
+                'ar' => [
+                    'name' => 'رياض الصالحين', 'writer' => "يحيى بن شرف النواوي", 'life_span' => '631-676 هـ',
+                ],
+                'ml' => [
+                    'name'      => 'റിയാദ് അസ്-സാലിഹിൻ',
+                    'writer'    => "യഹ്യ ഇബ്നു ഷാറഫ് അൽ-നവവി",
+                    'life_span' => '631-676 ഹി',
+                ],
+            ],
+        ];
+
         set_time_limit(0);             // safer than -1 in some environments
         ini_set('memory_limit', '-1'); // Unlimited memory
 
-        $booksMl = [
-            ["id" => 7, "name" => "മുവത്ത മാലിക്", "writer" => "ഇമാം മാലിക് ഇബ്നു അനസ്"],
-            ["id" => 8, "name" => "മുസ്നദ് അഹമ്മദ് ഇബ്നു ഹമ്പൽ", "writer" => "ഇമാം അഹമ്മദ് ഇബ്നു ഹമ്പൽ"],
-            ["id" => 9, "name" => "സുനൻ അൽ-ദാരിമി", "writer" => "ഇമാം അബു മുഹമ്മദ് അബ്ദുൽ റഹ്മാൻ ഇബ്നു അബ്ദുൾ അള്ളാ ഇബ്നു അൽ ദാരിമി"],
-            ["id" => 10, "name" => "ഇമാം നവവിയുടെ നാൽപ്പത് ഹദീസ്", "writer" => "ഇമാം യഹ്യ ഇബ്നു ഷറഫ് അൽ നവവി"],
-            ["id" => 11, "name" => "നാൽപ്പത് ഖുദ്‌സി ഹദീസുകൾ", "writer" => ""],
-            ["id" => 12, "name" => "ഷാ വലിയുല്ലയുടെ നാൽപ്പത് ഹദീസ്", "writer" => "ഷാ വലിയുല്ലാഹ് ദഹ്‌ലവി"],
-            ["id" => 13, "name" => "റിയാദ് അസ്-സാലിഹിൻ", "writer" => "ഇമാം യഹ്യ ഇബ്നു ഷറഫ് അൽ നവവി"],
-            ["id" => 14, "name" => "മിഷ്കത് അൽ-മസാബിഹ്", "writer" => "അൽ-ഖാത്തിബ് അൽ-തബ്രിസി"],
-            ["id" => 15, "name" => "അൽ-അദബ് അൽ-മുഫ്രദ്", "writer" => "ഇമാം മുഹമ്മദ് ഇബ്നു ഇസ്മാഈൽ അൽ ബുഖാരി"],
-            ["id" => 16, "name" => "ഷമാ'ഇൽ മുഹമ്മദിയ", "writer" => "ഇമാം തിർമിദി"],
-            ["id" => 17, "name" => "ബുലുഗ് അൽ-മറം", "writer" => "ഇബ്നു ഹജർ അൽ-അസ്കലാനി"],
+        $db = [
+            'malik', 'ahmed', 'darimi', 'riyad_assalihin',
+            // 'nawawi40', 'qudsi40', 'shahwaliullah40', 'aladab_almufrad', 'shamail_muhammadiyah', 'bulugh_almaram',
         ];
 
-        $db = ['malik', 'ahmed', 'darimi', 'nawawi40', 'qudsi40', 'shahwaliullah40', 'riyad_assalihin', 'aladab_almufrad', 'shamail_muhammadiyah', 'bulugh_almaram'];
-
+        $priority = HadithBook::max('priority') ?? 0;
         foreach ($db as $value) {
             $data   = database_path("hadees/{$value}.json");
             $result = json_decode(file_get_contents($data), true);
@@ -44,65 +113,69 @@ class HadithVerseJsonSeeder extends Seeder
             $metadata     = $result['metadata'];
             $chaptersData = $result['chapters'];
             $hadithsData  = $result['hadiths'];
-            $bookMl       = array_column($booksMl, null, 'id');
             $bookId       = (int) $metadata['id'] + 2;
             $now          = now();
 
             try {
+                $bookSlug            = str()->slug($metadata['english']['title']);
                 $chapters            = [];
                 $chapterTranslations = [];
                 $bookTranslations    = [];
 
+                $bookEn = $bookTranslationsInfo[$bookSlug]['en'] ?? null;
+                $bookAr = $bookTranslationsInfo[$bookSlug]['ar'] ?? null;
+
                 $books = [
                     [
                         'id'            => $bookId,
-                        'name'          => $metadata['arabic']['title'],
-                        'slug'          => str()->slug($metadata['english']['title']),
-                        'writer'        => $metadata['arabic']['author'] ?? null,
+                        'name'          => $bookAr['name'] ?? $metadata['arabic']['title'],
+                        'abbreviation'  => $bookEn['abbreviation'] ?? null,
+                        'slug'          => $bookSlug,
+                        'writer'        => $bookAr['writer'] ?? $metadata['arabic']['author'] ?? null,
+                        'status'        => $bookEn['status'] ?? null,
+                        'group'         => $bookEn['group'] ?? null,
+                        'life_span'     => $bookEn['life_span'] ?? null,
                         'chapter_count' => (int) count($chaptersData),
                         'hadith_count'  => (int) count($hadithsData),
+                        'priority'      => ++$priority,
                         'created_at'    => $now,
                         'updated_at'    => $now,
                     ],
                 ];
 
-                $bookTranslations[] = [
-                    'hadith_book_id' => $bookId,
-                    'lang'           => 'en',
-                    'name'           => $metadata['english']['title'],
-                    'writer'         => $metadata['english']['author'],
-                    'created_by'     => 1,
-                    'created_at'     => $now,
-                    'updated_at'     => $now,
-                ];
-
-                if (isset($bookMl[$metadata['id']])) {
-                    $found = $bookMl[$metadata['id']];
-
-                    $bookTranslations[] = [
-                        'hadith_book_id' => $bookId,
-                        'lang'           => 'ml',
-                        'name'           => $found['name'],
-                        'writer'         => $found['writer'] ?? null,
-                        'created_by'     => 1,
-                        'created_at'     => $now,
-                        'updated_at'     => $now,
-                    ];
+                if (isset($bookTranslationsInfo[$bookSlug])) {
+                    foreach ($bookTranslationsInfo[$bookSlug] as $lang => $tr) {
+                        $bookTranslations[] = [
+                            'hadith_book_id'      => $bookId,
+                            'lang'                => $lang,
+                            'name'                => $tr['name'],
+                            'writer'              => $tr['writer'] ?? null,
+                            'life_span_romanized' => $tr['life_span'] ?? null,
+                            'description'         => $tr['desc'] ?? null,
+                            'created_by'          => 1,
+                            'created_at'          => $now,
+                            'updated_at'          => $now,
+                        ];
+                    }
                 }
 
                 $chapterId  = HadithChapter::max('id');
                 $chapterIds = [];
 
+                $sort = 1;
                 foreach ($chaptersData as $chapter) {
                     $chapter['id']              = is_null($chapter['id']) ? 0 : (int) $chapter['id'];
                     $chapterId                  = $chapterId + 1;
                     $chapterIds[$chapter['id']] = $chapterId;
+                    $chapterSlug                = str()->slug(empty($chapter['english']) ? 'chapter-' . $chapter['id'] : $chapter['english']);
 
                     $chapters[] = [
                         'id'             => $chapterId,
                         'hadith_book_id' => $bookId,
                         'chapter_number' => $chapter['id'],
                         'name'           => $chapter['arabic'] ?? '',
+                        'slug'           => $chapterSlug,
+                        'sort'           => $sort++,
                         'created_at'     => $now,
                         'updated_at'     => $now,
                     ];

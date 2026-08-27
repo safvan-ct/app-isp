@@ -58,7 +58,7 @@ class HadithChapterSeeder extends Seeder
                         'id'             => $chapterId,
                         'hadith_book_id' => $book->id,
                         'chapter_number' => (int) $chapter['chapterNumber'],
-                        'slug'           => Str::slug($chapter['chapterEnglish'] ?? 'chapter-' . $chapterId),
+                        'slug'           => Str::slug(empty($chapter['chapterEnglish']) ? 'chapter-' . (int) $chapter['chapterNumber'] : $chapter['chapterEnglish']),
                         'name'           => $chapter['chapterArabic'] ?? null,
                         'sort'           => $sort++,
                         'created_at'     => $now,

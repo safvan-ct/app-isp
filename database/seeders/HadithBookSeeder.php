@@ -41,7 +41,7 @@ class HadithBookSeeder extends Seeder
             'sahih-muslim'  => [
                 'en' => [
                     'name'         => 'Sahih Muslim',
-                    'writer'       => 'Imam Muslim ibn al-Hajjaj al-Naysaburi',
+                    'writer'       => 'Muslim ibn al-Hajjaj al-Naysaburi',
                     'desc'         => 'Renowned for its rigorous thematic organization and preservation of narration variants.',
                     'status'       => 'sahih',
                     'abbreviation' => 'SM',
@@ -60,7 +60,7 @@ class HadithBookSeeder extends Seeder
             'al-tirmidhi'   => [
                 'en' => [
                     'name'         => 'Jami Al-Tirmidhi',
-                    'writer'       => 'Imam Abu Isa Muhammad ibn Isa al-Tirmidhi',
+                    'writer'       => 'Abu Isa Muhammad ibn Isa al-Tirmidhi',
                     'desc'         => "Renowned for grading Hadith gradations (Sahih, Hasan, Da'if) and noting jurisprudential differences.",
                     'status'       => 'jami',
                     'abbreviation' => 'JAT',
@@ -140,7 +140,7 @@ class HadithBookSeeder extends Seeder
                     'desc'         => "Mishkat al-Masabih is a comprehensive hadith collection that brings together narrations on faith, worship, manners, virtues, and various aspects of Islamic life, organized thematically.",
                     'status'       => 'collection',
                     'abbreviation' => 'MAM',
-                    'group'        => 'General',
+                    'group'        => 'Thematic',
                     'life_span'    => 'd. 741 AH',
                 ],
                 'ar' => [
