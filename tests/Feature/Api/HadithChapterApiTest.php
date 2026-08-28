@@ -73,7 +73,7 @@ it('can fetch paginated active chapters of a book with translations by default',
         'is_active' => true,
     ]);
 
-    $response = $this->getJson("/api/v1/{$book->slug}/chapters");
+    $response = $this->getJson("/api/v1/hadith/books/{$book->slug}/chapters");
 
     $response->assertStatus(200);
 
@@ -149,7 +149,7 @@ it('can fetch paginated active chapters of a book with translations by default',
 });
 
 it('returns 404 for invalid or inactive book slug', function () {
-    $response = $this->getJson('/api/v1/invalid-slug/chapters');
+    $response = $this->getJson('/api/v1/hadith/books/invalid-slug/chapters');
     $response->assertStatus(404);
 
     $inactiveBook = HadithBook::create([
@@ -158,7 +158,7 @@ it('returns 404 for invalid or inactive book slug', function () {
         'is_active' => false,
     ]);
 
-    $response = $this->getJson("/api/v1/{$inactiveBook->slug}/chapters");
+    $response = $this->getJson("/api/v1/hadith/books/{$inactiveBook->slug}/chapters");
     $response->assertStatus(404);
 });
 
@@ -211,7 +211,7 @@ it('can filter chapters by chapter name', function () {
         'is_active' => true,
     ]);
 
-    $response = $this->getJson("/api/v1/{$book->slug}/chapters?chapter_name=Revelation");
+    $response = $this->getJson("/api/v1/hadith/books/{$book->slug}/chapters?chapter_name=Revelation");
     $response->assertStatus(200);
     $response->assertJsonCount(1, 'chapters.data');
     $response->assertJsonPath('chapters.data.0.slug', 'revelation');
@@ -266,7 +266,7 @@ it('can filter chapters by translation language', function () {
         'is_active' => true,
     ]);
 
-    $response = $this->getJson("/api/v1/{$book->slug}/chapters?translation=en");
+    $response = $this->getJson("/api/v1/hadith/books/{$book->slug}/chapters?translation=en");
     $response->assertStatus(200);
     $response->assertJsonCount(1, 'chapters.data');
     $response->assertJsonPath('chapters.data.0.slug', 'revelation');
@@ -281,11 +281,11 @@ it('validates request parameters', function () {
         'is_active' => true,
     ]);
 
-    $response = $this->getJson("/api/v1/{$book->slug}/chapters?per_page=invalid");
+    $response = $this->getJson("/api/v1/hadith/books/{$book->slug}/chapters?per_page=invalid");
     $response->assertStatus(422);
     $response->assertJsonValidationErrors(['per_page']);
 
-    $response = $this->getJson("/api/v1/{$book->slug}/chapters?active=not-bool");
+    $response = $this->getJson("/api/v1/hadith/books/{$book->slug}/chapters?active=not-bool");
     $response->assertStatus(422);
     $response->assertJsonValidationErrors(['active']);
 });
@@ -299,9 +299,9 @@ it('limits request rate', function () {
 
     // 60 requests allowed
     for ($i = 0; $i < 60; $i++) {
-        $this->getJson("/api/v1/{$book->slug}/chapters");
+        $this->getJson("/api/v1/hadith/books/{$book->slug}/chapters");
     }
 
-    $response = $this->getJson("/api/v1/{$book->slug}/chapters");
+    $response = $this->getJson("/api/v1/hadith/books/{$book->slug}/chapters");
     $response->assertStatus(429);
 });

@@ -53,10 +53,10 @@ it('can fetch paginated active hadith books with translations by default', funct
         'is_active' => true,
     ]);
 
-    $response = $this->getJson('/api/v1/hadith-books');
+    $response = $this->getJson('/api/v1/hadith/books');
 
     $response->assertStatus(200);
-    
+
     // Assert cursor pagination structure and resource serialization
     $response->assertJsonStructure([
         'data' => [
@@ -137,7 +137,7 @@ it('can filter books by book name', function () {
         'is_active' => true,
     ]);
 
-    $response = $this->getJson('/api/v1/hadith-books?book_name=Bukhari');
+    $response = $this->getJson('/api/v1/hadith/books?book_name=Bukhari');
     $response->assertStatus(200);
     $response->assertJsonCount(1, 'data');
     $response->assertJsonPath('data.0.slug', 'sahih-al-bukhari');
@@ -175,7 +175,7 @@ it('can filter books by translation language', function () {
     ]);
 
     // Request english translation
-    $response = $this->getJson('/api/v1/hadith-books?translation=en');
+    $response = $this->getJson('/api/v1/hadith/books?translation=en');
     $response->assertStatus(200);
     $response->assertJsonCount(1, 'data');
     $response->assertJsonPath('data.0.slug', 'sahih-al-bukhari');
@@ -183,11 +183,11 @@ it('can filter books by translation language', function () {
 });
 
 it('validates request parameters', function () {
-    $response = $this->getJson('/api/v1/hadith-books?per_page=invalid');
+    $response = $this->getJson('/api/v1/hadith/books?per_page=invalid');
     $response->assertStatus(422);
     $response->assertJsonValidationErrors(['per_page']);
 
-    $response = $this->getJson('/api/v1/hadith-books?active=not-bool');
+    $response = $this->getJson('/api/v1/hadith/books?active=not-bool');
     $response->assertStatus(422);
     $response->assertJsonValidationErrors(['active']);
 });
@@ -195,9 +195,9 @@ it('validates request parameters', function () {
 it('limits request rate', function () {
     // We can simulate hitting the limit. 60 requests are allowed.
     for ($i = 0; $i < 60; $i++) {
-        $this->getJson('/api/v1/hadith-books');
+        $this->getJson('/api/v1/hadith/books');
     }
 
-    $response = $this->getJson('/api/v1/hadith-books');
+    $response = $this->getJson('/api/v1/hadith/books');
     $response->assertStatus(429);
 });

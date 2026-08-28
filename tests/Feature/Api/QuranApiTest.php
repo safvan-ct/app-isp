@@ -102,7 +102,7 @@ it('can fetch verses of a Quran chapter', function () {
         'is_active'         => true,
     ]);
 
-    $response = $this->getJson("/api/v1/quran/{$chapter->slug}");
+    $response = $this->getJson("/api/v1/quran/chapters/{$chapter->slug}/verses");
 
     $response->assertStatus(200)
         ->assertJsonStructure([
@@ -181,7 +181,7 @@ it('can fetch a single Quran verse by number', function () {
         'is_active'         => true,
     ]);
 
-    $response = $this->getJson("/api/v1/quran/{$chapter->slug}/1");
+    $response = $this->getJson("/api/v1/quran/chapters/{$chapter->slug}/verses/1");
 
     $response->assertStatus(200)
         ->assertJsonStructure([
