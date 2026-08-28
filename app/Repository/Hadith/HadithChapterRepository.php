@@ -107,10 +107,10 @@ class HadithChapterRepository implements HadithChapterInterface
 
         // Filter by translation language
         if (! empty($filters['translation'])) {
-            $lang = $filters['translation'];
-            $query->whereHas('translations', function ($q) use ($lang) {
-                $q->where('lang', $lang)->where('is_active', true);
-            });
+            // $lang = $filters['translation'];
+            // $query->whereHas('translations', function ($q) use ($lang) {
+            //     $q->where('lang', $lang)->where('is_active', true);
+            // });
         }
 
         // Eager load translations (excluding created_at, updated_at, created_by)
