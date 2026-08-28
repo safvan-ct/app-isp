@@ -22,7 +22,7 @@ class HadithBookController extends Controller implements HasMiddleware
     {
         return [
             new Middleware(PermissionMiddleware::using('view hadith-books'), only: ['index', 'dataTable']),
-            new Middleware(PermissionMiddleware::using('update hadith-book'), only: ['update', 'import']),
+            new Middleware(PermissionMiddleware::using('update hadith-book'), only: ['update', 'import', 'resetCounts']),
             new Middleware(PermissionMiddleware::using('active hadith-book'), only: ['status']),
         ];
     }
@@ -67,6 +67,44 @@ class HadithBookController extends Controller implements HasMiddleware
             }
 
             return response()->json(['status' => false, 'message' => $result['message']], 400);
+        } catch (\Exception $e) {
+            return response()->json(['status' => false, 'message' => $e->getMessage()], 500);
+        }
+    }
+
+    /**
+     * Reset chapter_count and hadith_count on all books (or one book) from real DB counts.
+     */
+    public function resetCounts(Request $request)
+    {
+        try {
+            $bookId = $request->get('book_id');
+            $query  = HadithBook::query();
+
+            if ($bookId) {
+                $query->where('id', $bookId);
+            }
+
+            $books   = $query->with(['chapters:id,hadith_book_id', 'verses:id,hadith_book_id'])->get();
+            $updated = 0;
+
+            foreach ($books as $book) {
+                $chapterCount = $book->chapters->count();
+                $hadithCount  = \App\Models\HadithVerse::where('hadith_book_id', $book->id)->count();
+
+                $book->update([
+                    'chapter_count' => $chapterCount,
+                    'hadith_count'  => $hadithCount,
+                ]);
+
+                $updated++;
+            }
+
+            $scope = $bookId ? "book ID {$bookId}" : 'all books';
+            return response()->json([
+                'status'  => true,
+                'message' => "Counts reset for {$scope}. {$updated} book(s) updated.",
+            ]);
         } catch (\Exception $e) {
             return response()->json(['status' => false, 'message' => $e->getMessage()], 500);
         }

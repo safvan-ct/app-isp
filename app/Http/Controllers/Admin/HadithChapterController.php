@@ -25,7 +25,7 @@ class HadithChapterController extends Controller implements HasMiddleware
     {
         return [
             new Middleware(PermissionMiddleware::using('view hadith-chapters'), only: ['index', 'dataTable']),
-            new Middleware(PermissionMiddleware::using('update hadith-chapter'), only: ['update', 'import']),
+            new Middleware(PermissionMiddleware::using('update hadith-chapter'), only: ['update', 'import', 'resetCounts']),
             new Middleware(PermissionMiddleware::using('active hadith-chapter'), only: ['status']),
         ];
     }
@@ -97,6 +97,49 @@ class HadithChapterController extends Controller implements HasMiddleware
             return response()->json(['message' => 'Hadith chapter updated successfully']);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
+        }
+    }
+
+    /**
+     * Reset hadith_count for all chapters (or a single chapter) from real DB verse counts.
+     */
+    public function resetCounts(Request $request)
+    {
+        try {
+            $chapterId = $request->get('chapter_id');
+            $bookId    = $request->get('book_id');
+
+            $query = HadithChapter::query();
+
+            if ($chapterId) {
+                $query->where('id', $chapterId);
+            } elseif ($bookId) {
+                $query->where('hadith_book_id', $bookId);
+            }
+
+            $chapters = $query->get();
+            $updated  = 0;
+
+            foreach ($chapters as $chapter) {
+                $count = \App\Models\HadithVerse::where('hadith_chapter_id', $chapter->id)->count();
+                $chapter->update(['hadith_count' => $count]);
+                $updated++;
+            }
+
+            if ($chapterId) {
+                $scope = "chapter ID {$chapterId}";
+            } elseif ($bookId) {
+                $scope = "all chapters of book ID {$bookId}";
+            } else {
+                $scope = 'all chapters';
+            }
+
+            return response()->json([
+                'status'  => true,
+                'message' => "Hadith counts reset for {$scope}. {$updated} chapter(s) updated.",
+            ]);
+        } catch (\Exception $e) {
+            return response()->json(['status' => false, 'message' => $e->getMessage()], 500);
         }
     }
 

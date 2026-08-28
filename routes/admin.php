@@ -61,6 +61,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'not.customer'])->gr
     // Hadith
     Route::get('hadith-books/dataTable', [HadithBookController::class, 'dataTable'])->name('hadith-books.dataTable');
     Route::post('hadith-books/import', [HadithBookController::class, 'import'])->name('hadith-books.import');
+    Route::post('hadith-books/reset-counts', [HadithBookController::class, 'resetCounts'])->name('hadith-books.reset-counts');
     Route::patch('hadith-books/status/{id}', [HadithBookController::class, 'status'])->name('hadith-books.status');
     Route::resource('hadith-books', HadithBookController::class)->only('index', 'update');
 
@@ -71,6 +72,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'not.customer'])->gr
 
     Route::get('hadith-chapters/dataTable', [HadithChapterController::class, 'dataTable'])->name('hadith-chapters.dataTable');
     Route::post('hadith-chapters/import', [HadithChapterController::class, 'import'])->name('hadith-chapters.import');
+    Route::post('hadith-chapters/reset-counts', [HadithChapterController::class, 'resetCounts'])->name('hadith-chapters.reset-counts');
     Route::patch('hadith-chapters/status/{id}', [HadithChapterController::class, 'status'])->name('hadith-chapters.status');
     Route::resource('hadith-chapters', HadithChapterController::class)->only('index', 'update');
 

@@ -215,6 +215,12 @@
                     <button id="importChaptersBtn" onclick="importChapters()" class="import-btn-gradient ms-2">
                         <i class="ti ti-cloud-download me-1"></i> <span id="importBtnText">Import Chapters</span>
                     </button>
+
+                    <button id="resetAllCountsBtn" onclick="resetCounts()"
+                        class="btn btn-outline-warning rounded-3 fw-semibold ms-1"
+                        title="Recalculate hadith counts for all chapters from DB">
+                        <i class="ti ti-refresh me-1"></i> Reset Counts
+                    </button>
                 </div>
             </div>
         </div>
@@ -277,10 +283,17 @@
                             <i class="ti ti-language me-1"></i> Translations
                         </a>
 
-                        <button onclick="openEditModal({{ json_encode($chap) }})"
-                            class="btn btn-sm btn-outline-secondary rounded-3">
-                            <i class="ti ti-edit me-1"></i> Edit
-                        </button>
+                        <div class="d-flex gap-1">
+                            <button onclick="resetCounts(null, {{ $chap->id }})"
+                                class="btn btn-sm btn-outline-warning rounded-3"
+                                title="Reset hadith count for this chapter">
+                                <i class="ti ti-refresh"></i>
+                            </button>
+                            <button onclick="openEditModal({{ json_encode($chap) }})"
+                                class="btn btn-sm btn-outline-secondary rounded-3">
+                                <i class="ti ti-edit me-1"></i> Edit
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -345,6 +358,10 @@
                                         class="btn btn-sm btn-light-primary me-1" title="Translations">
                                         <i class="ti ti-language"></i>
                                     </a>
+                                    <button onclick="resetCounts(null, {{ $chap->id }})"
+                                        class="btn btn-sm btn-outline-warning me-1" title="Reset Hadith Count">
+                                        <i class="ti ti-refresh"></i>
+                                    </button>
                                     <button onclick="openEditModal({{ json_encode($chap) }})"
                                         class="btn btn-sm btn-light-secondary" title="Edit">
                                         <i class="ti ti-edit"></i>
@@ -585,6 +602,62 @@
                 error: function(xhr) {
                     const msg = xhr.responseJSON && xhr.responseJSON.message ? xhr.responseJSON.message :
                         'Failed to update chapter.';
+                    toastr.error(msg);
+                }
+            });
+        }
+
+        /**
+         * resetCounts(bookId, chapterId)
+         *  - bookId only   → reset all chapters of that book
+         *  - chapterId only → reset a single chapter
+         *  - neither       → reset ALL chapters globally
+         */
+        function resetCounts(bookId, chapterId) {
+            let scope;
+            if (chapterId) {
+                scope = 'this chapter';
+            } else if (bookId) {
+                scope = 'all chapters of the selected book';
+            } else {
+                scope = 'ALL chapters';
+            }
+
+            if (!confirm(`Recalculate hadith counts for ${scope}? This reads real verse data from the database.`)) return;
+
+            // Pick the correct spinner target
+            let btn;
+            if (chapterId) {
+                btn = $(`button[onclick="resetCounts(null, ${chapterId})"]`).first();
+            } else {
+                btn = $('#resetAllCountsBtn');
+            }
+
+            const originalHtml = btn.html();
+            btn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-1"></span> Resetting...');
+
+            $.ajax({
+                url: "{{ route('admin.hadith-chapters.reset-counts') }}",
+                type: 'POST',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    chapter_id: chapterId || '',
+                    book_id: bookId || ($('#bookSelectFilter').val() || ''),
+                },
+                success: function(r) {
+                    btn.prop('disabled', false).html(originalHtml);
+                    if (r.status) {
+                        toastr.success(r.message);
+                        setTimeout(() => location.reload(), 1000);
+                    } else {
+                        toastr.error(r.message || 'Reset failed.');
+                    }
+                },
+                error: function(xhr) {
+                    btn.prop('disabled', false).html(originalHtml);
+                    const msg = xhr.responseJSON && xhr.responseJSON.message ?
+                        xhr.responseJSON.message :
+                        'Error resetting counts.';
                     toastr.error(msg);
                 }
             });

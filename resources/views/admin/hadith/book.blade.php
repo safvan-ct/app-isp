@@ -268,6 +268,12 @@
                     <button id="importBooksBtn" onclick="importBooks()" class="import-btn-gradient ms-2">
                         <i class="ti ti-cloud-download me-1"></i> Import Books
                     </button>
+
+                    <button id="resetAllCountsBtn" onclick="resetCounts()"
+                        class="btn btn-outline-warning rounded-3 fw-semibold ms-1"
+                        title="Recalculate chapter and hadith counts for all books">
+                        <i class="ti ti-refresh me-1"></i> Reset Counts
+                    </button>
                 </div>
             </div>
         </div>
@@ -341,10 +347,16 @@
                             <i class="ti ti-language me-1"></i> Translations
                         </a>
 
-                        <button onclick="openEditModal({{ json_encode($book) }})"
-                            class="btn btn-sm btn-outline-secondary rounded-3">
-                            <i class="ti ti-edit me-1"></i> Edit
-                        </button>
+                        <div class="d-flex gap-1">
+                            <button onclick="resetCounts({{ $book->id }})"
+                                class="btn btn-sm btn-outline-warning rounded-3" title="Reset counts for this book">
+                                <i class="ti ti-refresh"></i>
+                            </button>
+                            <button onclick="openEditModal({{ json_encode($book) }})"
+                                class="btn btn-sm btn-outline-secondary rounded-3">
+                                <i class="ti ti-edit me-1"></i> Edit
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -411,6 +423,10 @@
                                         class="btn btn-sm btn-light-primary me-1" title="Translations">
                                         <i class="ti ti-language"></i>
                                     </a>
+                                    <button onclick="resetCounts({{ $book->id }})"
+                                        class="btn btn-sm btn-outline-warning me-1" title="Reset Counts">
+                                        <i class="ti ti-refresh"></i>
+                                    </button>
                                     <button onclick="openEditModal({{ json_encode($book) }})"
                                         class="btn btn-sm btn-light-secondary" title="Edit">
                                         <i class="ti ti-edit"></i>
@@ -676,6 +692,45 @@
                     }
                     // Reload page smoothly or re-render grid
                     location.reload();
+                }
+            });
+        }
+
+        function resetCounts(bookId) {
+            const scope = bookId ? 'this book' : 'ALL books';
+            if (!confirm(
+                    `Recalculate chapter and hadith counts for ${scope}? This reads from the database and updates stored counts.`
+                    )) return;
+
+            const btn = bookId ?
+                $(`button[onclick="resetCounts(${bookId})"]`).first() :
+                $('#resetAllCountsBtn');
+
+            const originalHtml = btn.html();
+            btn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-1"></span> Resetting...');
+
+            $.ajax({
+                url: "{{ route('admin.hadith-books.reset-counts') }}",
+                type: 'POST',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    book_id: bookId || '',
+                },
+                success: function(r) {
+                    btn.prop('disabled', false).html(originalHtml);
+                    if (r.status) {
+                        toastr.success(r.message);
+                        setTimeout(() => location.reload(), 1000);
+                    } else {
+                        toastr.error(r.message || 'Reset failed.');
+                    }
+                },
+                error: function(xhr) {
+                    btn.prop('disabled', false).html(originalHtml);
+                    const msg = xhr.responseJSON && xhr.responseJSON.message ?
+                        xhr.responseJSON.message :
+                        'Error resetting counts.';
+                    toastr.error(msg);
                 }
             });
         }
