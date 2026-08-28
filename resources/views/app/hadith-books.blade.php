@@ -34,7 +34,7 @@
                                 <h6 class="text-black fw-bold m-0">{{ $item->translation?->name ?: $item->name }}</h6>
                                 <p class="small m-0">
                                     {{ $item->translation?->writer ?: $item->writer }}
-                                    {{ $item->writer_death_year ? "({$item->writer_death_year}H)" : '' }}
+                                    {{ $item->life_span ? "({$item->life_span}H)" : '' }}
                                 </p>
                             </div>
                         </div>

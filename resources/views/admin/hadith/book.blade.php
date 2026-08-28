@@ -66,8 +66,8 @@
                         name: 'writer',
                     },
                     {
-                        data: 'writer_death_year',
-                        name: 'writer_death_year',
+                        data: 'life_span',
+                        name: 'life_span',
                     },
                     {
                         data: 'chapter_count',

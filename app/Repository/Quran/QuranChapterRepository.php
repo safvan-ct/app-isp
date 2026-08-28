@@ -12,7 +12,7 @@ class QuranChapterRepository implements QuranChapterInterface
 
     public function dataTable()
     {
-        return QuranChapter::select('id', 'name', 'revelation_place', 'no_of_verses', 'is_active');
+        return QuranChapter::select('id', 'name', 'revelation', 'no_of_verses', 'is_active');
     }
 
     public function status($id)
@@ -40,7 +40,7 @@ class QuranChapterRepository implements QuranChapterInterface
 
     public function getWithTranslations()
     {
-        return QuranChapter::select('id', 'name', 'no_of_verses', 'revelation_place')
+        return QuranChapter::select('id', 'name', 'no_of_verses', 'revelation')
             ->with('translations')
             ->active()
             ->get();
@@ -48,7 +48,7 @@ class QuranChapterRepository implements QuranChapterInterface
 
     public function getWithVerses($id = null)
     {
-        $query = QuranChapter::select('id', 'name', 'no_of_verses', 'revelation_place')
+        $query = QuranChapter::select('id', 'name', 'no_of_verses', 'revelation')
             ->with([
                 'translations',
                 'verses' => fn($q) => $q
@@ -85,10 +85,10 @@ class QuranChapterRepository implements QuranChapterInterface
 
         // Filter by translation language
         if (! empty($filters['translation'])) {
-            $lang = $filters['translation'];
-            $query->whereHas('translations', function ($q) use ($lang) {
-                $q->where('lang', $lang)->where('is_active', true);
-            });
+            // $lang = $filters['translation'];
+            // $query->whereHas('translations', function ($q) use ($lang) {
+            //     $q->where('lang', $lang)->where('is_active', true);
+            // });
         }
 
         // Eager load translations

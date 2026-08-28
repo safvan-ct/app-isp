@@ -44,8 +44,8 @@
                         name: 'name'
                     },
                     {
-                        data: 'revelation_place',
-                        name: 'revelation_place',
+                        data: 'revelation',
+                        name: 'revelation',
                     },
                     {
                         data: 'no_of_verses',

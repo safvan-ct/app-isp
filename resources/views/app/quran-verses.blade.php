@@ -12,7 +12,7 @@
             {{ $chapter->translation?->name }} |
 
             <span class="small">
-                {{ $chapter->no_of_verses }} {{ __('app.ayahs') }} • {{ $chapter->revelation_place }}
+                {{ $chapter->no_of_verses }} {{ __('app.ayahs') }} • {{ $chapter->revelation }}
             </span>
         </p>
 

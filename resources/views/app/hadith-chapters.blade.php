@@ -6,7 +6,7 @@
     <x-app.banner :title="$book->translation?->name ?? $book->name">
         <p class="small m-0 mb-2">
             {{ $book->translation?->writer ?? $book->writer }}
-            <span class="text-muted">({{ $book->writer_death_year }}H)</span> •
+            <span class="text-muted">({{ $book->life_span }}H)</span> •
             {{ __('app.hadiths') }}: <strong>{{ $book->hadith_count }}</strong> •
             {{ __('app.chapters') }}: <strong>{{ $book->chapter_count }}</strong>
         </p>

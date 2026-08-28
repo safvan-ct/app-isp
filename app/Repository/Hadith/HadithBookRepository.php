@@ -12,7 +12,7 @@ class HadithBookRepository implements HadithBookInterface
 
     public function dataTable()
     {
-        return HadithBook::select('id', 'name', 'slug', 'writer', 'writer_death_year', 'chapter_count', 'hadith_count', 'is_active');
+        return HadithBook::select('id', 'name', 'slug', 'writer', 'life_span', 'chapter_count', 'hadith_count', 'is_active');
     }
 
     public function status($id)
@@ -33,14 +33,14 @@ class HadithBookRepository implements HadithBookInterface
 
     public function getAll()
     {
-        return HadithBook::select('id', 'name', 'writer', 'writer_death_year', 'hadith_count', 'chapter_count')
+        return HadithBook::select('id', 'name', 'writer', 'life_span', 'hadith_count', 'chapter_count')
             ->active()
             ->get();
     }
 
     public function getWithTranslations()
     {
-        return HadithBook::select('id', 'name', 'slug', 'writer', 'writer_death_year', 'chapter_count', 'hadith_count')
+        return HadithBook::select('id', 'name', 'slug', 'writer', 'life_span', 'chapter_count', 'hadith_count')
             ->with('translations')
             ->active()
             ->get();
@@ -48,7 +48,7 @@ class HadithBookRepository implements HadithBookInterface
 
     public function getWithChapters($id = null)
     {
-        $query = HadithBook::select('id', 'name', 'slug', 'writer', 'writer_death_year', 'chapter_count', 'hadith_count')
+        $query = HadithBook::select('id', 'name', 'slug', 'writer', 'life_span', 'chapter_count', 'hadith_count')
             ->with([
                 'translations',
                 'chapters' => fn($q) => $q

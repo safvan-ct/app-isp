@@ -45,7 +45,7 @@ class HadithChapterRepository implements HadithChapterInterface
                     ->active(),
 
                 'book'   => fn($q)   => $q
-                    ->select('id', 'name', 'slug', 'writer', 'writer_death_year', 'hadith_count', 'chapter_count')
+                    ->select('id', 'name', 'slug', 'writer', 'life_span', 'hadith_count', 'chapter_count')
                     ->with('translations')
                     ->active(),
             ])
