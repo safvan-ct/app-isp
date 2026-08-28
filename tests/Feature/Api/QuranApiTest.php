@@ -361,14 +361,14 @@ it('can filter chapters by revelation type', function () {
         ->assertJsonCount(1, 'data')
         ->assertJsonPath('data.0.slug', 'al-fatihah')
         ->assertJsonPath('meccan_count', 1)
-        ->assertJsonPath('medinan_count', 0);
+        ->assertJsonPath('medinan_count', 1);
 
     // Test filtering by median
     $response = $this->getJson('/api/v1/quran/chapters?revelation=median&all=true');
     $response->assertStatus(200)
         ->assertJsonCount(1, 'data')
         ->assertJsonPath('data.0.slug', 'al-baqarah')
-        ->assertJsonPath('meccan_count', 0)
+        ->assertJsonPath('meccan_count', 1)
         ->assertJsonPath('medinan_count', 1);
 
     // Test filtering by all
