@@ -16,7 +16,8 @@ class HadithVerseRepository implements HadithVerseInterface
 
     public function dataTable($bookId, $chapterId = null)
     {
-        return HadithVerse::where('hadith_book_id', $bookId)
+        return HadithVerse::select('id', 'hadith_book_id', 'hadith_chapter_id', 'chapter_number', 'hadith_number', 'heading', 'text', 'volume', 'status', 'is_active')
+            ->where('hadith_book_id', $bookId)
             ->when($chapterId, function ($q) use ($chapterId) {
                 return $q->where('hadith_chapter_id', $chapterId);
             });
@@ -35,7 +36,8 @@ class HadithVerseRepository implements HadithVerseInterface
 
     public function update(array $data, HadithVerse $hadithVerse)
     {
-        $hadithVerse->update($data);
+        $fillable = ['heading', 'text', 'volume', 'status', 'hadith_number', 'chapter_number'];
+        $hadithVerse->update(array_intersect_key($data, array_flip($fillable)));
         return $hadithVerse;
     }
 

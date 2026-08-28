@@ -12,12 +12,16 @@ class HadithVerseTranslationRepository implements HadithVerseTranslationInterfac
 
     public function dataTable($verseId)
     {
-        return HadithVerseTranslation::where('hadith_verse_id', $verseId);
+        return HadithVerseTranslation::where('hadith_verse_id', $verseId)
+            ->select('id', 'hadith_verse_id', 'lang', 'narrator', 'heading', 'text', 'status_romanized', 'is_active', 'created_at');
     }
 
     public function updateOrCreate(array $data, ?HadithVerseTranslation $hadithVerseTranslation = null): HadithVerseTranslation
     {
-        return HadithVerseTranslation::updateOrCreate(['id' => $hadithVerseTranslation?->id], $data);
+        $fillable = ['hadith_verse_id', 'lang', 'narrator', 'heading', 'text', 'status_romanized', 'created_by', 'is_active'];
+        $payload  = array_intersect_key($data, array_flip($fillable));
+
+        return HadithVerseTranslation::updateOrCreate(['id' => $hadithVerseTranslation?->id], $payload);
     }
 
     public function status($id)

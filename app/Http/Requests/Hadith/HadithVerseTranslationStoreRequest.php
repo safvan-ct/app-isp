@@ -21,10 +21,12 @@ class HadithVerseTranslationStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'heading'         => 'nullable|string',
-            'lang'            => 'required|in:' . implode(',', array_diff(array_keys(config('app.languages')), ['ar'])),
-            'text'            => 'required',
-            'hadith_verse_id' => 'required|exists:hadith_verses,id',
+            'hadith_verse_id'  => 'required|exists:hadith_verses,id',
+            'lang'             => 'required|in:' . implode(',', array_keys(config('app.languages'))),
+            'narrator'         => 'nullable|string|max:500',
+            'heading'          => 'nullable|string',
+            'text'             => 'required|string',
+            'status_romanized' => 'nullable|string|max:100',
         ];
     }
 }

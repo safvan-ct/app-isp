@@ -32,10 +32,12 @@ class HadithVerseTranslationController extends Controller implements HasMiddlewa
 
     public function index($verseId, $translationId = null)
     {
-        $verse       = $this->HadithVerseRepository->getById($verseId);
-        $translation = $this->HadithVerseTranslationRepository->getById($translationId);
+        $verse = $this->HadithVerseRepository->getById($verseId);
+        $verse?->load(['chapter:id,hadith_book_id,chapter_number,name', 'book:id,name,abbreviation,slug']);
+        $translation  = $this->HadithVerseTranslationRepository->getById($translationId);
+        $translations = $this->HadithVerseTranslationRepository->dataTable($verseId)->get();
 
-        return view('admin.hadith.verse-translations', compact('verse', 'translation'));
+        return view('admin.hadith.verse-translations', compact('verse', 'translation', 'translations'));
     }
 
     public function store(HadithVerseTranslationStoreRequest $request)
