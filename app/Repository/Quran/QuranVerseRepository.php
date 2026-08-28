@@ -3,6 +3,7 @@ namespace App\Repository\Quran;
 
 use App\Models\BookmarkItem;
 use App\Models\Like;
+use App\Models\QuranChapter;
 use App\Models\QuranVerse;
 use App\Services\ApiService;
 
@@ -83,5 +84,54 @@ class QuranVerseRepository implements QuranVerseInterface
             ->toArray();
 
         return $this->getVerseById($ids, $paginate);
+    }
+
+    public function getPaginatedVersesWithFilters(QuranChapter $chapter, array $filters, int $perPage)
+    {
+        $query = QuranVerse::query()
+            ->select('id', 'quran_chapter_id', 'number_in_chapter', 'text', 'juz', 'manzil', 'ruku', 'hizb_quarter', 'sajda', 'is_active')
+            ->where('quran_chapter_id', $chapter->id);
+
+        $active = isset($filters['active']) ? filter_var($filters['active'], FILTER_VALIDATE_BOOLEAN) : true;
+        $query->where('is_active', $active);
+
+        // Eager load translations
+        $query->with(['translations' => function ($q) use ($filters) {
+            $q->select('id', 'quran_chapter_id', 'quran_verse_id', 'number_in_chapter', 'lang', 'text', 'text_romanized', 'direction', 'is_active');
+
+            if (! empty($filters['translation'])) {
+                $q->where('lang', $filters['translation']);
+            }
+
+            $q->where('is_active', true);
+        }]);
+
+        return $query->orderBy('number_in_chapter', 'asc')->cursorPaginate($perPage);
+    }
+
+    public function getByChapterAndNumber(int $verseNumber, QuranChapter $chapter, ?string $lang = null)
+    {
+        return QuranVerse::where('quran_chapter_id', $chapter->id)
+            ->where('number_in_chapter', $verseNumber)
+            ->active()
+            ->with([
+                'translations' => function ($q) use ($lang) {
+                    $q->select('id', 'quran_chapter_id', 'quran_verse_id', 'number_in_chapter', 'lang', 'text', 'text_romanized', 'direction', 'is_active')
+                        ->when($lang, fn($q) => $q->where('lang', $lang))
+                        ->where('is_active', true);
+                },
+                // 'chapter' => function ($q) use ($lang) {
+                //     $q->select('id', 'slug', 'name', 'revelation', 'no_of_verses', 'juz', 'is_active')
+                //         ->active()
+                //         ->with([
+                //             'translations' => function ($tQ) use ($lang) {
+                //                 $tQ->select('id', 'quran_chapter_id', 'lang', 'name', 'name_tr', 'revelation_romanized', 'no_of_verses_romanized', 'juz_romanized', 'direction', 'is_active')
+                //                     ->when($lang, fn($q) => $q->where('lang', $lang))
+                //                     ->where('is_active', true);
+                //             }
+                //         ]);
+                // }
+            ])
+            ->firstOrFail();
     }
 }

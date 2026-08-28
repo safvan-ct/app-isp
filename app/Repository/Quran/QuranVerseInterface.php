@@ -1,6 +1,7 @@
 <?php
 namespace App\Repository\Quran;
 
+use App\Models\QuranChapter;
 use App\Models\QuranVerse;
 
 interface QuranVerseInterface
@@ -20,4 +21,8 @@ interface QuranVerseInterface
     public function getLikedVerses($userId, $paginate = true);
 
     public function getBookmarkedVerses($userId, $collectionId, $paginate = true);
+
+    public function getPaginatedVersesWithFilters(QuranChapter $chapter, array $filters, int $perPage);
+
+    public function getByChapterAndNumber(int $verseNumber, QuranChapter $chapter, ?string $lang = null);
 }

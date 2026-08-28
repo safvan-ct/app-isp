@@ -399,33 +399,37 @@ it('can fetch a single Hadith verse by hadith number', function () {
                 ],
             ],
         ],
-        'verse'   => [
-            'id',
-            'hadith_book_id',
-            'hadith_chapter_id',
-            'chapter_number',
-            'hadith_number',
-            'heading',
-            'text',
-            'volume',
-            'status',
-            'translations' => [
+        'verses'  => [
+            'data' => [
                 '*' => [
                     'id',
-                    'hadith_verse_id',
-                    'lang',
-                    'narrator',
+                    'hadith_book_id',
+                    'hadith_chapter_id',
+                    'chapter_number',
+                    'hadith_number',
                     'heading',
                     'text',
+                    'volume',
+                    'status',
+                    'translations' => [
+                        '*' => [
+                            'id',
+                            'hadith_verse_id',
+                            'lang',
+                            'narrator',
+                            'heading',
+                            'text',
+                        ],
+                    ],
                 ],
             ],
         ],
     ]);
 
-    $response->assertJsonPath('verse.hadith_number', 5);
+    $response->assertJsonPath('verses.data.0.hadith_number', 5);
 
     // Assert dates are removed
-    expect($response->json('verse'))->not->toHaveKeys(['created_at', 'updated_at', 'created_by']);
+    expect($response->json('verses.data.0'))->not->toHaveKeys(['created_at', 'updated_at', 'created_by']);
 });
 
 it('returns 404 for invalid hadith number or inactive verse', function () {

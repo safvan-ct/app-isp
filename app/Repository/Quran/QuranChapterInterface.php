@@ -18,4 +18,8 @@ interface QuranChapterInterface
     public function getWithTranslations();
 
     public function getWithVerses($id = null);
+
+    public function getPaginatedChaptersWithFilters(array $filters, int $perPage);
+
+    public function getBySlug(string $slug, ?string $lang = null);
 }

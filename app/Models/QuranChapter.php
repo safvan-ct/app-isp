@@ -45,7 +45,7 @@ class QuranChapter extends Model
     public function translations()
     {
         return $this->hasMany(QuranChapterTranslation::class)
-            ->select('id', 'quran_chapter_id', 'name', 'translation')
+            ->select('id', 'quran_chapter_id', 'lang', 'name', 'name_tr', 'revelation_romanized', 'no_of_verses_romanized', 'juz_romanized', 'direction', 'is_active')
             ->active();
     }
 

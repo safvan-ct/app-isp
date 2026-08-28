@@ -48,7 +48,7 @@ class QuranVerse extends Model
     public function translations()
     {
         return $this->hasMany(QuranVerseTranslation::class)
-            ->select('id', 'quran_verse_id', 'text')
+            ->select('id', 'quran_chapter_id', 'quran_verse_id', 'number_in_chapter', 'lang', 'text', 'text_romanized', 'direction', 'is_active')
             ->active();
     }
 
