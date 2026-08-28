@@ -233,6 +233,7 @@ class HadithBookImportService
                     }
 
                     $bookAttributes = [
+                        'id'            => $bookId,
                         'name'          => $bookAr['name'] ?? $bookName ?? $slug,
                         'abbreviation'  => $bookEng['abbreviation'] ?? null,
                         'writer'        => $bookAr['writer'] ?? $writerName ?? null,
