@@ -10,6 +10,7 @@ class QuranChapter extends Model
     use LogsActivity;
 
     protected $fillable = [
+        'slug',
         'name',
         'revelation',
         'no_of_verses',

@@ -14,6 +14,7 @@ return new class extends Migration
         // 1. Surahs Table
         Schema::create('quran_chapters', function (Blueprint $table) {
             $table->id();
+            $table->string('slug')->unique();
             $table->string('name');
             $table->string('revelation');
             $table->unsignedSmallInteger('no_of_verses');

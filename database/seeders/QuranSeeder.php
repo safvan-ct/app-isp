@@ -45,6 +45,7 @@ class QuranSeeder extends Seeder
             foreach ($data as $surah) {
                 $chapters[] = [
                     'id'           => $surah['number'],
+                    'slug'         => str()->slug($surah['englishName']),
                     'name'         => str_replace('سُورَةُ ', '', $surah['name']),
                     'no_of_verses' => $surah['numberOfAyahs'],
                     'revelation'   => $surah['revelationType'],
