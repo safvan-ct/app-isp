@@ -250,9 +250,9 @@ class HadithBookImportService
 
                     $existingBook = HadithBook::where('slug', $slug)->first();
                     if ($existingBook) {
-                        // $existingBook->update($bookAttributes);
-                        $existingBook->forceFill($bookAttributes);
-                        $existingBook->save();
+                        $existingBook->update($bookAttributes);
+                        // $existingBook->forceFill($bookAttributes);
+                        // $existingBook->save();
 
                         $hadithBook = $existingBook;
                         $updatedCount++;
