@@ -125,6 +125,13 @@ class HadithChapterRepository implements HadithChapterInterface
             $q->where('is_active', true);
         }]);
 
+        // Check if all results are requested (no pagination)
+        $all = isset($filters['all']) ? filter_var($filters['all'], FILTER_VALIDATE_BOOLEAN) : false;
+
+        if ($all) {
+            return $query->orderBy('chapter_number', 'asc')->get();
+        }
+
         return $query->orderBy('chapter_number', 'asc')->cursorPaginate($perPage);
     }
 

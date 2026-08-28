@@ -38,13 +38,22 @@ class GetQuranChaptersRequest extends FormRequest
     {
         $merge = [];
         if ($this->has('all')) {
-            $merge['all'] = filter_var($this->input('all'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+            $val = filter_var($this->input('all'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+            if ($val !== null) {
+                $merge['all'] = $val;
+            }
         }
         if ($this->has('minimal')) {
-            $merge['minimal'] = filter_var($this->input('minimal'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+            $val = filter_var($this->input('minimal'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+            if ($val !== null) {
+                $merge['minimal'] = $val;
+            }
         }
         if ($this->has('active')) {
-            $merge['active'] = filter_var($this->input('active'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+            $val = filter_var($this->input('active'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+            if ($val !== null) {
+                $merge['active'] = $val;
+            }
         }
         if ($this->has('revelation')) {
             $merge['revelation'] = strtolower($this->input('revelation'));

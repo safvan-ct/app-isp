@@ -305,3 +305,91 @@ it('limits request rate', function () {
     $response = $this->getJson("/api/v1/hadith/books/{$book->slug}/chapters");
     $response->assertStatus(429);
 });
+
+it('can fetch all active chapters of Hadith book non-paginated', function () {
+    $user = User::factory()->create();
+
+    $book = HadithBook::create([
+        'name'      => 'Sahih Al-Bukhari',
+        'slug'      => 'sahih-al-bukhari',
+        'is_active' => true,
+    ]);
+
+    HadithChapter::create([
+        'hadith_book_id' => $book->id,
+        'chapter_number' => 1,
+        'slug'           => 'revelation',
+        'name'           => 'كتاب بدء الوحي',
+        'is_active'      => true,
+    ]);
+
+    HadithChapter::create([
+        'hadith_book_id' => $book->id,
+        'chapter_number' => 2,
+        'slug'           => 'belief',
+        'name'           => 'كتاب الإيمان',
+        'is_active'      => true,
+    ]);
+
+    $response = $this->getJson("/api/v1/hadith/books/{$book->slug}/chapters?all=true");
+
+    $response->assertStatus(200)
+        ->assertJsonCount(2, 'chapters.data')
+        ->assertJsonMissingPath('chapters.meta')
+        ->assertJsonMissingPath('chapters.links');
+});
+
+it('can fetch minimal fields for Hadith chapters', function () {
+    $user = User::factory()->create();
+
+    $book = HadithBook::create([
+        'name'      => 'Sahih Al-Bukhari',
+        'slug'      => 'sahih-al-bukhari',
+        'is_active' => true,
+    ]);
+
+    $chapter = HadithChapter::create([
+        'hadith_book_id' => $book->id,
+        'chapter_number' => 1,
+        'slug'           => 'revelation',
+        'name'           => 'كتاب بدء الوحي',
+        'is_active'      => true,
+    ]);
+
+    HadithChapterTranslation::create([
+        'hadith_chapter_id' => $chapter->id,
+        'lang'              => 'en',
+        'name'              => 'Revelation',
+        'created_by'        => $user->id,
+        'is_active'         => true,
+    ]);
+
+    $response = $this->getJson("/api/v1/hadith/books/{$book->slug}/chapters?minimal=true");
+
+    $response->assertStatus(200)
+        ->assertJsonStructure([
+            'chapters' => [
+                'data' => [
+                    '*' => [
+                        'id',
+                        'hadith_book_id',
+                        'chapter_number',
+                        'slug',
+                        'title',
+                        'translation',
+                        'name',
+                        'hadith_count',
+                    ],
+                ],
+            ],
+        ])
+        ->assertJsonMissingPath('book');
+
+    $data = $response->json('chapters.data.0');
+    expect($data)->not->toHaveKey('translations')
+        ->and($data['id'])->toBe($chapter->id)
+        ->and($data['slug'])->toBe('revelation')
+        ->and($data['title'])->toBe('Revelation')
+        ->and($data['translation'])->toBe('Revelation')
+        ->and($data['name'])->toBe('كتاب بدء الوحي');
+});

@@ -17,11 +17,28 @@ class HadithChapterService
     {
         $book = $this->hadithBookRepository->getBySlugWithActiveTranslation($bookSlug, $filters['translation'] ?? null);
 
-        $paginatedChapters = $this->hadithChapterRepository->getPaginatedChaptersWithFilters($book, $filters, $perPage);
+        $chapters = $this->hadithChapterRepository->getPaginatedChaptersWithFilters($book, $filters, $perPage);
 
-        return [
-            'book'     => new HadithBookResource($book),
-            'chapters' => HadithChapterResource::collection($paginatedChapters)->response()->getData(true),
+        $isMinimal = filter_var($filters['minimal'] ?? false, FILTER_VALIDATE_BOOLEAN);
+
+        if ($chapters instanceof \Illuminate\Pagination\CursorPaginator  || $chapters instanceof \Illuminate\Pagination\AbstractPaginator) {
+            $responseData = [
+                'chapters' => HadithChapterResource::collection($chapters)->response()->getData(true),
+            ];
+            if (! $isMinimal) {
+                $responseData['book'] = new HadithBookResource($book);
+            }
+            return $responseData;
+        }
+
+        $responseData = [
+            'chapters' => [
+                'data' => HadithChapterResource::collection($chapters),
+            ],
         ];
+        if (! $isMinimal) {
+            $responseData['book'] = new HadithBookResource($book);
+        }
+        return $responseData;
     }
 }
