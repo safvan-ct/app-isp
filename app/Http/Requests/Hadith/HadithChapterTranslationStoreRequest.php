@@ -21,9 +21,11 @@ class HadithChapterTranslationStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'              => 'required',
-            'lang'              => 'required|in:' . implode(',', array_diff(array_keys(config('app.languages')), ['ar'])),
             'hadith_chapter_id' => 'required|exists:hadith_chapters,id',
+            'lang'              => 'required|in:' . implode(',', array_diff(array_keys(config('app.languages')), ['ar'])),
+            'name'              => 'required|string|max:500',
+            'name_romanized'    => 'nullable|string|max:500',
+            'description'       => 'nullable|string',
         ];
     }
 }

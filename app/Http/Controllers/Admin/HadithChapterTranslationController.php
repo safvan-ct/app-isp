@@ -32,10 +32,11 @@ class HadithChapterTranslationController extends Controller implements HasMiddle
 
     public function index($chapterId, $translationId = null)
     {
-        $chapter     = $this->HadithChapterRepository->getById($chapterId);
-        $translation = $this->HadithChapterTranslationRepository->getById($translationId);
+        $chapter      = $this->HadithChapterRepository->getById($chapterId);
+        $translation  = $this->HadithChapterTranslationRepository->getById($translationId);
+        $translations = $this->HadithChapterTranslationRepository->dataTable($chapterId)->get();
 
-        return view('admin.hadith.chapter-translation', compact('chapter', 'translation'));
+        return view('admin.hadith.chapter-translation', compact('chapter', 'translation', 'translations'));
     }
 
     public function store(HadithChapterTranslationStoreRequest $request)

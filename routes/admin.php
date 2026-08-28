@@ -70,6 +70,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'not.customer'])->gr
     Route::resource('hadith-book-translations', HadithBookTranslationController::class)->only('store', 'update');
 
     Route::get('hadith-chapters/dataTable', [HadithChapterController::class, 'dataTable'])->name('hadith-chapters.dataTable');
+    Route::post('hadith-chapters/import', [HadithChapterController::class, 'import'])->name('hadith-chapters.import');
     Route::patch('hadith-chapters/status/{id}', [HadithChapterController::class, 'status'])->name('hadith-chapters.status');
     Route::resource('hadith-chapters', HadithChapterController::class)->only('index', 'update');
 
