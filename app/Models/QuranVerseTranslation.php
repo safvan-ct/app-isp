@@ -9,7 +9,17 @@ class QuranVerseTranslation extends Model
 {
     use LogsActivity;
 
-    protected $fillable = ['quran_chapter_id', 'quran_verse_id', 'number_in_chapter', 'lang', 'text', 'created_by', 'is_active'];
+    protected $fillable = [
+        'quran_chapter_id',
+        'quran_verse_id',
+        'number_in_chapter',
+        'lang',
+        'text',
+        'text_romanized',
+        'direction',
+        'created_by',
+        'is_active',
+    ];
 
     protected static $recordEvents = ['updated'];
 

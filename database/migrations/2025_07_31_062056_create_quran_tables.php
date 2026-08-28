@@ -15,8 +15,9 @@ return new class extends Migration
         Schema::create('quran_chapters', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('revelation_place');
+            $table->string('revelation');
             $table->unsignedSmallInteger('no_of_verses');
+            $table->string('juz')->nullable();
             $table->boolean('is_active')->default(true);
             $table->timestamps();
 
@@ -30,7 +31,11 @@ return new class extends Migration
 
             $table->string('lang');
             $table->string('name');
-            $table->string('translation')->nullable();
+            $table->string('name_tr')->nullable();
+            $table->string('revelation_romanized')->nullable();
+            $table->string('no_of_verses_romanized')->nullable();
+            $table->string('juz_romanized')->nullable();
+            $table->string('direction')->default('ltr');
             $table->foreignId('created_by')->constrained('users')->onDelete('RESTRICT');
 
             $table->boolean('is_active')->default(true);
@@ -75,6 +80,8 @@ return new class extends Migration
             $table->unsignedSmallInteger('number_in_chapter');
             $table->string('lang');
             $table->text('text');
+            $table->text('text_romanized')->nullable();
+            $table->string('direction')->default('ltr');
             $table->foreignId('created_by')->constrained('users')->onDelete('RESTRICT');
 
             $table->boolean('is_active')->default(true);

@@ -9,7 +9,17 @@ class QuranVerse extends Model
 {
     use LogsActivity;
 
-    protected $fillable = ['quran_chapter_id', 'number_in_chapter', 'text', 'juz', 'manzil', 'ruku', 'hizb_quarter', 'sajda', 'is_active'];
+    protected $fillable = [
+        'quran_chapter_id',
+        'number_in_chapter',
+        'text',
+        'juz',
+        'manzil',
+        'ruku',
+        'hizb_quarter',
+        'sajda',
+        'is_active',
+    ];
 
     protected static $recordEvents = ['updated'];
 
@@ -39,8 +49,7 @@ class QuranVerse extends Model
     {
         return $this->hasMany(QuranVerseTranslation::class)
             ->select('id', 'quran_verse_id', 'text')
-            ->active()
-            ->lang();
+            ->active();
     }
 
     // --------------------

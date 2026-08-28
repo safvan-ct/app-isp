@@ -9,14 +9,24 @@ class QuranChapterTranslation extends Model
 {
     use LogsActivity;
 
-    protected $fillable = ['quran_chapter_id', 'lang', 'name', 'translation', 'created_by', 'is_active'];
+    protected $fillable = [
+        'quran_chapter_id',
+        'lang',
+        'name',
+        'name_tr',
+        'revelation_romanized',
+        'no_of_verses_romanized',
+        'juz_romanized',
+        'created_by',
+        'is_active',
+    ];
 
     protected static $recordEvents = ['updated'];
 
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['name', 'translation', 'is_active'])
+            ->logOnly(['name', 'name_tr', 'is_active'])
             ->useLogName('quran_chapter_translations')
             ->logOnlyDirty()
             ->dontSubmitEmptyLogs();

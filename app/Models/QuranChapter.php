@@ -9,14 +9,20 @@ class QuranChapter extends Model
 {
     use LogsActivity;
 
-    protected $fillable = ['name', 'revelation_place', 'no_of_verses', 'is_active'];
+    protected $fillable = [
+        'name',
+        'revelation',
+        'no_of_verses',
+        'juz',
+        'is_active',
+    ];
 
     protected static $recordEvents = ['updated'];
 
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['name', 'is_active'])
+            ->logOnly(['name', 'revelation', 'no_of_verses', 'juz', 'is_active'])
             ->useLogName('quran_chapters')
             ->logOnlyDirty()
             ->dontSubmitEmptyLogs();
@@ -39,8 +45,7 @@ class QuranChapter extends Model
     {
         return $this->hasMany(QuranChapterTranslation::class)
             ->select('id', 'quran_chapter_id', 'name', 'translation')
-            ->active()
-            ->lang();
+            ->active();
     }
 
     // --------------------
