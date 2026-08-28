@@ -18,7 +18,7 @@ class QuranChapterController extends Controller
         $perPage = (int) ($validated['per_page'] ?? 15);
 
         // Filter keys only for query parameters
-        $filters = array_intersect_key($validated, array_flip(['chapter_name', 'translation', 'active']));
+        $filters = array_intersect_key($validated, array_flip(['chapter_name', 'translation', 'active', 'all', 'minimal', 'revelation']));
 
         return $this->quranChapterService->getChapters($filters, $perPage);
     }

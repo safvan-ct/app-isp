@@ -70,9 +70,16 @@ class HadithBookRepository implements HadithBookInterface
         $active = isset($filters['active']) ? filter_var($filters['active'], FILTER_VALIDATE_BOOLEAN) : true;
         $query->where('is_active', $active);
 
-        // Filter by book name
+        // Filter by book name (matches book name, translation name, or name_romanized)
         if (! empty($filters['book_name'])) {
-            $query->where('name', 'like', '%' . $filters['book_name'] . '%');
+            $name = $filters['book_name'];
+            $query->where(function ($q) use ($name) {
+                $q->where('name', 'like', '%' . $name . '%')
+                    ->orWhereHas('translations', function ($tq) use ($name) {
+                        $tq->where('name', 'like', '%' . $name . '%')
+                            ->orWhere('name_romanized', 'like', '%' . $name . '%');
+                    });
+            });
         }
 
         // Filter by translation language
@@ -80,14 +87,6 @@ class HadithBookRepository implements HadithBookInterface
             $lang = $filters['translation'];
             $query->whereHas('translations', function ($q) use ($lang) {
                 $q->where('lang', $lang)->where('is_active', true);
-            });
-        }
-
-        // Filter by name in translation (name search by translation)
-        if (! empty($filters['book_name'])) {
-            $transName = $filters['book_name'];
-            $query->whereHas('translations', function ($q) use ($transName) {
-                $q->where('name', 'like', '%' . $transName . '%')->where('is_active', true);
             });
         }
 

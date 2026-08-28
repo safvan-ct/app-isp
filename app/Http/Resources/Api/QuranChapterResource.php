@@ -13,6 +13,17 @@ class QuranChapterResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        if ($request->boolean('minimal')) {
+            $translation = $this->translations->first();
+            return [
+                'id'          => $this->id,
+                'slug'        => $this->slug,
+                'title'       => $translation?->name_tr ?? $this->name,
+                'translation' => $translation?->name ?? '',
+                'name'        => $this->name,
+            ];
+        }
+
         return [
             'id'           => $this->id,
             'slug'         => $this->slug,

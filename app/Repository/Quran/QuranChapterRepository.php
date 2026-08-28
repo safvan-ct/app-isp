@@ -102,7 +102,34 @@ class QuranChapterRepository implements QuranChapterInterface
             $q->where('is_active', true);
         }]);
 
-        return $query->orderBy('id', 'asc')->cursorPaginate($perPage);
+        // Calculate counts for Meccan and Medinan matching the query
+        $meccanCount  = (clone $query)->whereIn('revelation', ['Meccan', 'meccan'])->count();
+        $medinanCount = (clone $query)->whereIn('revelation', ['Medinan', 'medinan'])->count();
+
+        // Filter by revelation place/type
+        if (! empty($filters['revelation'])) {
+            $rev = strtolower($filters['revelation']);
+            if ($rev === 'mecca' || $rev === 'meccan') {
+                $query->whereIn('revelation', ['Meccan', 'meccan']);
+            } elseif ($rev === 'median' || $rev === 'medinan') {
+                $query->whereIn('revelation', ['Medinan', 'medinan']);
+            }
+        }
+
+        // Check if all results are requested (no pagination)
+        $all = isset($filters['all']) ? filter_var($filters['all'], FILTER_VALIDATE_BOOLEAN) : false;
+
+        if ($all) {
+            $chapters = $query->orderBy('id', 'asc')->get();
+        } else {
+            $chapters = $query->orderBy('id', 'asc')->cursorPaginate($perPage);
+        }
+
+        return [
+            'chapters'      => $chapters,
+            'meccan_count'  => $meccanCount,
+            'medinan_count' => $medinanCount,
+        ];
     }
 
     public function getBySlug(string $slug, ?string $lang = null)

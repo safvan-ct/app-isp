@@ -222,3 +222,157 @@ it('can fetch a single Quran verse by number', function () {
             ],
         ]);
 });
+
+it('can fetch all active chapters of Quran non-paginated', function () {
+    $user = User::factory()->create();
+
+    QuranChapter::create([
+        'slug'         => 'al-fatihah',
+        'name'         => 'Al-Fatihah',
+        'revelation'   => 'Meccan',
+        'no_of_verses' => 7,
+        'juz'          => '1',
+        'is_active'    => true,
+    ]);
+
+    QuranChapter::create([
+        'slug'         => 'al-baqarah',
+        'name'         => 'Al-Baqarah',
+        'revelation'   => 'Medinan',
+        'no_of_verses' => 286,
+        'juz'          => '1',
+        'is_active'    => true,
+    ]);
+
+    $response = $this->getJson('/api/v1/quran/chapters?all=true');
+
+    $response->assertStatus(200)
+        ->assertJsonCount(2, 'data')
+        ->assertJsonPath('meccan_count', 1)
+        ->assertJsonPath('medinan_count', 1)
+        ->assertJsonMissingPath('meta')
+        ->assertJsonMissingPath('links');
+});
+
+it('can fetch minimal fields for Quran chapters', function () {
+    $user = User::factory()->create();
+
+    $chapter = QuranChapter::create([
+        'id'           => 1,
+        'slug'         => 'al-fatihah',
+        'name'         => 'Al-Fatihah',
+        'revelation'   => 'Meccan',
+        'no_of_verses' => 7,
+        'juz'          => '1',
+        'is_active'    => true,
+    ]);
+
+    QuranChapterTranslation::create([
+        'quran_chapter_id'       => $chapter->id,
+        'lang'                   => 'en',
+        'name'                   => 'The Opening',
+        'name_tr'                => 'Al-Fatihah',
+        'revelation_romanized'   => 'Meccan',
+        'no_of_verses_romanized' => '7',
+        'juz_romanized'          => '1',
+        'created_by'             => $user->id,
+        'is_active'              => true,
+    ]);
+
+    $response = $this->getJson('/api/v1/quran/chapters?minimal=true');
+
+    $response->assertStatus(200)
+        ->assertJsonStructure([
+            'data' => [
+                '*' => [
+                    'id',
+                    'slug',
+                    'title',
+                    'translation',
+                    'name',
+                ],
+            ],
+        ]);
+
+    $data = $response->json('data.0');
+    expect($data)->not->toHaveKey('revelation')
+        ->and($data)->not->toHaveKey('no_of_verses')
+        ->and($data)->not->toHaveKey('translations')
+        ->and($data['id'])->toBe(1)
+        ->and($data['slug'])->toBe('al-fatihah')
+        ->and($data['title'])->toBe('Al-Fatihah')
+        ->and($data['translation'])->toBe('The Opening')
+        ->and($data['name'])->toBe('Al-Fatihah');
+});
+
+it('returns filtered counts for Meccan and Medinan chapters', function () {
+    $user = User::factory()->create();
+
+    QuranChapter::create([
+        'slug'         => 'al-fatihah',
+        'name'         => 'Al-Fatihah',
+        'revelation'   => 'Meccan',
+        'no_of_verses' => 7,
+        'juz'          => '1',
+        'is_active'    => true,
+    ]);
+
+    QuranChapter::create([
+        'slug'         => 'al-baqarah',
+        'name'         => 'Al-Baqarah',
+        'revelation'   => 'Medinan',
+        'no_of_verses' => 286,
+        'juz'          => '1',
+        'is_active'    => true,
+    ]);
+
+    // Filter by name matching Fatihah (should return only 1 Meccan chapter)
+    $response = $this->getJson('/api/v1/quran/chapters?chapter_name=Fatihah');
+
+    $response->assertStatus(200)
+        ->assertJsonPath('meccan_count', 1)
+        ->assertJsonPath('medinan_count', 0);
+});
+
+it('can filter chapters by revelation type', function () {
+    $user = User::factory()->create();
+
+    QuranChapter::create([
+        'slug'         => 'al-fatihah',
+        'name'         => 'Al-Fatihah',
+        'revelation'   => 'Meccan',
+        'no_of_verses' => 7,
+        'juz'          => '1',
+        'is_active'    => true,
+    ]);
+
+    QuranChapter::create([
+        'slug'         => 'al-baqarah',
+        'name'         => 'Al-Baqarah',
+        'revelation'   => 'Medinan',
+        'no_of_verses' => 286,
+        'juz'          => '1',
+        'is_active'    => true,
+    ]);
+
+    // Test filtering by mecca
+    $response = $this->getJson('/api/v1/quran/chapters?revelation=mecca&all=true');
+    $response->assertStatus(200)
+        ->assertJsonCount(1, 'data')
+        ->assertJsonPath('data.0.slug', 'al-fatihah')
+        ->assertJsonPath('meccan_count', 1)
+        ->assertJsonPath('medinan_count', 0);
+
+    // Test filtering by median
+    $response = $this->getJson('/api/v1/quran/chapters?revelation=median&all=true');
+    $response->assertStatus(200)
+        ->assertJsonCount(1, 'data')
+        ->assertJsonPath('data.0.slug', 'al-baqarah')
+        ->assertJsonPath('meccan_count', 0)
+        ->assertJsonPath('medinan_count', 1);
+
+    // Test filtering by all
+    $response = $this->getJson('/api/v1/quran/chapters?revelation=all&all=true');
+    $response->assertStatus(200)
+        ->assertJsonCount(2, 'data');
+});

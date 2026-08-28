@@ -89,9 +89,20 @@ class HadithChapterRepository implements HadithChapterInterface
         $active = isset($filters['active']) ? filter_var($filters['active'], FILTER_VALIDATE_BOOLEAN) : true;
         $query->where('is_active', $active);
 
-        // Filter by chapter name
+        // Filter by chapter name (matches chapter name, translation name, name_romanized, or chapter number)
         if (! empty($filters['chapter_name'])) {
-            $query->where('name', 'like', '%' . $filters['chapter_name'] . '%');
+            $name = $filters['chapter_name'];
+            $query->where(function ($q) use ($name) {
+                $q->where('name', 'like', '%' . $name . '%')
+                    ->orWhereHas('translations', function ($tq) use ($name) {
+                        $tq->where('name', 'like', '%' . $name . '%')
+                            ->orWhere('name_romanized', 'like', '%' . $name . '%');
+                    });
+
+                if (is_numeric($name)) {
+                    $q->orWhere('chapter_number', $name);
+                }
+            });
         }
 
         // Filter by translation language
@@ -99,14 +110,6 @@ class HadithChapterRepository implements HadithChapterInterface
             $lang = $filters['translation'];
             $query->whereHas('translations', function ($q) use ($lang) {
                 $q->where('lang', $lang)->where('is_active', true);
-            });
-        }
-
-        // Filter by name in translation (name search by translation)
-        if (! empty($filters['chapter_name'])) {
-            $transName = $filters['chapter_name'];
-            $query->whereHas('translations', function ($q) use ($transName) {
-                $q->where('name', 'like', '%' . $transName . '%')->where('is_active', true);
             });
         }
 
