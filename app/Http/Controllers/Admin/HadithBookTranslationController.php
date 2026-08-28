@@ -32,10 +32,11 @@ class HadithBookTranslationController extends Controller implements HasMiddlewar
 
     public function index($bookId, $translationId = null)
     {
-        $book        = $this->HadithBookRepository->getById($bookId);
-        $translation = $this->HadithBookTranslationRepository->getById($translationId);
+        $book         = $this->HadithBookRepository->getById($bookId);
+        $translation  = $this->HadithBookTranslationRepository->getById($translationId);
+        $translations = HadithBookTranslation::where('hadith_book_id', $bookId)->get();
 
-        return view('admin.hadith.book-translation', compact('book', 'translation'));
+        return view('admin.hadith.book-translation', compact('book', 'translation', 'translations'));
     }
 
     public function store(HadithBookTranslationStoreRequest $request)

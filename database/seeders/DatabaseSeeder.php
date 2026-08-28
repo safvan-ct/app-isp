@@ -17,10 +17,12 @@ class DatabaseSeeder extends Seeder
         $this->call(QuranSeeder::class);
         $this->call(QuranVerseSeeder::class);
 
-        $this->call(HadithBookSeeder::class);
-        $this->call(HadithChapterSeeder::class);
-        $this->call(HadithVerseSeeder::class);
-        $this->call(HadithVerseJsonSeeder::class);
-        $this->call(HadithChapterCountSeeder::class);
+        if (config('app.env') === 'local') {
+            $this->call(HadithBookSeeder::class);
+            $this->call(HadithChapterSeeder::class);
+            $this->call(HadithVerseSeeder::class);
+            $this->call(HadithVerseJsonSeeder::class);
+            $this->call(HadithChapterCountSeeder::class);
+        }
     }
 }

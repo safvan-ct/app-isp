@@ -21,10 +21,15 @@ class HadithBookTranslationStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'lang'           => 'required|in:' . implode(',', array_keys(config('app.languages'))),
-            'name'           => 'required',
-            'writer'         => 'required',
-            'hadith_book_id' => 'required|exists:hadith_books,id',
+            'lang'                => 'required|in:' . implode(',', array_keys(config('app.languages'))),
+            'name'                => 'required|string|max:255',
+            'name_romanized'      => 'nullable|string|max:255',
+            'writer'              => 'required|string|max:255',
+            'writer_romanized'    => 'nullable|string|max:255',
+            'life_span_romanized' => 'nullable|string|max:255',
+            'status_romanized'    => 'nullable|string|max:255',
+            'description'         => 'nullable|string',
+            'hadith_book_id'      => 'required|exists:hadith_books,id',
         ];
     }
 }

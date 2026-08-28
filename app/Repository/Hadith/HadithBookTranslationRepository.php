@@ -12,7 +12,7 @@ class HadithBookTranslationRepository implements HadithBookTranslationInterface
 
     public function dataTable($bookId)
     {
-        return HadithBookTranslation::where('hadith_book_id', $bookId)->select(['id', 'lang', 'name', 'writer', 'is_active']);
+        return HadithBookTranslation::where('hadith_book_id', $bookId)->select(['id', 'lang', 'name', 'name_romanized', 'writer', 'writer_romanized', 'life_span_romanized', 'status_romanized', 'description', 'is_active']);
     }
 
     public function updateOrCreate(array $data, ?HadithBookTranslation $hadithBookTranslation = null)

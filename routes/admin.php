@@ -60,6 +60,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'not.customer'])->gr
 
     // Hadith
     Route::get('hadith-books/dataTable', [HadithBookController::class, 'dataTable'])->name('hadith-books.dataTable');
+    Route::post('hadith-books/import', [HadithBookController::class, 'import'])->name('hadith-books.import');
     Route::patch('hadith-books/status/{id}', [HadithBookController::class, 'status'])->name('hadith-books.status');
     Route::resource('hadith-books', HadithBookController::class)->only('index', 'update');
 

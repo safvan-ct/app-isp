@@ -12,7 +12,7 @@ class HadithBookRepository implements HadithBookInterface
 
     public function dataTable()
     {
-        return HadithBook::select('id', 'name', 'slug', 'writer', 'life_span', 'chapter_count', 'hadith_count', 'is_active');
+        return HadithBook::select('id', 'name', 'slug', 'abbreviation', 'writer', 'status', 'group', 'life_span', 'chapter_count', 'hadith_count', 'priority', 'is_active');
     }
 
     public function status($id)
