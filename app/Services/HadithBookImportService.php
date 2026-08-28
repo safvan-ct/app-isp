@@ -233,7 +233,6 @@ class HadithBookImportService
                     }
 
                     $bookAttributes = [
-                        'id'            => $bookId,
                         'name'          => $bookAr['name'] ?? $bookName ?? $slug,
                         'abbreviation'  => $bookEng['abbreviation'] ?? null,
                         'writer'        => $bookAr['writer'] ?? $writerName ?? null,
@@ -251,11 +250,14 @@ class HadithBookImportService
 
                     $existingBook = HadithBook::where('slug', $slug)->first();
                     if ($existingBook) {
-                        $existingBook->update($bookAttributes);
+                        // $existingBook->update($bookAttributes);
+                        $existingBook->forceFill($bookAttributes);
+                        $existingBook->save();
+
                         $hadithBook = $existingBook;
                         $updatedCount++;
                     } else {
-                        $hadithBook = HadithBook::create(array_merge(['slug' => $slug], $bookAttributes));
+                        $hadithBook = HadithBook::forceCreate(array_merge(['slug' => $slug], $bookAttributes));
                         $importedCount++;
                     }
 
