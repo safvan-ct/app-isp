@@ -100,21 +100,19 @@ class HadithChapterImportService
                         $slug     = Str::slug($slugText);
 
                         $chapterAttributes = [
+                            'id'   => $apiChapId,
                             'slug' => $slug,
                             'name' => $arabicName ?? $englishRaw ?? "Chapter {$chapNum}",
                             'sort' => $sort++,
                         ];
 
-                        $existingChapter = HadithChapter::where('hadith_book_id', $book->id)
-                            ->where('chapter_number', $chapNum)
-                            ->first();
-
+                        $existingChapter = HadithChapter::where('hadith_book_id', $book->id)->where('chapter_number', $chapNum)->first();
                         if ($existingChapter) {
                             $existingChapter->update($chapterAttributes);
                             $chapterModel = $existingChapter;
                             $updatedCount++;
                         } else {
-                            $chapterModel = HadithChapter::create(array_merge([
+                            $chapterModel = HadithChapter::firstOrCreate(array_merge([
                                 'hadith_book_id' => $book->id,
                                 'chapter_number' => $chapNum,
                             ], $chapterAttributes));
