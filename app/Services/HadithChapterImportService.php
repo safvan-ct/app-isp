@@ -100,11 +100,14 @@ class HadithChapterImportService
                         $slug     = Str::slug($slugText);
 
                         $chapterAttributes = [
-                            'id'   => $apiChapId,
                             'slug' => $slug,
                             'name' => $arabicName ?? $englishRaw ?? "Chapter {$chapNum}",
                             'sort' => $sort++,
                         ];
+
+                        if ($apiChapId) {
+                            $chapterAttributes['id'] = $apiChapId;
+                        }
 
                         $existingChapter = HadithChapter::where('hadith_book_id', $book->id)->where('chapter_number', $chapNum)->first();
                         if ($existingChapter) {

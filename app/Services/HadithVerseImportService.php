@@ -81,7 +81,7 @@ class HadithVerseImportService
         // ------------------------------------------------------------------
         $urlBase = "{$this->baseUrl}&book={$book->slug}&paginate=500";
         if ($chapter) {
-            $urlBase .= "&chapter={$chapter->id}";
+            $urlBase .= "&chapter={$chapter->chapter_number}";
         }
 
         // ------------------------------------------------------------------
