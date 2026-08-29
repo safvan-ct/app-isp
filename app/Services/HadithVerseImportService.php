@@ -87,47 +87,59 @@ class HadithVerseImportService
         // ------------------------------------------------------------------
         // 3. Fetch first page to get total_pages
         // ------------------------------------------------------------------
-        $firstPage = $this->apiService->get("{$urlBase}&page=1");
+        try {
+            $firstPage = $this->apiService->get("{$urlBase}&page=1");
+        } catch (\Exception $e) {
+            $msg = "Failed to connect to API: " . $e->getMessage();
+            Log::error("[HadithVerseImport] {$msg}");
+            $this->markLogError($log, $msg);
+            return $this->result(false, $msg, 0, 0, 0, [$msg], $log ? $log->refresh() : null);
+        }
 
         if (Arr::get($firstPage, 'status') !== 200) {
-            $msg = "[HadithVerseImport] Failed to fetch first page for {$scope}. Status: "
-                . Arr::get($firstPage, 'status');
-            Log::error($msg, ['response' => $firstPage]);
-            return $this->result(false, "API error fetching verses for {$scope}.", 0, 0, 0, [$msg], $log);
+            $msg = "API error fetching first page for {$scope}. Status: " . Arr::get($firstPage, 'status');
+            Log::error("[HadithVerseImport] {$msg}", ['response' => $firstPage]);
+            $this->markLogError($log, $msg);
+            return $this->result(false, $msg, 0, 0, 0, [$msg], $log ? $log->refresh() : null);
         }
 
         $totalPages = (int) Arr::get($firstPage, 'result.hadiths.last_page', 0);
 
         if ($totalPages === 0) {
-            $msg = "[HadithVerseImport] No pages returned for {$scope}.";
-            Log::warning($msg);
+            $msg = "No pages returned for {$scope}.";
+            Log::warning("[HadithVerseImport] {$msg}");
             return $this->result(true, $msg, 0, 0, 0, [$msg], $log);
         }
 
         // ------------------------------------------------------------------
-        // 4. Create or update log
+        // 4. Create or update log — mark in_progress
         // ------------------------------------------------------------------
         $isResume = $log !== null;
 
-        if (! $log) {
-            // Fresh import
-            $log = HadithVerseImportLog::create([
-                'hadith_book_id'    => $bookId,
-                'hadith_chapter_id' => $chapterId,
-                'total_pages'       => $totalPages,
-                'success_pages'     => [],
-                'failed_pages'      => [],
-                'failed_hadiths'    => [],
-                'status'            => 'in_progress',
-                'started_at'        => now(),
-            ]);
-        } else {
-            // Resume: keep existing success_pages, reset failed_pages for re-processing
-            $log->update([
-                'total_pages' => $totalPages,
-                'status'      => 'in_progress',
-                'started_at'  => $log->started_at ?? now(),
-            ]);
+        try {
+            if (! $log) {
+                $log = HadithVerseImportLog::create([
+                    'hadith_book_id'    => $bookId,
+                    'hadith_chapter_id' => $chapterId,
+                    'total_pages'       => $totalPages,
+                    'success_pages'     => [],
+                    'failed_pages'      => [],
+                    'failed_hadiths'    => [],
+                    'status'            => 'in_progress',
+                    'started_at'        => now(),
+                ]);
+            } else {
+                $log->update([
+                    'total_pages' => $totalPages,
+                    'status'      => 'in_progress',
+                    'started_at'  => $log->started_at ?? now(),
+                ]);
+                $log->refresh();
+            }
+        } catch (\Exception $e) {
+            $msg = "Failed to create/update import log: " . $e->getMessage();
+            Log::error("[HadithVerseImport] {$msg}");
+            return $this->result(false, $msg, 0, 0, 0, [$msg], null);
         }
 
         Log::info("[HadithVerseImport] " . ($isResume ? 'Resuming' : 'Starting')
@@ -142,80 +154,134 @@ class HadithVerseImportService
             : range(1, $totalPages); // Fresh: all pages
 
         $successPages  = $log->success_pages ?? [];
-        // On resume: start with the FULL existing failed list from DB.
-        // Each page that succeeds is removed from it → DB always shows truly-pending pages.
-        // On fresh: start empty, pages that fail get added.
+        // On resume: start with FULL existing failed list from DB so that
+        // page-by-page saves always reflect truly-remaining pages.
+        // On fresh: start empty, failed pages accumulate as they fail.
         $failedPages   = $isResume ? ($log->failed_pages ?? []) : [];
         $failedHadiths = $log->failed_hadiths ?? [];
         $warnings      = [];
         $newCount      = $updatedCount = $skippedCount = 0;
 
         // ------------------------------------------------------------------
-        // 6. Process each page
+        // 6. Process each page — catch ALL exceptions so the log is always saved
         // ------------------------------------------------------------------
-        foreach ($pagesToProcess as $page) {
-            $pageResult = $this->processPage(
-                $page,
-                $urlBase,
-                $scope,
-                $failedHadiths,
-                $warnings,
-                $newCount,
-                $updatedCount
-            );
+        try {
+            foreach ($pagesToProcess as $page) {
+                try {
+                    $pageResult = $this->processPage(
+                        $page,
+                        $urlBase,
+                        $scope,
+                        $failedHadiths,
+                        $warnings,
+                        $newCount,
+                        $updatedCount
+                    );
+                } catch (\Exception $e) {
+                    // Unexpected exception on a single page (e.g. DB connection lost mid-transaction)
+                    $reason      = "Page {$page} threw exception: " . $e->getMessage();
+                    $warnings[]  = "[HadithVerseImport] {$reason}";
+                    $failedHadiths[] = ['page' => $page, 'hadith_id' => null, 'reason' => $reason];
+                    Log::error("[HadithVerseImport] {$reason}", ['trace' => $e->getTraceAsString()]);
+                    $pageResult = false;
+                }
 
-            if ($pageResult === true) {
-                // Add to success list if not already there
-                if (! in_array($page, $successPages)) {
-                    $successPages[] = $page;
+                if ($pageResult === true) {
+                    // Add to success if not already there
+                    if (! in_array($page, $successPages)) {
+                        $successPages[] = $page;
+                    }
+                    // ALWAYS remove from failed — shrinks DB's failed_pages as we go
+                    $failedPages = array_values(array_filter($failedPages, fn($p) => $p !== $page));
+                } else {
+                    // Keep/add in failed pages
+                    if (! in_array($page, $failedPages)) {
+                        $failedPages[] = $page;
+                    }
+                    // If this page previously succeeded but now fails, demote it
+                    $successPages = array_values(array_filter($successPages, fn($p) => $p !== $page));
+                    $skippedCount++;
                 }
-                // ALWAYS remove from failed list — this shrinks the DB's failed_pages
-                // so mid-run crashes don't lose tracking of remaining pending pages
-                $failedPages = array_values(array_filter($failedPages, fn($p) => $p !== $page));
-            } else {
-                // Keep/add in failed pages list
-                if (! in_array($page, $failedPages)) {
-                    $failedPages[] = $page;
+
+                // Persist progress after every page — log is always up-to-date
+                try {
+                    $log->update([
+                        'success_pages'  => array_values(array_unique($successPages)),
+                        'failed_pages'   => array_values(array_unique($failedPages)),
+                        'failed_hadiths' => $failedHadiths,
+                    ]);
+                } catch (\Exception $e) {
+                    // Log save failed — don't abort import, just log it
+                    Log::error("[HadithVerseImport] Failed to save log after page {$page}: " . $e->getMessage());
                 }
-                // Remove from success if it previously succeeded but now fails
-                $successPages = array_values(array_filter($successPages, fn($p) => $p !== $page));
-                $skippedCount++;
+            }
+        } catch (\Exception $e) {
+            // Outer catch: catastrophic failure (e.g. OOM, unexpected fatal)
+            $reason = "Catastrophic error during import loop: " . $e->getMessage();
+            Log::error("[HadithVerseImport] {$reason}", ['trace' => $e->getTraceAsString()]);
+            $warnings[] = $reason;
+            $failedHadiths[] = ['page' => 0, 'hadith_id' => null, 'reason' => $reason];
+
+            // Compute remaining pages (not yet in success) as failed
+            $allPages     = range(1, $totalPages);
+            $remaining    = array_values(array_diff($allPages, array_unique($successPages)));
+            foreach ($remaining as $rp) {
+                if (! in_array($rp, $failedPages)) {
+                    $failedPages[] = $rp;
+                }
             }
 
-            // Persist log progress after every page — failed_pages is always the true remaining set
-            $log->update([
-                'success_pages'  => array_values(array_unique($successPages)),
-                'failed_pages'   => array_values(array_unique($failedPages)),
-                'failed_hadiths' => $failedHadiths,
-            ]);
+            // Save the error state to the log
+            try {
+                $log->update([
+                    'success_pages'  => array_values(array_unique($successPages)),
+                    'failed_pages'   => array_values(array_unique($failedPages)),
+                    'failed_hadiths' => $failedHadiths,
+                    'status'         => 'failed',
+                    'completed_at'   => null,
+                ]);
+            } catch (\Exception $saveEx) {
+                Log::error("[HadithVerseImport] Also failed to save log after catastrophic error: " . $saveEx->getMessage());
+            }
+
+            $log->refresh();
+            return $this->result(false, $reason, $newCount, $updatedCount, $skippedCount, $warnings, $log);
         }
 
         // ------------------------------------------------------------------
-        // 7. Determine final status
+        // 7. Determine final status and persist
         // ------------------------------------------------------------------
         sort($successPages);
         $uniqueSuccessPages = array_values(array_unique($successPages));
         $uniqueSuccessCount = count($uniqueSuccessPages);
 
-        // Pages that still need importing = all pages minus successful ones
-        $allPages         = range(1, $totalPages);
-        $remainingPages   = array_values(array_diff($allPages, $uniqueSuccessPages));
-        $isComplete       = count($remainingPages) === 0;
+        // Pages still missing from success = truly remaining / failed
+        $allPages       = range(1, $totalPages);
+        $remainingPages = array_values(array_diff($allPages, $uniqueSuccessPages));
+        $isComplete     = count($remainingPages) === 0;
 
-        $log->update([
-            'success_pages'  => $uniqueSuccessPages,
-            'failed_pages'   => $isComplete ? [] : array_values(array_unique(array_merge($failedPages, $remainingPages))),
-            'failed_hadiths' => $failedHadiths,
-            'status'         => $isComplete ? 'completed' : 'failed',
-            'completed_at'   => $isComplete ? now() : null,
-        ]);
+        $finalFailedPages = $isComplete
+            ? []
+            : array_values(array_unique(array_merge($failedPages, $remainingPages)));
+
+        try {
+            $log->update([
+                'success_pages'  => $uniqueSuccessPages,
+                'failed_pages'   => $finalFailedPages,
+                'failed_hadiths' => $failedHadiths,
+                'status'         => $isComplete ? 'completed' : 'failed',
+                'completed_at'   => $isComplete ? now() : null,
+            ]);
+        } catch (\Exception $e) {
+            Log::error("[HadithVerseImport] Failed to save final log status: " . $e->getMessage());
+        }
 
         $action  = $isResume ? 'Resume' : 'Import';
         $summary = "{$action} " . ($isComplete ? 'COMPLETED' : 'PARTIALLY COMPLETED')
             . " for {$scope}. "
             . "New: {$newCount}, Updated: {$updatedCount}, "
             . "Success pages: {$uniqueSuccessCount}/{$totalPages}, "
-            . "Failed pages: " . count($failedPages) . ".";
+            . "Failed pages: " . count($finalFailedPages) . ".";
 
         Log::info("[HadithVerseImport] {$summary}", ['warnings_count' => count($warnings)]);
 
@@ -229,13 +295,38 @@ class HadithVerseImportService
     // -----------------------------------------------------------------------
 
     /**
+     * If an API/connection error happens before the main loop starts,
+     * mark the existing log as 'failed' and append the error to failed_hadiths.
+     */
+    private function markLogError(?HadithVerseImportLog $log, string $reason): void
+    {
+        if (! $log) {
+            return;
+        }
+
+        try {
+            $failedHadiths   = $log->failed_hadiths ?? [];
+            $failedHadiths[] = ['page' => 0, 'hadith_id' => null, 'reason' => $reason];
+
+            $log->update([
+                'failed_hadiths' => $failedHadiths,
+                'status'         => 'failed',
+                'completed_at'   => null,
+            ]);
+        } catch (\Exception $e) {
+            Log::error("[HadithVerseImport] Could not update log with error: " . $e->getMessage());
+        }
+    }
+
+    /**
      * Process a single API page.
+     * Returns true on success, false on HTTP/API error.
+     * Throws \Exception on unexpected/fatal errors (caller handles them).
      *
      * @param  array  $failedHadiths  Passed by reference — appended to on errors.
      * @param  array  $warnings       Passed by reference.
      * @param  int    $newCount       Passed by reference.
      * @param  int    $updatedCount   Passed by reference.
-     * @return bool   true on success, false on HTTP/API error.
      */
     private function processPage(
         int $page,
@@ -249,11 +340,10 @@ class HadithVerseImportService
         $response = $this->apiService->get("{$urlBase}&page={$page}");
 
         if (Arr::get($response, 'status') !== 200) {
-            $reason  = Arr::get($response, 'message') ?? 'HTTP error';
-            $msg     = "[HadithVerseImport] Page {$page} HTTP error for {$scope}: {$reason}";
+            $reason      = Arr::get($response, 'message') ?? 'HTTP error';
+            $msg         = "[HadithVerseImport] Page {$page} HTTP error for {$scope}: {$reason}";
             Log::error($msg);
-            $warnings[] = $msg;
-
+            $warnings[]      = $msg;
             $failedHadiths[] = ['page' => $page, 'hadith_id' => null, 'reason' => "Page HTTP error: {$reason}"];
             return false;
         }
@@ -262,87 +352,97 @@ class HadithVerseImportService
 
         if (empty($data)) {
             Log::warning("[HadithVerseImport] Empty data on page {$page} for {$scope}.");
-            return true; // Empty page still counts as success (no data to import)
+            return true; // Empty page = success (nothing to import)
         }
 
         $now        = now();
         $pageErrors = [];
 
-        DB::transaction(function () use ($data, $now, $page, &$newCount, &$updatedCount, &$pageErrors, &$warnings) {
-            foreach ($data as $hadith) {
-                $apiId = Arr::get($hadith, 'id');
+        try {
+            DB::transaction(function () use ($data, $now, $page, &$newCount, &$updatedCount, &$pageErrors, &$warnings) {
+                foreach ($data as $hadith) {
+                    $apiId = Arr::get($hadith, 'id');
 
-                if (! $apiId) {
-                    $reason         = "Missing ID for hadithNumber=" . Arr::get($hadith, 'hadithNumber', '?');
-                    $warnings[]     = "[HadithVerseImport] {$reason}";
-                    $pageErrors[]   = ['page' => $page, 'hadith_id' => null, 'reason' => $reason];
-                    Log::warning("[HadithVerseImport] Hadith has no ID.", ['hadith' => Arr::only($hadith, ['hadithNumber'])]);
-                    continue;
-                }
+                    if (! $apiId) {
+                        $reason       = "Missing ID for hadithNumber=" . Arr::get($hadith, 'hadithNumber', '?');
+                        $warnings[]   = "[HadithVerseImport] {$reason}";
+                        $pageErrors[] = ['page' => $page, 'hadith_id' => null, 'reason' => $reason];
+                        Log::warning("[HadithVerseImport] Hadith has no ID.", ['hadith' => Arr::only($hadith, ['hadithNumber'])]);
+                        continue;
+                    }
 
-                $hadithBookId  = Arr::get($hadith, 'book.id');
-                $hadithChapId  = Arr::get($hadith, 'chapter.id');
-                $chapterNum    = Arr::get($hadith, 'chapter.chapterNumber');
-                $hadithNum     = (int) Arr::get($hadith, 'hadithNumber', 0);
+                    $hadithBookId = Arr::get($hadith, 'book.id');
+                    $hadithChapId = Arr::get($hadith, 'chapter.id');
+                    $chapterNum   = Arr::get($hadith, 'chapter.chapterNumber');
+                    $hadithNum    = (int) Arr::get($hadith, 'hadithNumber', 0);
 
-                if (! $hadithBookId || ! $hadithChapId) {
-                    $reason       = "Hadith #{$apiId} missing book or chapter ID.";
-                    $warnings[]   = "[HadithVerseImport] {$reason}";
-                    $pageErrors[] = ['page' => $page, 'hadith_id' => $apiId, 'reason' => $reason];
-                    Log::warning("[HadithVerseImport] {$reason}");
-                    continue;
-                }
+                    if (! $hadithBookId || ! $hadithChapId) {
+                        $reason       = "Hadith #{$apiId} missing book or chapter ID.";
+                        $warnings[]   = "[HadithVerseImport] {$reason}";
+                        $pageErrors[] = ['page' => $page, 'hadith_id' => $apiId, 'reason' => $reason];
+                        Log::warning("[HadithVerseImport] {$reason}");
+                        continue;
+                    }
 
-                $exists = HadithVerse::where('id', $apiId)->exists();
+                    $exists = HadithVerse::where('id', $apiId)->exists();
 
-                HadithVerse::updateOrInsert(
-                    ['id' => $apiId],
-                    [
-                        'hadith_book_id'    => $hadithBookId,
-                        'hadith_chapter_id' => $hadithChapId,
-                        'chapter_number'    => $chapterNum,
-                        'hadith_number'     => $hadithNum,
-                        'heading'           => Arr::get($hadith, 'headingArabic') ?: null,
-                        'text'              => Arr::get($hadith, 'hadithArabic') ?: null,
-                        'volume'            => Arr::get($hadith, 'volume'),
-                        'status'            => strtolower(Arr::get($hadith, 'status', '')),
-                        'is_active'         => 1,
-                        'updated_at'        => $now,
-                        'created_at'        => $now,
-                    ]
-                );
-
-                $exists ? $updatedCount++ : $newCount++;
-
-                // English translation
-                $enText    = Arr::get($hadith, 'hadithEnglish');
-                $enHeading = Arr::get($hadith, 'headingEnglish');
-                $narrator  = Arr::get($hadith, 'narrator');
-
-                if ($enText) {
-                    HadithVerseTranslation::updateOrInsert(
-                        ['hadith_verse_id' => $apiId, 'lang' => 'en'],
+                    HadithVerse::updateOrInsert(
+                        ['id' => $apiId],
                         [
-                            'narrator'         => $narrator,
-                            'heading'          => $enHeading ?: null,
-                            'text'             => $enText,
-                            'status_romanized' => strtolower(Arr::get($hadith, 'status', '')),
-                            'is_active'        => 1,
-                            'created_by'       => 1,
-                            'updated_at'       => $now,
-                            'created_at'       => $now,
+                            'hadith_book_id'    => $hadithBookId,
+                            'hadith_chapter_id' => $hadithChapId,
+                            'chapter_number'    => $chapterNum,
+                            'hadith_number'     => $hadithNum,
+                            'heading'           => Arr::get($hadith, 'headingArabic') ?: null,
+                            'text'              => Arr::get($hadith, 'hadithArabic') ?: null,
+                            'volume'            => Arr::get($hadith, 'volume'),
+                            'status'            => strtolower(Arr::get($hadith, 'status', '')),
+                            'is_active'         => 1,
+                            'updated_at'        => $now,
+                            'created_at'        => $now,
                         ]
                     );
-                } else {
-                    $reason       = "Hadith #{$apiId} has no English text.";
-                    $warnings[]   = "[HadithVerseImport] {$reason}";
-                    $pageErrors[] = ['page' => $page, 'hadith_id' => $apiId, 'reason' => $reason];
-                    Log::warning("[HadithVerseImport] {$reason}");
-                }
-            }
-        });
 
-        // Merge this page's hadith-level errors into the global array
+                    $exists ? $updatedCount++ : $newCount++;
+
+                    // English translation
+                    $enText    = Arr::get($hadith, 'hadithEnglish');
+                    $enHeading = Arr::get($hadith, 'headingEnglish');
+                    $narrator  = Arr::get($hadith, 'narrator');
+
+                    if ($enText) {
+                        HadithVerseTranslation::updateOrInsert(
+                            ['hadith_verse_id' => $apiId, 'lang' => 'en'],
+                            [
+                                'narrator'         => $narrator,
+                                'heading'          => $enHeading ?: null,
+                                'text'             => $enText,
+                                'status_romanized' => strtolower(Arr::get($hadith, 'status', '')),
+                                'is_active'        => 1,
+                                'created_by'       => 1,
+                                'updated_at'       => $now,
+                                'created_at'       => $now,
+                            ]
+                        );
+                    } else {
+                        $reason       = "Hadith #{$apiId} has no English text.";
+                        $warnings[]   = "[HadithVerseImport] {$reason}";
+                        $pageErrors[] = ['page' => $page, 'hadith_id' => $apiId, 'reason' => $reason];
+                        Log::warning("[HadithVerseImport] {$reason}");
+                    }
+                }
+            });
+        } catch (\Exception $e) {
+            // DB transaction failed — the entire page's writes were rolled back.
+            // Record as page-level failure and bubble up as false (not as exception).
+            $reason      = "DB transaction failed on page {$page}: " . $e->getMessage();
+            Log::error("[HadithVerseImport] {$reason}");
+            $warnings[]      = "[HadithVerseImport] {$reason}";
+            $failedHadiths[] = ['page' => $page, 'hadith_id' => null, 'reason' => $reason];
+            return false;
+        }
+
+        // Merge hadith-level errors collected inside the transaction
         foreach ($pageErrors as $err) {
             $failedHadiths[] = $err;
         }
@@ -378,16 +478,16 @@ class HadithVerseImportService
     public function logToArray(HadithVerseImportLog $log): array
     {
         return [
-            'id'              => $log->id,
-            'total_pages'     => $log->total_pages,
-            'success_count'   => $log->successCount(),
-            'failed_count'    => $log->failedCount(),
-            'progress'        => $log->progressPercent(),
-            'status'          => $log->status,
-            'failed_pages'    => $log->failed_pages ?? [],
-            'failed_hadiths'  => $log->failed_hadiths ?? [],
-            'started_at'      => $log->started_at?->toDateTimeString(),
-            'completed_at'    => $log->completed_at?->toDateTimeString(),
+            'id'             => $log->id,
+            'total_pages'    => $log->total_pages,
+            'success_count'  => $log->successCount(),
+            'failed_count'   => $log->failedCount(),
+            'progress'       => $log->progressPercent(),
+            'status'         => $log->status,
+            'failed_pages'   => $log->failed_pages ?? [],
+            'failed_hadiths' => $log->failed_hadiths ?? [],
+            'started_at'     => $log->started_at?->toDateTimeString(),
+            'completed_at'   => $log->completed_at?->toDateTimeString(),
         ];
     }
 }
