@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\HadithBook;
 use App\Models\HadithChapter;
 use App\Models\HadithVerse;
+use App\Models\HadithVerseImportLog;
 use App\Repository\Hadith\HadithBookInterface;
 use App\Repository\Hadith\HadithVerseInterface;
 use App\Services\HadithVerseImportService;
@@ -25,11 +26,15 @@ class HadithVerseController extends Controller implements HasMiddleware
     public static function middleware(): array
     {
         return [
-            new Middleware(PermissionMiddleware::using('view hadith-verses'), only: ['index', 'dataTable', 'chapter']),
+            new Middleware(PermissionMiddleware::using('view hadith-verses'), only: ['index', 'dataTable', 'chapter', 'importLog']),
             new Middleware(PermissionMiddleware::using('update hadith-verse'), only: ['update', 'import']),
             new Middleware(PermissionMiddleware::using('active hadith-verse'), only: ['status']),
         ];
     }
+
+    // -----------------------------------------------------------------------
+    // Index
+    // -----------------------------------------------------------------------
 
     public function index(Request $request)
     {
@@ -37,7 +42,7 @@ class HadithVerseController extends Controller implements HasMiddleware
         $selectedBookId    = $request->get('book_id');
         $selectedChapterId = $request->get('chapter_id');
 
-        $chapters = [];
+        $chapters = collect();
         if ($selectedBookId) {
             $chapters = HadithChapter::where('hadith_book_id', $selectedBookId)
                 ->orderBy('sort', 'asc')
@@ -47,7 +52,13 @@ class HadithVerseController extends Controller implements HasMiddleware
 
         $perPage = 25;
         $verses  = collect();
-        $stats   = ['total_verses' => 0, 'active_verses' => 0, 'total_in_scope' => 0, 'selected_book' => null, 'selected_chapter' => null];
+        $stats   = [
+            'total_verses'     => 0,
+            'active_verses'    => 0,
+            'total_in_scope'   => 0,
+            'selected_book'    => null,
+            'selected_chapter' => null,
+        ];
 
         if ($selectedBookId) {
             $query = HadithVerse::where('hadith_book_id', $selectedBookId);
@@ -67,8 +78,20 @@ class HadithVerseController extends Controller implements HasMiddleware
             $verses = $query->orderBy('hadith_number', 'asc')->paginate($perPage)->withQueryString();
         }
 
-        return view('admin.hadith.verse', compact('books', 'chapters', 'verses', 'stats', 'selectedBookId', 'selectedChapterId'));
+        // Pass import log for the current scope (if any)
+        $importLog = $selectedBookId
+            ? HadithVerseImportLog::forScope((int) $selectedBookId, $selectedChapterId ? (int) $selectedChapterId : null)
+            : null;
+
+        return view('admin.hadith.verse', compact(
+            'books', 'chapters', 'verses', 'stats',
+            'selectedBookId', 'selectedChapterId', 'importLog'
+        ));
     }
+
+    // -----------------------------------------------------------------------
+    // Import
+    // -----------------------------------------------------------------------
 
     public function import(Request $request)
     {
@@ -78,19 +101,42 @@ class HadithVerseController extends Controller implements HasMiddleware
 
             $result = $this->importService->importVerses($bookId, $chapterId);
 
-            if ($result['status']) {
-                return response()->json([
-                    'status'   => true,
-                    'message'  => $result['message'],
-                    'warnings' => $result['warnings'] ?? [],
-                ]);
-            }
+            $httpCode = $result['status'] ? 200 : 400;
 
-            return response()->json(['status' => false, 'message' => $result['message']], 400);
+            return response()->json([
+                'status'   => $result['status'],
+                'message'  => $result['message'],
+                'warnings' => $result['warnings'] ?? [],
+                'log'      => $result['log'],
+            ], $httpCode);
         } catch (\Exception $e) {
             return response()->json(['status' => false, 'message' => $e->getMessage()], 500);
         }
     }
+
+    /**
+     * Return the import log for a given book + optional chapter as JSON.
+     * Used by the UI on book/chapter change to display the current log state.
+     */
+    public function importLog(Request $request)
+    {
+        $bookId    = $request->get('book_id') ? (int) $request->get('book_id') : null;
+        $chapterId = $request->get('chapter_id') ? (int) $request->get('chapter_id') : null;
+
+        if (! $bookId) {
+            return response()->json(['log' => null]);
+        }
+
+        $log = HadithVerseImportLog::forScope($bookId, $chapterId);
+
+        return response()->json([
+            'log' => $log ? $this->importService->logToArray($log) : null,
+        ]);
+    }
+
+    // -----------------------------------------------------------------------
+    // Other actions
+    // -----------------------------------------------------------------------
 
     public function update(Request $request, HadithVerse $hadithVerse)
     {
@@ -124,6 +170,7 @@ class HadithVerseController extends Controller implements HasMiddleware
             ->orderBy('sort', 'asc')
             ->orderBy('chapter_number', 'asc')
             ->get();
+
         return response()->json($results);
     }
 

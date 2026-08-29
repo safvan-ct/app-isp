@@ -83,6 +83,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'not.customer'])->gr
 
     Route::get('hadith-verses/dataTable', [HadithVerseController::class, 'dataTable'])->name('hadith-verses.dataTable');
     Route::post('hadith-verses/import', [HadithVerseController::class, 'import'])->name('hadith-verses.import');
+    Route::get('hadith-verses/import-log', [HadithVerseController::class, 'importLog'])->name('hadith-verses.import-log');
     Route::get('hadith-verses/chapter/{book}', [HadithVerseController::class, 'chapter'])->name('hadith-verses.chapter');
     Route::patch('hadith-verses/status/{id}', [HadithVerseController::class, 'status'])->name('hadith-verses.status');
     Route::resource('hadith-verses', HadithVerseController::class)->only('index', 'update');

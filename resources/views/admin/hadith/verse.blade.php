@@ -107,6 +107,41 @@
             font-size: 2rem;
             color: #9ca3af;
         }
+
+        /* Import Log Card */
+        .import-log-card {
+            border-radius: 16px;
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .log-progress-bar {
+            height: 10px;
+            border-radius: 99px;
+            background: #e5e7eb;
+            overflow: hidden;
+        }
+
+        .log-progress-fill {
+            height: 100%;
+            border-radius: 99px;
+            transition: width 0.5s ease;
+        }
+
+        .log-status-badge {
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .failed-hadiths-table td,
+        .failed-hadiths-table th {
+            font-size: 0.8rem;
+        }
     </style>
 @endpush
 
@@ -208,14 +243,144 @@
                     <span class="text-muted small fst-italic">Select a book to view and import verses</span>
                 @endif
 
-                <button id="importVerseBtn" onclick="importVerses()" class="import-btn-gradient"
-                    {{ !$selectedBookId ? 'disabled' : '' }}>
-                    <i class="ti ti-cloud-download me-1"></i>
-                    <span id="importBtnText">Import Verses</span>
+                @php
+                    $logStatus = $importLog?->status;
+                    $btnClass = match ($logStatus) {
+                        'completed' => 'import-btn-gradient opacity-75',
+                        'failed' => 'btn btn-danger fw-semibold rounded-3',
+                        default => 'import-btn-gradient',
+                    };
+                    $btnIcon = match ($logStatus) {
+                        'completed' => 'ti-circle-check',
+                        'failed' => 'ti-refresh',
+                        default => 'ti-cloud-download',
+                    };
+                    $btnLabel = match ($logStatus) {
+                        'completed' => 'Already Imported',
+                        'failed' => 'Resume Import (' . ($importLog?->failedCount() ?? 0) . ' failed)',
+                        default => 'Import Verses',
+                    };
+                @endphp
+
+                <button id="importVerseBtn" onclick="importVerses()" class="{{ $btnClass }}"
+                    data-log-status="{{ $logStatus ?? '' }}" {{ !$selectedBookId ? 'disabled' : '' }}>
+                    <i class="ti {{ $btnIcon }} me-1"></i>
+                    <span id="importBtnText">{{ $btnLabel }}</span>
                 </button>
             </div>
         </div>
     </div>
+
+    {{-- Import Log Status Card --}}
+    @if ($importLog && $selectedBookId)
+        @php
+            $logColors = [
+                'completed' => ['bg' => '#dcfce7', 'text' => '#166534', 'bar' => '#22c55e'],
+                'failed' => ['bg' => '#fee2e2', 'text' => '#991b1b', 'bar' => '#ef4444'],
+                'in_progress' => ['bg' => '#dbeafe', 'text' => '#1e40af', 'bar' => '#3b82f6'],
+                'pending' => ['bg' => '#f3f4f6', 'text' => '#374151', 'bar' => '#9ca3af'],
+            ];
+            $lc = $logColors[$importLog->status] ?? $logColors['pending'];
+        @endphp
+
+        <div class="import-log-card p-4 mb-4" id="importLogCard">
+            <div class="d-flex align-items-start justify-content-between flex-wrap gap-3 mb-3">
+                <div>
+                    <h6 class="fw-bold text-dark mb-1">
+                        <i class="ti ti-file-text me-1 text-primary"></i>
+                        Import Log
+                        @if ($importLog->chapter)
+                            &mdash; CH #{{ $importLog->chapter->chapter_number }}
+                        @else
+                            &mdash; Full Book
+                        @endif
+                    </h6>
+                    <p class="text-muted small mb-0">
+                        Started: {{ $importLog->started_at?->format('M d, Y H:i') ?? '—' }}
+                        @if ($importLog->completed_at)
+                            &nbsp;&middot;&nbsp; Completed: {{ $importLog->completed_at->format('M d, Y H:i') }}
+                        @endif
+                    </p>
+                </div>
+
+                <span class="log-status-badge" style="background: {{ $lc['bg'] }}; color: {{ $lc['text'] }};">
+                    {{ $importLog->status }}
+                </span>
+            </div>
+
+            {{-- Progress bar --}}
+            <div class="log-progress-bar mb-2">
+                <div class="log-progress-fill"
+                    style="width: {{ $importLog->progressPercent() }}%; background: {{ $lc['bar'] }};"></div>
+            </div>
+            <div class="d-flex justify-content-between small text-muted mb-3">
+                <span>
+                    <span class="fw-semibold text-success">{{ $importLog->successCount() }}</span>
+                    / {{ $importLog->total_pages }} pages imported
+                </span>
+                @if ($importLog->failedCount() > 0)
+                    <span class="text-danger fw-semibold">
+                        {{ $importLog->failedCount() }} page(s) failed
+                    </span>
+                @endif
+            </div>
+
+            {{-- Failed Pages --}}
+            @if (count($importLog->failed_pages ?? []) > 0)
+                <div class="mb-3">
+                    <button class="btn btn-sm btn-outline-danger rounded-3 mb-2" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#failedPagesCollapse">
+                        <i class="ti ti-alert-triangle me-1"></i>
+                        {{ count($importLog->failed_pages) }} Failed Page(s)
+                    </button>
+                    <div class="collapse" id="failedPagesCollapse">
+                        <div class="d-flex flex-wrap gap-1 mt-2">
+                            @foreach ($importLog->failed_pages as $fp)
+                                <span class="badge bg-light-danger text-danger font-monospace">Page
+                                    {{ $fp }}</span>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            {{-- Failed Hadiths --}}
+            @if (count($importLog->failed_hadiths ?? []) > 0)
+                @php $hadithErrors = collect($importLog->failed_hadiths)->filter(fn($h) => !is_null($h['hadith_id'] ?? null)); @endphp
+                @if ($hadithErrors->count() > 0)
+                    <div>
+                        <button class="btn btn-sm btn-outline-warning rounded-3 mb-2" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#failedHadithsCollapse">
+                            <i class="ti ti-list me-1"></i>
+                            {{ $hadithErrors->count() }} Hadith-Level Error(s)
+                        </button>
+                        <div class="collapse" id="failedHadithsCollapse">
+                            <div class="table-responsive mt-2" style="max-height: 260px; overflow-y: auto;">
+                                <table class="table table-sm table-bordered mb-0 failed-hadiths-table">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Page</th>
+                                            <th>Hadith ID</th>
+                                            <th>Reason</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($hadithErrors as $err)
+                                            <tr>
+                                                <td class="font-monospace">{{ $err['page'] }}</td>
+                                                <td class="font-monospace">{{ $err['hadith_id'] ?? '—' }}</td>
+                                                <td class="text-muted">{{ $err['reason'] }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @endif
+        </div>
+    @endif
 
     {{-- Verses Table --}}
     @if (!$selectedBookId)
@@ -231,7 +396,8 @@
             <div class="card-body text-center py-5">
                 <div class="empty-state-icon"><i class="ti ti-subtitles"></i></div>
                 <h5 class="text-muted fw-semibold">No Verses Found</h5>
-                <p class="text-muted small mb-3">No verses found for this selection. Use the "Import Verses" button to fetch
+                <p class="text-muted small mb-3">No verses found for this selection. Use the "Import Verses" button to
+                    fetch
                     from the API.</p>
             </div>
         </div>
@@ -399,8 +565,8 @@
             const bookId = $('#bookSelectFilter').val();
             const chapterId = $('#chapterSelectFilter').val();
             localStorage.setItem('HadithVerseChapter', chapterId || '');
-            window.location.href = "{{ route('admin.hadith-verses.index') }}?book_id=" + (bookId || '') + '&chapter_id=' +
-                (chapterId || '');
+            window.location.href = "{{ route('admin.hadith-verses.index') }}?book_id=" + (bookId || '') +
+                '&chapter_id=' + (chapterId || '');
         }
 
         function toggleVerseStatus(id, url) {
@@ -419,6 +585,9 @@
             });
         }
 
+        // ---------------------------------------------------------------
+        // Import Verses — aware of log status
+        // ---------------------------------------------------------------
         function importVerses() {
             const bookId = $('#bookSelectFilter').val();
             const chapterId = $('#chapterSelectFilter').val();
@@ -428,16 +597,24 @@
                 return;
             }
 
-            const scopeText = chapterId ?
-                'the selected chapter' :
-                'the entire selected book (may take several minutes)';
+            const logStatus = $('#importVerseBtn').data('log-status');
 
-            if (!confirm(`Import / sync verses for ${scopeText}?`)) return;
+            // Guard: already completed → confirm re-import
+            if (logStatus === 'completed') {
+                if (!confirm(
+                        'This scope is already fully imported. Do you want to re-import anyway? This will re-sync all pages from the API.'
+                        )) return;
+            } else {
+                const scopeText = chapterId ? 'the selected chapter' :
+                'the entire selected book (may take several minutes)';
+                if (!confirm('Import / sync verses for ' + scopeText + '?')) return;
+            }
 
             const btn = $('#importVerseBtn');
             const originalText = $('#importBtnText').text();
             btn.prop('disabled', true);
-            $('#importBtnText').html('<span class="spinner-border spinner-border-sm me-1"></span> Importing...');
+            $('#importBtnText').html('<span class="spinner-border spinner-border-sm me-1"></span> ' +
+                (logStatus === 'failed' ? 'Resuming...' : 'Importing...'));
 
             $.ajax({
                 url: "{{ route('admin.hadith-verses.import') }}",
@@ -450,17 +627,25 @@
                 success: function(r) {
                     btn.prop('disabled', false);
                     $('#importBtnText').text(originalText);
+
                     if (r.status) {
                         toastr.success(r.message);
-                        if (r.warnings && r.warnings.length) {
-                            r.warnings.slice(0, 5).forEach(w => toastr.warning(w, '', {
-                                timeOut: 6000
-                            }));
-                        }
-                        setTimeout(() => location.reload(), 1500);
                     } else {
-                        toastr.error(r.message || 'Import failed.');
+                        toastr.warning(r.message || 'Import partially complete.');
                     }
+
+                    if (r.warnings && r.warnings.length) {
+                        r.warnings.slice(0, 3).forEach(w => toastr.warning(w, '', {
+                            timeOut: 6000
+                        }));
+                    }
+
+                    // Update log card if log data returned
+                    if (r.log) {
+                        renderLogCard(r.log);
+                    }
+
+                    setTimeout(() => location.reload(), 2000);
                 },
                 error: function(xhr) {
                     btn.prop('disabled', false);
@@ -471,6 +656,55 @@
             });
         }
 
+        // ---------------------------------------------------------------
+        // Render log card from AJAX response data
+        // ---------------------------------------------------------------
+        function renderLogCard(log) {
+            if (!log) return;
+
+            const statusColors = {
+                completed: {
+                    bg: '#dcfce7',
+                    text: '#166534',
+                    bar: '#22c55e'
+                },
+                failed: {
+                    bg: '#fee2e2',
+                    text: '#991b1b',
+                    bar: '#ef4444'
+                },
+                in_progress: {
+                    bg: '#dbeafe',
+                    text: '#1e40af',
+                    bar: '#3b82f6'
+                },
+                pending: {
+                    bg: '#f3f4f6',
+                    text: '#374151',
+                    bar: '#9ca3af'
+                },
+            };
+            const c = statusColors[log.status] || statusColors.pending;
+
+            // Update badge
+            $('.log-status-badge').css({
+                background: c.bg,
+                color: c.text
+            }).text(log.status.toUpperCase());
+
+            // Update progress bar
+            $('.log-progress-fill').css({
+                width: log.progress + '%',
+                background: c.bar
+            });
+
+            // Update text
+            $('.log-success-text').text(log.success_count + ' / ' + log.total_pages + ' pages imported');
+        }
+
+        // ---------------------------------------------------------------
+        // Edit Modal
+        // ---------------------------------------------------------------
         function openEditModal(verse) {
             $('#edit_verse_id').val(verse.id);
             $('#edit_hadith_number').val(verse.hadith_number);
