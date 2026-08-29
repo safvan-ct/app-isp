@@ -142,7 +142,10 @@ class HadithVerseImportService
             : range(1, $totalPages); // Fresh: all pages
 
         $successPages  = $log->success_pages ?? [];
-        $failedPages   = $isResume ? [] : [];   // Start fresh tracking for this run's failures
+        // On resume: start with the FULL existing failed list from DB.
+        // Each page that succeeds is removed from it → DB always shows truly-pending pages.
+        // On fresh: start empty, pages that fail get added.
+        $failedPages   = $isResume ? ($log->failed_pages ?? []) : [];
         $failedHadiths = $log->failed_hadiths ?? [];
         $warnings      = [];
         $newCount      = $updatedCount = $skippedCount = 0;
@@ -162,20 +165,24 @@ class HadithVerseImportService
             );
 
             if ($pageResult === true) {
-                // Success — add to success, remove from failed
+                // Add to success list if not already there
                 if (! in_array($page, $successPages)) {
                     $successPages[] = $page;
                 }
+                // ALWAYS remove from failed list — this shrinks the DB's failed_pages
+                // so mid-run crashes don't lose tracking of remaining pending pages
                 $failedPages = array_values(array_filter($failedPages, fn($p) => $p !== $page));
             } else {
-                // Failure — add to failed pages list
+                // Keep/add in failed pages list
                 if (! in_array($page, $failedPages)) {
                     $failedPages[] = $page;
                 }
+                // Remove from success if it previously succeeded but now fails
+                $successPages = array_values(array_filter($successPages, fn($p) => $p !== $page));
                 $skippedCount++;
             }
 
-            // Persist log progress after every page
+            // Persist log progress after every page — failed_pages is always the true remaining set
             $log->update([
                 'success_pages'  => array_values(array_unique($successPages)),
                 'failed_pages'   => array_values(array_unique($failedPages)),
@@ -187,12 +194,17 @@ class HadithVerseImportService
         // 7. Determine final status
         // ------------------------------------------------------------------
         sort($successPages);
-        $uniqueSuccessCount = count(array_unique($successPages));
-        $isComplete         = $uniqueSuccessCount >= $totalPages;
+        $uniqueSuccessPages = array_values(array_unique($successPages));
+        $uniqueSuccessCount = count($uniqueSuccessPages);
+
+        // Pages that still need importing = all pages minus successful ones
+        $allPages         = range(1, $totalPages);
+        $remainingPages   = array_values(array_diff($allPages, $uniqueSuccessPages));
+        $isComplete       = count($remainingPages) === 0;
 
         $log->update([
-            'success_pages'  => array_values(array_unique($successPages)),
-            'failed_pages'   => array_values(array_unique($failedPages)),
+            'success_pages'  => $uniqueSuccessPages,
+            'failed_pages'   => $isComplete ? [] : array_values(array_unique(array_merge($failedPages, $remainingPages))),
             'failed_hadiths' => $failedHadiths,
             'status'         => $isComplete ? 'completed' : 'failed',
             'completed_at'   => $isComplete ? now() : null,
