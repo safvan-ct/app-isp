@@ -112,7 +112,7 @@ class HadithChapterImportService
                             $chapterModel = $existingChapter;
                             $updatedCount++;
                         } else {
-                            $chapterModel = HadithChapter::firstOrCreate(array_merge([
+                            $chapterModel = HadithChapter::forceCreate(array_merge([
                                 'hadith_book_id' => $book->id,
                                 'chapter_number' => $chapNum,
                             ], $chapterAttributes));
