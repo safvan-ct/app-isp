@@ -8,6 +8,7 @@ use App\Models\HadithVerse;
 use App\Models\HadithVerseImportLog;
 use App\Repository\Hadith\HadithBookInterface;
 use App\Repository\Hadith\HadithVerseInterface;
+use App\Services\HadithJsonImportService;
 use App\Services\HadithVerseImportService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -20,14 +21,15 @@ class HadithVerseController extends Controller implements HasMiddleware
     public function __construct(
         protected HadithVerseInterface $HadithVerseRepository,
         protected HadithBookInterface $HadithBookRepository,
-        protected HadithVerseImportService $importService
+        protected HadithVerseImportService $importService,
+        protected HadithJsonImportService $jsonImportService
     ) {}
 
     public static function middleware(): array
     {
         return [
             new Middleware(PermissionMiddleware::using('view hadith-verses'), only: ['index', 'dataTable', 'chapter', 'importLog']),
-            new Middleware(PermissionMiddleware::using('update hadith-verse'), only: ['update', 'import']),
+            new Middleware(PermissionMiddleware::using('update hadith-verse'), only: ['update', 'import', 'importJson']),
             new Middleware(PermissionMiddleware::using('active hadith-verse'), only: ['status']),
         ];
     }
@@ -83,9 +85,11 @@ class HadithVerseController extends Controller implements HasMiddleware
             ? HadithVerseImportLog::forScope((int) $selectedBookId, $selectedChapterId ? (int) $selectedChapterId : null)
             : null;
 
+        $jsonFiles = $this->jsonImportService->availableFiles();
+
         return view('admin.hadith.verse', compact(
             'books', 'chapters', 'verses', 'stats',
-            'selectedBookId', 'selectedChapterId', 'importLog'
+            'selectedBookId', 'selectedChapterId', 'importLog', 'jsonFiles'
         ));
     }
 
@@ -111,6 +115,34 @@ class HadithVerseController extends Controller implements HasMiddleware
             ], $httpCode);
         } catch (\Exception $e) {
             return response()->json(['status' => false, 'message' => $e->getMessage()], 500);
+        }
+    }
+
+    /**
+     * Import a local database/hadees/{file}.json file, including its book,
+     * chapters, verses, and English translations.
+     */
+    public function importJson(Request $request)
+    {
+        $validated = $request->validate([
+            'file'  => ['required', 'string'],
+            'force' => ['nullable', 'boolean'],
+        ]);
+
+        try {
+            $result = $this->jsonImportService->importFromFile(
+                $validated['file'],
+                (bool) ($validated['force'] ?? false)
+            );
+
+            return response()->json($result, $result['status'] ? 200 : 422);
+        } catch (\Throwable $e) {
+            report($e);
+
+            return response()->json([
+                'status'  => false,
+                'message' => 'Unexpected error during JSON import. Check the application log for details.',
+            ], 500);
         }
     }
 
@@ -151,6 +183,7 @@ class HadithVerseController extends Controller implements HasMiddleware
 
         try {
             $this->HadithVerseRepository->update($validated, $hadithVerse);
+
             return response()->json(['message' => 'Hadith updated successfully']);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
@@ -160,6 +193,7 @@ class HadithVerseController extends Controller implements HasMiddleware
     public function dataTable(Request $request)
     {
         $results = $this->HadithVerseRepository->dataTable($request->book_id, $request->chapter_id);
+
         return DataTables::of($results)->make(true);
     }
 
@@ -178,6 +212,7 @@ class HadithVerseController extends Controller implements HasMiddleware
     {
         try {
             $this->HadithVerseRepository->status($id);
+
             return response()->json(['message' => 'Status updated successfully']);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);

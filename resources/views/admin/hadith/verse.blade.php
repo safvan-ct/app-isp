@@ -240,7 +240,7 @@
             {{-- Actions --}}
             <div class="ms-auto d-flex align-items-center gap-2">
                 @if (!$selectedBookId)
-                    <span class="text-muted small fst-italic">Select a book to view and import verses</span>
+                    <span class="text-muted small fst-italic">Select a book to view and import</span>
                 @endif
 
                 @php
@@ -267,6 +267,22 @@
                     <i class="ti {{ $btnIcon }} me-1"></i>
                     <span id="importBtnText">{{ $btnLabel }}</span>
                 </button>
+
+                @if (count($jsonFiles))
+                    <div style="min-width: 180px;">
+                        {{-- <label class="form-label mb-1 small fw-semibold text-uppercase text-muted">Local JSON</label> --}}
+                        <select class="form-select form-select-sm rounded-3" id="jsonFileSelect">
+                            <option value="">Import a JSON file</option>
+                            @foreach ($jsonFiles as $jsonFile)
+                                <option value="{{ $jsonFile }}">{{ $jsonFile }}.json</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <button id="importJsonBtn" onclick="importJsonHadiths()" class="btn btn-primary fw-semibold rounded-3">
+                        <i class="ti ti-file-import me-1"></i>
+                        <span id="importJsonBtnText">Import JSON</span>
+                    </button>
+                @endif
             </div>
         </div>
     </div>
@@ -603,10 +619,10 @@
             if (logStatus === 'completed') {
                 if (!confirm(
                         'This scope is already fully imported. Do you want to re-import anyway? This will re-sync all pages from the API.'
-                        )) return;
+                    )) return;
             } else {
                 const scopeText = chapterId ? 'the selected chapter' :
-                'the entire selected book (may take several minutes)';
+                    'the entire selected book (may take several minutes)';
                 if (!confirm('Import / sync verses for ' + scopeText + '?')) return;
             }
 
@@ -652,6 +668,58 @@
                     $('#importBtnText').text(originalText);
                     const msg = xhr.responseJSON?.message || 'Error during import.';
                     toastr.error(msg);
+                }
+            });
+        }
+
+        // ---------------------------------------------------------------
+        // Local JSON import — creates/updates book, chapters, and verses
+        // ---------------------------------------------------------------
+        function importJsonHadiths() {
+            const file = $('#jsonFileSelect').val();
+            if (!file) {
+                toastr.error('Please select a local JSON file first.');
+                return;
+            }
+
+            if (!confirm('Import ' + file +
+                    '.json? This will create or update its book, chapters, verses, and English translations.')) {
+                return;
+            }
+
+            const btn = $('#importJsonBtn');
+            const originalText = $('#importJsonBtnText').text();
+            btn.prop('disabled', true);
+            $('#importJsonBtnText').html('<span class="spinner-border spinner-border-sm me-1"></span> Importing...');
+
+            $.ajax({
+                url: "{{ route('admin.hadith-verses.import-json') }}",
+                type: 'POST',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    file: file,
+                },
+                success: function(r) {
+                    toastr.success(r.message || 'JSON import completed.');
+                    if (r.warnings?.length) {
+                        r.warnings.slice(0, 3).forEach(w => toastr.warning(w, '', {
+                            timeOut: 6000
+                        }));
+                    }
+                    setTimeout(() => location.reload(), 1200);
+                },
+                error: function(xhr) {
+                    const response = xhr.responseJSON || {};
+                    toastr.error(response.message || 'JSON import failed.');
+                    if (response.warnings?.length) {
+                        response.warnings.slice(0, 3).forEach(w => toastr.warning(w, '', {
+                            timeOut: 6000
+                        }));
+                    }
+                },
+                complete: function() {
+                    btn.prop('disabled', false);
+                    $('#importJsonBtnText').text(originalText);
                 }
             });
         }
