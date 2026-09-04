@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -13,16 +14,18 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(RolePermissionSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(CourseSeeder::class);
+        $this->call(ChapterLessonSeeder::class);
 
-        $this->call(QuranSeeder::class);
-        $this->call(QuranVerseSeeder::class);
+        // $this->call(QuranSeeder::class);
+        // $this->call(QuranVerseSeeder::class);
 
-        if (config('app.env') === 'local') {
-            $this->call(HadithBookSeeder::class);
-            $this->call(HadithChapterSeeder::class);
-            $this->call(HadithVerseSeeder::class);
-            $this->call(HadithVerseJsonSeeder::class);
-            $this->call(HadithChapterCountSeeder::class);
-        }
+        // if (config('app.env') === 'local') {
+        //     $this->call(HadithBookSeeder::class);
+        //     $this->call(HadithChapterSeeder::class);
+        //     $this->call(HadithVerseSeeder::class);
+        //     $this->call(HadithVerseJsonSeeder::class);
+        //     $this->call(HadithChapterCountSeeder::class);
+        // }
     }
 }

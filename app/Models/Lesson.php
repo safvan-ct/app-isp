@@ -1,31 +1,33 @@
 <?php
 namespace App\Models;
 
-use App\Enums\CourseType;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Course extends Model
+class Lesson extends Model
 {
     protected $fillable = [
+        'chapter_id',
         'slug',
-        'type',
         'sort',
         'status',
-        'coming_soon',
     ];
 
     protected $casts = [
-        'type'        => CourseType::class,
-        'sort'        => 'integer',
-        'status'      => 'boolean',
-        'coming_soon' => 'boolean',
+        'sort'   => 'integer',
+        'status' => 'boolean',
     ];
 
     public function scopeActive($query)
     {
         return $query->where('status', true);
+    }
+
+    public function chapter(): BelongsTo
+    {
+        return $this->belongsTo(Chapter::class);
     }
 
     public function getTranslationAttribute()
@@ -35,21 +37,16 @@ class Course extends Model
 
     public function translations(): HasMany
     {
-        return $this->hasMany(CourseTranslation::class)->active()->lang();
+        return $this->hasMany(LessonTranslation::class)->active()->lang();
     }
 
     public function allTranslations(): HasMany
     {
-        return $this->hasMany(CourseTranslation::class);
+        return $this->hasMany(LessonTranslation::class);
     }
 
     public function currentTranslation(): HasOne
     {
-        return $this->hasOne(CourseTranslation::class)->active();
-    }
-
-    public function chapters(): HasMany
-    {
-        return $this->hasMany(Chapter::class)->orderBy('sort');
+        return $this->hasOne(LessonTranslation::class)->active();
     }
 }
