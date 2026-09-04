@@ -49,4 +49,34 @@ class Lesson extends Model
     {
         return $this->hasOne(LessonTranslation::class)->active();
     }
+
+    public function contents(): HasMany
+    {
+        return $this->hasMany(LessonContent::class)->active()->lang();
+    }
+
+    public function allContents(): HasMany
+    {
+        return $this->hasMany(LessonContent::class);
+    }
+
+    public function currentContent(): HasOne
+    {
+        return $this->hasOne(LessonContent::class)->active();
+    }
+
+    public function references(): HasMany
+    {
+        return $this->hasMany(LessonReference::class)->active();
+    }
+
+    public function quranReferences(): HasMany
+    {
+        return $this->hasMany(LessonReferenceQuran::class)->active();
+    }
+
+    public function hadithReferences(): HasMany
+    {
+        return $this->hasMany(LessonReferenceHadis::class)->active();
+    }
 }
