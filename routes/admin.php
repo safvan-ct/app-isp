@@ -16,11 +16,7 @@ use App\Http\Controllers\Admin\QuranVerseTranslationController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\StaffController;
-use App\Http\Controllers\Admin\TopicController;
-use App\Http\Controllers\Admin\TopicHadithController;
-use App\Http\Controllers\Admin\TopicQuranController;
-use App\Http\Controllers\Admin\TopicTranslationController;
-use App\Http\Controllers\Admin\TopicVideoController;
+
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -95,34 +91,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'not.customer'])->gr
     Route::resource('hadith-verse-translations', HadithVerseTranslationController::class)->only('store', 'update');
     // End Hadith
 
-    // Topic
-    Route::get('topics/dataTable', [TopicController::class, 'dataTable'])->name('topics.dataTable');
-    Route::get('topics/{type}', [TopicController::class, 'index'])->name('topics.index');
-    Route::patch('topics/status/{topic}', [TopicController::class, 'status'])->name('topics.status');
-    Route::post('topics/sort', [TopicController::class, 'sort'])->name('topics.sort');
-    Route::post('topics/{type}/store', [TopicController::class, 'store'])->name('topics.store');
-    Route::put('topics/{type}/update/{topic}', [TopicController::class, 'update'])->name('topics.update');
-
-    Route::get('topic-translations/dataTable', [TopicTranslationController::class, 'dataTable'])->name('topic-translations.dataTable');
-    Route::get('topic/{type}/translations/{id}/{translation?}', [TopicTranslationController::class, 'index'])->name('topic-translations.index');
-    Route::patch('topic-translations/status/{id}', [TopicTranslationController::class, 'status'])->name('topic-translations.status');
-    Route::resource('topic-translations', TopicTranslationController::class)->only('store', 'update');
-
-    Route::get('topic-quran/dataTable', [TopicQuranController::class, 'dataTable'])->name('topic-quran.dataTable');
-    Route::get('topic-quran/{topic_id}/{id?}', [TopicQuranController::class, 'index'])->name('topic-quran.index');
-    Route::post('topic-quran/sort', [TopicQuranController::class, 'sort'])->name('topic-quran.sort');
-    Route::resource('topic-quran', TopicQuranController::class)->only('store', 'update', 'destroy');
-
-    Route::get('topic-hadith/dataTable', [TopicHadithController::class, 'dataTable'])->name('topic-hadith.dataTable');
-    Route::get('topic-hadith/{topic_id}/{id?}', [TopicHadithController::class, 'index'])->name('topic-hadith.index');
-    Route::post('topic-hadith/sort', [TopicHadithController::class, 'sort'])->name('topic-hadith.sort');
-    Route::resource('topic-hadith', TopicHadithController::class)->only('store', 'update', 'destroy');
-
-    Route::get('topic-video/dataTable', [TopicVideoController::class, 'dataTable'])->name('topic-video.dataTable');
-    Route::get('topic-video/{topic_id}/{id?}', [TopicVideoController::class, 'index'])->name('topic-video.index');
-    Route::post('topic-video/sort', [TopicVideoController::class, 'sort'])->name('topic-video.sort');
-    Route::resource('topic-video', TopicVideoController::class)->only('store', 'update', 'destroy');
-    // End Topic
 
     Route::get('users/datatable', [UserController::class, 'dataTable'])->name('users.datatable');
     Route::patch('users/{user}/active', [UserController::class, 'active'])->name('users.active');

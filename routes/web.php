@@ -1,15 +1,11 @@
 <?php
 
-use App\Http\Controllers\FetchTopicController;
+
 use App\Http\Controllers\HadithFetchController;
 use App\Http\Controllers\QuranFetchController;
-use App\Http\Controllers\Web\BookmarkCollectionController;
-use App\Http\Controllers\Web\BookmarkController;
-use App\Http\Controllers\Web\HadithController;
 use App\Http\Controllers\Web\HomeController;
-use App\Http\Controllers\Web\LikeController;
 use App\Http\Controllers\Web\QuranController;
-use App\Http\Controllers\Web\TopicController;
+
 use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/admin.php';
@@ -20,7 +16,6 @@ require __DIR__ . '/auth.php';
 // ------------------------------
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('calendar', [HomeController::class, 'calendar'])->name('calendar');
-Route::get('likes', [HomeController::class, 'likes'])->name('likes');
 Route::get('change-language/{lang}', [HomeController::class, 'changeLanguage'])->name('change.language');
 
 Route::get('/contact', [HomeController::class, 'showForm'])->name('contact.form');
@@ -36,8 +31,6 @@ Route::prefix('fetch')->name('fetch.')->group(function () {
         Route::get('quran-ayahs', 'fetchVerses')->name('quran.ayahs');
         Route::get('quran-verse/{id}', 'fetchVerseById')->name('quran.verse');
         Route::get('quran-reference/{slug}/{number}', 'fetchReference')->name('quran.reference');
-        Route::post('quran-like', 'fetchLikedVerses')->name('quran.like');
-        Route::post('quran-bookmark', 'fetchBookmarkedVerses')->name('quran.bookmark');
     });
 
     // Hadith
@@ -47,36 +40,11 @@ Route::prefix('fetch')->name('fetch.')->group(function () {
         Route::get('hadith-verses', 'fetchVerses')->name('hadith.verses');
         Route::get('hadith-verse/{id}', 'fetchVerse')->name('hadith.verse');
         Route::get('hadith-reference/{slug}/{number}', 'fetchReference')->name('hadith.reference');
-        Route::post('hadith-like', 'fetchLikedVerses')->name('hadith.like');
-        Route::post('hadith-bookmark', 'fetchBookmarkedVerses')->name('hadith.bookmark');
     });
 
-    // Topics
-    Route::controller(FetchTopicController::class)->group(function () {
-        Route::post('topic-like', 'fetchLikedTopics')->name('topic.like');
-        Route::post('topic-bookmark', 'fetchBookmarkedTopics')->name('topic.bookmark');
-    });
 });
 
-// ------------------------------
-// Authenticated (Customer) Routes
-// ------------------------------
-Route::middleware(['auth', 'customer'])->group(function () {
-    // Likes
-    Route::controller(LikeController::class)->group(function () {
-        Route::post('like-item', 'store')->name('like.toggle');
-        Route::post('sync-likes', 'sync')->name('likes.sync');
-    });
 
-    // Bookmarks
-    Route::controller(BookmarkController::class)->group(function () {
-        Route::post('bookmark-item', 'store')->name('bookmark.toggle');
-    });
-
-    // Collections
-    Route::get('fetch/collections', [BookmarkCollectionController::class, 'fetchCollections'])->name('fetch.collections');
-    Route::resource('collections', BookmarkCollectionController::class)->except(['create', 'edit']);
-});
 
 // ------------------------------
 // Quran Routes
@@ -95,11 +63,3 @@ Route::controller(HadithController::class)->prefix('hadith')->name('hadith.')->g
     Route::get('{book}/chapter/{chapter}', 'hadithChapterVerses')->name('chapter.verses');
     Route::get('{book}/verse/{verse}', 'hadithVerseByNumber')->name('book.verse');
 });
-
-// ------------------------------
-// Topic Routes (Catch-All)
-// ------------------------------
-Route::get('topics', [TopicController::class, 'topics'])->name('topic.index');
-Route::get('{topic_slug}', [TopicController::class, 'modules'])->name('topic.modules');
-Route::get('{topic_slug}/{module_slug}/{lesson_slug?}', [TopicController::class, 'lessons'])->name('module.lessons');
-

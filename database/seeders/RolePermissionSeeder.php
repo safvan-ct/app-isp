@@ -43,27 +43,22 @@ class RolePermissionSeeder extends Seeder
         ];
 
         $menuPermission = [
-            'view menus', 'store menu', 'update menu', 'active menu', 'delete menu',
-            'view menu-translations', 'store menu-translation', 'update menu-translation', 'active menu-translation', 'delete menu-translation',
+            'view courses', 'store courses', 'update courses', 'active courses', 'delete courses',
+            'view courses-translations', 'store courses-translation', 'update courses-translation', 'active courses-translation', 'delete courses-translation',
         ];
 
         $modulePermission = [
-            'view modules', 'store module', 'update module', 'active module', 'delete module',
-            'view module-translations', 'store module-translation', 'update module-translation', 'active module-translation', 'delete module-translation',
+            'view chapters', 'store chapters', 'update chapters', 'active chapters', 'delete chapters',
+            'view chapters-translations', 'store chapters-translation', 'update chapters-translation', 'active chapters-translation', 'delete chapters-translation',
 
         ];
 
         $questionPermission = [
-            'view questions', 'store question', 'update question', 'active question', 'delete question',
-            'view question-translations', 'store question-translation', 'update question-translation', 'active question-translation', 'delete question-translation',
+            'view lessons', 'store lessons', 'update lessons', 'active lessons', 'delete lessons',
+            'view lessons-translations', 'store lessons-translation', 'update lessons-translation', 'active lessons-translation', 'delete lessons-translation',
         ];
 
-        $answerPermission = [
-            'view answers', 'store answer', 'update answer', 'active answer', 'delete answer',
-            'view answer-translations', 'store answer-translation', 'update answer-translation', 'active answer-translation', 'delete answer-translation',
-        ];
-
-        $permissions = array_merge($generalPermissions, $quranPermission, $hadithPermission, $menuPermission, $modulePermission, $questionPermission, $answerPermission);
+        $permissions = array_merge($generalPermissions, $quranPermission, $hadithPermission, $menuPermission, $modulePermission, $questionPermission);
 
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);

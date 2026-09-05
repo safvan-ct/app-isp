@@ -2,13 +2,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\LogOptions;
-use Spatie\Activitylog\Traits\LogsActivity;
-
 class QuranVerse extends Model
 {
-    use LogsActivity;
-
     protected $fillable = [
         'quran_chapter_id',
         'number_in_chapter',
@@ -21,16 +16,7 @@ class QuranVerse extends Model
         'is_active',
     ];
 
-    protected static $recordEvents = ['updated'];
-
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-            ->logOnly(['text', 'is_active'])
-            ->useLogName('quran_verses')
-            ->logOnlyDirty()
-            ->dontSubmitEmptyLogs();
-    }
+    
 
     public function scopeActive($query)
     {
@@ -60,15 +46,4 @@ class QuranVerse extends Model
         return $this->belongsTo(QuranChapter::class, 'quran_chapter_id');
     }
 
-    // --------------------
-    // Likes
-    // --------------------
-    public function likes()
-    {
-        return $this->morphMany(Like::class, 'likeable');
-    }
-    public function isLikedByUser($userId)
-    {
-        return $this->likes()->where('user_id', $userId)->exists();
-    }
 }

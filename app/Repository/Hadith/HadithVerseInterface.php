@@ -21,9 +21,7 @@ interface HadithVerseInterface
 
     public function getVerseById(array $id, $paginate = false);
 
-    public function getLikedVerses($userId, $paginate = true);
 
-    public function getBookmarkedVerses($userId, $collectionId, $paginate = true);
 
     public function getPaginatedVersesWithFilters(HadithChapter $chapter, array $filters, int $perPage);
 

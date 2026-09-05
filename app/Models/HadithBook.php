@@ -2,13 +2,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\LogOptions;
-use Spatie\Activitylog\Traits\LogsActivity;
-
 class HadithBook extends Model
 {
-    use LogsActivity;
-
     protected $fillable = [
         'name',
         'slug',
@@ -23,16 +18,7 @@ class HadithBook extends Model
         'is_active',
     ];
 
-    protected static $recordEvents = ['updated'];
-
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-            ->logOnly(['is_active', 'name', 'writer', 'status'])
-            ->useLogName('hadith_books')
-            ->logOnlyDirty()
-            ->dontSubmitEmptyLogs();
-    }
+    
 
     public function scopeActive($query)
     {

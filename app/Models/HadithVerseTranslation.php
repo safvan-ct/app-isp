@@ -2,13 +2,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Activitylog\LogOptions;
-use Spatie\Activitylog\Traits\LogsActivity;
-
 class HadithVerseTranslation extends Model
 {
-    use LogsActivity;
-
     protected $fillable = [
         'hadith_verse_id',
         'lang',
@@ -20,16 +15,7 @@ class HadithVerseTranslation extends Model
         'is_active',
     ];
 
-    protected static $recordEvents = ['updated'];
-
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-            ->logOnly(['is_active', 'heading', 'text'])
-            ->useLogName('hadith_verse_translations')
-            ->logOnlyDirty()
-            ->dontSubmitEmptyLogs();
-    }
+    
 
     public function scopeActive($query)
     {

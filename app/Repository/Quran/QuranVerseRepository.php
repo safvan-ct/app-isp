@@ -1,8 +1,6 @@
 <?php
 namespace App\Repository\Quran;
 
-use App\Models\BookmarkItem;
-use App\Models\Like;
 use App\Models\QuranChapter;
 use App\Models\QuranVerse;
 use App\Services\ApiService;
@@ -65,26 +63,6 @@ class QuranVerseRepository implements QuranVerseInterface
             ->get();
     }
 
-    public function getLikedVerses($userId, $paginate = true)
-    {
-        $ids = Like::where('likeable_type', 'App\Models\QuranVerse')
-            ->where('user_id', $userId)
-            ->pluck('likeable_id')
-            ->toArray();
-
-        return $this->getVerseById($ids, $paginate);
-    }
-
-    public function getBookmarkedVerses($userId, $collectionId, $paginate = true)
-    {
-        $ids = BookmarkItem::where('bookmarkable_type', 'App\Models\QuranVerse')
-            ->where('bookmark_collection_id', $collectionId)
-            ->where('user_id', $userId)
-            ->pluck('bookmarkable_id')
-            ->toArray();
-
-        return $this->getVerseById($ids, $paginate);
-    }
 
     public function getPaginatedVersesWithFilters(QuranChapter $chapter, array $filters, int $perPage)
     {

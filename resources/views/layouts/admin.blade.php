@@ -149,41 +149,6 @@
                         </li>
                     @endhasanyrole
 
-                    @hasanyrole('Developer|Owner|Admin|Topic Admin|Topic Staff')
-                        <li
-                            class="pc-item pc-hasmenu {{ Str::is('admin.topics.*', $route) ||
-                            Str::is('admin.topic-translations.*', $route) ||
-                            Str::is('admin.topic-quran.*', $route) ||
-                            Str::is('admin.topic-hadith.*', $route) ||
-                            Str::is('admin.topic-video.*', $route)
-                                ? 'active pc-trigger'
-                                : '' }}">
-                            <a href="javascript:void(0)" class="pc-link">
-                                <span class="pc-micon"><i class="ti ti-color-swatch"></i></span>
-                                <span class="pc-mtext">Islamic Knowledge</span>
-                                <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-                            </a>
-
-                            <ul class="pc-submenu">
-                                <li class="pc-item {{ $topicType == 'menu' ? 'active' : '' }}">
-                                    <a class="pc-link" href="{{ route('admin.topics.index', 'menu') }}">Menus</a>
-                                </li>
-
-                                <li class="pc-item {{ $topicType == 'module' ? 'active' : '' }}">
-                                    <a class="pc-link" href="{{ route('admin.topics.index', 'module') }}">Modules</a>
-                                </li>
-
-                                <li class="pc-item {{ $topicType == 'question' ? 'active' : '' }}">
-                                    <a class="pc-link" href="{{ route('admin.topics.index', 'question') }}">Questions</a>
-                                </li>
-
-                                <li class="pc-item {{ $topicType == 'answer' ? 'active' : '' }}">
-                                    <a class="pc-link" href="{{ route('admin.topics.index', 'answer') }}">Answers</a>
-                                </li>
-                            </ul>
-                        </li>
-                    @endhasanyrole
-
                     @can('view users')
                         <li class="pc-item {{ Route::currentRouteName() == 'admin.users.index' ? 'active' : '' }}"
                             class="pc-link">

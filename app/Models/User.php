@@ -31,18 +31,4 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function likes()
-    {
-        return $this->hasMany(Like::class);
-    }
-
-    public function collections()
-    {
-        return $this->hasMany(BookmarkCollection::class);
-    }
-
-    public function bookmarks()
-    {
-        return $this->hasMany(BookmarkItem::class);
-    }
 }

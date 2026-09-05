@@ -57,14 +57,6 @@
                                 data-surah="{{ $chapter->id }}" data-ayah="{{ $item->number_in_chapter }}">
                                 <i class="far fa-play-circle"></i>
                             </button>
-                            <button class="btn btn-sm btn-outline-warning bookmark-btn" title="Bookmark Ayah"
-                                data-id="{{ $item->id }}" data-type="quran">
-                                <i class="far fa-star"></i>
-                            </button>
-                            <button class="btn btn-sm btn-outline-danger like-btn" title="Like Ayah"
-                                data-id="{{ $item->id }}" data-type="quran">
-                                <i class="far fa-heart"></i>
-                            </button>
                         </div>
                     </article>
                 @endforeach

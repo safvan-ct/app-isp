@@ -8,9 +8,8 @@ return [
     ],
 
     'topic_parent_map' => [
-        'menu'     => null,
-        'module'   => 'menu',
-        'question' => 'module',
-        'answer'   => 'question',
+        'course'  => null,
+        'chapter' => 'course',
+        'lesson'  => 'chapter',
     ],
 ];

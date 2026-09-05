@@ -1,11 +1,9 @@
 <?php
 namespace App\Repository\Hadith;
 
-use App\Models\BookmarkItem;
 use App\Models\HadithBook;
 use App\Models\HadithChapter;
 use App\Models\HadithVerse;
-use App\Models\Like;
 
 class HadithVerseRepository implements HadithVerseInterface
 {
@@ -75,26 +73,6 @@ class HadithVerseRepository implements HadithVerseInterface
         return $paginate ? $query->paginate(5) : $query->get();
     }
 
-    public function getLikedVerses($userId, $paginate = true)
-    {
-        $ids = Like::where('likeable_type', 'App\Models\HadithVerse')
-            ->where('user_id', $userId)
-            ->pluck('likeable_id')
-            ->toArray();
-
-        return $this->getVerseById($ids, $paginate);
-    }
-
-    public function getBookmarkedVerses($userId, $collectionId, $paginate = true)
-    {
-        $ids = BookmarkItem::where('bookmarkable_type', 'App\Models\HadithVerse')
-            ->where('bookmark_collection_id', $collectionId)
-            ->where('user_id', $userId)
-            ->pluck('bookmarkable_id')
-            ->toArray();
-
-        return $this->getVerseById($ids, $paginate);
-    }
 
     public function getPaginatedVersesWithFilters(HadithChapter $chapter, array $filters, int $perPage)
     {

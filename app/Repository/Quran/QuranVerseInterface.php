@@ -18,9 +18,7 @@ interface QuranVerseInterface
 
     public function getVerses(int $chapterId, ?int $ayahNumber = null);
 
-    public function getLikedVerses($userId, $paginate = true);
 
-    public function getBookmarkedVerses($userId, $collectionId, $paginate = true);
 
     public function getPaginatedVersesWithFilters(QuranChapter $chapter, array $filters, int $perPage);
 
