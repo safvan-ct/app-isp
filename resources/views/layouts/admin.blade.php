@@ -153,7 +153,9 @@
                             class="pc-item pc-hasmenu {{ Str::is('admin.courses.*', $route) ||
                             Str::is('admin.course-translations.*', $route) ||
                             Str::is('admin.chapters.*', $route) ||
-                            Str::is('admin.chapter-translations.*', $route)
+                            Str::is('admin.chapter-translations.*', $route) ||
+                            Str::is('admin.lessons.*', $route) ||
+                            Str::is('admin.lesson-translations.*', $route)
                                 ? 'active pc-trigger'
                                 : '' }}">
                             <a href="javascript:void(0)" class="pc-link">
@@ -173,6 +175,12 @@
                                         ? 'active'
                                         : '' }}">
                                     <a class="pc-link" href="{{ route('admin.chapters.index') }}">Chapters</a>
+                                </li>
+                                <li
+                                    class="pc-item {{ Str::is('admin.lessons.*', $route) || Str::is('admin.lesson-translations.*', $route)
+                                        ? 'active'
+                                        : '' }}">
+                                    <a class="pc-link" href="{{ route('admin.lessons.index') }}">Lessons</a>
                                 </li>
                             </ul>
                         </li>

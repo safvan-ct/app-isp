@@ -3,6 +3,8 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CourseTranslationController;
 use App\Http\Controllers\Admin\ChapterController;
 use App\Http\Controllers\Admin\ChapterTranslationController;
+use App\Http\Controllers\Admin\LessonController;
+use App\Http\Controllers\Admin\LessonTranslationController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HadithBookController;
@@ -118,6 +120,19 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'not.customer'])->gr
     Route::get('chapter-translations/{chapter_id}/{translation?}', [ChapterTranslationController::class, 'index'])->name('chapter-translations.index');
     Route::patch('chapter-translations/status/{chapter_translation}', [ChapterTranslationController::class, 'status'])->name('chapter-translations.status');
     Route::resource('chapter-translations', ChapterTranslationController::class)->only('store', 'update');
+
+    // Lessons
+    Route::get('lessons/dataTable', [LessonController::class, 'dataTable'])->name('lessons.dataTable');
+    Route::get('lessons/{chapter_id?}', [LessonController::class, 'index'])->name('lessons.index');
+    Route::patch('lessons/status/{lesson}', [LessonController::class, 'status'])->name('lessons.status');
+    Route::post('lessons/sort', [LessonController::class, 'sort'])->name('lessons.sort');
+    Route::resource('lessons', LessonController::class)->only('store', 'update');
+
+    // Lesson Translations
+    Route::get('lesson-translations/dataTable', [LessonTranslationController::class, 'dataTable'])->name('lesson-translations.dataTable');
+    Route::get('lesson-translations/{lesson_id}/{translation?}', [LessonTranslationController::class, 'index'])->name('lesson-translations.index');
+    Route::patch('lesson-translations/status/{lesson_translation}', [LessonTranslationController::class, 'status'])->name('lesson-translations.status');
+    Route::resource('lesson-translations', LessonTranslationController::class)->only('store', 'update');
 
     Route::get('users/datatable', [UserController::class, 'dataTable'])->name('users.datatable');
     Route::patch('users/{user}/active', [UserController::class, 'active'])->name('users.active');
