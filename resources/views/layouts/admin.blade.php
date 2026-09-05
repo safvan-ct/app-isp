@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Roboto:wght@400;500;700&display=swap"
         id="main-font-link" />
     <link rel="stylesheet" href="{{ asset('admin/fonts/phosphor/duotone/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/fonts/tabler-icons.min.css') }}" />
@@ -67,9 +67,8 @@
     <nav class="pc-sidebar">
         <div class="navbar-wrapper">
             <div class="m-header d-flex justify-content-center">
-                <a href="{{ route('admin.dashboard') }}" class="b-brand text-primary">
-                    <img src="{{ asset('img/logo.png') }}" alt="{{ config('app.name') }}" class="logo logo-lg w-100"
-                        style="height: 75px" />
+                <a href="{{ route('admin.dashboard') }}" class="b-brand text-primary" style="font-family: 'Amiri', serif; font-size: 2.5rem; font-weight: bold; text-decoration: none;">
+                    الأثار
                 </a>
             </div>
 
@@ -149,6 +148,28 @@
                         </li>
                     @endhasanyrole
 
+                    @can('view courses')
+                        <li
+                            class="pc-item pc-hasmenu {{ Str::is('admin.courses.*', $route) ||
+                            Str::is('admin.course-translations.*', $route)
+                                ? 'active pc-trigger'
+                                : '' }}">
+                            <a href="javascript:void(0)" class="pc-link">
+                                <span class="pc-micon"><i class="ti ti-school"></i></span>
+                                <span class="pc-mtext">LMS</span>
+                                <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                            </a>
+                            <ul class="pc-submenu">
+                                <li
+                                    class="pc-item {{ Str::is('admin.courses.*', $route) || Str::is('admin.course-translations.*', $route)
+                                        ? 'active'
+                                        : '' }}">
+                                    <a class="pc-link" href="{{ route('admin.courses.index') }}">Courses</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endcan
+
                     @can('view users')
                         <li class="pc-item {{ Route::currentRouteName() == 'admin.users.index' ? 'active' : '' }}"
                             class="pc-link">
@@ -195,13 +216,6 @@
                                     </li>
                                 @endrole
                             </ul>
-                        </li>
-
-                        <li class="pc-item {{ Str::is('admin.activity-log', $route) ? 'active' : '' }}">
-                            <a href="{{ route('admin.activity-log') }}" class="pc-link">
-                                <span class="pc-micon"><i class="ti ti-activity"></i></span>
-                                <span class="pc-mtext">Activity Logs</span>
-                            </a>
                         </li>
                     @endif
 

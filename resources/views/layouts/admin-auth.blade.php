@@ -10,6 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="icon" href="{{ asset('img/favicon.ico') }}" type="image/x-icon" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Roboto:wght@400;500;700&display=swap" />
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}" id="main-style-link" />
     <link rel="stylesheet" href="{{ asset('admin/css/style-preset.css') }}" />
 </head>
@@ -26,9 +27,8 @@
             <div class="auth-form">
                 <div class="card mt-5">
                     <div class="card-body">
-                        <a href="#" class="d-flex justify-content-center mt-1">
-                            <img src="{{ asset('img/logo.png') }}" alt="image" class="img-fluid brand-logo"
-                                style="height: 95px" />
+                        <a href="#" class="d-flex justify-content-center mt-1 text-primary" style="font-family: 'Amiri', serif; font-size: 3rem; font-weight: bold; text-decoration: none;">
+                            الأثار
                         </a>
 
                         @yield('content')

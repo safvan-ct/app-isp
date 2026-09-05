@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\CourseTranslationController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HadithBookController;
@@ -91,6 +92,20 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'not.customer'])->gr
     Route::resource('hadith-verse-translations', HadithVerseTranslationController::class)->only('store', 'update');
     // End Hadith
 
+
+    // Courses
+    Route::get('courses/dataTable', [CourseController::class, 'dataTable'])->name('courses.dataTable');
+    Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
+    Route::patch('courses/status/{course}', [CourseController::class, 'status'])->name('courses.status');
+    Route::post('courses/sort', [CourseController::class, 'sort'])->name('courses.sort');
+    Route::post('courses/store', [CourseController::class, 'store'])->name('courses.store');
+    Route::put('courses/update/{course}', [CourseController::class, 'update'])->name('courses.update');
+
+    // Course Translations
+    Route::get('course-translations/dataTable', [CourseTranslationController::class, 'dataTable'])->name('course-translations.dataTable');
+    Route::get('course-translations/{course_id}/{translation?}', [CourseTranslationController::class, 'index'])->name('course-translations.index');
+    Route::patch('course-translations/status/{id}', [CourseTranslationController::class, 'status'])->name('course-translations.status');
+    Route::resource('course-translations', CourseTranslationController::class)->only('store', 'update');
 
     Route::get('users/datatable', [UserController::class, 'dataTable'])->name('users.datatable');
     Route::patch('users/{user}/active', [UserController::class, 'active'])->name('users.active');

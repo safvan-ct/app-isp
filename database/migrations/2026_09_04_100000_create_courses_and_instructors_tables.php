@@ -43,7 +43,7 @@ return new class extends Migration
             $table->string('lang', 5)->default('en')->index();
             $table->string('title');
             $table->text('desc')->nullable();
-            $table->text('objectives')->nullable();
+            $table->longText('objectives')->nullable();
             $table->json('key_points')->nullable();
             $table->unsignedInteger('duration')->nullable();
             $table->foreignId('author_id')->nullable()->constrained('instructors')->nullOnDelete();

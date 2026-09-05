@@ -54,6 +54,9 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(HadithVerseInterface::class, HadithVerseRepository::class);
         $this->app->bind(HadithVerseTranslationInterface::class, HadithVerseTranslationRepository::class);
 
+        $this->app->bind(\App\Repository\Course\CourseInterface::class, \App\Repository\Course\CourseRepository::class);
+        $this->app->bind(\App\Repository\Course\CourseTranslationInterface::class, \App\Repository\Course\CourseTranslationRepository::class);
+
     }
 
     /**
