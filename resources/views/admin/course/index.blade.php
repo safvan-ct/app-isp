@@ -97,8 +97,10 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            const url = "{{ route('admin.course-translations.index', [':id']) }}".replace(':id', row.id);
-                            return `<a href="${url}" class="btn btn-link">Translations</a> |
+                            const translUrl = "{{ route('admin.course-translations.index', [':id']) }}".replace(':id', row.id);
+                            const chaptersUrl = "{{ route('admin.chapters.index', [':id']) }}".replace(':id', row.id);
+                            return `<a href="${chaptersUrl}" class="btn btn-link">Chapters</a> |
+                                <a href="${translUrl}" class="btn btn-link">Translations</a> |
                                 <button onclick="createUpdate(${row.id})" class="btn btn-link" id="editBtn${row.id}" data-slug="${row.slug}" data-type="${row.type}" data-coming_soon="${row.coming_soon}">Edit</button>`;
                         }
                     },
