@@ -8,11 +8,7 @@
             <div class="card">
                 <div class="card-body">
                     <x-admin.alert type="success" />
-                    <x-admin.table :headers="['#', 'Title', 'Slug', 'Type', 'Coming Soon', 'Status', 'Actions']">
-                        <x-slot name="header">
-                            <button onclick="createUpdate(0)" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add Course</button>
-                        </x-slot>
-                    </x-admin.table>
+                    <x-admin.table :headers="['#', 'Title', 'Slug', 'Type', 'Coming Soon', 'Status', 'Actions']" />
                 </div>
             </div>
         </div>
@@ -56,32 +52,36 @@
                 ajax: {
                     url: "{{ route('admin.courses.dataTable') }}",
                 },
-                columns: [{
+                columns: [
+                    {
                         data: 'id',
-                        name: 'id'
+                        name: 'courses.id'
                     },
                     {
                         data: 'title',
-                        name: 'title'
+                        name: 'course_translations.title'
                     },
                     {
                         data: 'slug',
-                        name: 'slug'
+                        name: 'courses.slug'
                     },
                     {
                         data: 'type',
-                        name: 'type',
+                        name: 'courses.type',
+                        render: function(data) {
+                            return data ? data.charAt(0).toUpperCase() + data.slice(1) : '';
+                        }
                     },
                     {
                         data: 'coming_soon',
-                        name: 'coming_soon',
+                        name: 'courses.coming_soon',
                         render: function(data, type, row) {
                             return data ? '<span class="badge bg-warning">Yes</span>' : '<span class="badge bg-secondary">No</span>';
                         }
                     },
                     {
                         data: 'status',
-                        name: 'status',
+                        name: 'courses.status',
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
@@ -107,6 +107,11 @@
                     targets: '_all',
                     className: 'text-center'
                 }],
+                initComplete: function() {
+                    $('#dataTable_filter')
+                        .addClass('d-flex align-items-center justify-content-end')
+                        .append('<button type="button" onclick="createUpdate(0)" class="btn btn-primary btn-sm ms-2"><i class="fa fa-plus"></i> Add Course</button>');
+                }
             });
         });
 
@@ -122,21 +127,14 @@
             $('#edit_id').val(isCreate ? '' : id);
             $('#slug').val(isCreate ? '' : $(`#editBtn${id}`).data('slug'));
             
-            // Map the frontend label back to value for type select if necessary, 
-            // but we might need to send value in data attribute if row.type is just label.
-            // Let's assume row.type is just the string value or label.
-            // Actually in repository we returned $course->type->label() for datatable.
-            // Let's adjust to find the option matching the text if it's a label.
-            if(!isCreate) {
-                let typeLabel = $(`#editBtn${id}`).data('type');
-                $("#type option").filter(function() {
-                    return $(this).text() == typeLabel || $(this).val() == typeLabel; 
-                }).prop('selected', true);
+            if (!isCreate) {
+                const typeVal = $(`#editBtn${id}`).data('type')?.toString().toLowerCase();
+                $('#type').val(typeVal);
             } else {
                 $('#type').val($('#type option:first').val());
             }
 
-            $('#coming_soon').prop('checked', isCreate ? false : $(`#editBtn${id}`).data('coming_soon'));
+            $('#coming_soon').prop('checked', isCreate ? false : Boolean($(`#editBtn${id}`).data('coming_soon')));
         }
 
         function createUpdatePost() {

@@ -1,52 +1,73 @@
 <?php
 namespace App\Repository\Course;
 
+use App\Enums\CourseType;
 use App\Models\Course;
-use App\Models\CourseTranslation;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 
 class CourseRepository implements CourseInterface
 {
-    public function dataTable()
+    public function dataTable(): Builder
     {
-        return Course::with(['translations' => function ($query) {
-            $query->where('lang', app()->getLocale());
-        }])->orderBy('sort')->get()->map(function ($course) {
-            $translation = $course->translations->first();
-            return [
-                'id' => $course->id,
-                'slug' => $course->slug,
-                'title' => $translation ? $translation->title : null,
-                'type' => $course->type->label(),
-                'status' => $course->status,
-                'coming_soon' => $course->coming_soon,
-                'sort' => $course->sort,
-            ];
-        });
+        $locale = app()->getLocale();
+
+        return Course::query()
+            ->leftJoin('course_translations', function ($join) use ($locale) {
+                $join->on('courses.id', '=', 'course_translations.course_id')
+                    ->where('course_translations.lang', '=', $locale);
+            })
+            ->select([
+                'courses.id',
+                'courses.slug',
+                'courses.type',
+                'courses.sort',
+                'courses.status',
+                'courses.coming_soon',
+                'course_translations.title as title',
+            ]);
     }
 
-    public function store(array $data)
+    public function store(array $data): Course
     {
+        $data['coming_soon'] = ! empty($data['coming_soon']);
+        $data['status']      = $data['status'] ?? true;
+        $data['sort']        = (Course::max('sort') ?? 0) + 1;
+
         return Course::create($data);
     }
 
-    public function update(array $data, Course $course)
+    public function update(array $data, Course $course): bool
     {
+        if (array_key_exists('coming_soon', $data)) {
+            $data['coming_soon'] = ! empty($data['coming_soon']);
+        }
+
         return $course->update($data);
     }
 
-    public function status(string $id)
+    public function status(Course|string $course): bool
     {
-        $course = Course::findOrFail($id);
-        return $course->update(['status' => !$course->status]);
+        if (! $course instanceof Course) {
+            $course = Course::findOrFail($course);
+        }
+
+        return $course->update(['status' => ! $course->status]);
     }
 
-    public function sort(array $data)
+    public function sort(array $data): void
     {
         DB::transaction(function () use ($data) {
             foreach ($data as $item) {
-                Course::where('id', $item['id'])->update(['sort' => $item['sort']]);
+                if (isset($item['id'], $item['sort'])) {
+                    Course::where('id', $item['id'])->update(['sort' => $item['sort']]);
+                }
             }
         });
+    }
+
+    public function getTypes(): array
+    {
+        return CourseType::cases();
     }
 }

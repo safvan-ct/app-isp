@@ -2,14 +2,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Course\StoreRequest;
 use App\Models\Course;
 use App\Repository\Course\CourseInterface;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\View\View;
 use Spatie\Permission\Middleware\PermissionMiddleware;
 use Yajra\DataTables\Facades\DataTables;
-use App\Enums\CourseType;
 
 class CourseController extends Controller implements HasMiddleware
 {
@@ -28,73 +31,55 @@ class CourseController extends Controller implements HasMiddleware
         ];
     }
 
-    public function index()
+    public function index(): View
     {
-        $types = CourseType::cases();
+        $types = $this->courseRepository->getTypes();
         return view('admin.course.index', compact('types'));
     }
 
-    public function dataTable()
+    public function dataTable(): JsonResponse
     {
-        $results = $this->courseRepository->dataTable();
-        return DataTables::of($results)->make(true);
+        $query = $this->courseRepository->dataTable();
+
+        return DataTables::of($query)->make(true);
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request): JsonResponse
     {
-        $request->validate([
-            'slug' => 'required|string|unique:courses,slug',
-            'type' => 'required|string',
-            'coming_soon' => 'boolean'
-        ]);
-
         try {
-            $data = $request->only(['slug', 'type']);
-            $data['coming_soon'] = $request->boolean('coming_soon');
-            $data['status'] = true;
-            $data['sort'] = Course::max('sort') + 1;
-            
-            $this->courseRepository->store($data);
+            $this->courseRepository->store($request->validated());
             return response()->json(['message' => 'Course created successfully']);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }
 
-    public function update(Request $request, Course $course)
+    public function update(StoreRequest $request, Course $course): JsonResponse
     {
-        $request->validate([
-            'slug' => 'required|string|unique:courses,slug,' . $course->id,
-            'type' => 'required|string',
-            'coming_soon' => 'boolean'
-        ]);
-
         try {
-            $data = $request->only(['slug', 'type']);
-            $data['coming_soon'] = $request->boolean('coming_soon');
-            $this->courseRepository->update($data, $course);
+            $this->courseRepository->update($request->validated(), $course);
             return response()->json(['message' => 'Course updated successfully']);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }
 
-    public function status(string $id)
+    public function status(Course $course): JsonResponse
     {
         try {
-            $this->courseRepository->status($id);
+            $this->courseRepository->status($course);
             return response()->json(['message' => 'Course status updated successfully']);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }
 
-    public function sort(Request $request)
+    public function sort(Request $request): JsonResponse
     {
         try {
             $this->courseRepository->sort($request->all());
             return response()->json(['message' => 'Course sort updated successfully']);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }

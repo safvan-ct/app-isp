@@ -95,11 +95,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'not.customer'])->gr
 
     // Courses
     Route::get('courses/dataTable', [CourseController::class, 'dataTable'])->name('courses.dataTable');
-    Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
     Route::patch('courses/status/{course}', [CourseController::class, 'status'])->name('courses.status');
     Route::post('courses/sort', [CourseController::class, 'sort'])->name('courses.sort');
-    Route::post('courses/store', [CourseController::class, 'store'])->name('courses.store');
-    Route::put('courses/update/{course}', [CourseController::class, 'update'])->name('courses.update');
+    Route::resource('courses', CourseController::class)->only('index', 'store', 'update');
 
     // Course Translations
     Route::get('course-translations/dataTable', [CourseTranslationController::class, 'dataTable'])->name('course-translations.dataTable');

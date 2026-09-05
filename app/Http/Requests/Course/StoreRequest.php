@@ -1,10 +1,11 @@
 <?php
-namespace App\Http\Requests\Topic;
+namespace App\Http\Requests\Course;
 
+use App\Enums\CourseType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,9 +22,12 @@ class UpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+        $courseId = $this->route('course')?->id ?? $this->input('id');
+
         return [
-            'slug'       => ['required', Rule::unique('topics', 'slug')->ignore($this->route('topic')->id)],
-            'is_primary' => 'nullable',
+            'slug'        => ['required', 'string', 'max:255', Rule::unique('courses', 'slug')->ignore($courseId)],
+            'type'        => ['required', Rule::enum(CourseType::class)],
+            'coming_soon' => ['nullable', 'boolean'],
         ];
     }
 }

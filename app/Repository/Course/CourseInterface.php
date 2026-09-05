@@ -2,12 +2,14 @@
 namespace App\Repository\Course;
 
 use App\Models\Course;
+use Illuminate\Database\Eloquent\Builder;
 
 interface CourseInterface
 {
-    public function dataTable();
-    public function store(array $data);
-    public function update(array $data, Course $course);
-    public function status(string $id);
-    public function sort(array $data);
+    public function dataTable(): Builder;
+    public function store(array $data): Course;
+    public function update(array $data, Course $course): bool;
+    public function status(Course|string $course): bool;
+    public function sort(array $data): void;
+    public function getTypes(): array;
 }
