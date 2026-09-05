@@ -2,13 +2,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Course;
+use App\Http\Requests\CourseTranslation\StoreRequest;
 use App\Models\CourseTranslation;
-use App\Models\Instructor;
 use App\Repository\Course\CourseTranslationInterface;
+use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\View\View;
 use Spatie\Permission\Middleware\PermissionMiddleware;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -22,71 +24,56 @@ class CourseTranslationController extends Controller implements HasMiddleware
     {
         return [
             new Middleware(PermissionMiddleware::using('view courses'), only: ['index', 'dataTable']),
-            new Middleware(PermissionMiddleware::using('update courses'), only: ['update', 'store']),
+            new Middleware(PermissionMiddleware::using('store courses'), only: ['store']),
+            new Middleware(PermissionMiddleware::using('update courses'), only: ['update']),
             new Middleware(PermissionMiddleware::using('active courses'), only: ['status']),
         ];
     }
 
-    public function index(string $course_id, string $translation = null)
+    public function index(string | int $course_id, ?string $translation = null): View
     {
-        $course = Course::findOrFail($course_id);
-        $transl = $translation ? CourseTranslation::findOrFail($translation) : null;
-        $instructors = Instructor::active()->get();
+        $course      = $this->courseTranslationRepository->getCourse($course_id);
+        $transl      = $translation ? $this->courseTranslationRepository->find($translation) : null;
+        $instructors = $this->courseTranslationRepository->getInstructors();
+
         return view('admin.course.translations', compact('course', 'transl', 'instructors'));
     }
 
-    public function dataTable(Request $request)
+    public function dataTable(Request $request): JsonResponse
     {
-        $results = $this->courseTranslationRepository->dataTable($request->course_id);
-        return DataTables::of($results)->make(true);
+        $query = $this->courseTranslationRepository->dataTable($request->course_id);
+
+        return DataTables::of($query)
+            ->rawColumns(['objectives', 'desc', 'key_points'])
+            ->make(true);
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request): JsonResponse
     {
-        $request->validate([
-            'course_id' => 'required|exists:courses,id',
-            'lang' => 'required|string|max:5',
-            'title' => 'required|string|max:255',
-            'desc' => 'nullable|string',
-        ]);
-
         try {
-            $data = $request->except('_token');
-            $data['status'] = true;
-            $this->courseTranslationRepository->store($data);
+            $this->courseTranslationRepository->store($request->validated());
             return response()->json(['message' => 'Translation created successfully']);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }
 
-    public function update(Request $request, CourseTranslation $courseTranslation)
+    public function update(StoreRequest $request, CourseTranslation $courseTranslation): JsonResponse
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'desc' => 'nullable|string',
-        ]);
-
         try {
-            $data = $request->except('_token');
-            if ($request->has('key_points')) {
-                $data['key_points'] = is_array($request->key_points) ? $request->key_points : [];
-            } else {
-                $data['key_points'] = [];
-            }
-            $this->courseTranslationRepository->update($data, $courseTranslation);
+            $this->courseTranslationRepository->update($request->validated(), $courseTranslation);
             return response()->json(['message' => 'Translation updated successfully']);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }
 
-    public function status(string $id)
+    public function status(CourseTranslation $courseTranslation): JsonResponse
     {
         try {
-            $this->courseTranslationRepository->status($id);
+            $this->courseTranslationRepository->status($courseTranslation);
             return response()->json(['message' => 'Translation status updated successfully']);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }

@@ -102,7 +102,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'not.customer'])->gr
     // Course Translations
     Route::get('course-translations/dataTable', [CourseTranslationController::class, 'dataTable'])->name('course-translations.dataTable');
     Route::get('course-translations/{course_id}/{translation?}', [CourseTranslationController::class, 'index'])->name('course-translations.index');
-    Route::patch('course-translations/status/{id}', [CourseTranslationController::class, 'status'])->name('course-translations.status');
+    Route::patch('course-translations/status/{course_translation}', [CourseTranslationController::class, 'status'])->name('course-translations.status');
     Route::resource('course-translations', CourseTranslationController::class)->only('store', 'update');
 
     Route::get('users/datatable', [UserController::class, 'dataTable'])->name('users.datatable');
