@@ -60,6 +60,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(\App\Repository\Course\ChapterTranslationInterface::class, \App\Repository\Course\ChapterTranslationRepository::class);
         $this->app->bind(\App\Repository\Course\LessonInterface::class, \App\Repository\Course\LessonRepository::class);
         $this->app->bind(\App\Repository\Course\LessonTranslationInterface::class, \App\Repository\Course\LessonTranslationRepository::class);
+        $this->app->bind(\App\Repository\Course\LessonDetailInterface::class, \App\Repository\Course\LessonDetailRepository::class);
 
     }
 

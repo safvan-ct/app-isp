@@ -9,7 +9,7 @@ class LessonReferenceHadith extends Model
     protected $table = 'lesson_reference_hadith';
 
     protected $fillable = [
-        'lesson_id',
+        'lesson_reference_id',
         'hadith_verse_id',
         'verse_no',
         'status',
@@ -25,9 +25,9 @@ class LessonReferenceHadith extends Model
         return $query->where('status', true);
     }
 
-    public function lesson(): BelongsTo
+    public function reference(): BelongsTo
     {
-        return $this->belongsTo(Lesson::class);
+        return $this->belongsTo(LessonReference::class, 'lesson_reference_id');
     }
 
     public function hadithVerse(): BelongsTo
@@ -35,3 +35,4 @@ class LessonReferenceHadith extends Model
         return $this->belongsTo(HadithVerse::class, 'hadith_verse_id');
     }
 }
+

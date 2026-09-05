@@ -5,6 +5,7 @@ use App\Http\Controllers\HadithFetchController;
 use App\Http\Controllers\QuranFetchController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\QuranController;
+use App\Http\Controllers\Web\HadithController;
 
 use Illuminate\Support\Facades\Route;
 

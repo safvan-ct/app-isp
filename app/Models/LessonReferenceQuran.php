@@ -9,7 +9,7 @@ class LessonReferenceQuran extends Model
     protected $table = 'lesson_reference_quran';
 
     protected $fillable = [
-        'lesson_id',
+        'lesson_reference_id',
         'surah_id',
         'verse_no',
         'status',
@@ -25,9 +25,9 @@ class LessonReferenceQuran extends Model
         return $query->where('status', true);
     }
 
-    public function lesson(): BelongsTo
+    public function reference(): BelongsTo
     {
-        return $this->belongsTo(Lesson::class);
+        return $this->belongsTo(LessonReference::class, 'lesson_reference_id');
     }
 
     public function surah(): BelongsTo
@@ -35,3 +35,4 @@ class LessonReferenceQuran extends Model
         return $this->belongsTo(QuranChapter::class, 'surah_id');
     }
 }
+

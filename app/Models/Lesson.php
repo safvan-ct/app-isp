@@ -4,6 +4,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Lesson extends Model
@@ -70,13 +71,30 @@ class Lesson extends Model
         return $this->hasMany(LessonReference::class)->active();
     }
 
-    public function quranReferences(): HasMany
+    public function allReferences(): HasMany
     {
-        return $this->hasMany(LessonReferenceQuran::class)->active();
+        return $this->hasMany(LessonReference::class);
     }
 
-    public function hadithReferences(): HasMany
+    public function quranReferences(): HasManyThrough
     {
-        return $this->hasMany(LessonReferenceHadis::class)->active();
+        return $this->hasManyThrough(
+            LessonReferenceQuran::class,
+            LessonReference::class,
+            'lesson_id',
+            'lesson_reference_id'
+        );
+    }
+
+    public function hadithReferences(): HasManyThrough
+    {
+        return $this->hasManyThrough(
+            LessonReferenceHadith::class,
+            LessonReference::class,
+            'lesson_id',
+            'lesson_reference_id'
+        );
     }
 }
+
+

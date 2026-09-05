@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ChapterController;
 use App\Http\Controllers\Admin\ChapterTranslationController;
 use App\Http\Controllers\Admin\LessonController;
 use App\Http\Controllers\Admin\LessonTranslationController;
+use App\Http\Controllers\Admin\LessonDetailController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HadithBookController;
@@ -133,6 +134,39 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'not.customer'])->gr
     Route::get('lesson-translations/{lesson_id}/{translation?}', [LessonTranslationController::class, 'index'])->name('lesson-translations.index');
     Route::patch('lesson-translations/status/{lesson_translation}', [LessonTranslationController::class, 'status'])->name('lesson-translations.status');
     Route::resource('lesson-translations', LessonTranslationController::class)->only('store', 'update');
+
+    // Lesson Details & Content Studio (Contents, References, Quran & Hadith References)
+    Route::get('lessons/{lesson_id}/manage', [LessonDetailController::class, 'manage'])->name('lessons.manage');
+    Route::get('lessons/{lesson}/references-list', [LessonDetailController::class, 'referencesList'])->name('lessons.references.list');
+    Route::get('lessons/hadith-verses/search', [LessonDetailController::class, 'hadithVerses'])->name('lessons.hadith-verses.search');
+
+    // 1. Lesson Contents
+    Route::get('lessons/{lesson}/contents/dataTable', [LessonDetailController::class, 'contentDataTable'])->name('lessons.contents.dataTable');
+    Route::post('lessons/{lesson}/contents', [LessonDetailController::class, 'storeContent'])->name('lessons.contents.store');
+    Route::put('lessons/{lesson}/contents/{content}', [LessonDetailController::class, 'updateContent'])->name('lessons.contents.update');
+    Route::patch('lessons/{lesson}/contents/{content}/status', [LessonDetailController::class, 'statusContent'])->name('lessons.contents.status');
+    Route::delete('lessons/{lesson}/contents/{content}', [LessonDetailController::class, 'deleteContent'])->name('lessons.contents.destroy');
+
+    // 2. Lesson References (General)
+    Route::get('lessons/{lesson}/references/dataTable', [LessonDetailController::class, 'referenceDataTable'])->name('lessons.references.dataTable');
+    Route::post('lessons/{lesson}/references', [LessonDetailController::class, 'storeReference'])->name('lessons.references.store');
+    Route::put('lessons/{lesson}/references/{reference}', [LessonDetailController::class, 'updateReference'])->name('lessons.references.update');
+    Route::patch('lessons/{lesson}/references/{reference}/status', [LessonDetailController::class, 'statusReference'])->name('lessons.references.status');
+    Route::delete('lessons/{lesson}/references/{reference}', [LessonDetailController::class, 'deleteReference'])->name('lessons.references.destroy');
+
+    // 3. Lesson Quran References
+    Route::get('lessons/{lesson}/quran-references/dataTable', [LessonDetailController::class, 'quranDataTable'])->name('lessons.quran-references.dataTable');
+    Route::post('lessons/{lesson}/quran-references', [LessonDetailController::class, 'storeQuran'])->name('lessons.quran-references.store');
+    Route::put('lessons/{lesson}/quran-references/{quran}', [LessonDetailController::class, 'updateQuran'])->name('lessons.quran-references.update');
+    Route::patch('lessons/{lesson}/quran-references/{quran}/status', [LessonDetailController::class, 'statusQuran'])->name('lessons.quran-references.status');
+    Route::delete('lessons/{lesson}/quran-references/{quran}', [LessonDetailController::class, 'deleteQuran'])->name('lessons.quran-references.destroy');
+
+    // 4. Lesson Hadith References
+    Route::get('lessons/{lesson}/hadith-references/dataTable', [LessonDetailController::class, 'hadithDataTable'])->name('lessons.hadith-references.dataTable');
+    Route::post('lessons/{lesson}/hadith-references', [LessonDetailController::class, 'storeHadith'])->name('lessons.hadith-references.store');
+    Route::put('lessons/{lesson}/hadith-references/{hadith}', [LessonDetailController::class, 'updateHadith'])->name('lessons.hadith-references.update');
+    Route::patch('lessons/{lesson}/hadith-references/{hadith}/status', [LessonDetailController::class, 'statusHadith'])->name('lessons.hadith-references.status');
+    Route::delete('lessons/{lesson}/hadith-references/{hadith}', [LessonDetailController::class, 'deleteHadith'])->name('lessons.hadith-references.destroy');
 
     Route::get('users/datatable', [UserController::class, 'dataTable'])->name('users.datatable');
     Route::patch('users/{user}/active', [UserController::class, 'active'])->name('users.active');

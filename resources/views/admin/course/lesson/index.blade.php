@@ -113,7 +113,9 @@
                         searchable: false,
                         render: function(data, type, row) {
                             const translUrl = "{{ route('admin.lesson-translations.index', [':id']) }}".replace(':id', row.id);
-                            return `<a href="${translUrl}" class="btn btn-link">Translations</a> |
+                            const manageUrl = "{{ route('admin.lessons.manage', [':id']) }}".replace(':id', row.id);
+                            return `<a href="${manageUrl}" class="btn btn-sm btn-outline-primary me-1"><i class="fa fa-layer-group"></i> Content & References</a>
+                                <a href="${translUrl}" class="btn btn-link">Translations</a> |
                                 <button onclick="createUpdate(${row.id})" class="btn btn-link" id="editBtn${row.id}" data-slug="${row.slug}" data-chapter_id="${row.chapter_id}">Edit</button>`;
                         }
                     },
